@@ -15,10 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//后台登录
+Route::get('/admin/login','adminController@login');
 
-Route::get('/admin',function(){
+//后台路由
+Route::group(['middleware'=>'alogin'],function(){
 
-	// echo Config::get('app.timezone');
+	//后台主页
+	Route::get('/admin','adminController@index');
 
-	return view('admin/index');
+	//用户管理
+	Route::resource('/admin/user','userController');
+
 });
+
+//前台路由
+// Route::group(['middleware'=>'hlogin'],function(){
+
+// 	Route::get('/admin','adminController@index');
+
+// });
+
