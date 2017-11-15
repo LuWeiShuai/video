@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/admin',function(){
+
+	// echo Config::get('app.timezone');
+
+	return view('admin/index');
+});
