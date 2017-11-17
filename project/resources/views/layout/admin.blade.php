@@ -237,8 +237,8 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>视频分区</a>
                         <ul class="closed">
-                            <li><a href="form_elements.html">分区列表</a></li>
-                            <li><a href="form_layouts.html">添加父分区</a></li>                           
+                            <li><a href="/admin/type">分区列表</a></li>
+                            <li><a href="/admin/type/create">添加分区</a></li>                           
                         </ul>
                     </li>
                     <li>

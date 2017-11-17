@@ -27,6 +27,8 @@ Route::group(['middleware'=>'alogin'],function(){
 	//用户管理
 	Route::resource('/admin/user','userController');
 
+	//分区管理
+	Route::resource('/admin/type','typeController');
 });
 
 //前台路由
