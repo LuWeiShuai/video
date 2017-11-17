@@ -28,6 +28,8 @@ Route::group(['middleware'=>'alogin'],function(){
 	Route::resource('/admin/user','userController');
 	Route::get('/admin/user/list','userController@list');
 
+	//分区管理
+	Route::resource('/admin/type','typeController');
 });
 
 //前台路由
