@@ -35,9 +35,9 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'alogin'],fun
 
 	//用户上传
 		//待审核
-	Route::resource('/userup','UserupController');
+	Route::resource('/userup','UserUpController');
 		//已通过
-	Route::resource('/userguo','UserguoController');
+	Route::resource('/userguo','UserGuoController');
 
 
 	//网站配置

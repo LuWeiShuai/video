@@ -11,6 +11,8 @@ class loginController extends Controller
 {
     public  function admin()
     {
+    	session(['id'=>12]);
     	return view("admin.login");
+
     }
 }

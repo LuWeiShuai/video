@@ -19,7 +19,7 @@ class aloginMiddleware
 
         if(!$id){
 
-            return redirect('/admin/login');
+            return redirect('/admin_login');
         } else {
 
             return $next($request);

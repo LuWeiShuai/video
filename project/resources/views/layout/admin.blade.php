@@ -261,7 +261,7 @@
                         <a href="#"><i class="icon-list"></i>用户上传</a>
                         <ul class="closed">
                             <li><a href="/admin/userup">待审核</a></li>
-                            <li><a href="/admin/guo">已通过</a></li>
+                            <li><a href="/admin/userguo">已通过</a></li>
                         </ul>
                     </li>
                     <li>
