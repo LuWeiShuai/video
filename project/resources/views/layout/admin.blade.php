@@ -224,12 +224,12 @@
             </div>
             
             <!-- Searchbox -->
-            <div id="mws-searchbox" class="mws-inset">
+            <!-- <div id="mws-searchbox" class="mws-inset">
                 <form action="typography.html">
                     <input type="text" class="mws-search-input" placeholder="Search...">
                     <button type="submit" class="mws-search-submit"><i class="icon-search"></i></button>
                 </form>
-            </div>
+            </div> -->
             
             <!-- Main Navigation -->
             <div id="mws-navigation">
@@ -252,7 +252,7 @@
                     <li>
                         <a href="#"><i class="icon-list"></i> 视频管理</a>
                         <ul class="closed">
-                            <li><a href="form_layouts.html">视频列表</a></li>
+                            <li><a href="{{url('/admin/video')}}">视频列表</a></li>
                             <li><a href="form_elements.html">回收站</a></li>
                             <li><a href="form_wizard.html">Wizard</a></li>
                         </ul>
