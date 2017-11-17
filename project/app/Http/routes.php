@@ -26,6 +26,7 @@ Route::group(['middleware'=>'alogin'],function(){
 
 	//用户管理
 	Route::resource('/admin/user','userController');
+	Route::get('/admin/user/list','userController@list');
 
 });
 

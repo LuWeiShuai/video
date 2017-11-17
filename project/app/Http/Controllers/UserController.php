@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.user.list');
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.add');
     }
 
     /**
@@ -84,4 +84,17 @@ class UserController extends Controller
     {
         //
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */    
+
+     public function list()
+    {
+        return view('admin.user.alist');
+    }
+
 }

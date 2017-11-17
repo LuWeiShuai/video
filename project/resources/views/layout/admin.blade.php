@@ -229,9 +229,9 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>用户管理</a>
                         <ul class="closed">
-                            <li><a href="form_layouts.html">用户列表</a></li>
-                            <li><a href="form_elements.html">添加用户</a></li>
-                            <li><a href="form_wizard.html">管理员列表</a></li>
+                            <li><a href="{{ url('/admin/user') }}">用户列表</a></li>
+                            <li><a href="{{ url('/admin/user/create') }}">添加管理员</a></li>
+                            <li><a href="{{ url('/admin/user/list') }}">管理员列表</a></li>
                         </ul>
                     </li>
                     <li>
