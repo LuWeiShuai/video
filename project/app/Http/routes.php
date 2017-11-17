@@ -16,29 +16,43 @@ Route::get('/', function () {
 });
 
 //后台登录
-Route::get('/admin/login','adminController@login');
+Route::get('/admin_login','loginController@admin');
 
 //后台路由
-Route::group(['middleware'=>'alogin'],function(){
+
+Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'alogin'],function(){
 
 	//后台主页
-	Route::get('/admin','adminController@index');
+	Route::get('/index','adminController@index');
 
 	//用户管理
-	Route::resource('/admin/user','userController');
+	Route::resource('/user','userController');
+
+	//分区管理
+
+	Route::resource('/type','typeController');
+
 
 	//用户上传
 		//待审核
-	Route::resource('/admin/userup','UserupController');
+	Route::resource('/userup','UserupController');
 		//已通过
-	Route::resource('/admin/guo','UserguoController');
+	Route::resource('/userguo','UserguoController');
+
+
+	//网站配置
+	Route::resource('/config','configController');
+
+	//友情链接
+	Route::resource('/friendlink','friendlinkController');
 
 });
 
 //前台路由
-// Route::group(['middleware'=>'hlogin'],function(){
 
-// 	Route::get('/admin','adminController@index');
+// Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'alogin'],function(){
 
 // });
+
+
 

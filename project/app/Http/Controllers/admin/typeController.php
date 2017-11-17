@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class UserupController extends Controller
+class typeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class UserupController extends Controller
      */
     public function index()
     {
-        return view('/admin/user/userupdate');
+        return view('admin.type.list');
     }
 
     /**
@@ -26,7 +26,7 @@ class UserupController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.type.add');
     }
 
     /**

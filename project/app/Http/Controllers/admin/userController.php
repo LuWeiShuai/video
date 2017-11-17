@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class UserguoController extends Controller
+class userController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class UserguoController extends Controller
      */
     public function index()
     {
-        return view('/admin/user/tongguo');
+        return view('admin.user.list');
     }
 
     /**
@@ -27,6 +27,8 @@ class UserguoController extends Controller
     public function create()
     {
         //
+        return view('admin.user.add');
+
     }
 
     /**
@@ -48,6 +50,7 @@ class UserguoController extends Controller
      */
     public function show($id)
     {
+        return view('admin.user.alist');
         //
     }
 
