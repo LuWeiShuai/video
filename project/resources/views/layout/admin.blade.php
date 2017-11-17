@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="/admins/css/fonts/icomoon/style.css" media="screen">
 
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-style.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/admin/icons/icol16.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/css/icons/icol16.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/icons/icol32.css" media="screen">
 
 <!-- Demo Stylesheet -->
@@ -231,7 +231,7 @@
                         <ul class="closed">
                             <li><a href="{{ url('/admin/user') }}">用户列表</a></li>
                             <li><a href="{{ url('/admin/user/create') }}">添加管理员</a></li>
-                            <li><a href="{{ url('/admin/user/list') }}">管理员列表</a></li>
+                            <li><a href="{{ url('/admin/user/10') }}">管理员列表</a></li>
                         </ul>
                     </li>
                     <li>
@@ -260,9 +260,7 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>网站配置</a>
                         <ul class="closed">
-                            <li><a href="form_layouts.html">Layouts</a></li>
-                            <li><a href="form_elements.html">Elements</a></li>
-                            <li><a href="form_wizard.html">Wizard</a></li>
+                            <li><a href="{{ url('/admin/config') }}">网站配置</a></li>
                         </ul>
                     </li>
                     <li>

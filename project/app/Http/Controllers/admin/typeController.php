@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class typeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.list');
+        return view('admin.type.list');
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.add');
+        return view('admin.type.add');
     }
 
     /**
@@ -84,17 +84,4 @@ class UserController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */    
-
-     public function list()
-    {
-        return view('admin.user.alist');
-    }
-
 }
