@@ -1,11 +1,11 @@
 @extends('layout/admin')
-@section('title','添加分区')
+@section('title','添加链接')
 
 
 @section('content')
 <div class="mws-panel grid_8">
 	<div class="mws-panel-header">
-    	<span>分区添加页面</span>
+    	<span>链接添加页面</span>
     </div>
 
    <!--  @if(count($errors) > 0)
@@ -23,10 +23,21 @@
     	<form class="mws-form" action="/admin/type/store" method="post" enctype="multipart/form-data">
     		<div class="mws-form-inline">
     			<div class="mws-form-row">
-    				<label class="mws-form-label">父分区名:</label>
+    				<label class="mws-form-label">链接名称:</label>
     				<div class="mws-form-item">
     					<input type="text" class="small" name="username" value="">
     				</div>
+                    <br>
+                    <label class="mws-form-label">关键字:</label>
+
+                    <div class="mws-form-item">
+                        <input type="text" class="small" name="username" value="">
+                    </div>
+                    <br>
+                    <label class="mws-form-label">链接地址:</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="small" name="username" value="">
+                    </div>
     			</div>
     			
 

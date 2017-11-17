@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="/admins/css/fonts/icomoon/style.css" media="screen">
 
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-style.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/admin/icons/icol16.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/css/icons/icol16.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/icons/icol32.css" media="screen">
 
 <!-- Demo Stylesheet -->
@@ -32,7 +32,11 @@
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
-
+<style type="text/css">
+    .clearfix{
+        color: #c5d52b!important;
+    }
+</style>
 <title>@yield('title')</title>
 
 </head>
@@ -46,13 +50,17 @@
         
             <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
             <div id="mws-logo-wrap">
-                <img src="/admins/images/mws-logo.png" alt="mws admin">
+                <img src="/admins/images/logo.png" alt="mws admin">
             </div>
         </div>
         
         <!-- User Tools (notifications, logout, profile, change password) -->
         <div id="mws-user-tools" class="clearfix">
-        
+            <span>
+                <!-- 日历 -->
+                <SCRIPT type=text/javascript src="/admins/js/clock.js"></SCRIPT>
+                <SCRIPT type=text/javascript>showcal();</SCRIPT>
+            </span>
             <!-- Notifications -->
             <div id="mws-user-notif" class="mws-dropdown-menu">
                 <a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-exclamation-sign"></i></a>
@@ -189,9 +197,9 @@
                         Hello, John Doe
                     </div>
                     <ul>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Change Password</a></li>
-                        <li><a href="index.html">Logout</a></li>
+                        <li><a href="#">修改头像</a></li>
+                        <li><a href="#">修改密码</a></li>
+                        <li><a href="index.html">注销</a></li>
                     </ul>
                 </div>
             </div>
@@ -260,17 +268,15 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>网站配置</a>
                         <ul class="closed">
-                            <li><a href="form_layouts.html">Layouts</a></li>
-                            <li><a href="form_elements.html">Elements</a></li>
-                            <li><a href="form_wizard.html">Wizard</a></li>
+                            <li><a href="">Layouts</a></li>
+                            <li><a href="">Elements</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#"><i class="icon-list"></i>友情链接</a>
                         <ul class="closed">
-                            <li><a href="form_layouts.html">Layouts</a></li>
-                            <li><a href="form_elements.html">Elements</a></li>
-                            <li><a href="form_wizard.html">Wizard</a></li>
+                            <li><a href="/admin/config">浏览链接</a></li>
+                            <li><a href="/admin/config/create">添加链接</a></li>
                         </ul>
                     </li>
                 </ul>

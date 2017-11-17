@@ -29,6 +29,10 @@ Route::group(['middleware'=>'alogin'],function(){
 
 	//分区管理
 	Route::resource('/admin/type','typeController');
+
+	//友情链接
+	Route::resource('/admin/config','configController');
+
 });
 
 //前台路由

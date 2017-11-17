@@ -1,5 +1,5 @@
 @extends('layout/admin')
-@section('title','分区管理')
+@section('title','浏览链接')
 
 
 @section('content')
@@ -8,7 +8,7 @@
         <span>
             <i class="icon-table">
             </i>
-            分区列表
+            浏览链接
         </span>
     </div>
     <div class="mws-panel-body no-padding">
@@ -21,22 +21,22 @@
                         <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
                         style="width: 65px;">
-                            分类树
+                            编号
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
                         style="width: 70px;">
-                           ID
+                           链接名称
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending"
                         style="width: 50px;">
-                            栏目名
+                            关键字
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
                         style="width: 54px;">
-                            栏目管理
+                            链接地址
                         </th>
                        
                     </tr>
@@ -45,7 +45,7 @@
                     
                     
                     <tr class="">
-                       <td align="left" valign="middle"><img src="/admins/images/dirfirst.gif" width="15" height="13"></td>
+                       <td class=" " >1</td>
                         <td class=" ">
                             2
                         </td>
