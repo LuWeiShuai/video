@@ -34,7 +34,7 @@
 <link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
 <style type="text/css">
     .clearfix{
-        color: #c5d52b!important;
+        color: #f39800 !important;
     }
 </style>
 <title>@yield('title')</title>

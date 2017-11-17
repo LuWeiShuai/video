@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 //后台登录
 Route::get('/admin_login','loginController@admin');
+Route::get('/admin_login/code','loginController@code');
+Route::post('/admin_login/dologin','loginController@doalogin');
 
 //后台路由
 

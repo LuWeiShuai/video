@@ -38,23 +38,22 @@
 
                         </div>
                     @endif
-
-                <form class="mws-form" action="/admin/dologin" method="post">
+                <form class="mws-form" action="{{ url('/admin_login/dologin') }}" method="post">
                     <div class="mws-form-row">
                         <div class="mws-form-item">
-                            <input type="text" name="username" class="mws-login-username required" placeholder="请输入用户名">
+                            <input type="text" name="username" class="mws-login-username required" placeholder="请输入用户名" value="{{ old('username')}}">
                         </div>
                     </div>
                     <div class="mws-form-row">
                         <div class="mws-form-item">
-                            <input type="password" name="password" class="mws-login-password required" placeholder="请输入密码">
+                            <input type="password" name="password" class="mws-login-password required" placeholder="请输入密码" value="{{ old('password')}}">
                         </div>
                     </div>
 
                      <div class="mws-form-row">
                         <div class="mws-form-item">
                             <input type="text" name="code" class="mws-login required" placeholder="请输入验证码" style='width:120px;height:35px;margin-right:20px'>
-                            <img src="/admin/code" alt=""  class="img-rounded" onclick="this.src = this.src += '?1'">
+                            <img src="/admin_login/code" alt=""  class="img-rounded" onclick="this.src = this.src += '?1'">
                         </div>
                     </div>
                     
@@ -85,3 +84,6 @@
 
 </body>
 </html>
+<script> 
+    $('.mws-form-message').delay(1000).slideUp(1000);
+</script>
