@@ -252,9 +252,8 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>用户上传</a>
                         <ul class="closed">
-                            <li><a href="form_layouts.html">Layouts</a></li>
-                            <li><a href="form_elements.html">Elements</a></li>
-                            <li><a href="form_wizard.html">Wizard</a></li>
+                            <li><a href="/admin/userup">待审核</a></li>
+                            <li><a href="/admin/guo">已通过</a></li>
                         </ul>
                     </li>
                     <li>

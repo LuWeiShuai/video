@@ -27,6 +27,12 @@ Route::group(['middleware'=>'alogin'],function(){
 	//用户管理
 	Route::resource('/admin/user','userController');
 
+	//用户上传
+		//待审核
+	Route::resource('/admin/userup','UserupController');
+		//已通过
+	Route::resource('/admin/guo','UserguoController');
+
 });
 
 //前台路由
