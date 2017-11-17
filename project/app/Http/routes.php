@@ -46,6 +46,9 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'alogin'],fun
 	//友情链接
 	Route::resource('/friendlink','friendlinkController');
 
+	//后台视频管理
+	Route::resource('/video','VideoController');
+
 });
 
 //前台路由
