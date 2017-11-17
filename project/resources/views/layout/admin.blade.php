@@ -237,9 +237,9 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>用户管理</a>
                         <ul class="closed">
-                            <li><a href="form_layouts.html">用户列表</a></li>
-                            <li><a href="form_elements.html">添加用户</a></li>
-                            <li><a href="form_wizard.html">管理员列表</a></li>
+                            <li><a href="{{ url('/admin/user') }}">用户列表</a></li>
+                            <li><a href="{{ url('/admin/user/create') }}">添加管理员</a></li>
+                            <li><a href="{{ url('/admin/user/10') }}">管理员列表</a></li>
                         </ul>
                     </li>
                     <li>
@@ -268,8 +268,12 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>网站配置</a>
                         <ul class="closed">
+<<<<<<< HEAD
                             <li><a href="">Layouts</a></li>
                             <li><a href="">Elements</a></li>
+=======
+                            <li><a href="{{ url('/admin/config') }}">网站配置</a></li>
+>>>>>>> 4f5a1848618a399e84ab9b5b10a5f4e9d68218b4
                         </ul>
                     </li>
                     <li>
