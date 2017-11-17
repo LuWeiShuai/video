@@ -35,6 +35,8 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'alogin'],fun
 	//网站配置
 	Route::resource('/config','configController');
 
+	//友情链接
+	Route::resource('/friendlink','friendlinkController');
 });
 
 //前台路由

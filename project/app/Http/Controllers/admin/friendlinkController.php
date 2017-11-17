@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ConfigController extends Controller
+class friendlinkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class ConfigController extends Controller
     public function index()
     {
         //
-        return view('/admin/config/list');
+        return view('admin.friendlink.list');
 
     }
 
@@ -29,8 +29,8 @@ class ConfigController extends Controller
     public function create()
     {
         //
-        return view('/admin/config/add');
-
+        return view('admin.friendlink.add');
+        
     }
 
     /**

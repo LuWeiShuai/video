@@ -268,19 +268,14 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>网站配置</a>
                         <ul class="closed">
-<<<<<<< HEAD
-                            <li><a href="">Layouts</a></li>
-                            <li><a href="">Elements</a></li>
-=======
                             <li><a href="{{ url('/admin/config') }}">网站配置</a></li>
->>>>>>> 4f5a1848618a399e84ab9b5b10a5f4e9d68218b4
                         </ul>
                     </li>
                     <li>
                         <a href="#"><i class="icon-list"></i>友情链接</a>
                         <ul class="closed">
-                            <li><a href="/admin/config">浏览链接</a></li>
-                            <li><a href="/admin/config/create">添加链接</a></li>
+                            <li><a href="/admin/friendlink">浏览链接</a></li>
+                            <li><a href="/admin/friendlink/create">添加链接</a></li>
                         </ul>
                     </li>
                 </ul>
