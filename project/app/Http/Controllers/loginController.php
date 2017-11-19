@@ -33,8 +33,8 @@ class loginController extends Controller
 	    		return back()->with('msg','您输入的用户名或密码错误');
 	    	}
 
-	    	// if(!Hash::check($res['password'],$uname->password)){
-	    	if($res['password'] != $uname->password){
+	    	if(!Hash::check($res['password'],$uname->password)){
+	    	// if($res['password'] != $uname->password){
 
 	    		return back()->with('msg','您输入的用户名或密码错误');
 	    	}

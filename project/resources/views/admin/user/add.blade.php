@@ -4,41 +4,52 @@
 
 @section('content')
 
+     @if (count($errors) > 0)
+              <div class="mws-form-message error">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li style='font-size:17px;list-style:none'>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+      @endif
+
 	<div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
                     	<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内联表格</font></font></span>
                     </div>
                     <div class="mws-panel-body no-padding">
-                    	<form class="mws-form" action="form_layouts.html">
+                    	<form class="mws-form" action="{{ url('/admin/user') }}" method="post">
+                              {{ csrf_field() }}
                     		<div class="mws-form-inline">
                     			<div class="mws-form-row">
                     				<label class="mws-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></label>
                     				<div class="mws-form-item">
-                    					<input type="text" class="small">
+                    					<input type="text" class="small" name="userName">
                     				</div>
                     			</div>
                                    <div class="mws-form-row">
                                         <label class="mws-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码</font></font></label>
                                         <div class="mws-form-item">
-                                             <input type="text" class="small">
+                                             <input type="password" class="small" name="password">
                                         </div>
                                    </div>
                                    <div class="mws-form-row">
                                         <label class="mws-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">确认密码</font></font></label>
                                         <div class="mws-form-item">
-                                             <input type="text" class="small">
+                                             <input type="password" class="small" name="repassword">
                                         </div>
                                    </div>
                                     <div class="mws-form-row">
                                         <label class="mws-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电话</font></font></label>
                                         <div class="mws-form-item">
-                                             <input type="text" class="small">
+                                             <input type="text" class="small" name="phone" value="">
                                         </div>
                                    </div>
                     			<div class="mws-form-row">
                     				<label class="mws-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">权限</font></font></label>
                     				<div class="mws-form-item">
-                    					<select class="large">
+                    					<select class="large" name="auth">
                     						<option value="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">普通管理员</font></font></option>
                     						<option value="1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">视频管理员</font></font></option>
                     						<option value="2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">超级管理员</font></font></option>
@@ -53,3 +64,7 @@
                     </div>    	
                 </div>
 @endsection
+<script> 
+    $('.mws-form-message').delay(1000).slideUp(1000);
+</script>
+

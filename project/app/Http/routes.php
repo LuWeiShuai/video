@@ -30,6 +30,9 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'alogin'],fun
 	//用户管理
 	Route::resource('/user','userController');
 
+	//管理员
+	Route::resource('/admin_user','admin_userController');
+
 	//分区管理
 
 	Route::resource('/type','typeController');

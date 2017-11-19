@@ -239,7 +239,7 @@
                         <ul class="closed">
                             <li><a href="{{ url('/admin/user') }}">用户列表</a></li>
                             <li><a href="{{ url('/admin/user/create') }}">添加管理员</a></li>
-                            <li><a href="{{ url('/admin/user/10') }}">管理员列表</a></li>
+                            <li><a href="{{ url('/admin/admin_user') }}">管理员列表</a></li>
                         </ul>
                     </li>
                     <li>
@@ -338,5 +338,10 @@
     <!-- Demo Scripts (remove if not needed) -->
     <script src="/admins/js/demo/demo.dashboard.js"></script>
 
+    <!-- layer -->
+    <script src="/admins/js/layer.js"></script>
+    @section('script')
+
+    @show
 </body>
 </html>

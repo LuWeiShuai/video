@@ -1,9 +1,9 @@
 @extends('layout/admin')
-@section('title','用户列表页')
+@section('title','管理员列表页')
 
 
 @section('content')
-	<div class="mws-panel grid_8">
+    <div class="mws-panel grid_8">
     <div class="mws-panel-header">
         <span>
             <i class="icon-table">
@@ -12,8 +12,8 @@
         </span>
     </div>
     <div class="mws-panel-body no-padding">
-        <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-              <form action='/admin/user' method='get'>
+        <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid"> 
+            <form action='/admin/admin_user' method='get'>
                 <div id="DataTables_Table_1_length" class="dataTables_length">
                     <label>
                         显示
@@ -52,20 +52,20 @@
                         style="width: 160px;">
                             ID
                         </th>
+                        <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
+                        style="width: 160px;">
+                            管理员
+                        </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
                         style="width: 200px;">
                             手机号
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                        style="width: 190px;">
-                            上次登陆时间
-                        </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
                         style="width: 130px;">
-                            视频观看权限
+                           管理员权限
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"
@@ -84,20 +84,20 @@
                                 {{ $val->id }}
                             </td>
                             <td class=" ">
-                                {{ $val->tel }}
+                                {{ $val->userName }}
                             </td>
                             <td class=" ">
-                                {{ $val->lastlogin }}
+                                {{ $val->phone }}
                             </td>
                             <td class=" ">
-                               {{$val->status ? 'vip用户' : '普通用户'}}
+                               @if($val->auth == 0) 普通管理员 @elseif($val->auth == 1) 视频管理员 @else 超级管理员 @endif
                             </td>
                             <td class=" ">
-                                <a href="{{ url('/admin/user/'.$val->id.'/edit') }}"><button class="btn btn-danger">修改</button></a>
-                                <form action="{{ url('/admin/user/'.$val->id) }}" method='post' style='display:inline'>
+                                <a href="{{ url('/admin/admin_user/'.$val->id.'/edit') }}"><button class="btn btn-danger">修改</button></a>
+                                <form action="{{ url('/admin/admin_user/'.$val->id) }}" method='post' style='display:inline'>
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
-                                    <button class='btn btn-warning'>删除</button>
+                                    <input type="submit" value="删除" class="btn btn-warning">
                                </form>
                             </td>
                         </tr>
@@ -107,20 +107,20 @@
                                 {{ $val->id }}
                             </td>
                             <td class=" ">
-                                {{ $val->tel }}
+                                {{ $val->userName }}
                             </td>
                             <td class=" ">
-                                {{ $val->lastlogin }}
+                                {{ $val->phone }}
                             </td>
                             <td class=" ">
-                               {{$val->status ? 'vip用户' : '普通用户'}} 
+                                @if($val->auth == 0) 普通管理员 @elseif($val->auth == 1) 视频管理员 @else 超级管理员 @endif 
                             </td>
                             <td class=" ">
-                                <a href="{{ url('/admin/user/'.$val->id.'/edit') }}"><button class="btn btn-danger">修改</button></a>
-                                <form action="{{ url('/admin/user/'.$val->id) }}" method='post' style='display:inline'>
+                                <a href="{{ url('/admin/admin_user/'.$val->id.'/edit') }}"><button class="btn btn-danger">修改</button></a>
+                                <form action="{{ url('/admin/admin_user/'.$val->id) }}" method='post' style='display:inline'>
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
-                                    <button class='btn btn-warning'>删除</button>
+                                    <input type="submit" value="删除" class="btn btn-warning">
                                </form>
                             </td>
                         </tr>
@@ -131,7 +131,7 @@
             <div class="dataTables_info" id="DataTables_Table_1_info">
                 Showing 1 to 10 of 57 entries
             </div>
-                        <style>
+           <style>
             .pagination li{
                 background-color: #444444;
                 border-left: 1px solid rgba(255, 255, 255, 0.15);
@@ -152,7 +152,6 @@
 
             .pagination a{
                 color: #fff;
-
             }
             
             .pagination .active{
@@ -173,7 +172,6 @@
                 margin:0px;
             }
             </style>
-
             <div class="dataTables_paginate paging_full_numbers">
 
                 {!! $res->appends($request->all())->render()!!}
@@ -182,5 +180,16 @@
         </div>
     </div>
 </div>
-	
-@endsection
+@endsection 
+@section('script')
+<!-- <script>
+    // alert($);
+    $('.btn-warning').click(function(){
+        layer.msg('hello');
+        // alert('asdsad');
+
+        return false;
+    })   
+</script>   -->  
+@endsection 
+
