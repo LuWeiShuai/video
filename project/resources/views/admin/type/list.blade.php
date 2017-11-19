@@ -43,26 +43,68 @@
                 </thead>
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
                     
-                    
-                    <tr class="">
-                       <td align="left" valign="middle"><img src="/admins/images/dirfirst.gif" width="15" height="13"></td>
-                        <td class=" ">
-                            2
-                        </td>
-                        <td class=" ">
-                           3
-                        </td>
-                       
-                        <td class=" ">
-                            <a href="" class="btn btn-danger">修改</a>
-                            <form action="" method='post' style='display:inline'>
+                @foreach($res as $k => $v)
+                    <tr class="@if($k % 2 == 0)
+                                        odd  
+                                    @else  
+                                        even 
+                                    @endif">
+                       @if($v->fid ==0)
+                            <td align="left" valign="middle">
+                                <img src="/admins/images/dirfirst.gif" width="15" height="13">
+                            </td>
+                             <td class=" ">
+                                {{$v->id}}
+                            </td>
+                            <td class=" ">
+                               {{$v->name}}
+                            </td>
+                            <td class=" ">
+                            <a href="/admin/type/{{$v->id}}/edit" class="btn btn-danger">修改</a>
+                            <a href="/admin/typeSon/create" class="btn btn-danger">添加子分区</a>
+                            @if(!$res1)
+                            <form action="/admin/type/{{$v->id}}" method='post' style='display:inline'>
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
                                 <button class='btn btn-warning'>删除</button>
                            </form>
-                        </td>
+                           @endif
+                           
+                            </td>
+                        </tr>
+                        @endif
+                            @foreach($res as $key=>$val)
+                                @if($val->fid == $v->id)
+                                <tr class="@if($k % 2 == 0)
+                                        odd  
+                                    @else  
+                                        even 
+                                    @endif">
+                                <td align="left" valign="middle">
+                                    <img src="/admins/images/dirsecond.gif" width="29" height="29">
+                                </td>
+                                 <td class=" ">
+                                    {{$val->id}}
+                                </td>
+                                <td class=" ">
+                                   {{$val->name}}
+                                </td>
+                                 <td class=" ">
+                                <a href="/admin/typeSon/{{$val->id}}/edit" class="btn btn-danger">修改</a> 
+
+                                <form action="/admin/typeSon/{{$val->id}}" method='post' style='display:inline'>
+                                    {{csrf_field()}}
+                                    {{method_field('DELETE')}}
+                                    <button class='btn btn-warning'>删除</button>
+                               </form>
+                            </td>
+                                @endif
+                            @endforeach
+                       
+                        
                     </tr>
-                    
+                @endforeach
+
                 </tbody>
             </table>
             

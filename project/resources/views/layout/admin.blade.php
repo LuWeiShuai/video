@@ -286,6 +286,14 @@
         
             <!-- Inner Container Start -->
             <div class="container">
+            
+                 @if(session('msg'))
+                <div class="mws-form-message info">                 
+
+                    {{session('msg')}}
+
+                </div>
+                @endif
             @section('content')
 
             
@@ -337,6 +345,9 @@
 
     <!-- Demo Scripts (remove if not needed) -->
     <script src="/admins/js/demo/demo.dashboard.js"></script>
+    @section('script')
 
+                
+    @show
 </body>
 </html>

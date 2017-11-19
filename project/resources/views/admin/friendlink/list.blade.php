@@ -38,31 +38,48 @@
                         style="width: 54px;">
                             链接地址
                         </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
+                        style="width: 54px;">
+                            链接管理
+                        </th>
                        
                     </tr>
                 </thead>
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
                     
+                    @if($res)
+
+                        @foreach($res as $k => $v)
+                        <tr class="@if($k % 2 == 0)
+                                        odd  
+                                    @else  
+                                        even 
+                                    @endif">
+                           <td class=" " >
+                                {{$v->id}}
+                            </td>
+                            <td class=" ">
+                                {{$v->linkName}}
+                            </td>
+                            <td class=" ">
+                               {{$v->keywords}}
+                            </td>
+                           <td class=" ">
+                             <a href=" {{$v->url}} "> {{$v->url}}</a>
+                            </td>
+                            <td class=" ">
+                                <a href="/admin/friendlink/{{$v->id}}/edit" class="btn btn-danger">修改</a>
+                                <form action="/admin/friendlink/{{$v->id}}" method='post' style='display:inline'>
+                                    {{csrf_field()}}
+                                    {{method_field('DELETE')}}
+                                    <button class='btn btn-warning'>删除</button>
+                               </form>
+                            </td>
+                        </tr>
+                        @endforeach
                     
-                    <tr class="">
-                       <td class=" " >1</td>
-                        <td class=" ">
-                            2
-                        </td>
-                        <td class=" ">
-                           3
-                        </td>
-                       
-                        <td class=" ">
-                            <a href="" class="btn btn-danger">修改</a>
-                            <form action="" method='post' style='display:inline'>
-                                {{csrf_field()}}
-                                {{method_field('DELETE')}}
-                                <button class='btn btn-warning'>删除</button>
-                           </form>
-                        </td>
-                    </tr>
-                    
+                    @endif
                 </tbody>
             </table>
             

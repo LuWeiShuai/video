@@ -8,24 +8,24 @@
     	<span>分区添加页面</span>
     </div>
 
-   <!--  @if(count($errors) > 0)
-    		<div class="mws-form-message error">
-    			<ul>
-    				@foreach($errors->all() as $error)
-    					<li style="font-size: 17px; list-style:none">{{$error}}</li>
-    				@endforeach
-    			</ul>
-    
-    		</div>
-    	@endif  -->
 
     <div class="mws-panel-body no-padding">
-    	<form class="mws-form" action="/admin/type/store" method="post" enctype="multipart/form-data">
+     @if(count($errors) > 0)
+        <div class="mws-form-message error">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li style="font-size: 17px; list-style:none">{{$error}}</li>
+                @endforeach
+            </ul>
+
+        </div>
+    @endif  
+    	<form class="mws-form" action="/admin/type" method="post">
     		<div class="mws-form-inline">
     			<div class="mws-form-row">
     				<label class="mws-form-label">父分区名:</label>
     				<div class="mws-form-item">
-    					<input type="text" class="small" name="username" value="">
+    					<input type="text" class="small" name="name" value="">
     				</div>
     			</div>
     			
@@ -39,4 +39,13 @@
     	</form>
     </div>    	
 </div>
+@endsection
+
+@section('script')
+<script>
+
+    $('.mws-form-message').delay(3000).slideUp(1000);
+
+</script>
+
 @endsection

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\model\type;
+
 
 class typeController extends Controller
 {
@@ -16,7 +18,11 @@ class typeController extends Controller
      */
     public function index()
     {
-        return view('admin.type.list');
+        $res = type::all();
+        
+        $res1 = type::where('fid','=','$res[0]->id')->first();
+
+        return view('admin.type.list',['res'=>$res],['res1'=>$res1]);
     }
 
     /**
@@ -37,7 +43,22 @@ class typeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //表单验证
+        $this->validate($request, [
+            'name' => 'required'
+        ],[
+            'name.required'=>'父分区名不能为空'
+        ]);
+
+        $res = $request->only('name');
+        //将数据添加到数据库
+        $data = type::insert($res);
+        //判断
+        if ($data) {
+            return redirect('/admin/type')->with('msg','添加成功');
+        }else{
+            return back();
+        }
     }
 
     /**
@@ -48,8 +69,10 @@ class typeController extends Controller
      */
     public function show($id)
     {
-        //
+       
+    
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -59,7 +82,9 @@ class typeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $res = type::where('id',$id)->first();
+
+        return view('admin.type.edit',['res'=>$res]);
     }
 
     /**
@@ -71,7 +96,15 @@ class typeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $res = $request->except(['_token','updated_at','_method']);
+
+        $data = type::where('id',$id)->update($res);
+        
+        if ($data) {
+            return redirect('/admin/type')->with('msg','修改成功');
+        }else{
+            return back();
+        }
     }
 
     /**
@@ -83,5 +116,12 @@ class typeController extends Controller
     public function destroy($id)
     {
         //
+         $res = type::where('id',$id)->delete();
+        
+        if ($res) {
+            return redirect('/admin/type')->with('msg','删除成功');
+        }else{
+            return back();
+        }
     }
 }

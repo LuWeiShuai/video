@@ -1,14 +1,13 @@
 @extends('layout/admin')
-@section('title','添加链接')
+@section('title','添加分区')
 
 
 @section('content')
 <div class="mws-panel grid_8">
 	<div class="mws-panel-header">
-    	<span>链接添加页面</span>
+    	<span>分区添加页面</span>
     </div>
 
-     
     <div class="mws-panel-body no-padding">
      @if(count($errors) > 0)
         <div class="mws-form-message error">
@@ -19,23 +18,22 @@
             </ul>
 
         </div>
-    @endif 
-    	<form class="mws-form" action="/admin/friendlink" method="post" enctype="multipart/form-data">
+    @endif  
+    	<form class="mws-form" action="/admin/typeSon" method="post">
     		<div class="mws-form-inline">
     			<div class="mws-form-row">
-    				<label class="mws-form-label">链接名称:</label>
-    				<div class="mws-form-item">
-    					<input type="text" class="small" name="linkName" value="">
-    				</div>
+                        <label class="mws-form-label">父分区名:</label>
+                        <div class="mws-form-item">
+                            <select class="mws-select2 small" name="fname">
+                                @foreach($res1 as $k => $v)
+                                    <option>{{$v['name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     <br>
-                    <label class="mws-form-label">关键字:</label>
+                    <label class="mws-form-label">子分区名:</label>
                     <div class="mws-form-item">
-                        <input type="text" class="small" name="keywords" value="">
-                    </div>
-                    <br>
-                    <label class="mws-form-label">链接地址:</label>
-                    <div class="mws-form-item">
-                        <input type="text" class="small" name="url" value="">
+                        <input type="text" class="small" name="name" value="">
                     </div>
     			</div>
     			
