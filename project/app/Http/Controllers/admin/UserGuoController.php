@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\model\uvideo;
 
 class UserGuoController extends Controller
 {
@@ -16,7 +17,9 @@ class UserGuoController extends Controller
      */
     public function index()
     {
-        return view('/admin/user/tongGuo');
+        $res = uvideo::where('status',1)->get();
+        // var_dump($res);
+        return view('/admin/user/tongGuo',['res'=>$res]);
     }
 
     /**
@@ -82,6 +85,8 @@ class UserGuoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = uvideo::first();
+        $res->delete();
+        return ('/admin/user/userUpdate');
     }
 }

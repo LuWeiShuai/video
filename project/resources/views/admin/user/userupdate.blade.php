@@ -1,60 +1,28 @@
-@extends('layout/admin')
-@section('title','待审核列表')
-<style type="text/css">
-	#xuanze{
-		width:60px;
-		/*font-size:1px;*/
-	}
-	
-</style>
+@extends('/layout/admin')
+@section('title','用户上传列表')
 
-@section('content')
-	        
-        	<!-- Inner Container Start -->
+@section('content')        
+            <!-- Inner Container Start -->
             <div class="container">
             
-            	<!-- Statistics Button Container -->
-            	<div class="mws-stat-container clearfix">
-                	
-                    <!-- Statistic Item -->
-                	
+                <!-- Statistics Button Container -->
+                <div class="mws-stat-container clearfix">
+                   
+                    
+                    
                 </div>
                 
                 <!-- Panels Start -->
-                
-            	
-                
-            	<div class="mws-panel grid_8">
-                	<div class="mws-panel-header">
-                    	<span><i class="icon-table"></i> Table with Toolbar</span>
+                <div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                        <span><i class="icon-table"></i> 用户上传的列表</span>
                     </div>
-                    <div class="mws-panel-toolbar">
-                        <div class="btn-toolbar">
-                            <div class="btn-group">
-                                <a href="#" class="btn"><i class="icol-accept"></i> Accept</a>
-                                <a href="#" class="btn"><i class="icol-cross"></i> Reject</a>
-                                <a href="#" class="btn"><i class="icol-printer"></i> Print</a>
-                                <a href="#" class="btn"><i class="icol-arrow-refresh"></i> Renew</a>
-                                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="#"><i class="icol-disconnect"></i> Disconnect From Server</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a href="#">More Options</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Contact Administrator</a></li>
-                                            <li><a href="#">Destroy Table</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="mws-panel-body no-padding">
                         <table class="mws-table">
                             <thead>
                                 <tr>
-                                	<th class="checkbox-column" id="xuanze">
+                                    <th class="checkbox-column" id="xuanze">
                                         <a href="">全选</a>/<a href="">全不选</a>
                                     </th>
                                     <th>用户名</th>
@@ -64,30 +32,44 @@
                                     <th>操作</th>
                                 </tr>
                             </thead>
+                               
+                            @foreach($res as $k=>$v)
+                            
                             <tbody>
+                               
                                 <tr>
-                                	<td class="checkbox-column">
+                                    <td class="checkbox-column">
                                         <input type="checkbox">
                                     </td>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
-                                    <td>4</td>
+                                    <td>{{$v->username}}</td>
+                                    <td>{{$v->time}}</td>
+                                    <td>{{$v->title}}</td>
+                                    <td>{{$v->content}}</td>
                                     <td id="caozuo">
-                                    <a href="" class="btn btn-info">通过</a>
-                                    	<form action="/admin/guo/id" method="post" style="display: inline">
-                                    		{{csrf_field()}}
-											{{ method_field('DELETE')}}
-									
-                                    		 <a href="" class="btn btn-danger">不通过</a>
-                                    	</form>
-                                	</td>
+                                    <a href="/admin/userup/{{$v->id}}" class="btn btn-info"> 通过</a>
+                                        <form action="/admin/userup/{{$v->id}}" method="post" style="display: inline">
+                                            {{csrf_field()}}
+                                            {{ method_field('DELETE')}}
+                                    
+                                             <button class="btn btn-danger">不通过</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </tbody>
+                           @endforeach
                         </table>
-                    </div>    	
+                    </div>      
                 </div>
-            <!-- Inner Container End -->
-            
+                
+                
+                
+                
+              
 
-@endsection
+                
+                
+                
+                <!-- Panels End -->
+            </div>
+            <!-- Inner Container End -->
+@endsection          

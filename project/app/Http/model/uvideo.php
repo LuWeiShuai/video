@@ -8,5 +8,6 @@ class uvideo extends Model
 {
     //
    protected $table = 'uvideo';
+    public $timestamps = false;
 
 }
