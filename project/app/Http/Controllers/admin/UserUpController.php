@@ -15,11 +15,15 @@ class UserUpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {   
-        $res = uvideo::where("status",0)->get();
-         // var_dump($res);
-        return  view('/admin/user/userUpdate',['res'=>$res]);
+        $res = uvideo::where("status",0)
+        ->where('username','like','%'.$request->input('search').'%')
+        ->orderBy('id','asc')
+         ->paginate($request->input('num',10));
+         // var_dump($request->input('search'));
+        
+        return  view('/admin/user/userUpdate',['res'=>$res,'request'=>$request]);
     }
 
     /**
@@ -100,6 +104,6 @@ class UserUpController extends Controller
         
         $res = uvideo::first();
         $res->delete();
-        return ('/admin/user/userUpdate');
+        return redirect('/admin/userup');
     }
 }
