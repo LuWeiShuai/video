@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\model\config;
 
 class configController extends Controller
 {
@@ -15,8 +16,11 @@ class configController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.config.index');
+    {   
+        $res = config::all();
+        $kai = config::where('status',1)->get();
+
+        return view('admin.config.index',['res'=>$res]);
     }
 
     /**
@@ -59,7 +63,7 @@ class configController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -71,7 +75,12 @@ class configController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $res = config::where('id',$id)->get();
+        $re = $request->except('_token','_method');
+        
+        $res = config::where('id',$id)->update($re);
+        // $res->save();
+        var_dump($res);
     }
 
     /**

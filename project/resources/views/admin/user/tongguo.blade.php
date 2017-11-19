@@ -1,5 +1,5 @@
 @extends('layout/admin')
-@section('title','待审核列表')
+@section('title','已通过列表')
 <style type="text/css">
 	#xuanze{
 		width:60px;
@@ -26,32 +26,12 @@
                 
             	<div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span><i class="icon-table"></i> Table with Toolbar</span>
+                    	<span><i class="icon-table"></i>用户上传的视频</span>
                     </div>
-                    <div class="mws-panel-toolbar">
-                        <div class="btn-toolbar">
-                            <div class="btn-group">
-                                <a href="#" class="btn"><i class="icol-accept"></i> Accept</a>
-                                <a href="#" class="btn"><i class="icol-cross"></i> Reject</a>
-                                <a href="#" class="btn"><i class="icol-printer"></i> Print</a>
-                                <a href="#" class="btn"><i class="icol-arrow-refresh"></i> Renew</a>
-                                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="#"><i class="icol-disconnect"></i> Disconnect From Server</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a href="#">More Options</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Contact Administrator</a></li>
-                                            <li><a href="#">Destroy Table</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="mws-panel-body no-padding">
                         <table class="mws-table">
+                           
                             <thead>
                                 <tr>
                                 	<th class="checkbox-column" id="xuanze">
@@ -65,27 +45,31 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                 @foreach($res as $k=>$v)
                                 <tr>
                                 	<td class="checkbox-column">
                                         <input type="checkbox">
                                     </td>
-                                    <td>Trident</td>
-                                    <td>2012.12.21</td>
-                                    <td>Win 95+</td>
-                                    <td>4</td>
+                                    <td>{{$v->username}}</td>
+                                    <td>{{$v->time}}</td>
+                                    <td>{{$v->title}}</td>
+                                    <td>{{$v->content}}</td>
                                     <td>
-                                    	<form action="/admin/guo/id" method="post">
-                                    		{{csrf_field()}}
-											{{ method_field('DELETE')}}
+                                    	<form action="/admin/userguo/{{$v->id}}" method="post">
+                                    	       {{csrf_field()}}
+                                            {{ method_field('DELETE')}}
 
                                     		<input type="submit" value="下架">
                                     	</form>
                                	 	</td>
                                 </tr>
                             </tbody>
+
+                            @endforeach
                         </table>
                     </div>    	
                 </div>
+        </div>
             <!-- Inner Container End -->
             
 

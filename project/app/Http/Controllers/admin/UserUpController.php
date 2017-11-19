@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\model\uvideo;
 
 class UserUpController extends Controller
 {
@@ -15,8 +16,10 @@ class UserUpController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return  view('/admin/user/userUpdate');
+    {   
+        $res = uvideo::where("status",0)->get();
+         // var_dump($res);
+        return  view('/admin/user/userUpdate',['res'=>$res]);
     }
 
     /**
@@ -26,7 +29,7 @@ class UserUpController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -48,7 +51,19 @@ class UserUpController extends Controller
      */
     public function show($id)
     {
-        //
+        $res = uvideo::find($id);
+        if($res->status == 0){
+            $res->status = 1;
+            $res->save();        
+        }   else {
+           echo back();
+        }
+        return  back();
+
+
+
+        // return  redirect('/admin/userup');
+
     }
 
     /**
@@ -82,6 +97,9 @@ class UserUpController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $res = uvideo::first();
+        $res->delete();
+        return ('/admin/user/userUpdate');
     }
 }
