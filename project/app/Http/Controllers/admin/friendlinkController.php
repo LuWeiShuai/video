@@ -15,12 +15,13 @@ class friendlinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $res = friendlink::all();
+         $res = friendlink::where('linkName','like','%'.$request->input('search').'%')->orderBy('id','asc')->paginate($request->input('num',10));
+
         
-        return view('admin.friendlink.list',['res'=>$res]);
+        return view('admin.friendlink.list',['res'=>$res,'request'=>$request]);
 
     }
 

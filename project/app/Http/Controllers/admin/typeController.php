@@ -16,13 +16,13 @@ class typeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $res = type::all();
+         $res = type::where('name','like','%'.$request->input('search').'%')->orderBy('id','asc')->paginate($request->input('num',10));
         
         $res1 = type::where('fid','=','$res[0]->id')->first();
 
-        return view('admin.type.list',['res'=>$res],['res1'=>$res1]);
+        return view('admin.type.list',['res'=>$res,'res1'=>$res1,'request'=>$request]);
     }
 
     /**
