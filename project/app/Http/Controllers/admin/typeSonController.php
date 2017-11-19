@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\model\friendlink;
+use App\Http\model\type;
 
-class friendlinkController extends Controller
+class typeSonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,11 @@ class friendlinkController extends Controller
      */
     public function index()
     {
-
-        $res = friendlink::all();
+        $res = type::all();
         
-        return view('admin.friendlink.list',['res'=>$res]);
+        $res1 = type::where('fid','=','$res[0]->id')->first();
 
+        return view('admin.type.list',['res'=>$res],['res1'=>$res1]);
     }
 
     /**
@@ -31,9 +31,11 @@ class friendlinkController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.friendlink.add');
-
+        $res = type::all();
+        
+        $res1 = type::where('fid','=','0')->get();
+        
+        return view('admin.type.addSon',['res'=>$res],['res1'=>$res1]);
     }
 
     /**
@@ -43,26 +45,38 @@ class friendlinkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
+        
+        
+        $res = type::all();
+        
+        $res1 = type::where('fid','=','0')->get();
+
         //表单验证
         $this->validate($request, [
-            'linkName' => 'required',
-            'keywords' => 'required',
-            'url' => 'required|regex:/^http:\/\/www\.\w{1,10}\.com$/'
+            'name' => 'required'
         ],[
-            'linkName.required'=>'链接名称不能为空',
-            'keywords.required'=>'关键字不能为空',
-            'url.required'=>'链接格式不能为空',
-            'url.regex'=>'链接格式不正确'
+            'name.required'=>'子分区名不能为空'
         ]);
+        //获取name属性
+        $res2 = $request->only('name');
 
-        //去除token
-        $res = $request->except('_token');
+        //获取父类name
+        $fname = $request->only('fname');
+
+        //根据父类name查询出fid
+        $res3 = type::where('name','=',$fname)->get();
+
+        //fid
+        $fid = $res3[0]->id;
+        //将fid插入$res2
+        $res2['fid']=$fid;
+
         //将数据添加到数据库
-        $data = friendlink::insert($res);
+        $data = type::insert($res2);
         //判断
         if ($data) {
-            return redirect('/admin/friendlink')->with('msg','添加成功');
+            return redirect('/admin/type')->with('msg','添加成功');
         }else{
             return back();
         }
@@ -87,9 +101,9 @@ class friendlinkController extends Controller
      */
     public function edit($id)
     {
-        $res = friendlink::where('id',$id)->first();
+        $res = type::where('id',$id)->first();
 
-        return view('admin.friendlink.edit',['res'=>$res]);
+        return view('admin.type.editSon',['res'=>$res]);
     }
 
     /**
@@ -100,13 +114,13 @@ class friendlinkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
-        $res = $request->except(['_token','updated_at','_method']);
+    {
+         $res = $request->except(['_token','updated_at','_method']);
 
-        $data = friendlink::where('id',$id)->update($res);
+        $data = type::where('id',$id)->update($res);
         
         if ($data) {
-            return redirect('/admin/friendlink')->with('msg','修改成功');
+            return redirect('/admin/type')->with('msg','修改成功');
         }else{
             return back();
         }
@@ -120,14 +134,12 @@ class friendlinkController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $res = friendlink::where('id',$id)->delete();
+       $res = type::where('id',$id)->delete();
         
         if ($res) {
-            return redirect('/admin/friendlink')->with('msg','删除成功');
+            return redirect('/admin/type')->with('msg','删除成功');
         }else{
             return back();
         }
-        
     }
 }

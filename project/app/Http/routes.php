@@ -34,8 +34,10 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'alogin'],fun
 	Route::resource('/admin_user','admin_userController');
 
 	//分区管理
+	Route::resource('/typeSon','typeSonController');
 
 	Route::resource('/type','typeController');
+
 
 
 	//用户上传
