@@ -5,13 +5,13 @@
 @section('content')
 
      @if (count($errors) > 0)
-              <div class="mws-form-message error">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li style='font-size:17px;list-style:none'>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
+          <div class="mws-form-message error">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li style='font-size:17px;list-style:none'>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
       @endif
 
 	<div class="mws-panel grid_8">
@@ -64,7 +64,9 @@
                     </div>    	
                 </div>
 @endsection
+
+@section('script')
 <script> 
     $('.mws-form-message').delay(1000).slideUp(1000);
 </script>
-
+@endsection

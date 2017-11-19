@@ -25,24 +25,24 @@ class loginController extends Controller
 
     	$request->flash();
     	// dd($res);
-		// dd($res['username']);
-    	$uname = admin::where('userName',$res['username'])->first();
+		// dd($res['username']);      
+        	$uname = admin::where('userName',$res['username'])->first();
 
-	    	if(!$uname){
+    	    	if(!$uname){
 
-	    		return back()->with('msg','您输入的用户名或密码错误');
-	    	}
+    	    		return back()->with('msg','您输入的用户名或密码错误');
+    	    	}
 
-	    	if(!Hash::check($res['password'],$uname->password)){
-	    	// if($res['password'] != $uname->password){
+    	    	if(!Hash::check($res['password'],$uname->password)){
+    	    	// if($res['password'] != $uname->password){
 
-	    		return back()->with('msg','您输入的用户名或密码错误');
-	    	}
+    	    		return back()->with('msg','您输入的用户名或密码错误');
+    	    	}
 
-	    	if(session('vcode') != $res['code']){
+    	    	if(session('vcode') != $res['code']){
 
-	    		return back()->with('msg','验证码错误');
-	    	}
+    	    		return back()->with('msg','验证码错误');
+    	    	}
     	
     	//存session
     	session(['id'=>$uname->id]);

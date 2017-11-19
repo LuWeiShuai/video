@@ -17,7 +17,7 @@ class friendlinkController extends Controller
     public function index()
     {
         //
-        return view('admin.friendlink.list');
+        
 
     }
 
