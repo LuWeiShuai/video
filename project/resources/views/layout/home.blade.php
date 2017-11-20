@@ -231,65 +231,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li class="active"><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="shows.html" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>电视节目</a></li>
 					<li><a href="history.html" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
-					<li><a href="#" class="menu1"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>国际影城<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-2">
-							<li><a href="movies.html">欧美</a></li>        
-							<li><a href="movies.html">日韩</a></li>
-							<li><a href="movies.html">国产</a></li> 
+					<?php $res1 = DB::table('type')->get() ?>
+					@foreach($res1 as $k1 => $v1)
+						@if($v1->fid == 0)
+						<li><a href="#" class="menu{{ $v1->id }}"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>{{ $v1->name }}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+						<ul class="cl-effect-{{ $v1->id }}" style="display:none;">
+							@foreach($res1 as $k2 => $v2)
+								@if($v2->fid == $v1->id )
+								<li><a id="typeSon{{$v2->id}}" href="movies.html">{{ $v2->name }}</a></li>
+								@endif
+							@endforeach       
 						</ul>
-						<!-- script-for-menu -->
-						<script>
-							$( "li a.menu1" ).click(function() {
-								$( "ul.cl-effect-2" ).slideToggle( 300, function() {
-								// Animation complete.
-								});
-							});
-						</script>
-					<li><a href="#" class="menu2"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电影类型<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-1">
-							<li><a href="sports.html">动作</a></li>                                
-							<li><a href="sports.html">爱情</a></li>
-							<li><a href="sports.html">犯罪</a></li> 
-							<li><a href="sports.html">惊悚</a></li>  
-						</ul>
-						<!-- script-for-menu -->
-						<script>
-							$( "li a.menu2" ).click(function() {
-								$( "ul.cl-effect-1" ).slideToggle(300, function() {
-								// Animation complete.
-								});
-							});
-						</script>
-						<li><a href="#" class="menu3"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>动漫<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-3" style="display:none;">
-							<li><a href="sports.html">动作</a></li>                                
-							<li><a href="sports.html">爱情</a></li>
-							<li><a href="sports.html">犯罪</a></li> 
-							<li><a href="sports.html">惊悚</a></li>  
-						</ul>
+							
+							<!-- script-for-menu -->
 							<script>
-							$("li a.menu3" ).click(function() {
-								$( "ul.cl-effect-3" ).slideToggle(300, function() {
-								// Animation complete.
+								$( "li a.menu"+"{{ $v1->id }}" ).click(function(){
+				
+									 var type = $(this).text();
+									$( "ul.cl-effect-"+"{{ $v1->id }}" ).slideToggle(300, function(){
+									// Animation complete.
+									});
 								});
-							});
-						</script>
-						<li><a href="#" class="menu4"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电视剧<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-4" style="display:none;">
-							<li><a href="sports.html">动作</a></li>                                
-							<li><a href="sports.html">爱情</a></li>
-							<li><a href="sports.html">犯罪</a></li> 
-							<li><a href="sports.html">惊悚</a></li>  
-						</ul>
-							<script>
-							$("li a.menu4" ).click(function() {
-								$( "ul.cl-effect-4" ).slideToggle(300, function() {
-								// Animation complete.
-								});
-							});
-						</script>
+								$("#typeSon{{$v2->id}}").click(function(){
+
+									alert('1232');
+
+									return false;
+								})
+							</script>
+						@endif
+					@endforeach
 				  </ul>
-				  <!-- script-for-menu -->
+				  	 <!-- script-for-menu -->
 						<script>
 							$( ".top-navigation" ).click(function() {
 							$( ".drop-navigation" ).slideToggle( 300, function() {
