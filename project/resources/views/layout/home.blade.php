@@ -228,40 +228,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 				<div class="drop-navigation drop-navigation">
 				  <ul class="nav nav-sidebar">
-					<li class="active"><a href="index.html" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
+					<li class="active"><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="shows.html" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>电视节目</a></li>
 					<li><a href="history.html" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<li><a href="#" class="menu1"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>国际影城<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
 						<ul class="cl-effect-2">
-							<li><a href="movies.html">欧美</a></li>                                             
+							<li><a href="movies.html">欧美</a></li>        
 							<li><a href="movies.html">日韩</a></li>
 							<li><a href="movies.html">国产</a></li> 
 						</ul>
 						<!-- script-for-menu -->
 						<script>
 							$( "li a.menu1" ).click(function() {
-							$( "ul.cl-effect-2" ).slideToggle( 300, function() {
-							// Animation complete.
-							});
+								$( "ul.cl-effect-2" ).slideToggle( 300, function() {
+								// Animation complete.
+								});
 							});
 						</script>
-					<li><a href="#" class="menu"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电影类型<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+					<li><a href="#" class="menu2"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电影类型<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
 						<ul class="cl-effect-1">
-							<li><a href="sports.html">动作</a></li>                                             
+							<li><a href="sports.html">动作</a></li>                                
 							<li><a href="sports.html">爱情</a></li>
-							<li><a href="sports.html">动作爱情</a></li> 
-							<li><a href="sports.html">惊悚动作爱情</a></li>  
+							<li><a href="sports.html">犯罪</a></li> 
+							<li><a href="sports.html">惊悚</a></li>  
 						</ul>
 						<!-- script-for-menu -->
 						<script>
-							$( "li a.menu" ).click(function() {
-							$( "ul.cl-effect-1" ).slideToggle( 300, function() {
-							// Animation complete.
-							});
+							$( "li a.menu2" ).click(function() {
+								$( "ul.cl-effect-1" ).slideToggle(300, function() {
+								// Animation complete.
+								});
 							});
 						</script>
-					<li><a href="movies.html" class="song-icon"><span class="glyphicon glyphicon-music" aria-hidden="true"></span>短小精干视频</a></li>
-					<li><a href="news.html" class="news-icon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>宅男福利</a></li>
+						<li><a href="#" class="menu3"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>动漫<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+						<ul class="cl-effect-3" style="display:none;">
+							<li><a href="sports.html">动作</a></li>                                
+							<li><a href="sports.html">爱情</a></li>
+							<li><a href="sports.html">犯罪</a></li> 
+							<li><a href="sports.html">惊悚</a></li>  
+						</ul>
+							<script>
+							$("li a.menu3" ).click(function() {
+								$( "ul.cl-effect-3" ).slideToggle(300, function() {
+								// Animation complete.
+								});
+							});
+						</script>
+						<li><a href="#" class="menu4"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电视剧<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+						<ul class="cl-effect-4" style="display:none;">
+							<li><a href="sports.html">动作</a></li>                                
+							<li><a href="sports.html">爱情</a></li>
+							<li><a href="sports.html">犯罪</a></li> 
+							<li><a href="sports.html">惊悚</a></li>  
+						</ul>
+							<script>
+							$("li a.menu4" ).click(function() {
+								$( "ul.cl-effect-4" ).slideToggle(300, function() {
+								// Animation complete.
+								});
+							});
+						</script>
 				  </ul>
 				  <!-- script-for-menu -->
 						<script>
