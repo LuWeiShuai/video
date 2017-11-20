@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\model\config;
 
-class configController extends Controller
+class userUpController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,8 @@ class configController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $res = config::all();
-        
-        return view('admin.config.index',['res'=>$res]);
+    {
+        return view('/home/userup/userup');
     }
 
     /**
@@ -62,7 +59,7 @@ class configController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -74,13 +71,7 @@ class configController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $re = $request->except('_token','_method','logo');
-        
-        $res = config::where('id',$id)->update($re);
-
-        return redirect('/admin/config');
-        
+        //
     }
 
     /**
