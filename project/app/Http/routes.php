@@ -67,9 +67,9 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 Route::get('/home_login','loginController@home');
 
 //前台路由
- Route::group(['prefix'=>'home','namespace'=>'home'],function(){
+ Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],function(){
 
- 	//前台主业
+ 	//前台主页
 	Route::get('/index','homeController@index');
 
  });
