@@ -74,8 +74,9 @@
                 </thead>
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
                     
-                    @if($res)
-
+                    @if(count($res) == 0)
+                        <tr><td colspan="5" style="text-align: center;">暂无数据</td></tr>
+                    @else
                         @foreach($res as $k => $v)
                         <tr class="@if($k % 2 == 0)
                                         odd  

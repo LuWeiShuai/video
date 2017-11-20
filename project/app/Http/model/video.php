@@ -9,4 +9,6 @@ class video extends Model
     //
    protected $table = 'video';
 
+   public $timestamps = false;
+   
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\model\type;
+use App\Http\model\video;
 
 
 class typeController extends Controller
@@ -17,12 +18,17 @@ class typeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-         $res = type::where('name','like','%'.$request->input('search').'%')->orderBy('id','asc')->paginate($request->input('num',10));
-        
+    {   
+        //查询type数据库
+         $res = type::all();
+
+        //根据fid查询是否有子分区
         $res1 = type::where('fid','=','$res[0]->id')->first();
 
-        return view('admin.type.list',['res'=>$res,'res1'=>$res1,'request'=>$request]);
+        //根据子分区的id查询是否有视频
+        $res2 = video::where('tid','=','$res1[0]->id')->first();
+
+        return view('admin.type.list',['res'=>$res,'res1'=>$res1,'res2'=>$res2]);
     }
 
     /**
@@ -82,6 +88,7 @@ class typeController extends Controller
      */
     public function edit($id)
     {
+        //根据id执行查询语句
         $res = type::where('id',$id)->first();
 
         return view('admin.type.edit',['res'=>$res]);
@@ -96,10 +103,11 @@ class typeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //去除'_token','updated_at','_method'属性
        $res = $request->except(['_token','updated_at','_method']);
-
+       //根据id执行修改
         $data = type::where('id',$id)->update($res);
-        
+        //判断数据库是否更改成功
         if ($data) {
             return redirect('/admin/type')->with('msg','修改成功');
         }else{
@@ -115,9 +123,9 @@ class typeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //根据id执行删除语句
          $res = type::where('id',$id)->delete();
-        
+        //判断数据库是否删除成功
         if ($res) {
             return redirect('/admin/type')->with('msg','删除成功');
         }else{
