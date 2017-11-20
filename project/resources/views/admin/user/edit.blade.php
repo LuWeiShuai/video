@@ -5,7 +5,7 @@
 @section('content')
 	<div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内联表格</font></font></span>
+                    	<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户修改</font></font></span>
                     </div>
                     <div class="mws-panel-body no-padding">
                     	<form class="mws-form" action="{{ url('/admin/user/'.$res->id) }}" method="post">

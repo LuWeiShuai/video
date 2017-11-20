@@ -1,11 +1,11 @@
 @extends('layout/admin')
-@section('title','用户修改')
+@section('title','管理员修改')
 
 
 @section('content')
 	<div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内联表格</font></font></span>
+                    	<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理员修改</font></font></span>
                     </div>
                     <div class="mws-panel-body no-padding">
                     	<form class="mws-form" action="{{ url('/admin/admin_user/'.$res->id) }}" method="post">

@@ -16,7 +16,7 @@
 
 	<div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内联表格</font></font></span>
+                    	<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加管理员</font></font></span>
                     </div>
                     <div class="mws-panel-body no-padding">
                     	<form class="mws-form" action="{{ url('/admin/user') }}" method="post">

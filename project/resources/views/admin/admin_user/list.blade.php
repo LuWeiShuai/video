@@ -8,7 +8,7 @@
         <span>
             <i class="icon-table">
             </i>
-            Data Table with Numbered Pagination
+            管理员列表页
         </span>
     </div>
     <div class="mws-panel-body no-padding">
@@ -128,9 +128,6 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="dataTables_info" id="DataTables_Table_1_info">
-                Showing 1 to 10 of 57 entries
-            </div>
            <style>
             .pagination li{
                 background-color: #444444;

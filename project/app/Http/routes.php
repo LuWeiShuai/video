@@ -64,9 +64,7 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 
 //前台路由
 
-// Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'alogin'],function(){
-
-// });
+ 
 
 
 
