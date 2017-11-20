@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\model\friendlink;
 
 class homeController extends Controller
 {
@@ -16,6 +17,9 @@ class homeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+    	//查询friendlink数据库
+    	$res = friendlink::all();
+
+        return view('home.index',['res'=>$res]);
     }
 }
