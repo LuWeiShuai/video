@@ -199,7 +199,7 @@
                     <ul>
                         <li><a href="#">修改头像</a></li>
                         <li><a href="#">修改密码</a></li>
-                        <li><a href="index.html">注销</a></li>
+                        <li><a href="{{ url('admin/exit') }}">注销</a></li>
                     </ul>
                 </div>
             </div>
@@ -347,7 +347,7 @@
     <script src="/admins/js/demo/demo.dashboard.js"></script>
     
     <!-- layer -->
-    <script src="/admins/js/layer.js"></script>
+    <!-- <script src="/admins/js/layer.js"></script> -->
     @section('script')
 
     @show

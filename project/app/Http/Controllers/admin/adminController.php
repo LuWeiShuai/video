@@ -16,4 +16,13 @@ class adminController extends Controller
     	
     	return view("admin.index");
     }
+
+    public function exit(Request $request)
+    {
+
+    	// unset(session('id'));
+    	$request->session()->flush();
+
+    	return redirect('/admin_login');
+    }
 }

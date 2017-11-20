@@ -15,7 +15,7 @@ class loginController extends Controller
 {
     public  function admin()
     {
-    	session(['id'=>12]);
+    	// session(['id'=>12]);
     	return view("admin.login");
     }
 
@@ -47,7 +47,7 @@ class loginController extends Controller
     	//存session
     	session(['id'=>$uname->id]);
     	// $request->session()->put('uid',$uname->id);
-    	return view('admin.index');
+    	return redirect('/admin/index');
     }
 
     public function code()

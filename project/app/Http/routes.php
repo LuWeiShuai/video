@@ -20,12 +20,16 @@ Route::get('/admin_login','loginController@admin');
 Route::get('/admin_login/code','loginController@code');
 Route::post('/admin_login/dologin','loginController@doalogin');
 
+
 //后台路由
 
-Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'alogin'],function(){
+Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'],function(){
 
 	//后台主页
 	Route::get('/index','adminController@index');
+	//注销
+	Route::get('/exit','adminController@exit');
+
 
 	//用户管理
 	Route::resource('/user','userController');
