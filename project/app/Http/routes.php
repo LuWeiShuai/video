@@ -62,11 +62,17 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 
 });
 
+
+//后台登录
+Route::get('/home_login','loginController@home');
+
 //前台路由
+ Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],function(){
 
-// Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'alogin'],function(){
+ 	//前台主业
+	Route::get('/index','homeController@index');
 
-// });
+ });
 
 
 

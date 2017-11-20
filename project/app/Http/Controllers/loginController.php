@@ -68,4 +68,11 @@ class loginController extends Controller
         header('Content-Type: image/jpeg');
         $builder->output();
     }
+
+     public  function home()
+    {
+        session(['uid'=>12]);
+        // return view("admin.login");
+    }
+
 }
