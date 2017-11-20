@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><h1><img src="/homes/images/Logo.png" alt="" /></h1></a>
+          <a class="navbar-brand" href="index.html"><h1><img src="/homes/images/Logo.png" alt="" style="height: 60px;" /></h1></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
@@ -44,67 +44,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="signin">
 					<a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a>
 					<!-- pop-up-box -->
-									<script type="text/javascript" src="js/modernizr.custom.min.js"></script>    
+									<script type="text/javascript" src="/homes/js/modernizr.custom.min.js"></script>    
 									<link href="/homes/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
 									<script src="/homes/js/jquery.magnific-popup.js" type="text/javascript"></script>
 									<!--//pop-up-box -->
 									<div id="small-dialog2" class="mfp-hide">
-										<h3>签到</h3> 
+										<h3>注册</h3> 
 										<div class="social-sits">
 											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+												<a href="#">脸书登录</a>
 											</div>
 											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
+												<a href="#">谷歌登录</a>
 											</div>
 											<div class="button-bottom">
-												<p>Already have an account? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Login</a></p>
+												<p>已经拥有帐号 <a href="#small-dialog" class="play-icon popup-with-zoom-anim">去登陆</a></p>
 											</div>
 										</div>
-										<div class="signup">
+										 <div class="signup">
 											<form>
-												<input type="text" class="email" placeholder="Mobile Number" maxlength="10" pattern="[1-9]{1}\d{9}" title="Enter a valid mobile number" />
+												<input type="text" class="email" placeholder="手机号" maxlength="10" pattern="1[34579]\d{9}" title="Enter a valid mobile number" />
 											</form>
 											<div class="continue-button">
-												<a href="#small-dialog3" class="hvr-shutter-out-horizontal play-icon popup-with-zoom-anim">CONTINUE</a>
+												<a href="#small-dialog3" class="hvr-shutter-out-horizontal play-icon popup-with-zoom-anim">获取验证码</a>
 											</div>
 										</div>
 										<div class="clearfix"> </div>
-									</div>	
+									</div>
 									<div id="small-dialog3" class="mfp-hide">
-										<h3>Create Account</h3> 
+										<h3>注册帐号</h3> 
 										<div class="social-sits">
 											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+												<a href="#">脸书登录</a>
 											</div>
 											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
+												<a href="#">谷歌登录</a>
 											</div>
 											<div class="button-bottom">
-												<p>Already have an account? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Login</a></p>
+												<p>已经拥有帐号<a href="#small-dialog" class="play-icon popup-with-zoom-anim">登录</a></p>
 											</div>
 										</div>
 										<div class="signup">
 											<form>
-												<input type="text" class="email" placeholder="Email" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" title="Enter a valid email"/>
-												<input type="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
-												<input type="text" class="email" placeholder="Mobile Number" maxlength="10" pattern="[1-9]{1}\d{9}" title="Enter a valid mobile number" />
-												<input type="submit"  value="Sign Up"/>
+												<input type="text" class="email" placeholder="密码" required="required" pattern=".{6,}" title="Enter a vali"/>
+												<input type="password" placeholder="确认密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+												<input type="text" class="email" placeholder="验证码" maxlength="10" title="Enter a valid mobile number" />
+												<input type="submit"  value="注册"/>
 											</form>
 										</div>
 										<div class="clearfix"> </div>
 									</div>	
 									<div id="small-dialog7" class="mfp-hide">
-										<h3>Create Account</h3> 
+										<h3>创建帐号</h3> 
 										<div class="social-sits">
 											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+												<a href="#">脸书登录</a>
 											</div>
 											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
+												<a href="#">谷歌登录</a>
 											</div>
 											<div class="button-bottom">
-												<p>Already have an account? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Login</a></p>
+												<p>已经拥有帐号 <a href="#small-dialog" class="play-icon popup-with-zoom-anim">登录</a></p>
 											</div>
 										</div>
 										<div class="signup">
@@ -117,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="clearfix"> </div>
 									</div>		
 									<div id="small-dialog4" class="mfp-hide">
-										<h3>Feedback</h3> 
+										<h3>回复</h3> 
 										<div class="feedback-grids">
 											<div class="feedback-grid">
 												<p>Suspendisse tristique magna ut urna pellentesque, ut egestas velit faucibus. Nullam mattis lectus ullamcorper dui dignissim, sit amet egestas orci ullamcorper.</p>
@@ -184,28 +184,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</script>	
 				</div>
 				<div class="signin">
-					<a href="#small-dialog" class="play-icon popup-with-zoom-anim">Sign In</a>
+					<a href="#small-dialog" class="play-icon popup-with-zoom-anim">登录</a>
 					<div id="small-dialog" class="mfp-hide">
 						<h3>Login</h3>
 						<div class="social-sits">
 							<div class="facebook-button">
-								<a href="#">Connect with Facebook</a>
+								<a href="#">脸书登录</a>
 							</div>
 							<div class="chrome-button">
-								<a href="#">Connect with Google</a>
+								<a href="#">谷歌登录</a>
 							</div>
 							<div class="button-bottom">
-								<p>New account? <a href="#small-dialog2" class="play-icon popup-with-zoom-anim">Signup</a></p>
+								<p>新账号? <a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a></p>
 							</div>
 						</div>
 						<div class="signup">
 							<form>
-								<input type="text" class="email" placeholder="Enter email / mobile" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?"/>
-								<input type="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
-								<input type="submit"  value="LOGIN"/>
+								<input type="text" class="email" placeholder="手机号" required="required" pattern="1[34578]\d{9}"/>
+								<input type="password" placeholder="密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+								<input type="submit"  value="登录"/>
 							</form>
 							<div class="forgot">
-								<a href="#">Forgot password ?</a>
+								<a href="#">忘记密码?</a>
 							</div>
 						</div>
 						<div class="clearfix"> </div>
@@ -228,40 +228,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 				<div class="drop-navigation drop-navigation">
 				  <ul class="nav nav-sidebar">
-					<li class="active"><a href="index.html" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
+					<li class="active"><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="shows.html" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>电视节目</a></li>
 					<li><a href="history.html" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<li><a href="#" class="menu1"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>国际影城<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
 						<ul class="cl-effect-2">
-							<li><a href="movies.html">欧美</a></li>                                             
+							<li><a href="movies.html">欧美</a></li>        
 							<li><a href="movies.html">日韩</a></li>
 							<li><a href="movies.html">国产</a></li> 
 						</ul>
 						<!-- script-for-menu -->
 						<script>
 							$( "li a.menu1" ).click(function() {
-							$( "ul.cl-effect-2" ).slideToggle( 300, function() {
-							// Animation complete.
-							});
+								$( "ul.cl-effect-2" ).slideToggle( 300, function() {
+								// Animation complete.
+								});
 							});
 						</script>
-					<li><a href="#" class="menu"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电影类型<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+					<li><a href="#" class="menu2"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电影类型<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
 						<ul class="cl-effect-1">
-							<li><a href="sports.html">动作</a></li>                                             
+							<li><a href="sports.html">动作</a></li>                                
 							<li><a href="sports.html">爱情</a></li>
-							<li><a href="sports.html">动作爱情</a></li> 
-							<li><a href="sports.html">惊悚动作爱情</a></li>  
+							<li><a href="sports.html">犯罪</a></li> 
+							<li><a href="sports.html">惊悚</a></li>  
 						</ul>
 						<!-- script-for-menu -->
 						<script>
-							$( "li a.menu" ).click(function() {
-							$( "ul.cl-effect-1" ).slideToggle( 300, function() {
-							// Animation complete.
-							});
+							$( "li a.menu2" ).click(function() {
+								$( "ul.cl-effect-1" ).slideToggle(300, function() {
+								// Animation complete.
+								});
 							});
 						</script>
-					<li><a href="movies.html" class="song-icon"><span class="glyphicon glyphicon-music" aria-hidden="true"></span>短小精干视频</a></li>
-					<li><a href="news.html" class="news-icon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>宅男福利</a></li>
+						<li><a href="#" class="menu3"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>动漫<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+						<ul class="cl-effect-3" style="display:none;">
+							<li><a href="sports.html">动作</a></li>                                
+							<li><a href="sports.html">爱情</a></li>
+							<li><a href="sports.html">犯罪</a></li> 
+							<li><a href="sports.html">惊悚</a></li>  
+						</ul>
+							<script>
+							$("li a.menu3" ).click(function() {
+								$( "ul.cl-effect-3" ).slideToggle(300, function() {
+								// Animation complete.
+								});
+							});
+						</script>
+						<li><a href="#" class="menu4"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电视剧<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+						<ul class="cl-effect-4" style="display:none;">
+							<li><a href="sports.html">动作</a></li>                                
+							<li><a href="sports.html">爱情</a></li>
+							<li><a href="sports.html">犯罪</a></li> 
+							<li><a href="sports.html">惊悚</a></li>  
+						</ul>
+							<script>
+							$("li a.menu4" ).click(function() {
+								$( "ul.cl-effect-4" ).slideToggle(300, function() {
+								// Animation complete.
+								});
+							});
+						</script>
 				  </ul>
 				  <!-- script-for-menu -->
 						<script>
@@ -272,14 +298,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							});
 						</script>
 					<div class="side-bottom">
-						<div class="side-bottom-icons">
-							<ul class="nav2">
-								<li><a href="#" class="facebook">这四个 </a></li>
-								<li><a href="#" class="facebook twitter">有a链接的 </a></li>
-								<li><a href="#" class="facebook chrome">不知道</a></li>
-								<li><a href="#" class="facebook dribbble"> 是干嘛的</a></li>
-							</ul>
-						</div>
+						
 						<div class="copyright">
 							<p>Copyright &copy; 2015.Company name All rights reserved.</p>
 						</div>
@@ -308,10 +327,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li><a href="developers.html">开发者平台</a></li>
 							</ul>
 						</div>
+						<?php $res = DB::table('friendlink')->get() ?>
 						<div class="footer-bottom-nav">
 							<ul>
 								@foreach($res as $k => $v)
-									<li><a href="{{$v['url']}}">{{$v['linkName']}}</a></li>
+									<li><a href="{{$v->url}}">{{$v->linkName}}</a></li>
 								@endforeach
 							</ul>
 						</div>
