@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><h1><img src="/homes/images/Logo.png" alt="" /></h1></a>
+          <a class="navbar-brand" href="index.html"><h1><img src="/homes/images/Logo.png" alt="" style="height: 60px;" /></h1></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
@@ -61,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<p>Already have an account? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Login</a></p>
 											</div>
 										</div>
-										<div class="signup">
+										 <div class="signup">
 											<form>
 												<input type="text" class="email" placeholder="Mobile Number" maxlength="10" pattern="[1-9]{1}\d{9}" title="Enter a valid mobile number" />
 											</form>
@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>
 										</div>
 										<div class="clearfix"> </div>
-									</div>	
+									</div>
 									<div id="small-dialog3" class="mfp-hide">
 										<h3>Create Account</h3> 
 										<div class="social-sits">
@@ -272,14 +272,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							});
 						</script>
 					<div class="side-bottom">
-						<div class="side-bottom-icons">
-							<ul class="nav2">
-								<li><a href="#" class="facebook">这四个 </a></li>
-								<li><a href="#" class="facebook twitter">有a链接的 </a></li>
-								<li><a href="#" class="facebook chrome">不知道</a></li>
-								<li><a href="#" class="facebook dribbble"> 是干嘛的</a></li>
-							</ul>
-						</div>
+						
 						<div class="copyright">
 							<p>Copyright &copy; 2015.Company name All rights reserved.</p>
 						</div>
