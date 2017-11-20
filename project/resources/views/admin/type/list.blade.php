@@ -63,7 +63,11 @@
                                 <td class=" ">
                                 <a href="/admin/type/{{$v->id}}/edit" class="btn btn-danger">修 改</a>
                                 <a href="/admin/typeSon/create" class="btn btn-danger">添加子分区</a>
-                                @if(!count($res1) ==0)
+                                
+                                <!-- 根据fid查询是否有子分区 -->
+                                <?php $res1 = DB::table('type')->where('fid',$v->id)->get();?>
+    
+                                @if($res1 == null)
                                 <form action="/admin/type/{{$v->id}}" method='post' style='display:inline'>
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
@@ -92,7 +96,11 @@
                                         </td>
                                          <td class=" ">
                                         <a href="/admin/typeSon/{{$val->id}}/edit" class="btn btn-danger">修 改</a> 
-                                        @if(!count($res2) == 0)
+                                        
+                                        <!-- 根据子分区的id查询是否有视频 -->
+                                         <?php $res2 = DB::table('video')->where('tid',$val->id)->get(); ?>
+                                         
+                                        @if($res2 == null)
                                         <form action="/admin/typeSon/{{$val->id}}" method='post' style='display:inline'>
                                             {{csrf_field()}}
                                             {{method_field('DELETE')}}

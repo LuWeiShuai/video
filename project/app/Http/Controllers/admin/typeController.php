@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\model\type;
 use App\Http\model\video;
-
+use DB;
 
 class typeController extends Controller
 {
@@ -22,13 +22,7 @@ class typeController extends Controller
         //查询type数据库
          $res = type::all();
 
-        //根据fid查询是否有子分区
-        $res1 = type::where('fid','=','$res[0]->id')->first();
-
-        //根据子分区的id查询是否有视频
-        $res2 = video::where('tid','=','$res1[0]->id')->first();
-
-        return view('admin.type.list',['res'=>$res,'res1'=>$res1,'res2'=>$res2]);
+        return view('admin.type.list',['res'=>$res]);
     }
 
     /**
