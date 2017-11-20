@@ -44,67 +44,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="signin">
 					<a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a>
 					<!-- pop-up-box -->
-									<script type="text/javascript" src="js/modernizr.custom.min.js"></script>    
+									<script type="text/javascript" src="/homes/js/modernizr.custom.min.js"></script>    
 									<link href="/homes/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
 									<script src="/homes/js/jquery.magnific-popup.js" type="text/javascript"></script>
 									<!--//pop-up-box -->
 									<div id="small-dialog2" class="mfp-hide">
-										<h3>签到</h3> 
+										<h3>注册</h3> 
 										<div class="social-sits">
 											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+												<a href="#">脸书登录</a>
 											</div>
 											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
+												<a href="#">谷歌登录</a>
 											</div>
 											<div class="button-bottom">
-												<p>Already have an account? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Login</a></p>
+												<p>已经拥有帐号 <a href="#small-dialog" class="play-icon popup-with-zoom-anim">去登陆</a></p>
 											</div>
 										</div>
 										 <div class="signup">
 											<form>
-												<input type="text" class="email" placeholder="Mobile Number" maxlength="10" pattern="[1-9]{1}\d{9}" title="Enter a valid mobile number" />
+												<input type="text" class="email" placeholder="手机号" maxlength="10" pattern="1[34579]\d{9}" title="Enter a valid mobile number" />
 											</form>
 											<div class="continue-button">
-												<a href="#small-dialog3" class="hvr-shutter-out-horizontal play-icon popup-with-zoom-anim">CONTINUE</a>
+												<a href="#small-dialog3" class="hvr-shutter-out-horizontal play-icon popup-with-zoom-anim">获取验证码</a>
 											</div>
 										</div>
 										<div class="clearfix"> </div>
 									</div>
 									<div id="small-dialog3" class="mfp-hide">
-										<h3>Create Account</h3> 
+										<h3>注册帐号</h3> 
 										<div class="social-sits">
 											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+												<a href="#">脸书登录</a>
 											</div>
 											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
+												<a href="#">谷歌登录</a>
 											</div>
 											<div class="button-bottom">
-												<p>Already have an account? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Login</a></p>
+												<p>已经拥有帐号<a href="#small-dialog" class="play-icon popup-with-zoom-anim">登录</a></p>
 											</div>
 										</div>
 										<div class="signup">
 											<form>
-												<input type="text" class="email" placeholder="Email" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" title="Enter a valid email"/>
-												<input type="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
-												<input type="text" class="email" placeholder="Mobile Number" maxlength="10" pattern="[1-9]{1}\d{9}" title="Enter a valid mobile number" />
-												<input type="submit"  value="Sign Up"/>
+												<input type="text" class="email" placeholder="密码" required="required" pattern=".{6,}" title="Enter a vali"/>
+												<input type="password" placeholder="确认密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+												<input type="text" class="email" placeholder="验证码" maxlength="10" title="Enter a valid mobile number" />
+												<input type="submit"  value="注册"/>
 											</form>
 										</div>
 										<div class="clearfix"> </div>
 									</div>	
 									<div id="small-dialog7" class="mfp-hide">
-										<h3>Create Account</h3> 
+										<h3>创建帐号</h3> 
 										<div class="social-sits">
 											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+												<a href="#">脸书登录</a>
 											</div>
 											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
+												<a href="#">谷歌登录</a>
 											</div>
 											<div class="button-bottom">
-												<p>Already have an account? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Login</a></p>
+												<p>已经拥有帐号 <a href="#small-dialog" class="play-icon popup-with-zoom-anim">登录</a></p>
 											</div>
 										</div>
 										<div class="signup">
@@ -117,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="clearfix"> </div>
 									</div>		
 									<div id="small-dialog4" class="mfp-hide">
-										<h3>Feedback</h3> 
+										<h3>回复</h3> 
 										<div class="feedback-grids">
 											<div class="feedback-grid">
 												<p>Suspendisse tristique magna ut urna pellentesque, ut egestas velit faucibus. Nullam mattis lectus ullamcorper dui dignissim, sit amet egestas orci ullamcorper.</p>
@@ -184,28 +184,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</script>	
 				</div>
 				<div class="signin">
-					<a href="#small-dialog" class="play-icon popup-with-zoom-anim">Sign In</a>
+					<a href="#small-dialog" class="play-icon popup-with-zoom-anim">登录</a>
 					<div id="small-dialog" class="mfp-hide">
 						<h3>Login</h3>
 						<div class="social-sits">
 							<div class="facebook-button">
-								<a href="#">Connect with Facebook</a>
+								<a href="#">脸书登录</a>
 							</div>
 							<div class="chrome-button">
-								<a href="#">Connect with Google</a>
+								<a href="#">谷歌登录</a>
 							</div>
 							<div class="button-bottom">
-								<p>New account? <a href="#small-dialog2" class="play-icon popup-with-zoom-anim">Signup</a></p>
+								<p>新账号? <a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a></p>
 							</div>
 						</div>
 						<div class="signup">
 							<form>
-								<input type="text" class="email" placeholder="Enter email / mobile" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?"/>
-								<input type="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
-								<input type="submit"  value="LOGIN"/>
+								<input type="text" class="email" placeholder="手机号" required="required" pattern="1[34578]\d{9}"/>
+								<input type="password" placeholder="密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+								<input type="submit"  value="登录"/>
 							</form>
 							<div class="forgot">
-								<a href="#">Forgot password ?</a>
+								<a href="#">忘记密码?</a>
 							</div>
 						</div>
 						<div class="clearfix"> </div>
@@ -301,10 +301,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li><a href="developers.html">开发者平台</a></li>
 							</ul>
 						</div>
+						<?php $res = DB::table('friendlink')->get() ?>
 						<div class="footer-bottom-nav">
 							<ul>
 								@foreach($res as $k => $v)
-									<li><a href="{{$v['url']}}">{{$v['linkName']}}</a></li>
+									<li><a href="{{$v->url}}">{{$v->linkName}}</a></li>
 								@endforeach
 							</ul>
 						</div>
