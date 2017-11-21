@@ -47,11 +47,11 @@
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="/homes/images/Logo.png" style="margin-left: -40px;margin-top:20px;height: 80px;width: 150px;" /></li>
+								<li><img src="/homes/images/Logo.png" style="margin-left: -40px;height: 80px;width: 150px;" /></li>
 							</div>
 
 							<div class="search-bar pr">
-								<!-- <img src="/homes/images/center.png" style="margin-left: -40px;margin-top: -50px;"> -->
+								<img src="/homes/images/center.png" style="margin-left: -40px;margin-top: -25px;">
 							</div>
 						</div>
 
