@@ -264,12 +264,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							});
 							});
 						</script>
-					<div class="side-bottom">
-						
-						<div class="copyright">
-							<p>Copyright &copy; 2015.Company name All rights reserved.</p>
+						<div id="aaa" style="height: 20px; width: 195px;"></div>
+						<div class="side-bottom" style="background-color:#272C2E; position: fixed; width: 193px;bottom: 0px;">
+							<div class="copyright" >
+								<p>Copyright &copy; 2015.Company name </p>
+								<p>All rights reserved.</p>
+							</div>
 						</div>
-					</div>
 				</div>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
