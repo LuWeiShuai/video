@@ -138,6 +138,12 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+        *   overtrue   
+        */
+
+        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,

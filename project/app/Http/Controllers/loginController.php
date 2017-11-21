@@ -11,6 +11,7 @@ use Session;
 use Hash;
 use App\Http\Model\admin;
 use App\Http\Model\login;
+use App\Http\Model\info;
 use DB;
 
 class loginController extends Controller
@@ -104,13 +105,16 @@ class loginController extends Controller
         $last = $request->only('lastlogin');
         $id = session('uid');
         login::where('id',$id)->update($last);
-        // var_dump(session('uid'));die;
+
+        $data['uid']=$id;
+        //插入info表
+        info::insert($data);
         return redirect('/home/index');
     }
 
      public  function delete(Request $request)
     {
-         $request->session()->flush();
+        $request->session()->flush();
 
         return redirect('/home/index');
     }
