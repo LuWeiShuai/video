@@ -102,8 +102,10 @@ class loginController extends Controller
         return redirect('/home/index');
     }
 
-     public  function delete($id)
+     public  function delete(Request $request)
     {
-        
+         $request->session()->flush();
+
+        return redirect('/home/index');
     }
 }

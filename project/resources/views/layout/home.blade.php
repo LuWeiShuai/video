@@ -218,7 +218,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				@else
 					<div class="signin">
 					<a href="/home/center" class="play-icon popup-with-zoom-anim">个人中心</a>
-					<a href="/home/center" class="play-icon popup-with-zoom-anim">注销</a>
+					<a href="/home/index/delete" class="play-icon popup-with-zoom-anim">注销</a>
 						
 					</div>
 				@endif

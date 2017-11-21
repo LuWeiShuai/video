@@ -23,6 +23,7 @@ Route::post('/admin_login/dologin','loginController@doalogin');
 //前台登录
 Route::get('/home/index','loginController@home');
 Route::post('/home/index/dologin','loginController@dohlogin');
+Route::get('/home/index/delete','loginController@delete');
 
 //后台路由
 

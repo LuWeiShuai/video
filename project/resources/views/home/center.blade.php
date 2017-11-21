@@ -36,10 +36,10 @@
 								<div class="menu-hd MyShangcheng"><a href="/home/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
 							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-user am-icon-fw"></i><span>用户上传</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
+								<div class="menu-hd"><a id="mc-menu-hd" href="/home/center" target="_top"><i class="am-icon-user am-icon-fw"></i><span>用户上传</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
 							</div>
 							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>历史记录</span></a></div>
+								<div class="menu-hd"><a href="/home/center" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>历史记录</span></a></div>
 						</ul>
 						</div>
 
@@ -47,11 +47,11 @@
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="/homes/images/Logo.png" style="margin-left: -40px;height: 80px;width: 150px;" /></li>
+								<li><img src="/homes/images/Logo.png" style="margin-left: -40px;margin-top:20px;height: 80px;width: 150px;" /></li>
 							</div>
 
 							<div class="search-bar pr">
-								<img src="/homes/images/center.png" style="margin-left: -10px;margin-top: -20px;">
+								<!-- <img src="/homes/images/center.png" style="margin-left: -40px;margin-top: -50px;"> -->
 							</div>
 						</div>
 
@@ -98,7 +98,7 @@
 									<label for="user-name2" class="am-form-label">昵称</label>
 									<div class="am-form-content">
 										<input type="text" id="user-name2" placeholder="nickname">
-                                          <small>昵称长度不能超过40个汉字</small>
+                                          <small>昵称长度不能超过10个汉字</small>
 									</div>
 								</div>
 
@@ -227,12 +227,12 @@
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
+						<a href="/home/center"><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 						<ul>
-							<li> <a href="#">个人信息</a></li>
+							<li> <a href="/home/center">个人信息</a></li>
 						</ul>
 					</li>
 					<li class="person">
