@@ -72,6 +72,9 @@ Route::get('/home_login','loginController@home');
  	//前台主页
 	Route::get('/index','homeController@index');
 
+	//用户注册
+	Route::get('/register','registerController@add');
+	Route::get('/regis','registerController@store');
 	//用户上传
 	Route::resource('/userup','userUpController');
 

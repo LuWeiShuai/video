@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
+use App\Http\model\uvideo;
 
 class userUpController extends Controller
 {
@@ -37,7 +39,26 @@ class userUpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $res = $request->except('_token','title');
+        
+        if($request->hasFile('title')){
+            //修改文件名字
+            $name = rand(1111,9999).time();
+            //获取后缀
+            $suffix = $request->file('title')->getClientOriginalExtension();
+            //移动图片
+            $request->file('title')->move('./Upload',$name.'.'.$suffix);
+            $res['title'] = '/Upload/'.$name.'.'.$suffix;
+            $data = uvideo::insert($res);
+          
+            if($data){
+                return redirect('/home/userup');
+            } else {
+                return back();
+            }
+
+        }
+
     }
 
     /**
