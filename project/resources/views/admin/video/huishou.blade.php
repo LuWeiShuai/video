@@ -1,5 +1,5 @@
 @extends('layout/admin')
-@section('title','视频管理')
+@section('title','回收站管理')
 
 	<meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
@@ -130,7 +130,7 @@
 <div class="tpl-portlet-components">
     <div class="portlet-title">
         <div class="caption font-green bold">
-            <span class="icon-monitor"></span> 视频列表
+            <span class="am-icon-trash-o"></span> 视频回收站
         </div>
         <div class="tpl-portlet-input tpl-fz-ml">
             
@@ -139,32 +139,16 @@
 
     <div class="tpl-block">
         <div class="am-g">
-            <div class="am-u-sm-12 am-u-md-6">
-                <div class="am-btn-toolbar">
-                    <div class="am-btn-group am-btn-group-xs">
-                        <a href="/admin/video/create" style='color:white;'> 
-                            <button type="button" class="am-btn am-btn-default am-btn-success"  id="tianjia"><span class="am-icon-plus"></span>新增
-                            </button>
-                        </a>
-                        
-                        <!-- <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
-                        <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-unlock"></span> 审核</button>
-                        <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button> -->
+            <form action="/admin/video/huishou" method="get">
+                <div class="am-u-sm-12 am-u-md-6" id="seach">
+                    <div class="am-input-group am-input-group-sm">
+                        <input type="text" class="am-form-field" name="cha">
+                        <span class="am-input-group-btn">
+                        <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
+                        </span>
                     </div>
                 </div>
-            </div>
-                    <form action="/admin/video" method="get">
-            
-            <div class="am-u-sm-12 am-u-md-6" id="seach">
-                <div class="am-input-group am-input-group-sm">
-                            <input type="text" class="am-form-field" name="cha">
-                            <span class="am-input-group-btn">
-                            <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
-                            </span>
-                </div>
-            </div>
-                    </form>
-
+            </form>
         </div>
         <div class="jianxi"></div>
         <div class="am-g">
@@ -173,7 +157,6 @@
                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
                     <div class="tpl-table-images-content">
                         <div class="tpl-table-images-content-i-time">发布时间：{{date('Y-m-d',$cres[$key]->time)}}
-                        
                             <div class="fenqu">
                                 @if($cres[$key]->address==1)内陆
                                 @elseif($cres[$key]->address==2)欧美
@@ -202,7 +185,7 @@
                                     <!-- <li><span class="am-icon-qq am-text-warning"> 100+</span></li>
                                     <li><span class="am-icon-weixin am-text-success"> 235+</span></li>
                                     <li><span class="am-icon-github font-green"> 600+</span></li> -->
-                                    <a href="/admin/video/{{$val->id}}"><li>查看评论</li></a>
+                                    <li>查看评论</li>
                                     <li>
                                         @if($val->auth==0)免费
                                         @elseif($val->auth==1)VIP
@@ -214,17 +197,16 @@
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
                                     
-                                    <a href="/admin/video/{{$val->id}}/edit" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="anniu"><span class="am-icon-edit"></span> 编辑</button></a>
+                                    <a href="/admin/video/upload/{{$val->id}}" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="anniu"><span class="icon-publish">上架</span> </button>
+                                    </a>
 
 
                                     
 
 
-                                    <form method="post" action="/admin/video/{{$val->id}}">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                        <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu"><span class="am-icon-trash-o"></span>下架</button>
-                                    </form>
+                                    <a href="/admin/video/del/{{$val->id}}">
+                                        <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu"><span class="am-icon-trash-o"></span>删除</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

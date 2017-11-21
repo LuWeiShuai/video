@@ -58,6 +58,11 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 	Route::resource('/friendlink','friendlinkController');
 
 	//后台视频管理
+	Route::get('/videoa','VideoaController@index');
+	Route::get('/videos','VideoaController@shan');
+	Route::get('/video/huishou','VideoaController@huishou');
+	Route::get('/video/del/{id}','VideoaController@delete');
+	Route::get('/video/upload/{id}','VideoaController@upload');
 	Route::resource('/video','VideoController');
 
 });

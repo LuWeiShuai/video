@@ -253,8 +253,7 @@
                         <a href="#"><i class="icon-list"></i> 视频管理</a>
                         <ul class="closed">
                             <li><a href="{{url('/admin/video')}}">视频列表</a></li>
-                            <li><a href="form_elements.html">回收站</a></li>
-                            <li><a href="form_wizard.html">Wizard</a></li>
+                            <li><a href="{{url('/admin/video/huishou')}}">回收站</a></li>
                         </ul>
                     </li>
                     <li>
