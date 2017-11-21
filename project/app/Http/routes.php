@@ -21,9 +21,10 @@ Route::get('/admin_login/code','loginController@code');
 Route::post('/admin_login/dologin','loginController@doalogin');
 
 //前台登录
-Route::get('/home/index','loginController@home');
-Route::post('/home/index/dologin','loginController@dohlogin');
-Route::get('/home/index/delete','loginController@delete');
+Route::get('/home_login','loginController@home');
+Route::post('/home_login/dologin','loginController@dohlogin');
+Route::get('/home_login/delete','loginController@delete');
+
 
 //后台路由
 
@@ -71,10 +72,16 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 Route::get('/home_login','loginController@home');
 
 //前台路由
- Route::group(['prefix'=>'home','namespace'=>'home'],function(){
+Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 
- 	//前台主页
+
+	//前台主页
 	Route::get('/index','homeController@index');
+
+ });
+
+ Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],function(){
+
 
 	//前台个人中心
 	Route::get('/center','centerController@index');

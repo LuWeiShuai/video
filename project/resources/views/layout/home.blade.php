@@ -201,7 +201,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="signup">
 							
-							<form action="/home/index/dologin" method="post">
+							<form action="/home_login/dologin" method="post">
 								<input type="text" name="tel" class="email" placeholder="手机号" required="required" pattern="1[34578]\d{9}"/>
 								<input type="password" name="password" placeholder="密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
 								{{csrf_field()}}
@@ -218,7 +218,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				@else
 					<div class="signin">
 					<a href="/home/center" class="play-icon popup-with-zoom-anim">个人中心</a>
-					<a href="/home/index/delete" class="play-icon popup-with-zoom-anim">注销</a>
+					<a href="/home_login/delete" class="play-icon popup-with-zoom-anim">注销</a>
 						
 					</div>
 				@endif

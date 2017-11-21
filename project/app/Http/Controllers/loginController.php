@@ -73,7 +73,7 @@ class loginController extends Controller
 
      public  function home()
     {
-        session(['uid'=>12]);
+        // session(['uid'=>12]);
         return view("home.index");
     }
 
