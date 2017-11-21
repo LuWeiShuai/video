@@ -20,6 +20,9 @@ Route::get('/admin_login','loginController@admin');
 Route::get('/admin_login/code','loginController@code');
 Route::post('/admin_login/dologin','loginController@doalogin');
 
+//前台登录
+Route::get('/home/index','loginController@home');
+Route::post('/home/index/dologin','loginController@dohlogin');
 
 //后台路由
 
@@ -71,6 +74,9 @@ Route::get('/home_login','loginController@home');
 
  	//前台主页
 	Route::get('/index','homeController@index');
+
+	//前台个人中心
+	Route::get('/center','centerController@index');
 
  });
 

@@ -10,6 +10,8 @@ use Gregwar\Captcha\CaptchaBuilder;
 use Session;
 use Hash;
 use App\Http\Model\admin;
+use App\Http\Model\login;
+use DB;
 
 class loginController extends Controller
 {
@@ -72,7 +74,36 @@ class loginController extends Controller
      public  function home()
     {
         session(['uid'=>12]);
-        // return view("admin.login");
+        return view("home.index");
     }
 
+    public  function dohlogin(Request $request)
+    {
+        $res = $request->except('_token');
+
+        $request->flash();
+        // dd($res);die;
+        // dd($res['tel']);  
+            $tel = login::where('tel',$res['tel'])->first();
+            
+                if(!$tel){
+
+                    return back()->with('msg','您输入的手机号或密码错误');
+                }
+
+                if(!$res['password'] == $tel->password){
+
+                    return back()->with('msg','您输入的手机号或密码错误');
+                }
+
+        //存session
+        $request->session()->put('uid',$tel->id);
+        // var_dump(session('uid'));die;
+        return redirect('/home/index');
+    }
+
+     public  function delete($id)
+    {
+        
+    }
 }
