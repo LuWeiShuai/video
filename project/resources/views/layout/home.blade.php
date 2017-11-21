@@ -204,6 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<form action="/home_login/dologin" method="post">
 								<input type="text" name="tel" class="email" placeholder="手机号" required="required" pattern="1[34578]\d{9}"/>
 								<input type="password" name="password" placeholder="密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+								<input type="hidden" name="lastlogin" value="{{date('Y-m-d H:i:s',time())}}">
 								{{csrf_field()}}
 								<input type="submit"  value="登录"/>
 

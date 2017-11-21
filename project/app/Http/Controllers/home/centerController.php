@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
-
+use App\Http\model\info;
 
 class centerController extends Controller
 {
@@ -18,8 +18,10 @@ class centerController extends Controller
      */
     public function index()
     {
-        //
-        return view('/home/center');
+        //查询info表
+        $res = info::where('uid',session('uid'))->first();
+        
+        return view('/home/center',['res'=>$res]);
     }
 
     /**

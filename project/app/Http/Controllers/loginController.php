@@ -81,6 +81,7 @@ class loginController extends Controller
     {
         $res = $request->except('_token');
 
+        // dd($res);die;
         $request->flash();
         // dd($res);die;
         // dd($res['tel']);  
@@ -91,13 +92,18 @@ class loginController extends Controller
                     return back()->with('msg','您输入的手机号或密码错误');
                 }
 
-                if(!$res['password'] == $tel->password){
+                if(!Hash::check($res['password'],$tel->password)){
 
                     return back()->with('msg','您输入的手机号或密码错误');
                 }
 
         //存session
         $request->session()->put('uid',$tel->id);
+
+        //把最后登录时间存入数据库
+        $last = $request->only('lastlogin');
+        $id = session('uid');
+        login::where('id',$id)->update($last);
         // var_dump(session('uid'));die;
         return redirect('/home/index');
     }

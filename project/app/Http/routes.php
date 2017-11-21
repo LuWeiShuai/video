@@ -79,14 +79,15 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::get('/index','homeController@index');
 
  });
+//前台路由
+Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],function(){
 
- Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],function(){
 
+//前台个人中心
+Route::get('/center','centerController@index');
+// Route::get('/center/tel','telController@index');
 
-	//前台个人中心
-	Route::get('/center','centerController@index');
-
- });
+});
 
 
 
