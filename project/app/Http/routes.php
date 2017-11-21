@@ -71,6 +71,10 @@ Route::get('/home_login','loginController@home');
 
  	//前台主页
 	Route::get('/index','homeController@index');
+	
+	//视频遍历
+	//电影
+	Route::get('/movie/{id}','videoController@movie');
 
  });
 

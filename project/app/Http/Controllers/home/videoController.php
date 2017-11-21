@@ -6,22 +6,23 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use DB;
-use App\Http\model\type;
-use App\Http\model\video;
-use App\Http\model\vdetail;
 
-class homeController extends Controller
+class videoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+   public function movie($id)
     {
 
-    	return view('home.index');
+    	if($id == 1){
+    		
+    	}
+	 	
+    	return view('home.video.list'); 		
+	
     }
 
 }
