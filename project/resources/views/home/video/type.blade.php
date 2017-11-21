@@ -4,16 +4,15 @@
 				<div class="recommended">
 					<div class="recommended-grids">
 						<div class="recommended-info">
-							<h3>{{$name}}</h3>
+							<h3>{{ $fname.':'.$name }}</h3>
 						</div>
-						@foreach($res1 as $k => $v)
+						@foreach($res as $k => $v)
 							 <?php $res2 =DB::table('vdetail')->where('vid',$v->id)->first(); ?>
-
 						<div class="col-md-3 resent-grid recommended-grid">
 							<div class="resent-grid-img recommended-grid-img">
 								<a href="single.html"><img src="/admins/video/upload/{{$v->logo}}" alt="" style="height:200px"></a>
 								<div class="time small-time">
-									 <p><?php date('Y-m-d',$res2->time) ?></p>
+									 <p></p>
 								</div>
 								<div class="clck small-clck">
 									<span class="glyphicon glyphicon-time" aria-hidden="true"></span>

@@ -78,9 +78,8 @@ Route::get('/home_login','loginController@home');
 	Route::get('/index','homeController@index');
 	
 	//视频遍历
-	//电影
-	Route::get('/movie/{id}','videoController@movie');
-
+	Route::get('/video/{id}','videoController@video');
+	Route::get('/type/{id}','videoController@type');
  });
 
 
