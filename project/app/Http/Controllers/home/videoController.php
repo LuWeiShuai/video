@@ -19,6 +19,7 @@ class videoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //父分区列表
     public function video($id)
     {
 		$res = type::where('fid',$id)->get();
@@ -33,7 +34,7 @@ class videoController extends Controller
         // var_dump($res1);
 	   return view('home.video.list',['res1'=>$res1,'name'=>$name]); 			
     }
-
+    //子分区 列表
     public function type($id)
     {
         // echo $id;
@@ -44,6 +45,20 @@ class videoController extends Controller
         $fname =$res2->name;
         $res1 = video::where('tid',$id)->get();
         return view('home.video.type',['name'=>$name,'fname'=>$fname,'res'=>$res1]); 
+    }
+
+    //视频播放页面
+    public function play($id)
+    {
+        //点击量 
+        $arr = [];       
+        $res = video::where('id',$id)->first();
+        $arr['num'] = $res->num ;
+        $arr['num'] += 1;
+        video::where('id',$id)->update($arr);
+
+
+        return view('home.video.play');
     }
 
 }

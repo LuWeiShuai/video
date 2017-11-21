@@ -11,7 +11,7 @@
 
 						<div class="col-md-3 resent-grid recommended-grid">
 							<div class="resent-grid-img recommended-grid-img">
-								<a href="single.html"><img src="/admins/video/upload/{{$v->logo}}" alt="" style="height:200px"></a>
+								<a href="{{ url('/home/play/'.$v->id)}}"><img src="/admins/video/upload/{{$v->logo}}" alt="" style="height:200px"></a>
 								<div class="time small-time">
 									 <p><?php date('Y-m-d',$res2->time) ?></p>
 								</div>
@@ -20,7 +20,7 @@
 								</div>
 							</div>
 							<div class="resent-grid-info recommended-grid-info video-info-grid">
-								<h5><a href="single.html" class="title">{{$v->title}}</a></h5>
+								<h5><a href="{{ url('/home/play/'.$v->id)}}" class="title">{{$v->title}}</a></h5>
 								<ul>
 									<li><p class="author author-info"><a href="#" class="author">{{ $res2->actor }}</a></p></li>
 									<li class="right-list"><p class="views views-info">2,114,200 次点击</p></li>

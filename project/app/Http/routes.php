@@ -80,6 +80,9 @@ Route::get('/home_login','loginController@home');
 	//视频遍历
 	Route::get('/video/{id}','videoController@video');
 	Route::get('/type/{id}','videoController@type');
+
+	//视频播放
+	Route::get('/play/{id}','videoController@play');
  });
 
 
