@@ -106,9 +106,6 @@ class loginController extends Controller
         $id = session('uid');
         login::where('id',$id)->update($last);
 
-        $data['uid']=$id;
-        //插入info表
-        info::insert($data);
         return redirect('/home/index');
     }
 

@@ -36,7 +36,7 @@
 								<div class="menu-hd MyShangcheng"><a href="/home/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
 							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="/home/center" target="_top"><i class="am-icon-user am-icon-fw"></i><span>用户上传</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
+								<div class="menu-hd"><a id="mc-menu-hd" href="/home/center" target="_top"><i class="am-icon-user am-icon-fw"></i><span>上传列表</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
 							</div>
 							<div class="topMessage favorite">
 								<div class="menu-hd"><a href="/home/center" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>历史记录</span></a></div>
@@ -110,7 +110,7 @@
 					<li class="person">
 						<p><i class="am-icon-balance-scale"></i>用户上传</p>
 						<ul>
-							<li><a href="#">用户上传</a></li>
+							<li><a href="#">上传列表</a></li>
 						</ul>
 					</li>
 
@@ -124,7 +124,7 @@
 					<li class="person">
 						<p><i class="am-icon-qq"></i>在线客服</p>
 						<ul>
-							<li> <a href="#">客服信息</a></li>
+							<li> <a href="/home/center/service">客服信息</a></li>
 						</ul>
 					</li>
 				</ul>
