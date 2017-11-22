@@ -165,7 +165,7 @@
 					</div>
 				</div>
 				<div class="col-md-4 single-right">
-					<h3>下一个</h3>
+					<h3>排行榜</h3>
 					<div class="single-grid-right">
 						<div class="single-right-grids">
 							<div class="col-md-4 single-right-grid-left">

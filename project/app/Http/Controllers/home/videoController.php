@@ -56,8 +56,8 @@ class videoController extends Controller
         $arr['num'] = $res->num ;
         $arr['num'] += 1;
         video::where('id',$id)->update($arr);
-
-
+        
+        
         return view('home.video.play');
     }
 
