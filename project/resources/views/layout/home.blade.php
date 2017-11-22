@@ -37,10 +37,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="submit" value=" ">
 				</form>
 			</div>
+			@if(session('msg'))
+                <div class="mws-form-message info">                 
+
+                    {{session('msg')}}
+
+                </div>
+            @endif
+
 			<div class="header-top-right">
-				<div class="file">
-					<a href="upload.html">上传</a>
-				</div>	
+
+				@if(!session('uid'))
+
 				<div class="signin">
 					<a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a>
 					<!-- pop-up-box -->
@@ -48,52 +56,63 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<link href="/homes/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
 									<script src="/homes/js/jquery.magnific-popup.js" type="text/javascript"></script>
 									<!--//pop-up-box -->
+									
 									<div id="small-dialog2" class="mfp-hide">
 										<h3>注册</h3> 
 										<div class="social-sits">
-											<div class="facebook-button">
-												<a href="#">脸书登录</a>
-											</div>
-											<div class="chrome-button">
-												<a href="#">谷歌登录</a>
-											</div>
-											<div class="button-bottom">
-												<p>已经拥有帐号 <a href="#small-dialog" class="play-icon popup-with-zoom-anim">去登陆</a></p>
-											</div>
+											<img src="/homes/images/zhuce.png">
 										</div>
 										 <div class="signup">
-											<form>
-												<input type="text" class="email" placeholder="手机号" maxlength="10" pattern="1[34579]\d{9}" title="Enter a valid mobile number" />
-											</form>
-											<div class="continue-button">
+											
+												<input type="text" name="tel" class="email" placeholder="手机号" maxlength="11" pattern="1[345789]\d{9}" title="Enter a valid mobile number"/>
+											
+											<div class="continue-button" id="yan">
 												<a href="#small-dialog3" class="hvr-shutter-out-horizontal play-icon popup-with-zoom-anim">获取验证码</a>
 											</div>
+											<script type="text/javascript">
+											$.ajaxSetup({
+										        headers: {
+										            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+										        }
+											});
+											$('#yan a').click(function(){
+												var tel = $('input[name=tel]').val();
+												
+												$.get('/home/register',{tel:tel},function(data){
+													/*document.write(data);*/
+													
+												})
+												
+											})
+										</script>
 										</div>
+										
 										<div class="clearfix"> </div>
 									</div>
 									<div id="small-dialog3" class="mfp-hide">
 										<h3>注册帐号</h3> 
 										<div class="social-sits">
-											<div class="facebook-button">
-												<a href="#">脸书登录</a>
-											</div>
-											<div class="chrome-button">
-												<a href="#">谷歌登录</a>
-											</div>
-											<div class="button-bottom">
-												<p>已经拥有帐号<a href="#small-dialog" class="play-icon popup-with-zoom-anim">登录</a></p>
-											</div>
+											
+											<img src="/homes/images/zhuce.png">
 										</div>
 										<div class="signup">
-											<form>
-												<input type="text" class="email" placeholder="密码" required="required" pattern=".{6,}" title="Enter a vali"/>
-												<input type="password" placeholder="确认密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
-												<input type="text" class="email" placeholder="验证码" maxlength="10" title="Enter a valid mobile number" />
+
+											<form action="/home/regis" method="get">
+												<input type="password" name="password" class="email" placeholder="密码" required="required" pattern=".{6,16}" title="Enter a vali"/>
+												<input type="password" name="repass" placeholder="确认密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+												<input type="text" name="code" class="email" placeholder="验证码" maxlength="10" title="Enter a valid mobile number" />
+												
+
 												<input type="submit"  value="注册"/>
-											</form>
+												
+
+											</form>	
+											
+											
 										</div>
+									
 										<div class="clearfix"> </div>
-									</div>	
+									</div>
 									<div id="small-dialog7" class="mfp-hide">
 										<h3>创建帐号</h3> 
 										<div class="social-sits">
@@ -108,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>
 										</div>
 										<div class="signup">
-											<form action="upload.html">
+											<form action="" method="">
 												<input type="text" class="email" placeholder="Email" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" title="Enter a valid email"/>
 												<input type="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
 												<input type="submit"  value="Sign In"/>
@@ -183,26 +202,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											});
 									</script>	
 				</div>
+				
 				<div class="signin">
+					
 					<a href="#small-dialog" class="play-icon popup-with-zoom-anim">登录</a>
+					
 					<div id="small-dialog" class="mfp-hide">
 						<h3>Login</h3>
 						<div class="social-sits">
-							<div class="facebook-button">
-								<a href="#">脸书登录</a>
-							</div>
-							<div class="chrome-button">
-								<a href="#">谷歌登录</a>
-							</div>
-							<div class="button-bottom">
-								<p>新账号? <a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a></p>
-							</div>
+							<img src="/homes/images/login.png">
 						</div>
 						<div class="signup">
-							<form>
-								<input type="text" class="email" placeholder="手机号" required="required" pattern="1[34578]\d{9}"/>
-								<input type="password" placeholder="密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+							
+							<form action="/home_login/dologin" method="post">
+								<input type="text" name="tel" class="email" placeholder="手机号" required="required" pattern="1[34578]\d{9}"/>
+								<input type="password" name="password" placeholder="密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+								<input type="hidden" name="lastlogin" value="{{date('Y-m-d H:i:s',time())}}">
+								{{csrf_field()}}
 								<input type="submit"  value="登录"/>
+
 							</form>
 							<div class="forgot">
 								<a href="#">忘记密码?</a>
@@ -211,7 +229,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"> </div>
 					</div>
 				</div>
+				@else
+					<div class="signin">
+					<a href="/home/center" class="play-icon popup-with-zoom-anim">个人中心</a>
+					<a href="/home_login/delete" class="play-icon popup-with-zoom-anim">注销</a>
+						
+					</div>
+				@endif
 				<div class="clearfix"> </div>
+				
 			</div>
         </div>
 		<div class="clearfix"> </div>
@@ -324,3 +350,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
   </body>
 </html>
+<script> 
+    $('.mws-form-message').delay(1000).slideUp(1000);
+</script>
