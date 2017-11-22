@@ -43,11 +43,9 @@
 						</ul>
 						</div>
 
-						<!--悬浮搜索框-->
-
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="/homes/images/Logo.png" style="margin-left: -40px;height: 80px;width: 150px;" /></li>
+								<li><a href="/home/index"><img src="/homes/images/Logo.png" style="margin-left: -40px;height: 80px;width: 150px;" /></a></li>
 							</div>
 
 							<div class="search-bar pr">

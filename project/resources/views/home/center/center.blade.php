@@ -2,6 +2,11 @@
 @section('title','个人中心')
 @section('content')
 	<div class="user-info">
+		
+		<!--标题 -->
+		<div class="am-cf am-padding">
+			<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+		</div>
 		@if(session('msg'))
             <div class="mws-form-message info">                 
 
@@ -9,12 +14,19 @@
 
             </div>
         @endif
-		<!--标题 -->
-		<div class="am-cf am-padding">
-			<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
-		</div>
+        @if(count($errors) > 0)
+        <div class="mws-form-message error">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li style="font-size: 17px; list-style:none">{{$error}}</li>
+                @endforeach
+            </ul>
+
+        </div>
+    	@endif 
 		<hr/>
-		<form method="post" action="/home/center/update" class="am-form am-form-horizontal" >
+		<form method="post" action="/home/center/update" class="am-form am-form-horizontal" enctype="multipart/form-data">
+			<!-- enctype="multipart/form-data" -->
 		<!--头像 -->
 		<div class="user-infoPic">
 
@@ -152,3 +164,8 @@
 
 	</div>
 @endsection
+<script>
+	
+	$('.mws-form-message').delay(3000).slideUp(1000);
+
+</script>
