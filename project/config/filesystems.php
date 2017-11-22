@@ -79,13 +79,13 @@ return [
             'region'    => 'IAD',
             'url_type'  => 'publicURL',
         ],
-        'qiniu' => [  
-            'driver'    => 'qiniu',  
-            'domain'    => 'ozspfwig7.bkt.clouddn.com',  //你的七牛域名  
-            'access_key'=> 'lKYuHEtuHOjj3e4h1fisGxCTroNS0pmOe0VPWSB-',    //AccessKey  
-            'secret_key'=> 'B8mOljAIy_Dsm3gc__BuT98xS-Qvwm_04f_dSIH8',   //SecretKey  
-            'bucket'    => 'project',    //Bucket名字  
-        ],
+        // 'qiniu' => [  
+        //     'driver'    => 'qiniu',  
+        //     'domain'    => 'ozspfwig7.bkt.clouddn.com',  //你的七牛域名  
+        //     'access_key'=> 'lKYuHEtuHOjj3e4h1fisGxCTroNS0pmOe0VPWSB-',    //AccessKey  
+        //     'secret_key'=> 'B8mOljAIy_Dsm3gc__BuT98xS-Qvwm_04f_dSIH8',   //SecretKey  
+        //     'bucket'    => 'project',    //Bucket名字  
+        // ],
 
     ],
 

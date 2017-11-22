@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "fee6329e9476db9fb036ec0e0e081cfa",
-=======
-    "content-hash": "a8d6a74ab0f6010565b2832f2eacedb8",
->>>>>>> a09e2d41ec9b74e0bd3f1a2f73a2d1b35c3b92f5
+    "content-hash": "7dcbc035ee4a0349737da55a1348e13d",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -230,7 +226,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flc1125/dysms/zipball/a60645c6b35a15fe7fed6282784d2094368fc8f5",
+                "url": "https://files.phpcomposer.com/files/flc1125/dysms/a60645c6b35a15fe7fed6282784d2094368fc8f5.zip",
                 "reference": "a60645c6b35a15fe7fed6282784d2094368fc8f5",
                 "shasum": ""
             },
@@ -896,7 +892,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-ueditor/zipball/ac7e860778d66f00f7f47990ee4ad827e78b45ef",
+                "url": "https://files.phpcomposer.com/files/overtrue/laravel-ueditor/ac7e860778d66f00f7f47990ee4ad827e78b45ef.zip",
                 "reference": "ac7e860778d66f00f7f47990ee4ad827e78b45ef",
                 "shasum": ""
             },
