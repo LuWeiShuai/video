@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</form>
 			</div>
 			@if(session('msg'))
-                <div class="mws-form-message info">                 
+                <div class="mws-form-message info" style="font-size: 20px;">                 
 
                     {{session('msg')}}
 

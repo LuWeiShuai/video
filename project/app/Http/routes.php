@@ -103,6 +103,10 @@ Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],f
 
 //前台个人中心
 Route::get('/center','centerController@index');
+Route::get('/center/tel','centerController@tel');
+Route::get('/center/service','centerController@service');
+Route::post('/center/update','centerController@update');
+Route::post('/center/telUpdate','centerController@telUpdate');
 // Route::get('/center/tel','telController@index');
 
 });
