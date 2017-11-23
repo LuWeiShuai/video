@@ -164,8 +164,3 @@
 
 	</div>
 @endsection
-<script>
-	
-	$('.mws-form-message').delay(3000).slideUp(1000);
-
-</script>
