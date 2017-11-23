@@ -111,7 +111,7 @@ class loginController extends Controller
 
      public  function delete(Request $request)
     {
-        $request->session()->flush();
+        $request->session('uid')->flush();
 
         return redirect('/home/index');
     }

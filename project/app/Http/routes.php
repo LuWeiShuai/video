@@ -92,25 +92,34 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::get('/play/{id}','videoController@play');
 
 
-	//用户注册
-	Route::get('/register','registerController@add');
-	Route::get('/regis','registerController@store');
+	
+
 	//用户评论
 	Route::post('/discuss','videoController@discuss');
-	
+
+	//用户注册
+	Route::get('/register','registerController@register');
+	Route::post('/regis','registerController@store');
+	Route::get('/reg','registerController@code');
+	Route::post('/passs','registerController@passs');
  });
 
 //前台路由
 Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],function(){
 
-	//前台个人中心
-	Route::get('/center','centerController@index');
-	Route::get('/center/tel','centerController@tel');
-	Route::get('/center/service','centerController@service');
-	Route::post('/center/update','centerController@update');
-	Route::post('/center/telUpdate','centerController@telUpdate');
-	// Route::get('/center/tel','telController@index');
 
+//前台个人中心
+Route::get('/center','centerController@index');
+Route::get('/center/tel','centerController@tel');
+Route::get('/center/service','centerController@service');
+Route::get('/center/about','centerController@about');
+Route::get('/center/yzm','centerController@yzm');
+Route::get('/center/password','centerController@password');
+
+Route::post('/center/update','centerController@update');
+Route::post('/center/yzmUpdate','centerController@yzmUpdate');
+Route::post('/center/repass','centerController@repass');
+Route::get('/center/up','centerController@up');
 
 });
 

@@ -13,7 +13,11 @@
 		<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/homes/css/infstyle.css" rel="stylesheet" type="text/css">
 		<script src="/homes/js/jquery.min.js"></script>
-		<script src="/homes/js/amazeui.js"></script>			
+		<script src="/homes/js/amazeui.js"></script>		
+		<style>
+			.cur{border:solid 2px lightblue;}
+			
+		</style>	
 	</head>
 
 	<body>
@@ -36,18 +40,16 @@
 								<div class="menu-hd MyShangcheng"><a href="/home/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
 							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="/home/center" target="_top"><i class="am-icon-user am-icon-fw"></i><span>上传列表</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
+								<div class="menu-hd"><a id="mc-menu-hd" href="/home/center/up" target="_top"><i class="am-icon-user am-icon-fw"></i><span>上传列表</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
 							</div>
 							<div class="topMessage favorite">
 								<div class="menu-hd"><a href="/home/center" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>历史记录</span></a></div>
 						</ul>
 						</div>
 
-						<!--悬浮搜索框-->
-
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="/homes/images/Logo.png" style="margin-left: -40px;height: 80px;width: 150px;" /></li>
+								<li><a href="/home/index"><img src="/homes/images/Logo.png" style="margin-left: -40px;height: 80px;width: 150px;" /></a></li>
 							</div>
 
 							<div class="search-bar pr">
@@ -85,9 +87,8 @@
 					</div>
 					<div class="footer-bd">
 						<p style="text-align: center!important;">
-							<a href="#">关于尚视</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
+							<a href="/home/center/about">关于尚视</a>
+							<a href="/home/center/service">联系我们</a>
 							<em>© 2017-2037 ShangShi.com 版权所有</em>
 						</p>
 					</div>
@@ -104,13 +105,13 @@
 						<ul>
 							<li> <a href="/home/center">个人信息</a></li>
 							<li> <a href="/home/center/tel">电话号码</a></li>
-							<li> <a href="">修改密码</a></li>
+							<li> <a href="/home/center/password">修改密码</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-balance-scale"></i>用户上传</p>
 						<ul>
-							<li><a href="#">上传列表</a></li>
+							<li><a href="/home/center/up">上传列表</a></li>
 						</ul>
 					</li>
 
@@ -122,9 +123,10 @@
 					</li>
 
 					<li class="person">
-						<p><i class="am-icon-qq"></i>在线客服</p>
+						<p><i class="am-icon-qq"></i>关于尚视</p>
 						<ul>
-							<li> <a href="/home/center/service">客服信息</a></li>
+							<li> <a href="/home/center/about">关于尚视</a></li>
+							<li> <a href="/home/center/service">联系我们</a></li>
 						</ul>
 					</li>
 				</ul>

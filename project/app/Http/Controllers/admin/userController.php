@@ -69,6 +69,7 @@ class userController extends Controller
             'phone.regex'=>'手机号格式不正确'
 
         ]);
+         
         $res = $request->except('_token','repassword');
         $res['password'] = Hash::make($request->input('password'));
 

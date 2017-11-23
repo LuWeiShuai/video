@@ -1,17 +1,15 @@
 @extends('layout.Center')
-@section('title','客服信息')
+@section('title','联系我们')
 @section('content')
 	<div class="user-info">
 		<!--标题 -->
 		<div class="am-cf am-padding">
-			<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">客服信息</strong></div>
+			<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">联系我们</strong></div>
 		</div>
 		<hr/>
 
 		<!--个人信息 -->
 		<div class="info-main">
-			<form action="/home/center/telUpdate" method="post" class="am-form am-form-horizontal">
-
 				<div style="margin-top: 30px;text-align: center;">
 					
 				<strong class="am-text-danger am-text-lg">客服一联系方式:</strong>
@@ -28,8 +26,6 @@
 					
 				</div>
 				
-
-			</form>
 		</div>
 
 	</div>

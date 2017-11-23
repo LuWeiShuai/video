@@ -4,6 +4,7 @@
 <title>@yield('title')</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
 <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -28,7 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><h1><img src="/homes/images/Logo.png" alt="" style="height: 60px;" /></h1></a>
+          <a class="navbar-brand" href="/home/index"><h1><img src="/homes/images/Logo.png" alt="" style="height: 60px;" /></h1></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
@@ -37,14 +38,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="submit" value=" ">
 				</form>
 			</div>
+	
 			@if(session('msg'))
-                <div class="mws-form-message info" style="font-size: 20px;">                 
-
+                <div class="mws-form-message info" style="font-size: 20px;">         
                     {{session('msg')}}
 
                 </div>
             @endif
 
+			@if (count($errors) > 0)
+		    <div class="mws-form-message warning">
+		        <ul>
+		            @foreach ($errors->all() as $error)
+		                <li style="font-size: 20px;list-style: none">{{ $error }}</li>
+		            @endforeach
+		        </ul>
+		    </div>
+			@endif
+			
 			<div class="header-top-right">
 
 				@if(!session('uid'))
@@ -63,52 +74,106 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<img src="/homes/images/zhuce.png">
 										</div>
 										 <div class="signup">
-											
-												<input type="text" name="tel" class="email" placeholder="手机号" maxlength="11" pattern="1[345789]\d{9}" title="Enter a valid mobile number"/>
-											
+											<form action="#small-dialog3" method="get">
+												<input  type="text" name="tel" class="email" placeholder="手机号" maxlength="11" pattern="1[345789]\d{9}" title="Enter a valid mobile number"/>
+												<div  class="signup" style="float:left;margin-right:200px;">
+												<span  id="qwe" style="color: red;"></span>
+												</div>
+												<input type="text" name="code" class="email" placeholder="输入验证码" maxlength="11" title="Enter a valid mobile number" style="width: 40%;float: left;margin-right: 20px;" />
 											<div class="continue-button" id="yan">
-												<a href="#small-dialog3" class="hvr-shutter-out-horizontal play-icon popup-with-zoom-anim">获取验证码</a>
+												{{ csrf_field() }}
+												
+												<input type="button" id="btn" value="获取验证码" class="btn btn-danger" style="margin:12px;height:40px;font-size: 10px">
+												<span id='aaa' style="color:red;font-size:20px"></span>
+								
 											</div>
+											</form>	
+											<div class="continue-button" id='coded'>
+												<a id="anc" style="float:left" href="#small-dialog2" class="hvr-shutter-out-horizontal play-icon popup-with-zoom-anim">下一步</a>
+											</div>
+										
 											<script type="text/javascript">
-											$.ajaxSetup({
-										        headers: {
-										            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-										        }
-											});
-											$('#yan a').click(function(){
-												var tel = $('input[name=tel]').val();
-												
-												$.get('/home/register',{tel:tel},function(data){
-													/*document.write(data);*/
-													
+											var wait=60; 
+											function time(o) { 
+
+												   $.ajax({
+										               type:'get',
+										               url:"/home/register",
+										               data:'tel='+$('input[name=tel]').val(),
+										               success:function(data){
+										               	// console.log(data);
+											               	if(data=='1'){
+											               		if (wait == 0) { 
+																	o.removeAttribute("disabled"); 
+																	o.value="获取验证码"; 
+																	wait = 60; 
+																	} else { 
+																	o.setAttribute("disabled", true); 
+																	o.value="重新发送(" + wait + ")"; 
+																	wait--; 
+																	setTimeout(function() { 
+																	time(o) 
+																	}, 
+																	1000);
+																	$('input[name=tel]').css('border','solid 1px black');
+																	return false;
+																} 
+																return false;
+															}else{
+																$('input[name=tel]').css('border','solid 1px red');
+															}
+															return false;
+										               }
+
+										            });
+
+												   //设置定时器,60s后可以重新点击发送验证码
+												   //功能还没完成
+												return false;
+											} 
+											   	
+											document.getElementById("btn").onclick=function(){time(this);}
+											$('input[name=code]').mouseout(function(){
+
+												// alert('213');
+												var code = $('input[name=code]').val();
+												$.get('/home/reg',{code:code},function(data){
+														
+														if(data == "0"){
+															$('input[name=code]').css('border','solid 1px red');
+															$('#anc').attr('href','#small-dialog2');
+
+														}else if(data == "1"){
+															$('#anc').attr('href','#small-dialog3');
+														}
 												})
-												
 											})
+											
 										</script>
 										</div>
 										
 										<div class="clearfix"> </div>
 									</div>
+
 									<div id="small-dialog3" class="mfp-hide">
 										<h3>注册帐号</h3> 
 										<div class="social-sits">
 											
 											<img src="/homes/images/zhuce.png">
 										</div>
+
 										<div class="signup">
 
-											<form action="/home/regis" method="get">
-												<input type="password" name="password" class="email" placeholder="密码" required="required" pattern=".{6,16}" title="Enter a vali"/>
-												<input type="password" name="repass" placeholder="确认密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
-												<input type="text" name="code" class="email" placeholder="验证码" maxlength="10" title="Enter a valid mobile number" />
+											<form action="/home/regis" method="post">
+
+												<input type="password" name="password" class="email" placeholder="密码" required="required"  />
+												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" />
 												
+												{{csrf_field()}}
 
 												<input type="submit"  value="注册"/>
-												
 
 											</form>	
-											
-											
 										</div>
 									
 										<div class="clearfix"> </div>
@@ -310,18 +375,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="footer-grids">
 					<div class="footer-top">
 						<div class="footer-top-nav">
-							<ul>
-								<li><a href="about.html">本站四英</a></li>
-								<li><a href="press.html">出版方</a></li>
-								<li><a href="copyright.html">版权</a></li>
-								<li><a href="creators.html">厂家</a></li>
-								<li><a href="#">广告</a></li>
-								<li><a href="developers.html">开发者平台</a></li>
-							</ul>
-						</div>
+							
 						<?php $res = DB::table('friendlink')->get() ?>
-						<div class="footer-bottom-nav">
+							
 							<ul>
+								<li style="font-size: 20px;color: white;">友情链接:</li>
 								@foreach($res as $k => $v)
 									<li><a href="{{$v->url}}">{{$v->linkName}}</a></li>
 								@endforeach
