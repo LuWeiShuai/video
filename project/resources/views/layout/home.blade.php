@@ -375,18 +375,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="footer-grids">
 					<div class="footer-top">
 						<div class="footer-top-nav">
-							<ul>
-								<li><a href="about.html">本站四英</a></li>
-								<li><a href="press.html">出版方</a></li>
-								<li><a href="copyright.html">版权</a></li>
-								<li><a href="creators.html">厂家</a></li>
-								<li><a href="#">广告</a></li>
-								<li><a href="developers.html">开发者平台</a></li>
-							</ul>
-						</div>
+							
 						<?php $res = DB::table('friendlink')->get() ?>
-						<div class="footer-bottom-nav">
+							
 							<ul>
+								<li style="font-size: 20px;color: white;">友情链接:</li>
 								@foreach($res as $k => $v)
 									<li><a href="{{$v->url}}">{{$v->linkName}}</a></li>
 								@endforeach

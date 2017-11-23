@@ -106,6 +106,7 @@ Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],f
 Route::get('/center','centerController@index');
 Route::get('/center/tel','centerController@tel');
 Route::get('/center/service','centerController@service');
+Route::get('/center/about','centerController@about');
 Route::get('/center/yzm','centerController@yzm');
 Route::get('/center/password','centerController@password');
 

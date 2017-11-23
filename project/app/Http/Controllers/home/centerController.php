@@ -47,6 +47,11 @@ class centerController extends Controller
          return view('/home/center/service');
     }
 
+    public function about()
+    {
+        return view('home/center/about');
+    }    
+
      public function password()
     {
         return view('home.center.password');

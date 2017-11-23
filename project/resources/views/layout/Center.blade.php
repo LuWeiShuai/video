@@ -87,9 +87,8 @@
 					</div>
 					<div class="footer-bd">
 						<p style="text-align: center!important;">
-							<a href="#">关于尚视</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
+							<a href="/home/center/about">关于尚视</a>
+							<a href="/home/center/service">联系我们</a>
 							<em>© 2017-2037 ShangShi.com 版权所有</em>
 						</p>
 					</div>
@@ -124,9 +123,10 @@
 					</li>
 
 					<li class="person">
-						<p><i class="am-icon-qq"></i>在线客服</p>
+						<p><i class="am-icon-qq"></i>关于尚视</p>
 						<ul>
-							<li> <a href="/home/center/service">客服信息</a></li>
+							<li> <a href="/home/center/about">关于尚视</a></li>
+							<li> <a href="/home/center/service">联系我们</a></li>
 						</ul>
 					</li>
 				</ul>
