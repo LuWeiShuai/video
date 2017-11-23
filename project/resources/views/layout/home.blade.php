@@ -38,6 +38,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="submit" value=" ">
 				</form>
 			</div>
+	
+			@if(session('msg'))
+                <div class="mws-form-message info" style="font-size: 20px;">         
+                    {{session('msg')}}
+
+                </div>
+            @endif
 
 			@if (count($errors) > 0)
 		    <div class="mws-form-message warning">
@@ -165,7 +172,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 												<input type="submit"  value="注册"/>
 											
-
 											</form>	
 											
 											
