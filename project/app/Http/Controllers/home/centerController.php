@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
-use App\Http\model\info;
 use Session;
+use Hash;
+use App\Http\model\info;
+use App\Http\model\login;
 use Flc\Dysms\Client;
 use Flc\Dysms\Request\SendSms;
 
@@ -24,8 +26,9 @@ class centerController extends Controller
         //查询info表
         $res = info::where('uid',session('uid'))->first();
 
+        //进行拆分生日
         $data = explode('-',$res['birthday']);
-        // dd($data);
+        
         return view('/home/center/center',['res'=>$res,'data'=>$data]);
     }
 
@@ -42,6 +45,11 @@ class centerController extends Controller
      public function service()
     {
          return view('/home/center/service');
+    }
+
+     public function password()
+    {
+        return view('home.center.password');
     }
 
     /**
@@ -116,9 +124,13 @@ class centerController extends Controller
 
     public function yzm()
     {
+        // 获取手机号
+
         $tel = $_GET['tel'];
-        // var_dump($tel);
+
+        //将手机号存入session
         session(['tel'=>$tel]); 
+
         $config = [
         'accessKeyId'    => 'LTAI4YCQiEAcdIYl',
         'accessKeySecret' => 'Z0TLQJAGOT24fsvNGpUhr9VnQHmyCi',
@@ -135,11 +147,64 @@ class centerController extends Controller
         $sendSms->setOutId('demo');
         $res=$client->execute($sendSms);
         session(['code'=>$code]);
-        return $code;
         
     }
-    public function codeUpdate()
+    public function yzmUpdate(Request $request)
     {
+        //获取验证码
+        $yzm = $request['yzm'];
+
+        //获取手机号
+        $tel = $request['tel'];
+
+        //将手机号放入新数组
+        $data['tel'] = $tel;
+
+        //获取session的验证码
+        $session = session('code');
+
+        //获取uid的uid
+        $id = session('uid');
+
+        //判断验证码是否正确
+        if($session == $yzm){
+            //将新手机号插入数据库
+            login::where('id',$id)->update($data);
+
+            return redirect('/home/center')->with('msg','修改成功');
+        }else{
+             return back();
+        }
 
     }
+    public function repass(Request $request)
+    {
+        //获取密码
+        $pass = $request['password'];
+
+        //进行hash加密
+        $data['password'] = Hash::make($pass);
+
+        //获取验证码
+        $yzm = $request['yzm'];
+
+        //获取session的验证码
+        $session = session('code');
+
+        //获取session的uid
+        $id = session('uid');
+
+        //判断验证码是否正确
+        if($session == $yzm){
+            
+            //将新密码插入数据库
+            login::where('id',$id)->update($data);
+            
+            return redirect('/home/center')->with('msg','修改成功');
+        }else{
+            return back();
+        }
+
+    }
+
 }

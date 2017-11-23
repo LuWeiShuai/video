@@ -7,10 +7,20 @@
 			<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">电话号码</strong></div>
 		</div>
 		<hr/>
+		 @if(count($errors) > 0)
+        <div class="mws-form-message error">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li style="font-size: 17px; list-style:none">{{$error}}</li>
+                @endforeach
+            </ul>
+
+        </div>
+    	@endif 
 
 		<!--个人信息 -->
 		<div class="info-main">
-			<form action="" method="post" class="am-form am-form-horizontal">
+			<form action="/home/center/yzmUpdate" method="post" class="am-form am-form-horizontal">
 
 				<div class="am-form-group">
 					<label for="user-phone" class="am-form-label">新手机号:</label>
@@ -26,10 +36,9 @@
 								
 								//发送ajax
 								$.get('/home/center/yzm',{tel:tel},function(data){
-									alert(data);
+									// alert(data);
 								})
 
-								
 							})
 
 						</script>
@@ -54,3 +63,9 @@
 
 	</div>
 @endsection
+
+<script>
+	
+	$('.mws-form-message').delay(3000).slideUp(1000);
+
+</script>

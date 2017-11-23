@@ -40,13 +40,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 
 			@if (count($errors) > 0)
-				 <div class="mws-form-message warning">
-				     <ul>
-				         @foreach ($errors->all() as $error)
-				             <li style="font-size: 20px;list-styl{{ $error }}</li>
-				         @endforeach
-				     </ul>
-				 </div>
+		    <div class="mws-form-message warning">
+		        <ul>
+		            @foreach ($errors->all() as $error)
+		                <li style="font-size: 20px;list-style: none">{{ $error }}</li>
+		            @endforeach
+		        </ul>
+		    </div>
 			@endif
 			
 			<div class="header-top-right">
@@ -78,8 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												
 												<input type="submit" value="获取验证码" class="btn btn-bottom" style="margin:12px;height:40px;font-size: 10px">
 												<span id='aaa' style="color:red;font-size:20px"></span>
-												
-											
+								
 											</div>
 											</form>	
 											<div class="continue-button" id='coded'>
@@ -162,8 +161,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" />
 												
 												{{csrf_field()}}
+
 												<input type="submit"  value="注册"/>
-												
 
 											</form>	
 											

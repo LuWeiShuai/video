@@ -108,9 +108,12 @@ Route::get('/center','centerController@index');
 Route::get('/center/tel','centerController@tel');
 Route::get('/center/service','centerController@service');
 Route::get('/center/yzm','centerController@yzm');
+Route::get('/center/password','centerController@password');
 
 Route::post('/center/update','centerController@update');
-// Route::get('/center/tel','telController@index');
+Route::post('/center/yzmUpdate','centerController@yzmUpdate');
+Route::post('/center/repass','centerController@repass');
+
 
 });
 
