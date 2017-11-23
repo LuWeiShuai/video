@@ -55,11 +55,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        </ul>
 		    </div>
 			@endif
-
+			
 			<div class="header-top-right">
 
 				@if(!session('uid'))
-
 
 				<div class="signin">
 					<a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a>
@@ -86,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												
 												<input type="submit" value="获取验证码" class="btn btn-bottom" style="margin:12px;height:40px;font-size: 10px">
 												<span id='aaa' style="color:red;font-size:20px"></span>
-												
+								
 											</div>
 											</form>	
 											<div class="continue-button" id='coded'>
@@ -171,9 +170,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												{{csrf_field()}}
 
 												<input type="submit"  value="注册"/>
-											
+
 											</form>	
-											
 										</div>
 									
 										<div class="clearfix"> </div>
