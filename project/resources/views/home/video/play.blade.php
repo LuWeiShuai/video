@@ -99,11 +99,10 @@
 						<div class="media-grids">
 							@foreach($res1 as $key=>$val)
 							<?php $res2 = DB::table('info')->where('uid',$val->uid)->first(); ?>
-							
-							<div class="media">
-								<h5>{{ $res2->nikeName }}</h5>
-								<div class="media-left">
-									<img src="{{url('/homes/pic/'.$res2->profile)}}" alt="">
+							<div class="media" style="border:solid 1px #D4D3D3;margin:0px;padding:0px;">
+								<h5 class="btn btn-info">{{ $res2->nikeName }}</h5>
+								<div class="media-left" >
+									<div style="width:50px;height:50px;margin:0px;padding:0px;border-radius:50%;overflow:hidden;"><img style="position:relative;top:-30px;left:-40px;" class="am-circle am-img-thumbnail" src="{{url('/homes/pic/'.$res2->profile)}}" alt=""></div>
 								</div>
 								<div class="media-body">
 									<p>{{ $val->content}}</p>
