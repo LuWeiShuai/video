@@ -18,8 +18,7 @@ class configController extends Controller
     public function index()
     {   
         $res = config::all();
-        $kai = config::where('status',1)->get();
-
+        
         return view('admin.config.index',['res'=>$res]);
     }
 
@@ -75,12 +74,13 @@ class configController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $res = config::where('id',$id)->get();
-        $re = $request->except('_token','_method');
+        
+        $re = $request->except('_token','_method','logo');
         
         $res = config::where('id',$id)->update($re);
-        // $res->save();
-        var_dump($res);
+
+        return redirect('/admin/config');
+        
     }
 
     /**

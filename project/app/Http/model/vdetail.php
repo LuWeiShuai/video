@@ -8,5 +8,5 @@ class vdetail extends Model
 {
     //
    protected $table = 'vdetail';
-
+   public $timestamps = false;
 }

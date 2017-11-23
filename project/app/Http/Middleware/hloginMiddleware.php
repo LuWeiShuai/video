@@ -19,7 +19,7 @@ class hloginMiddleware
 
         if(!$uid){
 
-            return redirect('/home_login');
+            return redirect('/home/index');
         } else {
 
             return $next($request);
