@@ -44,9 +44,9 @@ class registerController extends Controller
 			$sendSms->setOutId('demo');
 	       	$client->execute($sendSms);
 	       	session(['code'=>$code]);
-	       	return  "发送成功";
+	       	return  "1";
         }else{
-        	return "发送失败";
+        	return "0";
         }
       	
   }  

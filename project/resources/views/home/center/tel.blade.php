@@ -27,19 +27,46 @@
 					<div class="am-form-content" id="aa">
 						<input id="user-phone" placeholder="请输入新手机号" type="text" value="" name="tel">
 						<br>
-						<input type="button" value="获取验证码" class="btn btn-danger">
+						<input type="button" value="获取验证码" class="btn btn-danger" id="btn">
 						<br>
 						<script>
-							$('.btn').click(function(){
-								//获取tel值
-								var tel = $('#user-phone').val();
-								
-								//发送ajax
-								$.get('/home/center/yzm',{tel:tel},function(data){
-									// alert(data);
-								})
+							var wait=60; 
+							function time(o) { 
 
-							})
+							   $.ajax({
+					               type:'get',
+					               url:"/home/register",
+					               data:'tel='+$('input[name=tel]').val(),
+					               success:function(data){
+					               	console.log(data);
+						               	if(data=='1'){
+						               		if (wait == 0) { 
+												o.removeAttribute("disabled"); 
+												o.value="获取验证码"; 
+												wait = 60; 
+												} else { 
+												o.setAttribute("disabled", true); 
+												o.value="重新发送(" + wait + ")"; 
+												wait--; 
+												setTimeout(function() { 
+												time(o) 
+												}, 
+												1000);
+												return false;
+											} 
+											return false;
+										}else{
+											$('input[name=tel]').css('border','solid 1px red');
+										}
+										return false;
+					               }
+
+					            });
+
+								return false;
+							} 
+							   	
+							document.getElementById("btn").onclick=function(){time(this);}
 
 						</script>
 					</div>
@@ -64,8 +91,8 @@
 	</div>
 @endsection
 
-<script>
+<!-- <script>
 	
 	$('.mws-form-message').delay(3000).slideUp(1000);
 
-</script>
+</script> -->
