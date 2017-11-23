@@ -347,6 +347,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/homes/js/bootstrap.min.js"></script>
+    <script src="/layer/layer.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
   </body>
 </html>

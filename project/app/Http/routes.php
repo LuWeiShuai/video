@@ -91,23 +91,26 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	//视频播放
 	Route::get('/play/{id}','videoController@play');
 
+
 	//用户注册
 	Route::get('/register','registerController@add');
 	Route::get('/regis','registerController@store');
-	//用户上传
-	// Route::resource('/userup','userUpController');
+	//用户评论
+	Route::post('/discuss','videoController@discuss');
+	
  });
 
 //前台路由
 Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],function(){
 
-//前台个人中心
-Route::get('/center','centerController@index');
-Route::get('/center/tel','centerController@tel');
-Route::get('/center/service','centerController@service');
-Route::post('/center/update','centerController@update');
-Route::post('/center/telUpdate','centerController@telUpdate');
-// Route::get('/center/tel','telController@index');
+	//前台个人中心
+	Route::get('/center','centerController@index');
+	Route::get('/center/tel','centerController@tel');
+	Route::get('/center/service','centerController@service');
+	Route::post('/center/update','centerController@update');
+	Route::post('/center/telUpdate','centerController@telUpdate');
+	// Route::get('/center/tel','telController@index');
+
 
 });
 

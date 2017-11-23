@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use session;
 use App\Http\model\type;
 use App\Http\model\video;
 use App\Http\model\vdetail;
+use App\Http\model\discuss;
+use App\Http\model\info;
 
 
 class videoController extends Controller
@@ -53,12 +56,36 @@ class videoController extends Controller
         //点击量 
         $arr = [];       
         $res = video::where('id',$id)->first();
-        $arr['num'] = $res->num ;
+        $arr['num'] = $res->num;
         $arr['num'] += 1;
         video::where('id',$id)->update($arr);
         
+        //评论
+        $res1 = discuss::where('vid',$id)->get();
         
-        return view('home.video.play');
+        return view('home.video.play',['res'=>$res,'res1'=>$res1]);
     }
 
+    //视频评论
+    public function discuss(Request $request)
+    {
+
+       if(session('uid')){
+            $data = [];
+            $title = $_POST['title'];
+            $dis = $_POST['dis'];
+            $res = video::where('title',$title)->first();
+            $data['vid'] = $res->id;
+            $data['uid'] =session('uid');
+            $data['time'] = $_POST['time'];
+            $data['content'] = $dis;           
+            $res = discuss::insert($data);
+            if($res){
+                return '评论成功';
+            }
+        }else{
+            return '评论失败';
+        }
+
+    }
 }

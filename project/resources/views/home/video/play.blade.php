@@ -5,19 +5,17 @@
 				<div class="col-sm-8 single-left">
 					<div class="song">
 						<div class="song-info">
-							<h3 align="center">title</h3>
+							<h3 id="title" align="center">{{ $res->title}}</h3>
 					</div>
 						<div class="video-grid">
 							<iframe src="https://www.youtube.com/embed/oYiT-vLjhC4" allowfullscreen=""></iframe>
 						</div>
-					</div>
-						
+					</div>						
 					<script>
 						window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 					</script>
 					<div class="clearfix"> </div>
 					<div class="published">
-						<script src="jquery.min.js"></script>
 							<script>
 								$(document).ready(function () {
 									size_li = $("#myList li").size();
@@ -59,15 +57,37 @@
 						<div class="all-comments-info">
 							<a href="#">所有评论(8,657)</a>
 							<div class="box">
-								<form>
-									<input type="text" placeholder="Name" required=" ">			           					   
-									<input type="text" placeholder="Email" required=" ">
-									<input type="text" placeholder="Phone" required=" ">
-									<textarea placeholder="Message" required=" "></textarea>
-									<input type="submit" value="SEND">
+								<form action="" method="get">
+									<input type="hidden" name="time" value="{{ date('Y-m-d',time()) }}">
+									<textarea id="discuss" placeholder="Message" required=" " name="discuss"></textarea>
+									{{csrf_field()}}
+									<input type="submit" value="发送" id="dis">
 									<div class="clearfix"> </div>
 								</form>
 							</div>
+							<script>
+								$.ajaxSetup({
+							        headers: {
+							            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							        }
+								});								
+								var title = $('#title').text();								
+								var time = $('input[type=hidden]').val();								
+								$('#dis').click(function(){		
+
+									var discuss = $('#discuss').val();
+									$.post("{{url('/home/discuss')}}",{'_token':'{{csrf_token()}}',dis:discuss,title:title,time:time},function(data){
+										if(data == '评论失败'){
+											
+											// alert('请先登录在评论');
+											layer.msg('请先登录,在评论');
+										}else{
+											layer.msg('评论成功!');
+										}
+									})
+									return false;
+								})
+							</script>
 							<div class="all-comments-buttons">
 								<ul>
 									<li><a href="#" class="top">顶层评论</a></li>
@@ -77,90 +97,19 @@
 							</div>
 						</div>
 						<div class="media-grids">
+							@foreach($res1 as $key=>$val)
+							<?php $res2 = DB::table('info')->where('uid',$val->uid)->first(); ?>
+							
 							<div class="media">
-								<h5>Tom Brown</h5>
+								<h5>{{ $res2->nikeName }}</h5>
 								<div class="media-left">
-									<a href="#">
-										
-									</a>
+									<img src="{{url('/homes/pic/'.$res2->profile)}}" alt="">
 								</div>
 								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
+									<p>{{ $val->content}}</p>
 								</div>
 							</div>
-							<div class="media">
-								<h5>Mark Johnson</h5>
-								<div class="media-left">
-									<a href="#">
-										
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>Steven Smith</h5>
-								<div class="media-left">
-									<a href="#">
-										
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>Marry Johne</h5>
-								<div class="media-left">
-									<a href="#">
-										
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>Mark Johnson</h5>
-								<div class="media-left">
-									<a href="#">
-										
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>Mark Johnson</h5>
-								<div class="media-left">
-									<a href="#">
-										
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>Peter Johnson</h5>
-								<div class="media-left">
-									<a href="#">
-										
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
+							@endforeach							
 						</div>
 					</div>
 				</div>
