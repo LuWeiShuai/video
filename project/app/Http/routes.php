@@ -92,8 +92,10 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::get('/play/{id}','videoController@play');
 
 	//用户注册
-	Route::get('/register','registerController@add');
-	Route::get('/regis','registerController@store');
+	Route::get('/register','registerController@register');
+	Route::post('/regis','registerController@store');
+	Route::get('/reg','registerController@code');
+	Route::post('/passs','registerController@passs');
 	//用户上传
 	// Route::resource('/userup','userUpController');
  });
