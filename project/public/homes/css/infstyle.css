@@ -97,7 +97,14 @@ input {text-align: left;}
 .progress {width: 190px;height: 8px;position: absolute;top: 0;background-color: #ffeb68;border-radius: 5px;}
 /*会员*/
 .vip {margin-top:15px ;}
-.vip span{display: block;width: 51px;height: 22px;background: url(../images/icon_progress_24.png) no-repeat 0 0;float:left;margin-right:5px ;}	
+/*.vip span{
+	display:block;
+	width:51px;
+	height:22px;
+	background:url(../images/icon_progress_24.png);
+	float:left;
+	margin-right:5px;
+}	*/
 .user-info{overflow:hidden; margin-bottom:15px;}
 /*安全设置*/
 .user-safety .check li{padding:15px 0px;position: relative;border: none;}
