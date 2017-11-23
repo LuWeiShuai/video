@@ -1,5 +1,5 @@
 @extends('layout.Center')
-@section('title','个人中心')
+@section('title','上传列表')
 
 
 	<meta name="description" content="这是一个 index 页面">
@@ -148,9 +148,9 @@
                             </button>
                         </a>
                         
-                        <!-- <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
-                        <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-unlock"></span> 审核</button>
-                        <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button> -->
+                       <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
+                       <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-unlock"></span> 审核</button>
+                       <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
                     </div>
                 </div>
             </div>
@@ -170,58 +170,47 @@
         <div class="jianxi"></div>
         <div class="am-g">
             <div class="tpl-table-images">
-                <!-- @foreach ($res as $key=>$val) -->
+                
                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
                     <div class="tpl-table-images-content">
-                        <div class="tpl-table-images-content-i-time"><!-- 发布时间：{{date('Y-m-d',$cres[$key]->time)}} -->
+                        <div class="tpl-table-images-content-i-time">
                         
                             <div class="fenqu">
-                               <!--  @if($cres[$key]->address==1)内陆
-                               @elseif($cres[$key]->address==2)欧美
-                               @elseif($cres[$key]->address==3)日韩
-                               @endif -->
+                              
                             </div>
                         </div>
                         <div class="tpl-i-title">
-                          <!--   {{$val->title}} -->
+                          
                         </div>
                         <div class="tpl-table-images-content-i" id="fengmian">
                             <div class="tpl-table-images-content-i-info">
                                 <span class="ico">
-                                    <i><!-- {{$val->level}} --></i>
+                                    <i></i>
                                  </span>
                             </div>
                             <span class="tpl-table-images-content-i-shadow"></span>
-                            <img src="/admins/video/upload/{{$val->logo}}" alt="">
+                            <img src="" alt="">
                         </div>
                         <div class="tpl-table-images-content-block">
                             <div class="tpl-i-font" style="height: 80px;">
-                                <!-- {{$cres[$key]->content}} -->
+                               
                             </div>
                             <div class="tpl-i-more">
                                 <ul>
-                                    <!-- <li><span class="am-icon-qq am-text-warning"> 100+</span></li>
+                                    <li><span class="am-icon-qq am-text-warning"> 100+</span></li>
                                     <li><span class="am-icon-weixin am-text-success"> 235+</span></li>
-                                    <li><span class="am-icon-github font-green"> 600+</span></li> -->
-                                    <a href="/admin/video/{{$val->id}}"><li>查看评论</li></a>
+                                    <li><span class="am-icon-github font-green"> 600+</span></li> 
+                                    <a href=""><li>查看评论</li></a>
                                     <li>
-                                        <!-- @if($val->auth==0)免费
-                                        @elseif($val->auth==1)VIP
-                                        @elseif($val->auth==2)付费
-                                        @endif -->
+                                       
                                     </li>
                                 </ul>
                             </div>
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
                                     
-                                    <a href="/admin/video/{{$val->id}}/edit" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="anniu"><span class="am-icon-edit"></span> 编辑</button></a>
-
-
-                                    
-
-
-                                    <form method="post" action="/admin/video/{{$val->id}}">
+                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="anniu"><span class="am-icon-edit"></span> 编辑</button></a>
+                                    <form method="post" action="">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu"><span class="am-icon-trash-o"></span>下架</button>
@@ -231,7 +220,7 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+           
                 
                 
                 <!-- 分页的开始 -->
@@ -239,7 +228,7 @@
                     <div class="am-cf">
 
                         <div class="am-fr">
-                            {!! $res->appends($_GET)->render() !!}
+                          
                             
                         </div>
                     </div>

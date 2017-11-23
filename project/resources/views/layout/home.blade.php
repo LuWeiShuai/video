@@ -29,7 +29,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/home/index"><h1><img src="/homes/images/Logo.png" alt="" style="height: 60px;" /></h1></a>
+          <?php $res = DB::table('config')->get();  ?>
+          <?php foreach($res as $k=>$v) ?>
+          <a class="navbar-brand" href="/home/index"><h1><img src="/admins/logos/{{$v->logo}}" alt="" style="height: 60px;" /></h1></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
@@ -115,20 +117,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																	time(o) 
 																	}, 
 																	1000);
-																	$('input[name=tel]').css('border','solid 1px black');
-																	return false;
 																} 
-																return false;
 															}else{
 																$('input[name=tel]').css('border','solid 1px red');
 															}
-															return false;
 										               }
 
 										            });
-
-												   //设置定时器,60s后可以重新点击发送验证码
-												   //功能还没完成
 												return false;
 											} 
 											   	

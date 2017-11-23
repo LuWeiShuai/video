@@ -10,6 +10,7 @@ use DB;
 use App\Http\model\type;
 use App\Http\model\video;
 use App\Http\model\vdetail;
+use App\Http\model\config;
 
 class homeController extends Controller
 {
@@ -21,7 +22,15 @@ class homeController extends Controller
     public function index()
     {
 
-    	return view('home.index');
+    	$stat = config::first();
+    	if($stat->status == "1"){
+    		return view('home.index');
+
+    	} else {
+    		session()->flush();
+    		return view('home.weihu');
+    	}
+
     }
 
 }

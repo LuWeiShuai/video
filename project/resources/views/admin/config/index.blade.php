@@ -34,6 +34,7 @@
                                         <label class="mws-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站logo</font></font></label>
                                         <div class="mws-form-item">
                                              <input type="file" class="small" name="logo" value="{{$v->logo}}">
+                                             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
                                         </div>
                                    </div>
                     			<div class="mws-form-row">
@@ -48,8 +49,9 @@
                     				</div>
                     			</div>
                                    @endforeach
-                                   {{csrf_field()}}
-                              {{ method_field('PUT')}}
+                                   
+                                   {{ csrf_field() }}
+                              {{ method_field('PUT') }}
                     		</div>
                     		<div class="mws-button-row" align="center">
                     			<font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input type="submit" value="修改" class="btn btn-danger"></font></font>

@@ -49,7 +49,9 @@
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><a href="/home/index"><img src="/homes/images/Logo.png" style="margin-left: -40px;height: 80px;width: 150px;" /></a></li>
+								<?php $res = DB::table('config')->get();  ?>
+          							<?php foreach($res as $k=>$v) ?>
+								<li><a href="/home/index"><img src="/admins/logos/{{$v->logo}}" style="margin-left: -40px;height: 80px;width: 150px;" /></a></li>
 							</div>
 
 							<div class="search-bar pr">
