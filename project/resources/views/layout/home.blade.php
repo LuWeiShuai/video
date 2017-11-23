@@ -83,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<div class="continue-button" id="yan">
 												{{ csrf_field() }}
 												
-												<input type="submit" value="获取验证码" class="btn btn-bottom" style="margin:12px;height:40px;font-size: 10px">
+												<input type="button" id="btn" value="获取验证码" class="btn btn-danger" style="margin:12px;height:40px;font-size: 10px">
 												<span id='aaa' style="color:red;font-size:20px"></span>
 								
 											</div>
@@ -93,44 +93,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>
 										
 											<script type="text/javascript">
-											
-											$('#yan .btn').click(function(){
-													
-											 var tel = $('input[name=tel]').val();
-											 		var i = 60;
+											var wait=60; 
+											function time(o) { 
+
 												   $.ajax({
 										               type:'get',
 										               url:"/home/register",
 										               data:'tel='+$('input[name=tel]').val(),
 										               success:function(data){
-										               
+										               	// console.log(data);
+											               	if(data=='1'){
+											               		if (wait == 0) { 
+																	o.removeAttribute("disabled"); 
+																	o.value="获取验证码"; 
+																	wait = 60; 
+																	} else { 
+																	o.setAttribute("disabled", true); 
+																	o.value="重新发送(" + wait + ")"; 
+																	wait--; 
+																	setTimeout(function() { 
+																	time(o) 
+																	}, 
+																	1000);
+																	$('input[name=tel]').css('border','solid 1px black');
+																	return false;
+																} 
+																return false;
+															}else{
+																$('input[name=tel]').css('border','solid 1px red');
+															}
+															return false;
 										               }
 
 										            });
 
 												   //设置定时器,60s后可以重新点击发送验证码
 												   //功能还没完成
-												 var i = 60;
-												var a = setInterval(function(){
-									               	
-									               	i--;
-
-									               	if(i == 0){
-									               		clearInterval(a);
-
-									               		$('#yan .btn').attr('value','获取验证码'); 
-									           		}
-									           		
-									           		$('#yan .btn').attr('value',i+'s后重新发送').css('background','grey');
-									           		if(i > 0 ){
-									           			return false;
-									           		}
-
-									            },1000);
-									            
 												return false;
-											})
+											} 
 											   	
+											document.getElementById("btn").onclick=function(){time(this);}
 											$('input[name=code]').mouseout(function(){
 
 												// alert('213');
