@@ -60,6 +60,7 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 	//后台视频管理
 	Route::get('/videoa','VideoaController@index');
 	Route::get('/videos','VideoaController@shan');
+	Route::resource('/videochuan','VideoaController');
 	Route::get('/video/huishou','VideoaController@huishou');
 	Route::get('/video/del/{id}','VideoaController@delete');
 	Route::get('/video/upload/{id}','VideoaController@upload');

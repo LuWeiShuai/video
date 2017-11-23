@@ -11,6 +11,7 @@ use App\Http\model\info;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use zgldh\QiniuStorage\QiniuStorage;
 
 class VideoController extends Controller
 {
@@ -108,12 +109,12 @@ class VideoController extends Controller
     {
         //
         // dd($request->all());
-        $res=$request->except(['_token','url','logo']);
-        
+        $res=$request->except(['_token']);
+        // $disk = QiniuStorage::disk('qiniu');
         // dd($res['zitid']);
 
 
-        // //检查表单提交的时候是否有文件
+        //检查表单提交的时候是否有文件
         // if ($request->hasFile('url')) {
         //     //获取后缀
         //     $vsuffix = $request->file('url')->getClientOriginalExtension();
@@ -124,45 +125,81 @@ class VideoController extends Controller
         //     if(in_array($vsuffix, $vsuffixarr)){
         //         //拼装上传文件的新名字
         //         $vfileName =date('YmdHis',time()).rand(100000, 999999).'.'.$vsuffix;
-        //         //文件的存放目录 ./代表当前， / 在linux系统下是服务器更目录，在windows系统中是某盘的根目录
-        //         //拼接文件路径,将文件存入指定目录
-        //         $vpath = './admins/video/upvideo/';
-        //         $request->file('url')->move($vpath, $vfileName);
+
+
+        //         //文件的存放到七牛
+        //         // $vonly=$request->only(['url']);
+        //         //获取缓存文件的路径
+        //         $vonly=$request->file('url')->getRealPath();
+        //         // dd($only);
+        //         //上传到七牛
+        //         $vbool = $disk->put('videos/move_'.$vfileName,file_get_contents($vonly));  
+        //         if ($vbool) {
+        //             //把文件名存入数组中
+        //             $res['url']=$vfileName;
+        //         }
+
+
+
+        //         //文件存放到本地
+        //         // $vpath = './admins/video/upvideo/';
+        //         // $request->file('url')->move($vpath, $vfileName);
         //         //把文件名存入数组中
-        //         $res['url']=$vfileName;
+        //         // $res['url']=$vfileName;
         //     }else{
         //         //当上传格式不正确的时候，返回info info已经存入session中  在页面中直接使用session('info')直接可以取到
         //         return back()->with('into','文件不是视频，请上传格式为mp4/flv/wmv/rmvb/mkv/avi/rm/asf/mov/mp3/vod/dat类型文件');
         //     }
         // }
-        //检查表单提交的时候是否有文件
-        if ($request->hasFile('logo')) {
-            //获取后缀
-            $suffix = $request->file('logo')->getClientOriginalExtension();
-            
-            //拼装有可能上传文件的后缀格式
-            $suffixarr=['jpg','png','gif','jpeg','bmp'];
-            if(in_array($suffix, $suffixarr)){
-                //拼装上传文件的新名字
-                $fileName = date('YmdHis',time()).rand(100000, 999999).'.'.$suffix;
-                //文件的存放目录 ./代表当前， / 在linux系统下是服务器更目录，在windows系统中是某盘的根目录
-                //拼接文件路径
-                $path = './admins/video/upload';
-                $request->file('logo')->move($path, $fileName);
-                //把文件名存入数组中
-                $res['logo']=$fileName;
-            }else{
-                //当上传格式不正确的时候，返回info info已经存入session中  在页面中直接使用session('info')直接可以取到
-                return back()->with('info','文件不是视频，请上传格式为jpg/gif/png/jpeg/bmp类型文件');
-            }
-        }
+        
+        // //检查表单提交的时候是否有文件
+        // if ($request->hasFile('logo')) {
+        //     //获取后缀
+        //     $suffix = $request->file('logo')->getClientOriginalExtension();
+        //     // var_dump($_FILES['url']['error']);  
+        //     //拼装有可能上传文件的后缀格式
+        //     $suffixarr=['jpg','png','gif','jpeg','bmp'];
+        //     if(in_array($suffix, $suffixarr)){
+        //         //拼装上传文件的新名字
+        //         $fileName = date('YmdHis',time()).rand(100000, 999999).'.'.$suffix;
+
+
+
+
+        //         //文件的存放到七牛
+        //         // $only=$request->only(['logo']);
+        //         //获取缓存文件的路径
+        //         $only=$request->file('logo')->getRealPath();
+        //         // dd($only);
+        //         //上传到七牛
+        //         $bool = $disk->put('images/img_'.$fileName,file_get_contents($only));  
+        //         if ($bool) {
+        //             //把文件名存入数组中
+        //             $res['logo']=$fileName;
+        //         }
+
+
+
+
+        //         //上传到本地
+        //         // $path = './admins/video/upload';
+        //         // $request->file('logo')->move($path, $fileName);
+        //         //把文件名存入数组中
+        //         // $res['logo']=$fileName;
+                
+        //     }else{
+        //         //当上传格式不正确的时候，返回info info已经存入session中  在页面中直接使用session('info')直接可以取到
+        //         return back()->with('info','文件不是视频，请上传格式为jpg/gif/png/jpeg/bmp类型文件');
+        //     }
+        // }
+        dd($res);
         //定义一个新数组
         $vres=[];
         $vres['tid']=$res['zitid'];
         $vres['auth']=$res['auth'];
         $vres['status']=$res['status'];
-        $vres['logo']=$res['logo'];
-        $vres['url']=$res['url'];
+        $vres['logo']=$res['tp'];
+        $vres['url']=$res['sp'];
         $vres['title']=$res['title'];
         $vres['level']='0';
         video::insert($vres);
@@ -180,11 +217,7 @@ class VideoController extends Controller
         // var_dump($fir);
         
         // dd( $fir->id);
-        return redirect('/admin/video');
-        
-        // $cres['']=$fir->
-        // DB::table('users')->first()
-        // echo "string";
+        // return redirect('/admin/video');
     }
 
     /**

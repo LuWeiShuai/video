@@ -13,6 +13,8 @@ use App\Http\model\discuss;
 use App\Http\model\replay;
 use App\Http\model\money;
 use App\Http\model\history;
+use zgldh\QiniuStorage\QiniuStorage;
+
 
 
 class VideoaController extends Controller
@@ -41,9 +43,14 @@ class VideoaController extends Controller
     }
     public function delete($id){
         // $id=$_GET('id');
+        $disk = QiniuStorage::disk('qiniu');
+
         $res=video::find($id);
+        $disk->delete('http://ozssihjsk.bkt.clouddn.com/images/'.$res['logo']);                      //删除文件
+        $disk->delete('http://ozssihjsk.bkt.clouddn.com/videos/'.$res['url']);                      //删除文件
+        // $disk->delete(['file1.jpg', 'file2.jpg']);   //删除多个文件
         // unlink('./admins/video/upvideo/'.$res['url']);
-        unlink('./admins/video/upload/'.$res['logo']);
+        // unlink('./admins/video/upload/'.$res['logo']);
         
         // unlink();
         // dd($res);
@@ -76,6 +83,58 @@ class VideoaController extends Controller
             $cres[$key]=$detail;
         }
         return view('/admin/video/huishou',['res'=>$res,'cres'=>$cres]);
+
+    }
+    public function store(Request $request){
+       // $file=$request->file('file_upload');
+        // $move=$_POST;
+        // $move=$_GET;
+        $disk = QiniuStorage::disk('qiniu');
+       
+        $vsuffix = $request->file('file_upload')->getClientOriginalExtension();
+        //拼装上传文件的新名字
+        $vfileName =date('YmdHis',time()).rand(100000, 999999).'.'.$vsuffix;
+
+        //拼装文件后缀的格式
+        $img=array('png','gif','jpg','jpeg','bmp');
+        // dd($vsuffix);
+
+        //判断是否是图片文件
+        if (in_array($vsuffix,$img)) {
+            // return $vsuffix;
+            //文件存放到七牛
+
+            //获取缓存文件的路径
+            $vonly=$request->file('file_upload')->getRealPath();
+            // return $vonly;
+            // dd($only);
+            //上传到七牛
+            // $vbool = $disk->put('images/'.$vfileName,file_get_contents($vonly));  
+            // $vbool=$disk->put('images/'.$vfileName,fopen(file_get_contents($vonly),'r+'));
+            if ($vbool) {
+                //把文件名存入数组中
+                return $vfileName;
+            }
+        }else{
+            // return $vsuffix;
+            //文件存放到七牛
+
+            //获取缓存文件的路径
+            $vonly=$request->file('file_upload')->getRealPath();
+            // return $vonly;
+            // dd($only);
+            //上传到七牛
+            // $vbool = $disk->put('videos/'.$vfileName,file_get_contents($vonly));  
+            // $vbool=$disk->put('videos/'.$vfileName,fopen(file_get_contents($vonly),'r+'));
+            if ($vbool) {
+                //把文件名存入数组中
+                return $vfileName;
+            }
+        }
+        
+        
+
+        // return $move;
 
     }
 }

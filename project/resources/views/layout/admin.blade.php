@@ -314,7 +314,7 @@
     <script src="/admins/js/libs/jquery-1.8.3.min.js"></script>
     <script src="/admins/js/libs/jquery.mousewheel.min.js"></script>
     <script src="/admins/js/libs/jquery.placeholder.min.js"></script>
-    <script src="/admins/custom-plugins/fileinput.js"></script>
+    <!-- <script src="/admins/custom-plugins/fileinput.js"></script> -->
     
     <!-- jQuery-UI Dependent Scripts -->
     <script src="/admins/jui/js/jquery-ui-1.9.2.min.js"></script>
@@ -346,7 +346,7 @@
     <script src="/admins/js/demo/demo.dashboard.js"></script>
     
     <!-- layer -->
-    <!-- <script src="/admins/js/layer.js"></script> -->
+    <script src="/layer/layer.js"></script>
     @section('script')
 
     @show

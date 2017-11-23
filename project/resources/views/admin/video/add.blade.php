@@ -7,8 +7,53 @@
     #area{
         width: 150px!important;
     }
+    .mws-form-label{
+        font-size: 14px;
+    }
+    .mws-form-item{
+        font-size: 10px;
+        color: black;
+    }
+    #ann{
+        /*font-size: 12px;*/
+        cursor: pointer;
+    }
+    #doc-form-file{
+        width: 120px;
+        height: 25px;
+        /*cursor: pointer!important;*/
+        font-size: 12px;
+        /*margin-top: 10px;*/
+
+    }
+    .tpl-form-file-img{
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 20px;
+
+    }
+    #video{
+        width: 200px;
+        opacity: 1;
+        margin-left: 50px;
+        position: relative;
+    }
+    #wngbng{
+        position: absolute;
+        top: 23px;
+        left: 55px;
+        z-index: 9999;
+    }
+    .mws-form-label{
+        cursor: default!important;
+    }
+
 </style>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+   <script type="text/javascript" src="/admins/js/libs/jquery-1.8.3.min.js"></script>
+
 @section('content')
+    <!-- <link rel="stylesheet" href="/admins/video/css/amazeui.min.css" /> -->
 <div class="mws-panel grid_8">
 	<div class="mws-panel-header">
     	<span>添加视频</span>
@@ -67,21 +112,193 @@
                 <div class="mws-form-row">
                     <label class="mws-form-label">上传文件</label>
                     <div class="mws-form-item">
-                        <div class="fileinput-holder" style="position: relative;"><input type="file" name="url" style="position: absolute; top: 0px; right: 0px; margin: 0px; cursor: pointer; font-size: 999px; opacity: 0; z-index: 999;" value=""></div>
+                        <input type="text" id="sp" name="sp">
+                        <input type="button" value="上传文件" class="btn btn-info" id="moves">
                     </div>
-                    @if(!empty(session('into')))
-                       <p id="cuowu">* {{session('into')}}</p>
-                    @endif
                 </div>
+                <script type="text/javascript">
+                    // alert($);
+                    document.getElementById('moves').onclick=function(){
+                    // $("#moves").click(function(){
+                        // layer.open({
+                        //   type: 1,
+                        //   title: false,
+                        //   closeBtn: 0,
+                        //   shadeClose: true,
+                        //   skin: 'yourclass',
+                        //   content: '<form id="move" ><input type="file" name="file_upload" id="video" value=""><p><img src="" alt="" id="img1" style="width:100px" ></p><input type="button" id="asd" name="btn" value="确认" onclick="shipin()"></form>'
+                        // });
+                        
+                        layer.alert('<form id="move" ><i class="icon-upload-2" id="wngbng"></i><input type="file" name="file_upload" id="video" value=""></form>',{
+                                skin: 'layui-layer-molv',
+                                btn: ['确认', '取消'],
+                                area: ['300px', '200px'],
+                                title: '上传文件',
+                            yes:function(index){
+
+                                    var imgPath = $("#video").val();
+                                    if (imgPath == "") {
+                                        alert("请选择上传视频文件！");
+                                        return;
+                                    }
+                                    
+                                    //判断上传文件的后缀名
+                                    var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+                                    if (strExtension != 'mp4' && strExtension != 'flv'
+                                        && strExtension != 'wmv' && strExtension != 'rmvb' && strExtension != 'mkv' && strExtension != 'avi' && strExtension != 'rm' && strExtension != 'asf' && strExtension != 'mov' && strExtension != 'mp3' && strExtension != 'vod' && strExtension != 'dat') {
+                                        alert("请选择视频文件");
+                                        return;
+                                    }
+
+                                    var formData = new FormData($('#move')[0]);
+
+                                    // var formData = new FormData();
+                                    // formData.append('file',$("#video"));
+                                   
+                                    // console.log($("#video"));
+                                  
+                                     
+                                    // $.get('/admin/videochuan',{'data':formData},function(data){
+                                    //     console.log(data);
+                                    // })
+                                    $.ajaxSetup({
+                                       headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        }
+                                    });
+                                    // alert("1234");
+                                    $.ajax({
+                                        type: "post",
+                                        url: "/admin/videochuan",
+                                        data: formData ,
+                                        cache: false,
+                                        async: true,
+                                        contentType: false,
+                                        processData: false,
+                                        beforeSend:function(){
+                                              
+                                            layer.load(2);
+                                            // console.log(data);
+
+                                          },
+                                        success: function(data) {
+                                            // layer.close(a);
+                                            // $('#sp').attr('src',data);
+                                            layer.closeAll('loading');
+                                            $('#sp').val(data);
+                                        },
+                                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                            alert("上传失败，请检查网络后重试");
+                                            layer.closeAll('loading');
+                                        }
+                                    });
+                                layer.close(index);
+                            }
+                        });
+
+                        // $("#video").change(function (){ 
+                        //     shipin();
+
+                    // })
+                    };
+                </script>
                 <div class="mws-form-row">
-                    <label class="mws-form-label">封面图片</label>
+                    <label class="mws-form-label">上传封面图片</label>
                     <div class="mws-form-item">
-                        <div class="fileinput-holder" style="position: relative;"><input type="file" name="logo" style="position: absolute; top: 0px; right: 0px; margin: 0px; cursor: pointer; font-size: 999px; opacity: 0; z-index: 999;" value=""></div>
+                        <input type="text" id="tp" name="tp">
+                        <input type="button" value="上传封面图片" class="btn btn-info" id="imgs">
+                        
                     </div>
-                    @if(!empty(session('info')))
-                       <p id="cuowu">* {{session('info')}}</p>
-                    @endif
                 </div>
+               
+                <script type="text/javascript">
+                    // alert($);
+                    document.getElementById('imgs').onclick=function(){
+                    // $("#moves").click(function(){
+                        // layer.open({
+                        //   type: 1,
+                        //   title: false,
+                        //   closeBtn: 0,
+                        //   shadeClose: true,
+                        //   skin: 'yourclass',
+                        //   content: '<form id="move" ><input type="file" name="file_upload" id="video" value=""><p><img src="" alt="" id="img1" style="width:100px" ></p><input type="button" id="asd" name="btn" value="确认" onclick="shipin()"></form>'
+                        // });
+                        
+                        layer.alert('<form id="move" ><i class="icon-upload-2" id="wngbng"></i><input type="file" name="file_upload" id="video" value=""></form>',{
+                                skin: 'layui-layer-molv',
+                                btn: ['确认', '取消'],
+                                area: ['300px', '200px'],
+                                title: '上传文件',
+                            yes:function(index){
+
+                                    var imgPath = $("#video").val();
+                                    if (imgPath == "") {
+                                        alert("请选择上传图片！");
+                                        return;
+                                    }
+                                    
+                                    //判断上传文件的后缀名
+                                    var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+                                    if (strExtension != 'jpg' && strExtension != 'gif'
+                                        && strExtension != 'png' && strExtension != 'bmp' && strExtension != 'jpeg') {
+                                        alert("请选择图片文件");
+                                        return;
+                                    }
+
+                                    var formData = new FormData($('#move')[0]);
+
+                                    // var formData = new FormData();
+                                    // formData.append('file',$("#video"));
+                                   
+                                    // console.log($("#video"));
+                                  
+                                     
+                                    // $.get('/admin/videochuan',{'data':formData},function(data){
+                                    //     console.log(data);
+                                    // })
+                                    $.ajaxSetup({
+                                       headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        }
+                                    });
+                                    // alert("1234");
+                                    $.ajax({
+                                        type: "post",
+                                        url: "/admin/videochuan",
+                                        data: formData ,
+                                        cache: false,
+                                        async: true,
+                                        contentType: false,
+                                        processData: false,
+                                        beforeSend:function(){
+                                              
+                                            layer.load(2);
+                                            // console.log(data);
+
+                                          },
+                                        success: function(data) {
+                                            // layer.close(a);
+                                            // $('#sp').attr('src',data);
+                                            layer.closeAll('loading');
+                                            $('#tp').val(data);
+                                        },
+                                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                            alert("上传失败，请检查网络后重试");
+                                            layer.closeAll('loading');
+                                        }
+                                    });
+                                layer.close(index);
+                            }
+                        });
+
+                        // $("#video").change(function (){ 
+                        //     shipin();
+
+                    // })
+                    };
+                </script>
+
+                
     			<div class="mws-form-row">
     				<label class="mws-form-label">内容介绍</label>
     				<div class="mws-form-item">
@@ -100,6 +317,7 @@
     </div>
 </div>
 <script type="text/javascript">
+    //  
     var city=document.getElementById('city');
     var area=document.getElementById('area');
     var fid;
@@ -118,6 +336,10 @@
         },'json');
         return false;
     }
-        
+    
+   
 </script>
+  
+
 @endsection
+

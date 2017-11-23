@@ -69,6 +69,19 @@ return [
             'region' => 'your-region',
             'bucket' => 'your-bucket',
         ],
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'ozssihjsk.bkt.clouddn.com', //你的七牛域名
+                'https'     => '',         //你的HTTPS域名
+                'custom'    => 'ozssihjsk.bkt.clouddn.com',         //Useless 没啥用，请直接使用上面的 default 项
+             ],
+            'access_key'=> 'lDQw_og0D9WEJE8Zsl_84Yp1hoZNW7YCc1pCYuFG',  //AccessKey
+            'secret_key'=> 'Ev26NNdxazdxnJJ46g1_yxpX6IXk5wj-snRi7WbV',  //SecretKey
+            'bucket'    => 'wngbng',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+            'access'    => 'public'  //空间访问控制 public 或 private
+        ],
 
         'rackspace' => [
             'driver'    => 'rackspace',
