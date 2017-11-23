@@ -13,7 +13,11 @@
 		<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/homes/css/infstyle.css" rel="stylesheet" type="text/css">
 		<script src="/homes/js/jquery.min.js"></script>
-		<script src="/homes/js/amazeui.js"></script>			
+		<script src="/homes/js/amazeui.js"></script>		
+		<style>
+			.cur{border:solid 2px lightblue;}
+			
+		</style>	
 	</head>
 
 	<body>
@@ -102,7 +106,7 @@
 						<ul>
 							<li> <a href="/home/center">个人信息</a></li>
 							<li> <a href="/home/center/tel">电话号码</a></li>
-							<li> <a href="">修改密码</a></li>
+							<li> <a href="/home/center/password">修改密码</a></li>
 						</ul>
 					</li>
 					<li class="person">
