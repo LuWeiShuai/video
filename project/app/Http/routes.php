@@ -96,8 +96,7 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::post('/regis','registerController@store');
 	Route::get('/reg','registerController@code');
 	Route::post('/passs','registerController@passs');
-	//用户上传
-	// Route::resource('/userup','userUpController');
+	
  });
 
 //前台路由
@@ -113,7 +112,7 @@ Route::get('/center/password','centerController@password');
 Route::post('/center/update','centerController@update');
 Route::post('/center/yzmUpdate','centerController@yzmUpdate');
 Route::post('/center/repass','centerController@repass');
-
+Route::get('/center/up','centerController@up');
 
 });
 

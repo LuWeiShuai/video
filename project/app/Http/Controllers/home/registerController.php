@@ -23,7 +23,7 @@ class registerController extends Controller
         $tel= $_GET['tel'];
 
         //正则匹配手机号
-        $re = '/1[345789]\d{9}/';
+        $re = '/^1[345789]\d{9}$/';
         $a = preg_match('/1[345789]\d{9}/',$tel);
         if ($a) {
         	//将手机号存入session
@@ -44,9 +44,11 @@ class registerController extends Controller
 			$sendSms->setOutId('demo');
 	       	$client->execute($sendSms);
 	       	session(['code'=>$code]);
-	       	return  "1";
+
+	       	return  1;
         }else{
-        	return "0";
+        	return 0;
+
         }
       	
   }  
