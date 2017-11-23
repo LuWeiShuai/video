@@ -20,6 +20,11 @@ Route::get('/admin_login','loginController@admin');
 Route::get('/admin_login/code','loginController@code');
 Route::post('/admin_login/dologin','loginController@doalogin');
 
+//前台登录
+Route::get('/home_login','loginController@home');
+Route::post('/home_login/dologin','loginController@dohlogin');
+Route::get('/home_login/delete','loginController@delete');
+
 
 //后台路由
 
@@ -58,6 +63,11 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 	Route::resource('/friendlink','friendlinkController');
 
 	//后台视频管理
+	Route::get('/videoa','VideoaController@index');
+	Route::get('/videos','VideoaController@shan');
+	Route::get('/video/huishou','VideoaController@huishou');
+	Route::get('/video/del/{id}','VideoaController@delete');
+	Route::get('/video/upload/{id}','VideoaController@upload');
 	Route::resource('/video','VideoController');
 
 });
@@ -67,10 +77,19 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 Route::get('/home_login','loginController@home');
 
 //前台路由
- Route::group(['prefix'=>'home','namespace'=>'home'],function(){
+Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 
- 	//前台主页
+
+	//前台主页
 	Route::get('/index','homeController@index');
+	
+	//视频遍历
+	Route::get('/video/{id}','videoController@video');
+	Route::get('/type/{id}','videoController@type');
+
+
+	//视频播放
+	Route::get('/play/{id}','videoController@play');
 
 	//用户注册
 	Route::get('/register','registerController@register');
@@ -78,9 +97,22 @@ Route::get('/home_login','loginController@home');
 	Route::get('/reg','registerController@code');
 	Route::post('/passs','registerController@passs');
 	//用户上传
-	Route::resource('/userup','userUpController');
-
+	// Route::resource('/userup','userUpController');
  });
+
+//前台路由
+Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],function(){
+
+//前台个人中心
+Route::get('/center','centerController@index');
+Route::get('/center/tel','centerController@tel');
+Route::get('/center/service','centerController@service');
+Route::get('/center/yzm','centerController@yzm');
+
+Route::post('/center/update','centerController@update');
+// Route::get('/center/tel','telController@index');
+
+});
 
 
 

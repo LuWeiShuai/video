@@ -29,7 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><h1><img src="/homes/images/Logo.png" alt="" style="height: 60px;" /></h1></a>
+          <a class="navbar-brand" href="/home/index"><h1><img src="/homes/images/Logo.png" alt="" style="height: 60px;" /></h1></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
@@ -38,20 +38,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="submit" value=" ">
 				</form>
 			</div>
+
 			@if (count($errors) > 0)
-										    <div class="mws-form-message warning">
-										        <ul>
-										            @foreach ($errors->all() as $error)
-										                <li style="font-size: 20px;list-style: none">{{ $error }}</li>
-										            @endforeach
-										        </ul>
-										    </div>
-											@endif
-			<div class="header-top-right">
-				<div class="file">
-					<a href="/home/userup">上传</a>
-				</div>
+				 <div class="mws-form-message warning">
+				     <ul>
+				         @foreach ($errors->all() as $error)
+				             <li style="font-size: 20px;list-styl{{ $error }}</li>
+				         @endforeach
+				     </ul>
+				 </div>
+			@endif
 			
+			<div class="header-top-right">
+
+				@if(!session('uid'))
+
 				<div class="signin">
 					<a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a>
 					<!-- pop-up-box -->
@@ -74,10 +75,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<input type="text" name="code" class="email" placeholder="输入验证码" maxlength="11" title="Enter a valid mobile number" style="width: 40%;float: left;margin-right: 20px;" />
 											<div class="continue-button" id="yan">
 												{{ csrf_field() }}
-												<!-- <button class="btn btn-bottom" style="margin:12px;height:40px">获取验证码</button> -->
+												
 												<input type="submit" value="获取验证码" class="btn btn-bottom" style="margin:12px;height:40px;font-size: 10px">
 												<span id='aaa' style="color:red;font-size:20px"></span>
-												<!-- <a href="#small-dialog2" class="hvr-shutter-out-horizontal play-icon popup-with-zoom-anim">获取验证码</a> -->
+												
 											
 											</div>
 											</form>	
@@ -154,6 +155,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 
 										<div class="signup">
+
 											<form action="/home/regis" method="post">
 
 												<input type="password" name="password" class="email" placeholder="密码" required="required"  />
@@ -161,20 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												
 												{{csrf_field()}}
 												<input type="submit"  value="注册"/>
-												<!-- <script type="text/javascript">
-													$.ajaxSetup({
-												        headers: {
-												            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-												        }
-													});
-													$('input[name=password]').mouseout(function(){
-													var	password = $('input[name=password]').val();
-														$.post('/home/passs',{pass:password},function(){
-															alert(data);
-														})
-													})
 												
-												</script> -->
 
 											</form>	
 											
@@ -197,7 +186,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>
 										</div>
 										<div class="signup">
-											<form action="upload.html">
+											<form action="" method="">
 												<input type="text" class="email" placeholder="Email" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" title="Enter a valid email"/>
 												<input type="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
 												<input type="submit"  value="Sign In"/>
@@ -272,26 +261,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											});
 									</script>	
 				</div>
+				
 				<div class="signin">
+					
 					<a href="#small-dialog" class="play-icon popup-with-zoom-anim">登录</a>
+					
 					<div id="small-dialog" class="mfp-hide">
 						<h3>Login</h3>
 						<div class="social-sits">
-							<div class="facebook-button">
-								<a href="#">脸书登录</a>
-							</div>
-							<div class="chrome-button">
-								<a href="#">谷歌登录</a>
-							</div>
-							<div class="button-bottom">
-								<p>新账号? <a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a></p>
-							</div>
+							<img src="/homes/images/login.png">
 						</div>
 						<div class="signup">
-							<form>
-								<input type="text" class="email" placeholder="手机号" required="required" pattern="1[34578]\d{9}"/>
-								<input type="password" placeholder="密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+							
+							<form action="/home_login/dologin" method="post">
+								<input type="text" name="tel" class="email" placeholder="手机号" required="required" pattern="1[34578]\d{9}"/>
+								<input type="password" name="password" placeholder="密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+								<input type="hidden" name="lastlogin" value="{{date('Y-m-d H:i:s',time())}}">
+								{{csrf_field()}}
 								<input type="submit"  value="登录"/>
+
 							</form>
 							<div class="forgot">
 								<a href="#">忘记密码?</a>
@@ -300,7 +288,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"> </div>
 					</div>
 				</div>
+				@else
+					<div class="signin">
+					<a href="/home/center" class="play-icon popup-with-zoom-anim">个人中心</a>
+					<a href="/home_login/delete" class="play-icon popup-with-zoom-anim">注销</a>
+						
+					</div>
+				@endif
 				<div class="clearfix"> </div>
+				
 			</div>
         </div>
 		<div class="clearfix"> </div>
@@ -320,65 +316,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li class="active"><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="shows.html" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>电视节目</a></li>
 					<li><a href="history.html" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
-					<li><a href="#" class="menu1"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>国际影城<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-2">
-							<li><a href="movies.html">欧美</a></li>        
-							<li><a href="movies.html">日韩</a></li>
-							<li><a href="movies.html">国产</a></li> 
+					<?php $res1 = DB::table('type')->get();?>
+					@foreach($res1 as $k1 => $v1)
+						@if($v1->fid == 0)
+						<li><a href="{{ url('/home/video/'.$v1->id)}}" class="menu{{ $v1->id }}"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>{{ $v1->name }}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+						<ul class="cl-effect-{{ $v1->id }}" style="display:none;">
+							@foreach($res1 as $k2 => $v2)
+								@if($v2->fid == $v1->id )
+								<li><a href="{{ url('/home/type/'.$v2->id)}}" class="typeSon{{$v2->id}}">{{ $v2->name }}</a></li>
+								@endif
+							@endforeach       
 						</ul>
-						<!-- script-for-menu -->
-						<script>
-							$( "li a.menu1" ).click(function() {
-								$( "ul.cl-effect-2" ).slideToggle( 300, function() {
-								// Animation complete.
-								});
-							});
-						</script>
-					<li><a href="#" class="menu2"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电影类型<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-1">
-							<li><a href="sports.html">动作</a></li>                                
-							<li><a href="sports.html">爱情</a></li>
-							<li><a href="sports.html">犯罪</a></li> 
-							<li><a href="sports.html">惊悚</a></li>  
-						</ul>
-						<!-- script-for-menu -->
-						<script>
-							$( "li a.menu2" ).click(function() {
-								$( "ul.cl-effect-1" ).slideToggle(300, function() {
-								// Animation complete.
-								});
-							});
-						</script>
-						<li><a href="#" class="menu3"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>动漫<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-3" style="display:none;">
-							<li><a href="sports.html">动作</a></li>                                
-							<li><a href="sports.html">爱情</a></li>
-							<li><a href="sports.html">犯罪</a></li> 
-							<li><a href="sports.html">惊悚</a></li>  
-						</ul>
+							
+							<!-- script-for-menu -->
 							<script>
-							$("li a.menu3" ).click(function() {
-								$( "ul.cl-effect-3" ).slideToggle(300, function() {
-								// Animation complete.
-								});
-							});
-						</script>
-						<li><a href="#" class="menu4"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>电视剧<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-4" style="display:none;">
-							<li><a href="sports.html">动作</a></li>                                
-							<li><a href="sports.html">爱情</a></li>
-							<li><a href="sports.html">犯罪</a></li> 
-							<li><a href="sports.html">惊悚</a></li>  
-						</ul>
-							<script>
-							$("li a.menu4" ).click(function() {
-								$( "ul.cl-effect-4" ).slideToggle(300, function() {
-								// Animation complete.
-								});
-							});
-						</script>
+								$( "li a.menu"+"{{ $v1->id }}" ).mouseover(function(){			
+									 var type = $(this).text();
+									$( "ul.cl-effect-"+"{{ $v1->id }}" ).slideToggle(300, function(){
+									// Animation complete.
+									});
+								});							
+							</script>
+						@endif
+					@endforeach
 				  </ul>
-				  <!-- script-for-menu -->
+				  	 <!-- script-for-menu -->
 						<script>
 							$( ".top-navigation" ).click(function() {
 							$( ".drop-navigation" ).slideToggle( 300, function() {
@@ -447,3 +409,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
   </body>
 </html>
+<script> 
+    $('.mws-form-message').delay(1000).slideUp(1000);
+</script>
