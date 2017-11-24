@@ -43,7 +43,7 @@
 								<div class="menu-hd"><a id="mc-menu-hd" href="/home/center/up" target="_top"><i class="am-icon-user am-icon-fw"></i><span>上传列表</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
 							</div>
 							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="/home/center" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>历史记录</span></a></div>
+								<div class="menu-hd"><a href="/home/center/history" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>历史记录</span></a></div>
 						</ul>
 						</div>
 
@@ -118,7 +118,7 @@
 					<li class="person">
 						<p><i class="am-icon-tags"></i>历史记录</p>
 						<ul>
-							<li> <a href="#">历史记录</a></li>												
+							<li> <a href="/home/center/history">历史记录</a></li>												
 						</ul>
 					</li>
 
