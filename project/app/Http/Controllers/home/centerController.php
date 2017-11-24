@@ -130,7 +130,6 @@ class centerController extends Controller
     public function yzm()
     {
         // 获取手机号
-
         $tel = $_GET['tel'];
 
         //将手机号存入session
@@ -167,10 +166,10 @@ class centerController extends Controller
 
         //获取session的验证码
         $session = session('code');
-
+       
         //获取uid的uid
         $id = session('uid');
-
+       
         //判断验证码是否正确
         if($session == $yzm){
             //将新手机号插入数据库

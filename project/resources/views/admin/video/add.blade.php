@@ -98,6 +98,29 @@
                         </select>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    //  
+                    var city=document.getElementById('city');
+                    var area=document.getElementById('area');
+                    var fid;
+                    var arr;
+                    city.onchange=function(){
+                        fid=this.value;
+
+                        $.get('/admin/videoa',{fid:fid},function(data){
+                            // console.log(data);
+                            // alert(arr);
+                            area.innerHTML='';
+                            for (var i = 0; i <data.length; i++) {
+                                console.log(data[i].id);
+                                area.innerHTML += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                            };
+                        },'json');
+                        return false;
+                    }
+                    
+                   
+                </script>
                 <div class="mws-form-row">
                     <label class="mws-form-label">视频类型</label>
                     <div class="mws-form-item">
@@ -152,15 +175,6 @@
 
                                     var formData = new FormData($('#move')[0]);
 
-                                    // var formData = new FormData();
-                                    // formData.append('file',$("#video"));
-                                   
-                                    // console.log($("#video"));
-                                  
-                                     
-                                    // $.get('/admin/videochuan',{'data':formData},function(data){
-                                    //     console.log(data);
-                                    // })
                                     $.ajaxSetup({
                                        headers: {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -316,29 +330,7 @@
     	</form>
     </div>
 </div>
-<script type="text/javascript">
-    //  
-    var city=document.getElementById('city');
-    var area=document.getElementById('area');
-    var fid;
-    var arr;
-    city.onchange=function(){
-        fid=this.value;
 
-        $.get('/admin/videoa',{fid:fid},function(data){
-            // console.log(data);
-            // alert(arr);
-            area.innerHTML='';
-            for (var i = 0; i <data.length; i++) {
-                // console.log(data[i].name);
-                area.innerHTML += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
-            };
-        },'json');
-        return false;
-    }
-    
-   
-</script>
   
 
 @endsection

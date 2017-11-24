@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Laravel</title>
 
 
@@ -26,15 +27,15 @@
                 vertical-align: middle;
             }
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+    .content {
+        text-align: center;
+        display: inline-block;
+    }
 
-            .title {
-                font-size: 96px;
-            }
-        </style>
+    .title {
+        font-size: 96px;
+    }
+</style>
     </head>
     <body>
         <div class="container">

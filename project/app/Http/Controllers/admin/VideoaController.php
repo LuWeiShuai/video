@@ -107,10 +107,11 @@ class VideoaController extends Controller
             //获取缓存文件的路径
             $vonly=$request->file('file_upload')->getRealPath();
             // return $vonly;
-            // dd($only);
             //上传到七牛
-            // $vbool = $disk->put('images/'.$vfileName,file_get_contents($vonly));  
-            // $vbool=$disk->put('images/'.$vfileName,fopen(file_get_contents($vonly),'r+'));
+            $vbool = $disk->put('images/'.$vfileName,file_get_contents($vonly));  
+            //S分段上传（不能用）
+            // $vbool=$disk->put('images/'.$vfileName,fopen('http://img0.imgtn.bdimg.com/it/u=953832798,2829610548&fm=27&gp=0.jpg','r+'));
+            // return $vbool;die;
             if ($vbool) {
                 //把文件名存入数组中
                 return $vfileName;
@@ -124,7 +125,9 @@ class VideoaController extends Controller
             // return $vonly;
             // dd($only);
             //上传到七牛
-            // $vbool = $disk->put('videos/'.$vfileName,file_get_contents($vonly));  
+            $vbool = $disk->put('videos/'.$vfileName,file_get_contents($vonly));  
+
+            //分段上传（不能用）
             // $vbool=$disk->put('videos/'.$vfileName,fopen(file_get_contents($vonly),'r+'));
             if ($vbool) {
                 //把文件名存入数组中
