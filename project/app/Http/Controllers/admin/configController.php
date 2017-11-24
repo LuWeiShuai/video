@@ -94,7 +94,7 @@ class configController extends Controller
         $old = config::where('id',$id)->first();
       
         $res = config::where('id',$id)->update($re);
-        if($res){
+        if($res && $old->logo != "74731511505640.png"){
             unlink('./admins/logos/'.$old->logo);
                
         }
