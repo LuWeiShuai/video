@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Laravel</title>
 
 
@@ -34,7 +35,7 @@
             .title {
                 font-size: 96px;
             }
-        </style>
+</style>
     </head>
     <body>
         <div class="container">

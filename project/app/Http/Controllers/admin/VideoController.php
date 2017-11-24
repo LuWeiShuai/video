@@ -192,7 +192,7 @@ class VideoController extends Controller
         //         return back()->with('info','文件不是视频，请上传格式为jpg/gif/png/jpeg/bmp类型文件');
         //     }
         // }
-        dd($res);
+        // dd($res);
         //定义一个新数组
         $vres=[];
         $vres['tid']=$res['zitid'];
@@ -202,9 +202,12 @@ class VideoController extends Controller
         $vres['url']=$res['sp'];
         $vres['title']=$res['title'];
         $vres['level']='0';
+        $vres['num']='0';
         video::insert($vres);
+        // dd($a);
         //根据url查询添加新数据的vid
-        $fir=DB::table('video')->where('url',$res['url'])->first();
+        $fir=video::where('url',$res['sp'])->first();
+        // dd($fir);
         $vid=$fir->id;
         //定义一个新数组
         $cres=[];
@@ -217,7 +220,7 @@ class VideoController extends Controller
         // var_dump($fir);
         
         // dd( $fir->id);
-        // return redirect('/admin/video');
+        return redirect('/admin/video');
     }
 
     /**
