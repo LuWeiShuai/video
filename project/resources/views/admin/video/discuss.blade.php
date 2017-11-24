@@ -118,7 +118,7 @@
                                  </span>
                             </div>
                             <span class="tpl-table-images-content-i-shadow"></span>
-                            <img src="/admins/video/upload/{{$vres['logo']}}" alt="">
+                            <img src="http://ozssihjsk.bkt.clouddn.com/images/{{$vres['logo']}}" alt="">
                         </div>
                         <div class="tpl-table-images-content-block" style="padding-left: 240px;">
                             <div class="tpl-i-font" style="height: 40px; color: black;font-size: 24px; font-weight: bold;">

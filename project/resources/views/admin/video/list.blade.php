@@ -191,7 +191,7 @@
                                  </span>
                             </div>
                             <span class="tpl-table-images-content-i-shadow"></span>
-                            <img src="/admins/video/upload/{{$val->logo}}" alt="">
+                            <img src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->logo}}" alt="">
                         </div>
                         <div class="tpl-table-images-content-block">
                             <div class="tpl-i-font" style="height: 80px;">
