@@ -105,20 +105,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										               url:"/home/register",
 										               data:'tel='+$('input[name=tel]').val(),
 										               success:function(data){
-										               	// console.log(data);
+										               
 											               	if(data=='1'){
-											               		if (wait == 0) { 
-																	o.removeAttribute("disabled"); 
-																	o.value="获取验证码"; 
-																	wait = 60; 
-																	} else { 
-																	o.setAttribute("disabled", true); 
-																	o.value="重新发送(" + wait + ")"; 
-																	wait--; 
-																	setTimeout(function() { 
-																	time(o) 
-																	}, 
-																	1000);
+											               		  if (wait == 0) {  
+															            o.removeAttribute("disabled");            
+															            o.value="免费获取验证码";  
+															            wait = 60;  
+															        } else {  
+															            o.setAttribute("disabled", true);  
+															            o.value="重新发送(" + wait + ")";  
+															            wait--;  
+															            setTimeout(function() {  
+															                time(o)  
+															            },  
+															            1000) 
 																} 
 															}else{
 																$('input[name=tel]').css('border','solid 1px red');
