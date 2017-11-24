@@ -13,6 +13,7 @@ use App\Http\model\info;
 use App\Http\model\login;
 use Flc\Dysms\Client;
 use Flc\Dysms\Request\SendSms;
+use App\Http\model\config;
 
 class centerController extends Controller
 {
@@ -28,8 +29,9 @@ class centerController extends Controller
 
         //进行拆分生日
         $data = explode('-',$res['birthday']);
-        
-        return view('/home/center/center',['res'=>$res,'data'=>$data]);
+        //更改logo的变量
+        $re = config::first();
+        return view('/home/center/center',['res'=>$res,'data'=>$data,'re'=>$re]);
     }
 
     /**
