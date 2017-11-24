@@ -136,18 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-<<<<<<< HEAD
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
-=======
-        // zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
-
-        /*
-        *   overtrue   
-        */
-
-        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
->>>>>>> 7fe8c53bfca07635f98453c21768ad15a3648740
-
         /*
          * Application Service Providers...
          */
