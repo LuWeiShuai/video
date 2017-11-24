@@ -137,12 +137,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
-
-        /*
-        *   overtrue   
-        */
-
-        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
         /*
          * Application Service Providers...
          */
