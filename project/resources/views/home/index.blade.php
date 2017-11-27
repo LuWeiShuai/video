@@ -13,6 +13,7 @@
 			<div class="recommended-info">
 				<h3>{{$v->name}}</h3>
 			</div>
+			<a href="{{ url('/home/video/'.$v->id)}}">更多>></a>
 			@foreach ($video as $key => $val)
 				@if(in_array($val->tid,$fid[$k]))
 					@if($key<=3)

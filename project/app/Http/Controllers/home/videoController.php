@@ -10,6 +10,7 @@ use DB;
 use session;
 use App\Http\model\type;
 use App\Http\model\video;
+use App\Http\model\uvideo;
 use App\Http\model\vdetail;
 use App\Http\model\discuss;
 use App\Http\model\info;
@@ -36,7 +37,7 @@ class videoController extends Controller
 
 			$tid[]= $val->id;
         }
-        $res1 = video::whereIn('tid',$tid)->get();
+        $res1 = video::whereIn('tid',$tid)->where('status','1')->get();
         // var_dump($res1);
 	   return view('home.video.list',['res1'=>$res1,'name'=>$name]); 			
     }
@@ -49,7 +50,7 @@ class videoController extends Controller
         $res2 = type::where('id',$res->fid)->first();
 
         $fname =$res2->name;
-        $res1 = video::where('tid',$id)->get();
+        $res1 = video::where('tid',$id)->where('status','1')->get();
         return view('home.video.type',['name'=>$name,'fname'=>$fname,'res'=>$res1]); 
     }
 
@@ -66,12 +67,17 @@ class videoController extends Controller
         $res = video::where('id',$id)->first();
         //视频的权限
         $auth = $res->auth;
-        //视频的父类
+        //排行榜
         $tid = $res->tid;
         $type = type::where('id',$tid)->first();
         $fid = $type->fid;
         $res5 = type::where('fid',$fid)->get();
+        $tid = [];
+        foreach ($res5 as $key => $val) {
 
+            $tid[]= $val->id;
+        }
+        $res6 = video::whereIn('tid',$tid)->orderby('num','desc')->get();
         //普通视频
         if($auth == 0 ){
            //点击量 
@@ -100,7 +106,7 @@ class videoController extends Controller
              //评论
             $res1 = discuss::where('vid',$id)->get();
             
-            return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+            return view('home.video.play',['res'=>$res,'res1'=>$res1,'res6'=>$res6]);
         }
 
         //vip视频
@@ -138,7 +144,7 @@ class videoController extends Controller
                      //评论
                     $res1 = discuss::where('vid',$id)->get();
                     
-                    return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+                    return view('home.video.play',['res'=>$res,'res1'=>$res1,'res6'=>$res6]);
                 }
             }
         }
@@ -179,7 +185,7 @@ class videoController extends Controller
                      //评论
                     $res1 = discuss::where('vid',$id)->get();
                     
-                    return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+                    return view('home.video.play',['res'=>$res,'res1'=>$res1,'res6'=>$res6]);
                 }
             }
         }      
@@ -206,5 +212,20 @@ class videoController extends Controller
             return '评论失败';
         }
 
+    }
+
+    public function user_play($id)
+    {
+        $res = uvideo::where('id',$id)->first();
+        //点击量 
+        $arr = [];       
+        $arr['num'] = $res->num;
+        $arr['num'] += 1;
+        uvideo::where('id',$id)->update($arr);
+
+        //排行榜
+        $res1 = uvideo::orderby('num','desc')->get();
+       
+        return view('home.video.user_play',['res'=>$res,'res1'=>$res1]);
     }
 }

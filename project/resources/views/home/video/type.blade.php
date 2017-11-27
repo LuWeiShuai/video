@@ -22,7 +22,7 @@
 								<h5><a href="{{ url('/home/play/'.$v->id)}}" class="title">{{$v->title}}</a></h5>
 								<ul>
 									<li><p class="author author-info"><a href="#" class="author">演员：{{ $res2->actor }}</a></p></li>
-									<li class="right-list"><p class="views views-info">2,114,200 次点击</p></li>
+									<li class="right-list"><p class="views views-info">{{$v->num}}次点击</p></li>
 								</ul>
 							</div>
 						</div>
