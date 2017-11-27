@@ -27,39 +27,48 @@ class searchController extends Controller
      */
     public function index(Request $request)
     {
-    	//=========管理员上传的视频===================
-    	//根据查询条件进行分页查询
-        $res=video::where('status','1')->where('title','like','%'.$request->input('cha').'%')->orderBy('id','asc')->get();
-        //定义一个空数组
-        $cres=[];
-        //遍历查询到的数据
-        foreach ($res as $key => $value) {
-            $vid=$value->id;
-            // var_dump($vid);
-            //根据查询的vid进行查询并逐个存入创建的新数组中
-            $detail=vdetail::where('vid',$vid)->first();
-            $cres[$key]=$detail;
-        }
-        // return view('/home/search');
+    	// dd($request->only('cha')['cha']);
+    	if ($request->only('cha')['cha']=='') {
+    		// dd(1);
+	        return view('/home/search',['cha'=>0]);
 
-    	//=========用户上传的视频===================
+    	}else {
+ 			// dd(2);
+    	
+	    	//=========管理员上传的视频===================
+	    	//根据查询条件进行分页查询
+	        $res=video::where('status','1')->where('title','like','%'.$request->input('cha').'%')->orderBy('id','asc')->paginate(20);
+	        //定义一个空数组
+	        $cres=[];
+	        //遍历查询到的数据
+	        foreach ($res as $key => $value) {
+	            $vid=$value->id;
+	            // var_dump($vid);
+	            //根据查询的vid进行查询并逐个存入创建的新数组中
+	            $detail=vdetail::where('vid',$vid)->first();
+	            $cres[$key]=$detail;
+	        }
+	        // return view('/home/search');
 
-        $ures=uvideo::where('status','1')->where('title','like','%'.$request->input('cha').'%')->orderBy('id','asc')->paginate(15);
-        //定义一个空数组
-        // dd($ures);
-        $info=[];
-        //遍历查询到的数据
-        foreach ($ures as $key => $value) {
-            $uid=$value->uid;
-            // var_dump($vid);
-            // dd($uid);
-            //根据查询的vid进行查询并逐个存入创建的新数组中
-            $in=info::where('uid',$uid)->first();
-            $info[$key]=$in;
+	    	//=========用户上传的视频===================
 
-        }
-// dd($info);
-        return view('/home/search',['res'=>$res,'cres'=>$cres,'ures'=>$ures,'info'=>$info]);
+	        $ures=uvideo::where('status','1')->where('title','like','%'.$request->input('cha').'%')->orderBy('id','asc')->paginate(15);
+	        //定义一个空数组
+	        // dd($ures);
+	        $info=[];
+	        //遍历查询到的数据
+	        foreach ($ures as $key => $value) {
+	            $uid=$value->uid;
+	            // var_dump($vid);
+	            // dd($uid);
+	            //根据查询的vid进行查询并逐个存入创建的新数组中
+	            $in=info::where('uid',$uid)->first();
+	            $info[$key]=$in;
 
+	        }
+			// dd($res['items']);
+			// dd($ures[0]);
+	        return view('/home/search',['res'=>$res,'cres'=>$cres,'ures'=>$ures,'info'=>$info,'cha'=>1]);
+		}
     }
 }
