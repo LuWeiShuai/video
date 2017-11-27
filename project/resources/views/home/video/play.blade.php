@@ -56,7 +56,7 @@
 					</div>
 					<div class="all-comments">
 						<div class="all-comments-info">
-							<a href="#">所有评论(8,657)</a>
+							<a href="#">所有评论</a>
 							<div class="box">
 								<form action="" method="get">
 									<input type="hidden" name="time" value="{{ date('Y-m-d',time()) }}">
@@ -89,13 +89,6 @@
 									return false;
 								})
 							</script>
-							<div class="all-comments-buttons">
-								<ul>
-									<li><a href="#" class="top">顶层评论</a></li>
-									<li><a href="#" class="top newest">最新评论</a></li>
-									<li><a href="#" class="top my-comment">我的评论</a></li>
-								</ul>
-							</div>
 						</div>
 						<div class="media-grids">
 							@foreach($res1 as $key=>$val)
@@ -116,138 +109,22 @@
 				<div class="col-md-4 single-right">
 					<h3>排行榜</h3>
 					<div class="single-grid-right">
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r1.jpg" alt=""></a>
+						@foreach($res6 as $k=>$v)
+							@if($k < 10)
+							<?php $res2 =DB::table('vdetail')->where('vid',$v->id)->first(); ?>
+							<div class="single-right-grids">
+								<div class="col-md-4 single-right-grid-left">
+									<a href="{{ url('/home/play/'.$v->id)}}"><img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}" alt=""></a>
+								</div>
+								<div class="col-md-8 single-right-grid-right">
+									<a href="{{ url('/home/play/'.$v->id)}}" class="title">{{ $v->title }}</a>
+									<p class="author"><a href="#" class="author">{{ $res2->actor }}</a></p>
+									<p class="views">{{ $v->num }}</p>
+								</div>
+								<div class="clearfix"> </div>
 							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r2.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views </p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r3.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r4.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r5.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r6.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author">By <a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r1.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r2.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r3.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r4.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r5.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="/homes/images/r6.jpg" alt=""></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
+							@endif
+						@endforeach
 					</div>
 				</div>
 				<div class="clearfix"> </div>

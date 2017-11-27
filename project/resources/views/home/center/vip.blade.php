@@ -18,9 +18,6 @@
 						<label class="am-radio-inline">
 							<input type="radio" name="vip" value="m" data-am-ucheck checked>开通
 						</label>
-						<label class="am-radio-inline">
-							<input type="radio" name="vip" value="w" data-am-ucheck >不开通
-						</label> 
 					</div>
 				</div>
 

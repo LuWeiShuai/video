@@ -92,9 +92,6 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	//视频播放
 	Route::get('/play/{id}','videoController@play');
 
-
-	
-
 	//用户评论
 	Route::post('/discuss','videoController@discuss');
 

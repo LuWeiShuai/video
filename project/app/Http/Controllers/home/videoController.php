@@ -36,7 +36,7 @@ class videoController extends Controller
 
 			$tid[]= $val->id;
         }
-        $res1 = video::whereIn('tid',$tid)->get();
+        $res1 = video::whereIn('tid',$tid)->where('status','1')->get();
         // var_dump($res1);
 	   return view('home.video.list',['res1'=>$res1,'name'=>$name]); 			
     }
@@ -49,7 +49,7 @@ class videoController extends Controller
         $res2 = type::where('id',$res->fid)->first();
 
         $fname =$res2->name;
-        $res1 = video::where('tid',$id)->get();
+        $res1 = video::where('tid',$id)->where('status','1')->get();
         return view('home.video.type',['name'=>$name,'fname'=>$fname,'res'=>$res1]); 
     }
 
@@ -71,7 +71,12 @@ class videoController extends Controller
         $type = type::where('id',$tid)->first();
         $fid = $type->fid;
         $res5 = type::where('fid',$fid)->get();
+        $tid = [];
+        foreach ($res5 as $key => $val) {
 
+            $tid[]= $val->id;
+        }
+        $res6 = video::whereIn('tid',$tid)->orderby('num','desc')->get();
         //普通视频
         if($auth == 0 ){
            //点击量 
@@ -100,7 +105,7 @@ class videoController extends Controller
              //评论
             $res1 = discuss::where('vid',$id)->get();
             
-            return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+            return view('home.video.play',['res'=>$res,'res1'=>$res1,'res6'=>$res6]);
         }
 
         //vip视频
@@ -138,7 +143,7 @@ class videoController extends Controller
                      //评论
                     $res1 = discuss::where('vid',$id)->get();
                     
-                    return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+                    return view('home.video.play',['res'=>$res,'res1'=>$res1,'res6'=>$res6]);
                 }
             }
         }
@@ -179,7 +184,7 @@ class videoController extends Controller
                      //评论
                     $res1 = discuss::where('vid',$id)->get();
                     
-                    return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+                    return view('home.video.play',['res'=>$res,'res1'=>$res1,'res6'=>$res6]);
                 }
             }
         }      
