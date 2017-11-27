@@ -15,6 +15,7 @@ use App\Http\model\history;
 use Flc\Dysms\Client;
 use Flc\Dysms\Request\SendSms;
 use zgldh\QiniuStorage\QiniuStorage;
+use App\Http\model\config;
 
 class centerController extends Controller
 {
@@ -26,8 +27,9 @@ class centerController extends Controller
 
         //进行拆分生日
         $data = explode('-',$res['birthday']);
-        
-        return view('/home/center/center',['res'=>$res,'data'=>$data]);
+        //更改logo的变量
+        $re = config::first();
+        return view('/home/center/center',['res'=>$res,'data'=>$data,'re'=>$re]);
     }
 
     // 获取个人中心页面的电话号码页面
@@ -216,5 +218,33 @@ class centerController extends Controller
         $res = history::where('uid',$uid)->orderBy('time','desc')->get();
 
         return view('/home/center/history',['res'=>$res]);
+    }
+
+    //vip开通
+    public function vip(){
+
+        return view('/home/center/vip');
+    }
+
+    //执行vip开通
+     public function doVip(){
+        $id = session('uid');
+        $res = login::where('id',$id)->first();
+        $data = [];
+        if($res->status == 0){
+
+            $data['status'] = 1;
+        }else{
+
+            return back()->with('msg','您已经开通了vip,祝您观看愉快');
+        }
+
+        $result = login::where('id',$id)->update($data);
+
+        if($result){
+
+            return back()->with('msg','vip开通成功');
+        }
+
     }
 }

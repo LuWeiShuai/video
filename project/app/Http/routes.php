@@ -122,6 +122,8 @@ Route::post('/center/update','centerController@update');
 Route::post('/center/yzmUpdate','centerController@yzmUpdate');
 Route::post('/center/repass','centerController@repass');
 Route::get('/center/up','centerController@up');
+Route::get('/center/vip','centerController@vip');
+Route::get('/center/doVip','centerController@doVip');
 
 });
 

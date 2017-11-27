@@ -138,7 +138,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 
-
         /*
          * Application Service Providers...
          */

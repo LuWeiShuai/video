@@ -52,7 +52,9 @@
         
             <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
             <div id="mws-logo-wrap">
-                <img src="/admins/images/logo.png" alt="mws admin">
+                <?php $res = DB::table('config')->get();  ?>
+          <?php foreach($res as $k=>$v) ?>
+                <img src="/admins/logos/{{$v->logo}}" alt="mws admin">
             </div>
         </div>
         

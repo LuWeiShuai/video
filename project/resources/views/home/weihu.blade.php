@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-
-    <title>Laravel</title>
-
+    <head>
+        <title>404</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -16,6 +14,7 @@
                 margin: 0;
                 padding: 0;
                 width: 100%;
+                color: #B0BEC5;
                 display: table;
                 font-weight: 100;
                 font-family: 'Lato';
@@ -33,14 +32,18 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 72px;
+                margin-bottom: 40px;
             }
-</style>
+        </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">
+                	<h3>网站升级维护中</h3>
+                    <img src="/admins/images/404.jpg" alt="" width="50%">
+                </div>
             </div>
         </div>
     </body>
