@@ -103,6 +103,7 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::post('/regis','registerController@store');
 	Route::get('/reg','registerController@code');
 	Route::post('/passs','registerController@passs');
+	Route::get('/regs','registerController@tell');
  });
 
 //前台路由
@@ -120,7 +121,10 @@ Route::get('/center/password','centerController@password');
 Route::post('/center/update','centerController@update');
 Route::post('/center/yzmUpdate','centerController@yzmUpdate');
 Route::post('/center/repass','centerController@repass');
-Route::get('/center/up','centerController@up');
+//用户上传视频
+Route::resource('/up','UpController');
+Route::resource('/picchuan','VideoaController');
+Route::resource('/videos','ShangController');
 
 });
 

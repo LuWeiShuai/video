@@ -1,35 +1,31 @@
-@extends('layout.Center')
-@section('title','上传列表')
+@extends('layout/center')
+@section('title','视频列表')
 
-
-	<meta name="description" content="这是一个 index 页面">
+    <meta name="description" content="">
     <meta name="keywords" content="index">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <!-- <link rel="icon" type="image/png" href="/admins/video/i/favicon.png"> -->
     <!-- <link rel="apple-touch-icon-precomposed" href="/admins/video/i/app-icon72x72@2x.png"> -->
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="/admins/video/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/homes/video/css/amazeui.min.css" />
     <!-- <link rel="stylesheet" href="/admins/video/css/admin.css"> -->
-    <link rel="stylesheet" href="/admins/video/css/app.css">
-    <link rel="stylesheet" href="/admins/video/css/popuo-box.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/payment.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/style.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/reset.css">
+    <link rel="stylesheet" href="/homes/video/css/app.css">
+    <link rel="stylesheet" href="/homes/css/popuo-box.css">
     <style type="text/css">
-    	#mws-wrapper {
-		    height: auto;
-		    min-height: 100%;
-		    margin-top: -62px;
-		    padding-top: 62px;
-		    position: relative;
-		    box-sizing: border-box;
-		    -moz-box-sizing: border-box;
-		    -ms-box-sizing: border-box;
-		    -webkit-box-sizing: border-box;
-		    background-color:#333338!important;
-		    background-image: url(/admins/images/core/mws-dark-bg.png)!important;
-		}
+        #mws-wrapper {
+            height: auto;
+            min-height: 100%;
+            margin-top: -62px;
+            padding-top: 62px;
+            position: relative;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            background-color:#333338!important;
+            background-image: url('/home/images/core/mws-dark-bg.png')!important;
+        }
 
 
         #anniu{
@@ -126,8 +122,6 @@
     </style>
 @section('content')
 
-
-
 <div class="tpl-portlet-components">
     <div class="portlet-title">
         <div class="caption font-green bold">
@@ -143,22 +137,18 @@
             <div class="am-u-sm-12 am-u-md-6">
                 <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
-                        <a href="/admin/video/create" style='color:white;'> 
+                        <a href="/home/up/create" style='color:white;'> 
                             <button type="button" class="am-btn am-btn-default am-btn-success"  id="tianjia"><span class="am-icon-plus"></span>新增
                             </button>
                         </a>
-                        
-                       <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
-                       <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-unlock"></span> 审核</button>
-                       <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
                     </div>
                 </div>
             </div>
-                    <form action="/admin/video" method="get">
+                    <form action="/home/up" method="get">
             
             <div class="am-u-sm-12 am-u-md-6" id="seach">
                 <div class="am-input-group am-input-group-sm">
-                            <input type="text" class="am-form-field" name="cha">
+                            <input type="text" class="am-form-field" name="search" value="{{isset($_GET['search']) ? $_GET['search'] : '' }}">
                             <span class="am-input-group-btn">
                             <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
                             </span>
@@ -170,7 +160,7 @@
         <div class="jianxi"></div>
         <div class="am-g">
             <div class="tpl-table-images">
-                
+               @foreach($res as $k=>$v)
                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
                     <div class="tpl-table-images-content">
                         <div class="tpl-table-images-content-i-time">
@@ -179,9 +169,11 @@
                               
                             </div>
                         </div>
+                        
                         <div class="tpl-i-title">
-                          
+                           
                         </div>
+                        
                         <div class="tpl-table-images-content-i" id="fengmian">
                             <div class="tpl-table-images-content-i-info">
                                 <span class="ico">
@@ -189,38 +181,27 @@
                                  </span>
                             </div>
                             <span class="tpl-table-images-content-i-shadow"></span>
-                            <img src="" alt="">
+                            <img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}" alt="">
                         </div>
-                        <div class="tpl-table-images-content-block">
-                            <div class="tpl-i-font" style="height: 80px;">
-                               
-                            </div>
-                            <div class="tpl-i-more">
-                                <ul>
-                                    <li><span class="am-icon-qq am-text-warning"> 100+</span></li>
-                                    <li><span class="am-icon-weixin am-text-success"> 235+</span></li>
-                                    <li><span class="am-icon-github font-green"> 600+</span></li> 
-                                    <a href=""><li>查看评论</li></a>
-                                    <li>
-                                       
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="tpl-table-images-content-block">  
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
-                                    
-                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="anniu"><span class="am-icon-edit"></span> 编辑</button></a>
-                                    <form method="post" action="">
+                                    <form method="post" action="/home/up/{{$v->id}}">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
-                                        <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu"><span class="am-icon-trash-o"></span>下架</button>
+                                        <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu" style="width:190px;"><span class="am-icon-trash-o"></span>下架</button>
                                     </form>
+
                                 </div>
+
                             </div>
+
                         </div>
+                        
                     </div>
                 </div>
-           
+               @endforeach 
+              <!-- end遍历 -->
                 
                 
                 <!-- 分页的开始 -->
@@ -228,8 +209,8 @@
                     <div class="am-cf">
 
                         <div class="am-fr">
-                          
-                            
+                           <!-- 分页 -->
+                            {!! $res->appends($_GET)->render() !!}
                         </div>
                     </div>
                     <hr>
@@ -243,10 +224,9 @@
     <div class="tpl-alert"></div>
 </div>
 
-
-    <script src="/admins/video/js/jquery.min.js"></script>
-	<script src="/admins/video/js/payment.js"></script>
+@endsection
+    <script src="/homes/video/js/jquery.min.js"></script>
+    <!-- <script src="/homes/video/js/payment.js"></script> -->
     <!-- <script src="/admins/video/js/amazeui.min.js"></script> -->
     <!-- <script src="/admins/video/js/app.js"></script> -->
     
-@endsection

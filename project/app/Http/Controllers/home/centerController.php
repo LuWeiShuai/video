@@ -214,9 +214,4 @@ class centerController extends Controller
 
     }
 
-    //用户上传
-    public function up(){
-        return view('/home/center/up');
-    }
-
 }
