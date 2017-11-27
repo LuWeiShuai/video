@@ -103,13 +103,10 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::post('/regis','registerController@store');
 	Route::get('/reg','registerController@code');
 	Route::post('/passs','registerController@passs');
-<<<<<<< HEAD
 
 	//搜索
 	Route::get('/search','searchController@index');
-=======
 	Route::get('/regs','registerController@tell');
->>>>>>> b046f306d248439c6e87219eb98170ee6ec34f19
  });
 
 //前台路由
@@ -128,18 +125,15 @@ Route::get('/center/history','centerController@history');
 Route::post('/center/update','centerController@update');
 Route::post('/center/yzmUpdate','centerController@yzmUpdate');
 Route::post('/center/repass','centerController@repass');
-<<<<<<< HEAD
 Route::get('/center/up','centerController@up');
 Route::get('/center/vip','centerController@vip');
 Route::get('/center/doVip','centerController@doVip');
 Route::get('/center/money/{id}','centerController@money');
 Route::get('/center/buy','centerController@buy');
-=======
 //用户上传视频
 Route::resource('/up','UpController');
 Route::resource('/picchuan','VideoaController');
 Route::resource('/videos','ShangController');
->>>>>>> b046f306d248439c6e87219eb98170ee6ec34f19
 
 });
 
