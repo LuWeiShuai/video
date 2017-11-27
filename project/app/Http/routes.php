@@ -125,6 +125,8 @@ Route::post('/center/repass','centerController@repass');
 Route::get('/center/up','centerController@up');
 Route::get('/center/vip','centerController@vip');
 Route::get('/center/doVip','centerController@doVip');
+Route::get('/center/money/{id}','centerController@money');
+Route::get('/center/buy','centerController@buy');
 
 });
 

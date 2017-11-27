@@ -117,6 +117,7 @@
 							<li> <a href="/home/center/tel">电话号码</a></li>
 							<li> <a href="/home/center/password">修改密码</a></li>
 							<li> <a href="/home/center/vip">开通vip</a></li>
+							<li> <a href="/home/center/money/{id}">购买视频</a></li>
 						</ul>
 					</li>
 					<li class="person">

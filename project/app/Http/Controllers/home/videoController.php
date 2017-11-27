@@ -14,6 +14,8 @@ use App\Http\model\vdetail;
 use App\Http\model\discuss;
 use App\Http\model\info;
 use App\Http\model\login;
+use App\Http\model\history;
+use App\Http\model\money;
 
 
 class videoController extends Controller
@@ -71,9 +73,25 @@ class videoController extends Controller
             $arr = [];       
             $arr['num'] = $res->num;
             $arr['num'] += 1;
-            video::where('id',$id)->update($arr); 
-            //视频播放
+            video::where('id',$id)->update($arr);
 
+            //存历史记录
+            $res4 = history::where('vid',$id)->first();
+            if($res4){
+                $data = [];
+                $data['time'] = date('Y-m-d H:i:s',time());
+                history::where('id',$res4->id)->update($data);
+            }else{
+                $his = [];
+                $his['uid'] = $uid;
+                $his['vid'] = $id;
+                $his['title'] = $res->title;
+                $his['time'] = date('Y-m-d H:i:s',time());
+                $his['url'] =$res->url;
+                $his['logo'] = $res->logo;
+
+                history::insert($his);               
+            }
              //评论
             $res1 = discuss::where('vid',$id)->get();
             
@@ -92,8 +110,25 @@ class videoController extends Controller
                     $arr = [];       
                     $arr['num'] = $res->num;
                     $arr['num'] += 1;
-                    video::where('id',$id)->update($arr); 
-                    //视频播放
+                    video::where('id',$id)->update($arr);
+
+                    //存历史记录
+                    $res4 = history::where('vid',$id)->first();
+                    if($res4){
+                        $data = [];
+                        $data['time'] = date('Y-m-d H:i:s',time());
+                        history::where('id',$res4->id)->update($data);
+                    }else{
+                        $his = [];
+                        $his['uid'] = $uid;
+                        $his['vid'] = $id;
+                        $his['title'] = $res->title;
+                        $his['time'] = date('Y-m-d H:i:s',time());
+                        $his['url'] =$res->url;
+                        $his['logo'] = $res->logo;
+
+                        history::insert($his);               
+                    }
 
                      //评论
                     $res1 = discuss::where('vid',$id)->get();
@@ -103,29 +138,46 @@ class videoController extends Controller
             }
         }
         //查看该用户是否购买过此视频
-        
+        $money = money::where('vid',$id)->first();
         //付费视频
-        // if($auth == 2 ){
-        //     if(!session('uid')){
-        //         return back()->with('msg','请先登录在观看付费视频');;
-        //     }else{
-        //         if($userAuth != 1){
-        //             return back()->with('msg','请先购买此视频在观看');
-        //         }else{
-        //             //点击量 
-        //             $arr = [];       
-        //             $arr['num'] = $res->num;
-        //             $arr['num'] += 1;
-        //             video::where('id',$id)->update($arr); 
-        //             //视频播放
+        if($auth == 2 ){
+            if(!session('uid')){
+                return back()->with('msg','请先登录在观看付费视频');;
+            }else{
+                if(!$money){
+                    return redirect("/home/center/money/{$id}")->with('msg','请先购买此视频在观看');
+                }else{
+                    //点击量 
+                    $arr = [];       
+                    $arr['num'] = $res->num;
+                    $arr['num'] += 1;
+                    video::where('id',$id)->update($arr);
 
-        //              //评论
-        //             $res1 = discuss::where('vid',$id)->get();
+                    //存历史记录
+                    $res4 = history::where('vid',$id)->first();
+                    if($res4){
+                        $data = [];
+                        $data['time'] = date('Y-m-d H:i:s',time());
+                        history::where('id',$res4->id)->update($data);
+                    }else{
+                        $his = [];
+                        $his['uid'] = $uid;
+                        $his['vid'] = $id;
+                        $his['title'] = $res->title;
+                        $his['time'] = date('Y-m-d H:i:s',time());
+                        $his['url'] =$res->url;
+                        $his['logo'] = $res->logo;
+
+                        history::insert($his);               
+                    }
+
+                     //评论
+                    $res1 = discuss::where('vid',$id)->get();
                     
-        //             return view('home.video.play',['res'=>$res,'res1'=>$res1]);
-        //         }
-        //     }
-        // }      
+                    return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+                }
+            }
+        }      
     }
 
     //视频评论

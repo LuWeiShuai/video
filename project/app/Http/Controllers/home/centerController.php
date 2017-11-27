@@ -16,6 +16,8 @@ use Flc\Dysms\Client;
 use Flc\Dysms\Request\SendSms;
 use zgldh\QiniuStorage\QiniuStorage;
 use App\Http\model\config;
+use App\Http\model\money;
+use App\Http\model\video;
 
 class centerController extends Controller
 {
@@ -249,5 +251,27 @@ class centerController extends Controller
             
         }
 
+    }
+
+    //购买视频页面
+    public function money($id){
+
+        $res = video::get();
+        return view('home/center/money',['res'=>$res,'vid'=>$id]);
+    }
+
+    //购买
+    public function buy(Request $request){
+
+        $data =[];
+        $data['vid'] = $request->input('money');
+        $data['uid'] = session('uid');
+        $res = video::where('id',$request->input('money'))->first();
+        $data['title'] = $res->title;
+
+        $res1 = money::insert($data);
+        if($res1){
+            return back()->with('msg','购买成功');
+        }
     }
 }
