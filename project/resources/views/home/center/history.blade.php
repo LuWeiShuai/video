@@ -1,5 +1,6 @@
 @extends('layout.Center')
 @section('title','历史记录')
+
 @section('content')
 	<div class="user-info">
 		<!--标题 -->
@@ -23,25 +24,46 @@
 				
 				@foreach($res as $k => $v)
 				<div class="col-md-3 resent-grid recommended-grid">
-					<div class="resent-grid-img recommended-grid-img">
+					<div class="resent-grid-img recommended-grid-img" style="margin-top: 15px;">
 						<a href="/home/play/{{$v->vid}}">
-							<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}" alt="" style="height:150px;width: 180px;">
+							<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}" style="height:150px;width: 100%;">
 						</a>
-						
 					</div>
+					
 					<div class="resent-grid-info recommended-grid-info video-info-grid">
-						<h5>
-							<a href="/home/play/{{$v->vid}}" class="title">{{$v->title}}</a>
-						</h5>
+						<ul>
+							<li>
+								<a href="/home/play/{{$v->vid}}" class="title">{{$v->title}}</a>
+
+							</li>
+						</ul>
 						<ul>
 							<li>
 								<p class="author author-info">最后播放时间：{{$v->time}}</p>
+							</li>
+							<li>
+    							{{ csrf_field()}}
+
+								<span id="{{$v->id}}" class="btn btn-danger" onclick="del({{$v->id}})">删除记录</span>
+								
+								
 							</li>
 						</ul>
 					</div>
 				</div>
 				@endforeach
-				<div class="clearfix"> </div>
+				<script type="text/javascript">
+					
+			    	var del = function(id)
+			    	{
+
+			    		$.get('/home/center/delete',{id:id},function(data){
+			    			 layer.alert(data);
+
+			    		});
+			    	}
+				</script>
+
 			</div>
 		</div>
 

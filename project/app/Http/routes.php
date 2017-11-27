@@ -118,6 +118,7 @@ Route::get('/center/about','centerController@about');
 Route::get('/center/yzm','centerController@yzm');
 Route::get('/center/password','centerController@password');
 Route::get('/center/history','centerController@history');
+Route::get('/center/delete','centerController@delete');
 
 Route::post('/center/update','centerController@update');
 Route::post('/center/yzmUpdate','centerController@yzmUpdate');

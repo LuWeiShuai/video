@@ -26,12 +26,13 @@ class centerController extends Controller
     {
         //查询info表
         $res = info::where('uid',session('uid'))->first();
-
+        //查询login表
+        $res1 = login::where('id',session('uid'))->first();
         //进行拆分生日
         $data = explode('-',$res['birthday']);
         //更改logo的变量
         $re = config::first();
-        return view('/home/center/center',['res'=>$res,'data'=>$data,'re'=>$re]);
+        return view('/home/center/center',['res'=>$res,'res1'=>$res1,'data'=>$data,'re'=>$re]);
     }
 
     // 获取个人中心页面的电话号码页面
@@ -220,6 +221,21 @@ class centerController extends Controller
         $res = history::where('uid',$uid)->orderBy('time','desc')->get();
 
         return view('/home/center/history',['res'=>$res]);
+    }
+
+    //执行删除历史记录
+    public function delete()
+    {
+        //获取传过来的id
+        $id = $_GET['id'];
+        //删除数据库中的数据
+        $res = history::where('id',$id)->delete();
+        //判断
+        if ($res) {
+            return redirect('/home/center/history')->with('msg','删除成功');
+        }else{
+            return back()->with('msg','删除失败');
+        }
     }
 
     //vip开通
