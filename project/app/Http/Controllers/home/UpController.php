@@ -17,8 +17,7 @@ class UpController extends Controller
      */
     public function index(Request $request)
     {
-        $res = uvideo::where("status",0)
-        ->where('title','like','%'.$request->input('search').'%')
+        $res = uvideo::where('title','like','%'.$request->input('search').'%')
         ->orderBy('status','asc')
          ->paginate(5);
         return view('/home/center/up',['res'=>$res,'request'=>$request]);

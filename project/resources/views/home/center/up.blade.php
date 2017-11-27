@@ -29,7 +29,16 @@
 
 
         #anniu{
-            width: 70px!important;
+            width: 100px!important;
+            margin-left: 25px;
+            height: 30px;
+            font-size: 18px!important;
+            line-height: 10px!important;
+            float: left!important;
+
+        }
+         #ann{
+            width: 100px!important;
             margin-left: 25px;
             height: 30px;
             font-size: 18px!important;
@@ -69,9 +78,10 @@
             margin-bottom: -10px;
         }
         .ico i{
-            color: red;
-            font-size: 20px;
+            color: black;
+            font-size: 12px;
             font-weight:bold;
+            font-family:楷体;
         }
         #fengmian img{
             height: 250px;
@@ -171,21 +181,29 @@
                         </div>
                         
                         <div class="tpl-i-title">
-                           
+                           {{$v->title}}
                         </div>
                         
                         <div class="tpl-table-images-content-i" id="fengmian">
-                            <div class="tpl-table-images-content-i-info">
+                            
+                            <span class="tpl-table-images-content-i-shadow"></span>
+                            <a href=""><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}" alt=""></a>
+                                
+                        </div>
+                        <div class="tpl-table-images-content-i-info">
                                 <span class="ico">
-                                    <i></i>
+                                    <i>{{$v->content}}</i>
                                  </span>
                             </div>
-                            <span class="tpl-table-images-content-i-shadow"></span>
-                            <img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}" alt="">
-                        </div>
                         <div class="tpl-table-images-content-block">  
+
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
+                                @if(  $v->status == 0)
+                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-info" id="anniu"><span class="am-icon-edit">待审核</span></button></a>
+                                @else 
+                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="ann"><span class="am-icon-edit">已通过</span></button></a>
+                                @endif
                                     <form method="post" action="/home/up/{{$v->id}}">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}

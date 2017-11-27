@@ -217,7 +217,7 @@
                                         success: function(data) {
                                             // layer.close(a);
                                             // $('#sp').attr('src',data);
-                                            console.log(data);
+                                            // console.log(data);
                                             layer.closeAll('loading');
                                             $('#shipin').val(data);
                                         },
