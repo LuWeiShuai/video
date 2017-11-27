@@ -13,6 +13,7 @@ use App\Http\model\video;
 use App\Http\model\vdetail;
 use App\Http\model\discuss;
 use App\Http\model\info;
+use App\Http\model\login;
 
 
 class videoController extends Controller
@@ -53,17 +54,78 @@ class videoController extends Controller
     //视频播放页面
     public function play($id)
     {
-        //点击量 
-        $arr = [];       
+        if(session('uid')){
+            $uid = session('uid'); 
+            $user = login::where('id',$uid)->first();
+            //获取用视频观看权限
+            $userAuth = $user->status;
+        }
+
         $res = video::where('id',$id)->first();
-        $arr['num'] = $res->num;
-        $arr['num'] += 1;
-        video::where('id',$id)->update($arr);
+        //视频的权限
+        $auth = $res->auth;
+
+        //普通视频
+        if($auth == 0 ){
+           //点击量 
+            $arr = [];       
+            $arr['num'] = $res->num;
+            $arr['num'] += 1;
+            video::where('id',$id)->update($arr); 
+            //视频播放
+
+             //评论
+            $res1 = discuss::where('vid',$id)->get();
+            
+            return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+        }
+
+        //vip视频
+        if($auth == 1 ){
+            if(!session('uid')){
+                return back()->with('msg','请先登录在观看vip视频');;
+            }else{
+                if($userAuth != 1){
+                    return back()->with('msg','请先开通vip在观看');
+                }else{
+                    //点击量 
+                    $arr = [];       
+                    $arr['num'] = $res->num;
+                    $arr['num'] += 1;
+                    video::where('id',$id)->update($arr); 
+                    //视频播放
+
+                     //评论
+                    $res1 = discuss::where('vid',$id)->get();
+                    
+                    return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+                }
+            }
+        }
+        //查看该用户是否购买过此视频
         
-        //评论
-        $res1 = discuss::where('vid',$id)->get();
-        
-        return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+        //付费视频
+        // if($auth == 2 ){
+        //     if(!session('uid')){
+        //         return back()->with('msg','请先登录在观看付费视频');;
+        //     }else{
+        //         if($userAuth != 1){
+        //             return back()->with('msg','请先购买此视频在观看');
+        //         }else{
+        //             //点击量 
+        //             $arr = [];       
+        //             $arr['num'] = $res->num;
+        //             $arr['num'] += 1;
+        //             video::where('id',$id)->update($arr); 
+        //             //视频播放
+
+        //              //评论
+        //             $res1 = discuss::where('vid',$id)->get();
+                    
+        //             return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+        //         }
+        //     }
+        // }      
     }
 
     //视频评论

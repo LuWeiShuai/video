@@ -14,6 +14,7 @@
 		<link href="/homes/css/infstyle.css" rel="stylesheet" type="text/css">
 		<script src="/homes/js/jquery.min.js"></script>
 		<script src="/homes/js/amazeui.js"></script>		
+		<script src="/layer/layer.js"></script>		
 		<style>
 			.cur{border:solid 2px lightblue;}
 			
@@ -21,6 +22,13 @@
 	</head>
 
 	<body>
+		@if(session('msg'))
+                <div class="mws-form-message info" style="font-size: 20px;">
+					<script>
+                    	layer.alert("{{session('msg')}}");						
+					</script>
+                </div>               
+        @endif
 		<!--头 -->
 		<header>
 			<article>
@@ -108,6 +116,7 @@
 							<li> <a href="/home/center">个人信息</a></li>
 							<li> <a href="/home/center/tel">电话号码</a></li>
 							<li> <a href="/home/center/password">修改密码</a></li>
+							<li> <a href="/home/center/vip">开通vip</a></li>
 						</ul>
 					</li>
 					<li class="person">

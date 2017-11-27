@@ -47,10 +47,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 	
 			@if(session('msg'))
-                <div class="mws-form-message info" style="font-size: 20px;">         
-                    {{session('msg')}}
-
-                </div>
+                <div class="mws-form-message info" style="font-size: 20px;">
+					<script>
+                    	layer.alert("{{session('msg')}}");						
+					</script>
+                </div>               
             @endif
 
 			@if (count($errors) > 0)
@@ -435,7 +436,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/homes/js/bootstrap.min.js"></script>
-    <script src="/layer/layer.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
   </body>
 </html>

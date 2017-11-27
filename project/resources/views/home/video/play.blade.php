@@ -8,7 +8,7 @@
 							<h3 id="title" align="center">{{ $res->title}}</h3>
 					</div>
 						<div class="video-grid">
-							<iframe src="https://www.youtube.com/embed/oYiT-vLjhC4" allowfullscreen=""></iframe>
+							<iframe src="https://ozssihjsk.bkt.clouddn.com/oYiT-vLjhC4" allowfullscreen=""></iframe>
 						</div>
 					</div>						
 					<script>
