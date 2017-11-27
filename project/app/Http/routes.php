@@ -96,6 +96,10 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	//用户评论
 	Route::post('/discuss','videoController@discuss');
 
+	//用户视频播放
+	Route::get('/user_play/{id}','videoController@user_play');
+
+
 	//用户注册
 	Route::get('/register','registerController@register');
 	Route::post('/regis','registerController@store');

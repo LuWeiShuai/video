@@ -10,6 +10,7 @@ use DB;
 use session;
 use App\Http\model\type;
 use App\Http\model\video;
+use App\Http\model\uvideo;
 use App\Http\model\vdetail;
 use App\Http\model\discuss;
 use App\Http\model\info;
@@ -66,7 +67,7 @@ class videoController extends Controller
         $res = video::where('id',$id)->first();
         //视频的权限
         $auth = $res->auth;
-        //视频的父类
+        //排行榜
         $tid = $res->tid;
         $type = type::where('id',$tid)->first();
         $fid = $type->fid;
@@ -211,5 +212,20 @@ class videoController extends Controller
             return '评论失败';
         }
 
+    }
+
+    public function user_play($id)
+    {
+        $res = uvideo::where('id',$id)->first();
+        //点击量 
+        $arr = [];       
+        $arr['num'] = $res->num;
+        $arr['num'] += 1;
+        uvideo::where('id',$id)->update($arr);
+
+        //排行榜
+        $res1 = uvideo::orderby('num','desc')->get();
+       
+        return view('home.video.user_play',['res'=>$res,'res1'=>$res1]);
     }
 }
