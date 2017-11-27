@@ -32,6 +32,8 @@
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
+<script src="/layer/layer.js"></script>
+
 <style type="text/css">
     .clearfix{
         color: #f39800 !important;
@@ -50,7 +52,9 @@
         
             <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
             <div id="mws-logo-wrap">
-                <img src="/admins/images/logo.png" alt="mws admin">
+                <?php $res = DB::table('config')->get();  ?>
+          <?php foreach($res as $k=>$v) ?>
+                <img src="/admins/logos/{{$v->logo}}" alt="mws admin">
             </div>
         </div>
         

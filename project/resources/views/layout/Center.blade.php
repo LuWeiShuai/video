@@ -14,6 +14,7 @@
 		<link href="/homes/css/infstyle.css" rel="stylesheet" type="text/css">
 		<script src="/homes/js/jquery.min.js"></script>
 		<script src="/homes/js/amazeui.js"></script>		
+		<script src="/layer/layer.js"></script>		
 		<style>
 			.cur{border:solid 2px lightblue;}
 			
@@ -21,6 +22,13 @@
 	</head>
 
 	<body>
+		@if(session('msg'))
+                <div class="mws-form-message info" style="font-size: 20px;">
+					<script>
+                    	layer.alert("{{session('msg')}}");						
+					</script>
+                </div>               
+        @endif
 		<!--头 -->
 		<header>
 			<article>
@@ -43,13 +51,15 @@
 								<div class="menu-hd"><a id="mc-menu-hd" href="/home/center/up" target="_top"><i class="am-icon-user am-icon-fw"></i><span>上传列表</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
 							</div>
 							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="/home/center" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>历史记录</span></a></div>
+								<div class="menu-hd"><a href="/home/center/history" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>历史记录</span></a></div>
 						</ul>
 						</div>
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><a href="/home/index"><img src="/homes/images/Logo.png" style="margin-left: -40px;height: 80px;width: 150px;" /></a></li>
+								<?php $res = DB::table('config')->get();  ?>
+          							<?php foreach($res as $k=>$v) ?>
+								<li><a href="/home/index"><img src="/admins/logos/{{$v->logo}}" style="margin-left: -40px;height: 80px;width: 150px;" /></a></li>
 							</div>
 
 							<div class="search-bar pr">
@@ -106,6 +116,7 @@
 							<li> <a href="/home/center">个人信息</a></li>
 							<li> <a href="/home/center/tel">电话号码</a></li>
 							<li> <a href="/home/center/password">修改密码</a></li>
+							<li> <a href="/home/center/vip">开通vip</a></li>
 						</ul>
 					</li>
 					<li class="person">
@@ -118,7 +129,7 @@
 					<li class="person">
 						<p><i class="am-icon-tags"></i>历史记录</p>
 						<ul>
-							<li> <a href="#">历史记录</a></li>												
+							<li> <a href="/home/center/history">历史记录</a></li>												
 						</ul>
 					</li>
 

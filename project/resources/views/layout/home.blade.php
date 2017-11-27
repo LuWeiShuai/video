@@ -16,7 +16,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="/homes/css/style.css" rel='stylesheet' type='text/css' media="all" />
 <script src="/homes/js/jquery-1.11.1.min.js"></script>
 <script src="/layer/layer.js"></script>
-
+<style>
+			.cur{border:solid 2px lightblue;}
+			
+		</style>
 <!--start-smoth-scrolling-->
 
 </head>
@@ -31,23 +34,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/home/index"><h1><img src="/homes/images/Logo.png" alt="" style="height: 60px;" /></h1></a>
+          <?php $res = DB::table('config')->get();  ?>
+          <?php foreach($res as $k=>$v) ?>
+          <a class="navbar-brand" href="/home/index"><h1><img src="/admins/logos/{{$v->logo}}" alt="" style="height: 60px;" /></h1></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-					<input type="submit" value=" ">
+
+
+
+
+
+
+
+
+
+
+				<form action="{{url('/home/search')}}" class="navbar-form navbar-right" method="get">
+					<input type="text" class="form-control" placeholder="Search..." name="search" value="">
+					<input type="submit" value="">
 				</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			</div>
 	
 			@if(session('msg'))
-                <div class="mws-form-message info" style="font-size: 20px;">         
-                    {{session('msg')}}
 
-                </div>
+                <div class="mws-form-message info" style="font-size: 20px;">
+					<script>
+                    	layer.alert("{{session('msg')}}");						
+					</script>
+                </div>               
             @endif
-
+			
 			@if (count($errors) > 0)
 		    <div class="mws-form-message warning">
 		        <ul>
@@ -78,6 +110,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										 <div class="signup">
 											<form action="#small-dialog3" method="get">
 												<input  type="text" name="tel" class="email" placeholder="手机号" maxlength="11" pattern="1[345789]\d{9}" title="Enter a valid mobile number"/>
+												
+												<p > *请输入11位手机号</p>
 												<div  class="signup" style="float:left;margin-right:200px;">
 												<span  id="qwe" style="color: red;"></span>
 												</div>
@@ -85,7 +119,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<div class="continue-button" id="yan">
 												{{ csrf_field() }}
 												
-												<input type="button" id="btn" value="获取验证码" class="btn btn-danger" style="margin:12px;height:40px;font-size: 10px">
+												<input type="button" onclick="sendCode(this)" id="btn" value="获取验证码" class="btn btn-danger" style="margin:12px;height:40px;font-size: 10px">
 												<span id='aaa' style="color:red;font-size:20px"></span>
 								
 											</div>
@@ -95,52 +129,72 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>
 										
 											<script type="text/javascript">
-											var wait=60; 
-											function time(o) { 
+											//手机号
+												//获取焦点
+												$('input[name=tel]').focus(function(){
 
-												   $.ajax({
-										               type:'get',
-										               url:"/home/register",
-										               data:'tel='+$('input[name=tel]').val(),
-										               success:function(data){
-										               	// console.log(data);
-											               	if(data=='1'){
-											               		if (wait == 0) { 
-																	o.removeAttribute("disabled"); 
-																	o.value="获取验证码"; 
-																	wait = 60; 
-																	} else { 
-																	o.setAttribute("disabled", true); 
-																	o.value="重新发送(" + wait + ")"; 
-																	wait--; 
-																	setTimeout(function() { 
-																	time(o) 
-																	}, 
-																	1000);
-																	$('input[name=tel]').css('border','solid 1px black');
-																	return false;
-																} 
-																return false;
-															}else{
-																$('input[name=tel]').css('border','solid 1px red');
-															}
-															return false;
-										               }
+													$(this).addClass('cur');
+												})
+												//失去焦点
+												$('input[name=tel]').blur(function(){
+													//获取手机号
+													var tel = $(this).val();
+													//正则
+													var reg = /^1[34578]\d{9}$/;
+													//检测
+													if(!reg.test(tel)){
+														$(this).css('border','solid 2px #db192a');
+														$(this).next().text(' *手机号码不正确').css('color','#db192a');
 
-										            });
+													} else {
+														$(this).css('border','solid 2px green');
+														$(this).next().text(' √').css('color','green');
+													}
+												})
 
-												   //设置定时器,60s后可以重新点击发送验证码
-												   //功能还没完成
-												return false;
-											} 
+
+												var clock = '';
+													 var nums = 60;
+													 var btn;
+													 function sendCode(thisBtn)
+													 { 
+
+														//获取手机号
+														var tel = $('input[name=tel]').val();
+														//发送ajax
+														$.get('/home/register',{tel:tel},function(data){
+
+															console.log(data);
+														})
+
+														 btn = thisBtn;
+														 btn.disabled = true; //将按钮置为不可点击
+														 btn.value = nums+'秒后可重新获取';
+														 clock = setInterval(doLoop, 1000); //一秒执行一次
+														 }
+														 function doLoop()
+														 {
+														 nums--;
+														 if(nums > 0){
+														  btn.value = nums+'秒后可重新获取';
+														 }else{
+														  clearInterval(clock); //清除js定时器
+														  btn.disabled = false;
+														  btn.value = '点击发送验证码';
+														  nums = 10; //重置时间
+														 }
+													 }
+
+
+
+
 											   	
-											document.getElementById("btn").onclick=function(){time(this);}
-											$('input[name=code]').mouseout(function(){
+											$('input[name=code]').blur(function(){
 
 												// alert('213');
 												var code = $('input[name=code]').val();
 												$.get('/home/reg',{code:code},function(data){
-														
+														alert(data);
 														if(data == "0"){
 															$('input[name=code]').css('border','solid 1px red');
 															$('#anc').attr('href','#small-dialog2');
@@ -323,7 +377,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  <ul class="nav nav-sidebar">
 					<li class="active"><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="shows.html" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>电视节目</a></li>
-					<li><a href="history.html" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
+					<li><a href="/home/center/history" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<?php $res1 = DB::table('type')->get();?>
 					@foreach($res1 as $k1 => $v1)
 						@if($v1->fid == 0)
@@ -408,7 +462,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/homes/js/bootstrap.min.js"></script>
-    <script src="/layer/layer.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
   </body>
 </html>

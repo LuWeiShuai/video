@@ -11,16 +11,15 @@ use Session;
 use Hash;
 use App\Http\model\info;
 use App\Http\model\login;
+use App\Http\model\history;
 use Flc\Dysms\Client;
 use Flc\Dysms\Request\SendSms;
+use zgldh\QiniuStorage\QiniuStorage;
+use App\Http\model\config;
 
 class centerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //加载个人中心主页
     public function index()
     {
         //查询info表
@@ -28,42 +27,33 @@ class centerController extends Controller
 
         //进行拆分生日
         $data = explode('-',$res['birthday']);
-        
-        return view('/home/center/center',['res'=>$res,'data'=>$data]);
+        //更改logo的变量
+        $re = config::first();
+        return view('/home/center/center',['res'=>$res,'data'=>$data,'re'=>$re]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // 获取个人中心页面的电话号码页面
     public function tel()
     {
          return view('/home/center/tel');
     }
-
+    // 获取个人中心页面的联系我们页面
      public function service()
     {
          return view('/home/center/service');
     }
-
+    // 获取个人中心页面的关于尚视页面
     public function about()
     {
         return view('home/center/about');
     }    
-
+    // 获取个人中心页面的修改密码页面
      public function password()
     {
         return view('home.center.password');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //修改个人中心
     public function update(Request $request)
     {
         //表单验证
@@ -126,11 +116,10 @@ class centerController extends Controller
         
         return view('/home/center/center/index');
     }
-
+    //获取验证码
     public function yzm()
     {
         // 获取手机号
-
         $tel = $_GET['tel'];
 
         //将手机号存入session
@@ -154,6 +143,7 @@ class centerController extends Controller
         session(['code'=>$code]);
         
     }
+    //执行更换手机号
     public function yzmUpdate(Request $request)
     {
         //获取验证码
@@ -167,10 +157,10 @@ class centerController extends Controller
 
         //获取session的验证码
         $session = session('code');
-
+       
         //获取uid的uid
         $id = session('uid');
-
+       
         //判断验证码是否正确
         if($session == $yzm){
             //将新手机号插入数据库
@@ -182,6 +172,7 @@ class centerController extends Controller
         }
 
     }
+    //执行更改密码
     public function repass(Request $request)
     {
         //获取密码
@@ -217,4 +208,43 @@ class centerController extends Controller
         return view('/home/center/up');
     }
 
+    //获取用户历史记录的页面
+    public function history()
+    {
+        //从session中获取uid
+        $uid = session('uid');
+
+        //从history数据库查询
+        $res = history::where('uid',$uid)->orderBy('time','desc')->get();
+
+        return view('/home/center/history',['res'=>$res]);
+    }
+
+    //vip开通
+    public function vip(){
+
+        return view('/home/center/vip');
+    }
+
+    //执行vip开通
+     public function doVip(){
+        $id = session('uid');
+        $res = login::where('id',$id)->first();
+        $data = [];
+        if($res->status == 0){
+
+            $data['status'] = 1;
+        }else{
+
+            return back()->with('msg','您已经开通了vip,祝您观看愉快');
+        }
+
+        $result = login::where('id',$id)->update($data);
+
+        if($result){
+
+            return back()->with('msg','vip开通成功');
+        }
+
+    }
 }

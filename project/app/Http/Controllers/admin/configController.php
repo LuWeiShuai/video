@@ -17,6 +17,8 @@ class configController extends Controller
      */
     public function index()
     {   
+
+        //更改logo的变量
         $res = config::all();
         
         return view('admin.config.index',['res'=>$res]);
@@ -74,10 +76,28 @@ class configController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $re = $request->except('_token','_method','logo');
-        
+        /*var_dump($request);
+        die;*/
+        $re = $request->except('_token','_method','logo','MAX_FILE_SIZE');
+        if($request->hasFile('logo')){
+            //重命名
+            $name = rand(1111,9999).time();
+            //获取后缀
+            $suffix = $request->file('logo')->getClientOriginalExtension();
+            $type = array('jpeg','gif','png','jpg','bmp');
+            if(in_array($suffix,$type)){
+                $request->file('logo')->move('./admins/logos',$name.'.'.$suffix);
+                $re['logo'] = $name.'.'.$suffix;
+            }
+        }
+
+        $old = config::where('id',$id)->first();
+      
         $res = config::where('id',$id)->update($re);
+        if($res && $old->logo != "74731511505640.png"){
+            unlink('./admins/logos/'.$old->logo);
+               
+        }
 
         return redirect('/admin/config');
         

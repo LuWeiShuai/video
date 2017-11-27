@@ -116,11 +116,14 @@ Route::get('/center/service','centerController@service');
 Route::get('/center/about','centerController@about');
 Route::get('/center/yzm','centerController@yzm');
 Route::get('/center/password','centerController@password');
+Route::get('/center/history','centerController@history');
 
 Route::post('/center/update','centerController@update');
 Route::post('/center/yzmUpdate','centerController@yzmUpdate');
 Route::post('/center/repass','centerController@repass');
 Route::get('/center/up','centerController@up');
+Route::get('/center/vip','centerController@vip');
+Route::get('/center/doVip','centerController@doVip');
 
 });
 
