@@ -3,8 +3,8 @@
 @section('content')
 <style type="text/css">
 	.main-grids{
-		padding-top:-70px;
-		margin-top:-70px;
+		padding-top:-50px;
+		margin-top:-50px;
 	}
 </style>
 	<div class="recommended">

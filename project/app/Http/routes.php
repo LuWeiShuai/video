@@ -24,6 +24,7 @@ Route::post('/admin_login/dologin','loginController@doalogin');
 Route::get('/home_login','loginController@home');
 Route::post('/home_login/dologin','loginController@dohlogin');
 Route::get('/home_login/delete','loginController@delete');
+Route::get('/home/forgot','loginController@forgot');
 
 
 //后台路由
@@ -103,6 +104,7 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 
 	//搜索
 	Route::get('/search','searchController@index');
+	Route::get('/regs','registerController@tell');
  });
 
 //前台路由
@@ -117,6 +119,7 @@ Route::get('/center/about','centerController@about');
 Route::get('/center/yzm','centerController@yzm');
 Route::get('/center/password','centerController@password');
 Route::get('/center/history','centerController@history');
+Route::get('/center/delete','centerController@delete');
 
 Route::post('/center/update','centerController@update');
 Route::post('/center/yzmUpdate','centerController@yzmUpdate');
@@ -126,6 +129,10 @@ Route::get('/center/vip','centerController@vip');
 Route::get('/center/doVip','centerController@doVip');
 Route::get('/center/money/{id}','centerController@money');
 Route::get('/center/buy','centerController@buy');
+//用户上传视频
+Route::resource('/up','UpController');
+Route::resource('/picchuan','VideoaController');
+Route::resource('/videos','ShangController');
 
 });
 

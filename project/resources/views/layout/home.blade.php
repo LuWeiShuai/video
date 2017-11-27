@@ -16,17 +16,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="/homes/css/style.css" rel='stylesheet' type='text/css' media="all" />
 <script src="/homes/js/jquery-1.11.1.min.js"></script>
 <script src="/layer/layer.js"></script>
+
+<link href="/homes/css/admin.css" rel="stylesheet" type="text/css">
+<link href="/homes/css/amazeui.css" rel="stylesheet" type="text/css">
+<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
+<link href="/homes/css/infstyle.css" rel="stylesheet" type="text/css">
+<script src="/homes/js/jquery.min.js"></script>
+<script src="/homes/js/amazeui.js"></script>		
+	
 <style>
-			.cur{border:solid 2px lightblue;}
-			
-		</style>
+	.cur{border:solid 2px lightblue;}
+	.main-grids{
+		padding-top:-50px;
+		margin-top:-50px;
+	}
+</style>
 <!--start-smoth-scrolling-->
 
 </head>
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+      <div class="container-fluid" style="margin-top: -18px;">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle 162navigation</span>
@@ -40,8 +51,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
+
 				<form class="navbar-form navbar-right" action="/home/search" method="get"> 
-					<input type="text" class="form-control" placeholder="Search...">
+					<input type="text" class="form-control" placeholder="Search..." name="cha" value="">
 					<input type="submit" value="">
 				</form>
 			</div>
@@ -105,6 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										
 											<script type="text/javascript">
 											//手机号
+											$('#btn').attr("disabled",true);
 												//获取焦点
 												$('input[name=tel]').focus(function(){
 
@@ -117,22 +130,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													//正则
 													var reg = /^1[34578]\d{9}$/;
 													//检测
+													$.get('/home/regs',{tel:tel},function(data){
+														if(data == "0"){
+															$('input[name=tel]').css('border','solid 2px #db192a').next().text('该手机号已存在').css('color','#db192a');
+															$('#btn').attr("disabled",true);
+														}
+													});
+													//检测
 													if(!reg.test(tel)){
 														$(this).css('border','solid 2px #db192a');
 														$(this).next().text(' *手机号码不正确').css('color','#db192a');
+														$('#btn').attr("disabled",true);
+
 
 													} else {
 														$(this).css('border','solid 2px green');
 														$(this).next().text(' √').css('color','green');
+														 $('#btn').attr("disabled",false);
 													}
-												})
 
+												});
 
 												var clock = '';
 													 var nums = 60;
 													 var btn;
+
 													 function sendCode(thisBtn)
 													 { 
+														
+
 
 														//获取手机号
 														var tel = $('input[name=tel]').val();
@@ -141,7 +167,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 															console.log(data);
 														})
-
 														 btn = thisBtn;
 														 btn.disabled = true; //将按钮置为不可点击
 														 btn.value = nums+'秒后可重新获取';
@@ -156,9 +181,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														  clearInterval(clock); //清除js定时器
 														  btn.disabled = false;
 														  btn.value = '点击发送验证码';
-														  nums = 10; //重置时间
+														  nums = 60; //重置时间
 														 }
 													 }
+												
 
 
 
@@ -169,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												// alert('213');
 												var code = $('input[name=code]').val();
 												$.get('/home/reg',{code:code},function(data){
-														alert(data);
+														// alert(data);
 														if(data == "0"){
 															$('input[name=code]').css('border','solid 1px red');
 															$('#anc').attr('href','#small-dialog2');
@@ -319,7 +345,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							</form>
 							<div class="forgot">
-								<a href="#">忘记密码?</a>
+								<a href="/home/forgot">忘记密码?</a>
 							</div>
 						</div>
 						<div class="clearfix"> </div>
@@ -350,7 +376,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 				<div class="drop-navigation drop-navigation">
 				  <ul class="nav nav-sidebar">
-					<li class="active"><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
+					<li class=""><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="/home/center/history" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<?php $res1 = DB::table('type')->get();?>
 					@foreach($res1 as $k1 => $v1)

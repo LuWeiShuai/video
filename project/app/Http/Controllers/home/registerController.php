@@ -12,7 +12,6 @@ use App\Http\model\info;
 use Session;
 use Flc\Dysms\Client;
 use Flc\Dysms\Request\SendSms;
-
 use Hash;
 
 
@@ -20,38 +19,52 @@ class registerController extends Controller
 {
    
     public function register(){
-    	 //获取ajax传的手机号
+    	//获取ajax传的手机号
             $tel= $_GET['tel'];
-        //正则匹配手机号
-       
-     
-        	//将手机号存入session
-        	session(['tel'=>$tel]); 
-        	//发短信      
-	  		$config = [
-	        'accessKeyId'    => 'LTAI0SrxJEqRfqlf',
-	        'accessKeySecret' => 'BypG3S4ChCl5EIgVj5o6uvk9rtHYkD',
-	        // 'sandbox'    => true,  // 是否为沙箱环境，默认false
-	        ];
-	        $code = rand(100000, 999999);
-			$client  = new Client($config);
-			$sendSms = new SendSms;
-			$sendSms->setPhoneNumbers($tel);
-			$sendSms->setSignName('卢伟帅');
-			$sendSms->setTemplateCode('SMS_110845196');
-		    $sendSms->setTemplateParam(['code'=>$code]);
-			$sendSms->setOutId('demo');
-	       	$yan = $client->execute($sendSms);
-	       	session(['code'=>$code]);
-            return $yan;
+        
+            //将手机号存入session
+            session(['tel'=>$tel]);
+             
+            //发短信 
+            $config = [
+            'accessKeyId'    => 'LTAI0SrxJEqRfqlf',
+            'accessKeySecret' => 'BypG3S4ChCl5EIgVj5o6uvk9rtHYkD',
+            // 'sandbox'    => true,  // 是否为沙箱环境，默认false
+            ];
+            $code = rand(100000, 999999);
+            $client  = new Client($config);
+            $sendSms = new SendSms;
+            $sendSms->setPhoneNumbers($tel);
+            $sendSms->setSignName('卢伟帅');
+            $sendSms->setTemplateCode('SMS_110845196');
+            $sendSms->setTemplateParam(['code'=>$code]);
+            $sendSms->setOutId('demo');
+            $yan = $client->execute($sendSms);
+            session(['code'=>$code]);
+                               
+            
+            
+        }
+
+        public function tell(){
+             $tel= $_GET['tel'];
+             //验证手机号在数据库是否存在
+            $res = login::where('tel',$tel)->first();
+
+            if($res){
+                return "0";
+            } else {
+                return "1";
+            }
+
+        }
 	   
-      	
-  }  
 
   	//将生成的短信存入session,并进行验证
     public function code(){
     	$code = $_GET['code'];    	
     	$recode = (session('code'));
+        
     	if($code == $recode){
     		return "1";
     	}else {
