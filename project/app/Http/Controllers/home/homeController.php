@@ -21,11 +21,13 @@ class homeController extends Controller
      */
     public function index()
     {
+
     	$type=type::where('fid',0)->get();
-    	// dd($video);
-    	$fid=[];
-    	foreach ($type as $key => $value) {
-    		$num='';
+    	 // dd($video);
+    	 $fid=[];
+    	 foreach ($type as $key => $value) 
+         {
+    	 	$num='';
     		$zitype=type::where('fid',$value->id)->get();
     		foreach ($zitype as $k => $v) {
     			// dd($key);
@@ -33,12 +35,12 @@ class homeController extends Controller
     		}
     		// dd($num);
     		$num=rtrim($num,',');
-    		$num=explode(',',$num);
-    		$fid[$key]=$num;
+    	 	$num=explode(',',$num);
+    	 	$fid[$key]=$num;
     	}
-    	$video=video::all();
-    	$vdetail=[];
-    	foreach ($video as $key => $value) {
+    	$video=video::where('status','1')->get();
+    	 $vdetail=[];
+    	 foreach ($video as $key => $value) {
     		$vid=$value->id;
     		$vd=vdetail::where('vid',$vid)->first();
     		$vdetail[$key]=$vd;

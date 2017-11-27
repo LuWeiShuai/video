@@ -104,6 +104,10 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::post('/regis','registerController@store');
 	Route::get('/reg','registerController@code');
 	Route::post('/passs','registerController@passs');
+
+	//搜索
+	Route::get('/search','searchController@index');
+	Route::get('/regs','registerController@tell');
  });
 
 //前台路由
@@ -128,6 +132,10 @@ Route::get('/center/vip','centerController@vip');
 Route::get('/center/doVip','centerController@doVip');
 Route::get('/center/money/{id}','centerController@money');
 Route::get('/center/buy','centerController@buy');
+//用户上传视频
+Route::resource('/up','UpController');
+Route::resource('/picchuan','VideoaController');
+Route::resource('/videos','ShangController');
 
 });
 

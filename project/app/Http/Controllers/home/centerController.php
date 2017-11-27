@@ -206,6 +206,7 @@ class centerController extends Controller
 
     }
 
+<<<<<<< HEAD
     //用户上传
     public function up(){
         return view('/home/center/up');
@@ -290,4 +291,6 @@ class centerController extends Controller
             return back()->with('msg','购买成功');
         }
     }
+=======
+>>>>>>> b046f306d248439c6e87219eb98170ee6ec34f19
 }
