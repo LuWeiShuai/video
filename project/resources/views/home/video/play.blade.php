@@ -81,9 +81,9 @@
 										if(data == '评论失败'){
 											
 											// alert('请先登录在评论');
-											layer.msg('请先登录,在评论');
+											layer.alert('请先登录,在评论');
 										}else{
-											layer.msg('评论成功!');
+											layer.alert('评论成功!');
 										}
 									})
 									return false;

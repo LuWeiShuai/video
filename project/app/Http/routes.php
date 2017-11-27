@@ -103,6 +103,9 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::post('/regis','registerController@store');
 	Route::get('/reg','registerController@code');
 	Route::post('/passs','registerController@passs');
+
+	//搜索
+	Route::get('/search','searchController@index');
  });
 
 //前台路由

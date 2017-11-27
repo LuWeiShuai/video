@@ -66,6 +66,11 @@ class videoController extends Controller
         $res = video::where('id',$id)->first();
         //视频的权限
         $auth = $res->auth;
+        //视频的父类
+        $tid = $res->tid;
+        $type = type::where('id',$tid)->first();
+        $fid = $type->fid;
+        $res5 = type::where('fid',$fid)->get();
 
         //普通视频
         if($auth == 0 ){
