@@ -7,13 +7,7 @@
 		<div class="am-cf am-padding">
 			<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
 		</div>
-		@if(session('msg'))
-            <div class="mws-form-message info">                 
-
-                {{session('msg')}}
-
-            </div>
-        @endif
+		
         @if(count($errors) > 0)
         <div class="mws-form-message error">
             <ul>
@@ -25,6 +19,7 @@
         </div>
     	@endif 
 		<hr/>
+		
 		<form method="post" action="/home/center/update" class="am-form am-form-horizontal" enctype="multipart/form-data">
 			<!-- enctype="multipart/form-data" -->
 		<!--头像 -->
@@ -55,7 +50,6 @@
 
 		<!--个人信息 -->
 		<div class="info-main">
-			
 
 				<div class="am-form-group">
 					<label for="user-name2" class="am-form-label">昵称</label>
@@ -163,10 +157,11 @@
 				
 				<div class="info-btn">
     			{{ csrf_field()}}
-
+			
+					
 					<input type="submit" value="保存修改" class="btn btn-danger">
 				</div>
-
+				
 			</form>
 		</div>
 

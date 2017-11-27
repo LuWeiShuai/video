@@ -42,12 +42,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 	
 			@if(session('msg'))
-                <div class="mws-form-message info" style="font-size: 20px;">         
-                    {{session('msg')}}
+	            <div class="mws-form-message info" style="font-size: 20px;">         
+	                {{session('msg')}}
 
-                </div>
-            @endif
-
+	            </div>
+	        @endif
+			
 			@if (count($errors) > 0)
 		    <div class="mws-form-message warning">
 		        <ul>
@@ -323,7 +323,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  <ul class="nav nav-sidebar">
 					<li class="active"><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="shows.html" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>电视节目</a></li>
-					<li><a href="history.html" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
+					<li><a href="/home/center/history" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<?php $res1 = DB::table('type')->get();?>
 					@foreach($res1 as $k1 => $v1)
 						@if($v1->fid == 0)

@@ -32,6 +32,8 @@
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
+<script src="/layer/layer.js"></script>
+
 <style type="text/css">
     .clearfix{
         color: #f39800 !important;

@@ -19,26 +19,31 @@
     	@endif 
 
 		<div class="recommended">
-					<div class="recommended-grids">
+			<div class="recommended-grids">
+				
+				@foreach($res as $k => $v)
+				<div class="col-md-3 resent-grid recommended-grid">
+					<div class="resent-grid-img recommended-grid-img">
+						<a href="http://ozssihjsk.bkt.clouddn.com/videos/{{$v->url}}">
+							<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}" alt="" style="height:150px;width: 180px;">
+						</a>
 						
-						@foreach($res as $k => $v)
-						<div class="col-md-3 resent-grid recommended-grid">
-							<div class="resent-grid-img recommended-grid-img">
-								<a href="http://ozssihjsk.bkt.clouddn.com/videos/{{$v->url}}"><img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}" alt="" style="height:150px;width: 180px;"></a>
-								
-							</div>
-							<div class="resent-grid-info recommended-grid-info video-info-grid">
-								<h5><a href="http://ozssihjsk.bkt.clouddn.com/videos/{{$v->url}}" class="title">{{$v->title}}</a></h5>
-								<ul>
-									<li><p class="author author-info">最后播放时间：{{$v->time}}</p></li>
-									
-								</ul>
-							</div>
-						</div>
-						@endforeach
-						<div class="clearfix"> </div>
+					</div>
+					<div class="resent-grid-info recommended-grid-info video-info-grid">
+						<h5>
+							<a href="http://ozssihjsk.bkt.clouddn.com/videos/{{$v->url}}" class="title">{{$v->title}}</a>
+						</h5>
+						<ul>
+							<li>
+								<p class="author author-info">最后播放时间：{{$v->time}}</p>
+							</li>
+						</ul>
 					</div>
 				</div>
+				@endforeach
+				<div class="clearfix"> </div>
+			</div>
+		</div>
 
 	</div>
 @endsection

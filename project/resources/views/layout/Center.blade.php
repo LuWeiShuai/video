@@ -13,7 +13,9 @@
 		<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/homes/css/infstyle.css" rel="stylesheet" type="text/css">
 		<script src="/homes/js/jquery.min.js"></script>
-		<script src="/homes/js/amazeui.js"></script>		
+		<script src="/homes/js/amazeui.js"></script>
+		<script src="/layer/layer.js"></script>
+
 		<style>
 			.cur{border:solid 2px lightblue;}
 			
