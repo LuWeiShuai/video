@@ -134,6 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										
 											<script type="text/javascript">
 											//手机号
+											$('#btn').attr("disabled",true);
 												//获取焦点
 												$('input[name=tel]').focus(function(){
 
@@ -146,22 +147,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													//正则
 													var reg = /^1[34578]\d{9}$/;
 													//检测
+													$.get('/home/regs',{tel:tel},function(data){
+														if(data == "0"){
+															$('input[name=tel]').css('border','solid 2px #db192a').next().text('该手机号已存在').css('color','#db192a');
+															$('#btn').attr("disabled",true);
+														}
+													});
+													//检测
 													if(!reg.test(tel)){
 														$(this).css('border','solid 2px #db192a');
 														$(this).next().text(' *手机号码不正确').css('color','#db192a');
+														$('#btn').attr("disabled",true);
+
 
 													} else {
 														$(this).css('border','solid 2px green');
 														$(this).next().text(' √').css('color','green');
+														 $('#btn').attr("disabled",false);
 													}
-												})
 
+												});
 
 												var clock = '';
 													 var nums = 60;
 													 var btn;
+
 													 function sendCode(thisBtn)
 													 { 
+														
+
 
 														//获取手机号
 														var tel = $('input[name=tel]').val();
@@ -170,7 +184,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 															console.log(data);
 														})
-
 														 btn = thisBtn;
 														 btn.disabled = true; //将按钮置为不可点击
 														 btn.value = nums+'秒后可重新获取';
@@ -185,9 +198,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														  clearInterval(clock); //清除js定时器
 														  btn.disabled = false;
 														  btn.value = '点击发送验证码';
-														  nums = 10; //重置时间
+														  nums = 60; //重置时间
 														 }
 													 }
+												
 
 
 
@@ -198,7 +212,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												// alert('213');
 												var code = $('input[name=code]').val();
 												$.get('/home/reg',{code:code},function(data){
-														alert(data);
+														// alert(data);
 														if(data == "0"){
 															$('input[name=code]').css('border','solid 1px red');
 															$('#anc').attr('href','#small-dialog2');
