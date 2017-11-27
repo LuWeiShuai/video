@@ -33,9 +33,10 @@
 							</script>
 							<div class="load_more">	
 								<ul id="myList">
+									<?php $res3 = DB::table('vdetail')->where('vid',$res->id)->first(); ?>
 									<li style="display: list-item;">
-										<h4>Published on 15 June 2015</h4>
-										<p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
+										<h4>上映时间:{{ date('Y-m-d',$res3->time) }}</h4>
+										<p>{{$res3->content}}</p>
 									</li>
 									<li>
 										<p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
@@ -80,9 +81,9 @@
 										if(data == '评论失败'){
 											
 											// alert('请先登录在评论');
-											layer.msg('请先登录,在评论');
+											layer.alert('请先登录,在评论');
 										}else{
-											layer.msg('评论成功!');
+											layer.alert('评论成功!');
 										}
 									})
 									return false;

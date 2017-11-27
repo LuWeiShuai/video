@@ -17,9 +17,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="/homes/js/jquery-1.11.1.min.js"></script>
 <script src="/layer/layer.js"></script>
 <style>
-			.cur{border:solid 2px lightblue;}
-			
-		</style>
+	.cur{border:solid 2px lightblue;}
+
+	.main-grids{
+		padding-top:-50px;
+		margin-top:-50px;
+	}
+</style>
 <!--start-smoth-scrolling-->
 
 </head>
@@ -50,8 +54,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-				<form action="{{url('/home/search')}}" class="navbar-form navbar-right" method="get">
-					<input type="text" class="form-control" placeholder="Search..." name="search" value="">
+				<form class="navbar-form navbar-right" action="/home/search" method="get"> 
+					<input type="text" class="form-control" placeholder="Search..." name="cha" value="">
 					<input type="submit" value="">
 				</form>
 
@@ -375,8 +379,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 				<div class="drop-navigation drop-navigation">
 				  <ul class="nav nav-sidebar">
-					<li class="active"><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
-					<li><a href="shows.html" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>电视节目</a></li>
+					<li class=""><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="/home/center/history" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<?php $res1 = DB::table('type')->get();?>
 					@foreach($res1 as $k1 => $v1)

@@ -38,7 +38,7 @@ class homeController extends Controller
     	 	$num=explode(',',$num);
     	 	$fid[$key]=$num;
     	}
-    	$video=video::all();
+    	$video=video::where('status','1')->get();
     	 $vdetail=[];
     	 foreach ($video as $key => $value) {
     		$vid=$value->id;

@@ -3,8 +3,8 @@
 @section('content')
 <style type="text/css">
 	.main-grids{
-		padding-top:-70px;
-		margin-top:-70px;
+		padding-top:-50px;
+		margin-top:-50px;
 	}
 </style>
 	<div class="recommended">
@@ -18,7 +18,7 @@
 					@if($key<=3)
 					<div class="col-md-3 resent-grid recommended-grid">
 						<div class="resent-grid-img recommended-grid-img">
-							<a href="{{ url('/home/play/'.$val->id)}}"><img style="height: 200px;" src="/admins/video/upload/{{$val->logo}}" alt=""></a>
+							<a href="{{ url('/home/play/'.$val->id)}}"><img style="height: 200px;" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->logo}}" alt=""></a>
 							<div class="time small-time">
 								<p><i style="font-size: 18px;color: red;">{{$val->level}}分</i></p>
 							</div>

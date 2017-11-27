@@ -103,6 +103,9 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::post('/regis','registerController@store');
 	Route::get('/reg','registerController@code');
 	Route::post('/passs','registerController@passs');
+
+	//搜索
+	Route::get('/search','searchController@index');
  });
 
 //前台路由
@@ -124,6 +127,8 @@ Route::post('/center/repass','centerController@repass');
 Route::get('/center/up','centerController@up');
 Route::get('/center/vip','centerController@vip');
 Route::get('/center/doVip','centerController@doVip');
+Route::get('/center/money/{id}','centerController@money');
+Route::get('/center/buy','centerController@buy');
 
 });
 
