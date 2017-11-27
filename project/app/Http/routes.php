@@ -24,6 +24,7 @@ Route::post('/admin_login/dologin','loginController@doalogin');
 Route::get('/home_login','loginController@home');
 Route::post('/home_login/dologin','loginController@dohlogin');
 Route::get('/home_login/delete','loginController@delete');
+Route::get('/home/forgot','loginController@forgot');
 
 
 //后台路由

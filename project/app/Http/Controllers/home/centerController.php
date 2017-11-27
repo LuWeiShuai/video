@@ -111,7 +111,7 @@ class centerController extends Controller
         if ($array) {
             return redirect('/home/index')->with('msg','修改成功');
         }else{
-            return back();
+            return back()->with('msg','修改失败');
         }
         
         return view('/home/center/center/index');
@@ -168,7 +168,7 @@ class centerController extends Controller
 
             return redirect('/home/center')->with('msg','修改成功');
         }else{
-             return back();
+             return back()->with('msg','修改失败');
         }
 
     }
@@ -198,7 +198,7 @@ class centerController extends Controller
             
             return redirect('/home/center')->with('msg','修改成功');
         }else{
-            return back();
+            return back()->with('msg','修改失败');
         }
 
     }
@@ -244,6 +244,9 @@ class centerController extends Controller
         if($result){
 
             return back()->with('msg','vip开通成功');
+        }else{
+            return back()->with('msg','vip开通失败');
+            
         }
 
     }

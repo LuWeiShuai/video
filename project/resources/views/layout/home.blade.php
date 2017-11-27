@@ -16,10 +16,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="/homes/css/style.css" rel='stylesheet' type='text/css' media="all" />
 <script src="/homes/js/jquery-1.11.1.min.js"></script>
 <script src="/layer/layer.js"></script>
+<link href="/homes/css/admin.css" rel="stylesheet" type="text/css">
+<link href="/homes/css/amazeui.css" rel="stylesheet" type="text/css">
+<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
+<link href="/homes/css/infstyle.css" rel="stylesheet" type="text/css">
+<script src="/homes/js/jquery.min.js"></script>
+<script src="/homes/js/amazeui.js"></script>		
+	
 <style>
-			.cur{border:solid 2px lightblue;}
-			
-		</style>
+	.cur{border:solid 2px lightblue;}
+	
+</style>
 <!--start-smoth-scrolling-->
 
 </head>
@@ -319,7 +326,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							</form>
 							<div class="forgot">
-								<a href="#">忘记密码?</a>
+								<a href="/home/forgot">忘记密码?</a>
 							</div>
 						</div>
 						<div class="clearfix"> </div>

@@ -106,7 +106,7 @@ class loginController extends Controller
         $id = session('uid');
         login::where('id',$id)->update($last);
 
-        return redirect('/home/index');
+        return redirect('/home/index')->with('msg','登录成功');
     }
 
      public  function delete(Request $request)
@@ -114,5 +114,10 @@ class loginController extends Controller
         $request->session('uid')->flush();
 
         return redirect('/home/index');
+    }
+
+    public function forgot()
+    {
+        return view('/home/forgot');
     }
 }

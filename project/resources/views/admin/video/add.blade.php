@@ -167,8 +167,7 @@
                                     
                                     //判断上传文件的后缀名
                                     var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
-                                    if (strExtension != 'mp4' && strExtension != 'flv'
-                                        && strExtension != 'wmv' && strExtension != 'rmvb' && strExtension != 'mkv' && strExtension != 'avi' && strExtension != 'rm' && strExtension != 'asf' && strExtension != 'mov' && strExtension != 'mp3' && strExtension != 'vod' && strExtension != 'dat') {
+                                    if (strExtension != 'mp4' && strExtension != 'flv' && strExtension != 'kux' && strExtension != 'wmv' && strExtension != 'rmvb' && strExtension != 'mkv' && strExtension != 'avi' && strExtension != 'rm' && strExtension != 'asf' && strExtension != 'mov' && strExtension != 'mp3' && strExtension != 'vod' && strExtension != 'dat') {
                                         alert("请选择视频文件");
                                         return;
                                     }
