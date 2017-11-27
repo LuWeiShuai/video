@@ -42,7 +42,7 @@ class ShangController extends Controller
         $res = $request->except('_token');
         $re = uvideo::insert($res);
         if($res){
-            return redirect('/home/up');
+            return redirect('/home/up')->with('msg','上传成功');
         }
 
       

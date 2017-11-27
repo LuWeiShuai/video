@@ -90,6 +90,6 @@ class UpController extends Controller
     {
         $res = uvideo::first();
         $res->delete();
-        return redirect('/home/up');
+        return redirect('/home/up')->with('msg','删除成功');
     }
 }
