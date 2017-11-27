@@ -54,9 +54,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</script>
                 </div>               
             @endif
-
-	            </div>
-	        @endif
 			
 			@if (count($errors) > 0)
 		    <div class="mws-form-message warning">
