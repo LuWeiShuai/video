@@ -76,7 +76,7 @@ class userController extends Controller
         $result = admin::insert($res);
 
         if($result){
-            return redirect('/admin/admin_user');
+            return redirect('/admin/admin_user')->with('msg','添加管理员成功');
         }
     }
 
@@ -124,7 +124,9 @@ class userController extends Controller
         $result = login::where('id',$id)->update($res);
 
         if($result){
-            return redirect('/admin/user');
+            return redirect('/admin/user')->with('msg','修改成功');
+        }else{
+            return redirect('/admin/user')->with('msg','修改失败');
         }
 
         // dd($res);
