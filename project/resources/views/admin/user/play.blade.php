@@ -1,6 +1,7 @@
 @extends('layout.admin')
 @section('title','播放页面')
 @section('content')
+
 			<div class="show-top-grids" >
 				<div class="col-sm-8 single-left">
 					<div class="song">
@@ -17,20 +18,22 @@
 			</div>
 			<br>
 			<br>
-			<ul style="font-size:20px;list-style: none;margin-left: 300px ">
-				<li style="font-size:20px;color:#333333"><b style="font-size: 25px;color:#999999">&nbsp;&nbsp;&nbsp;&nbsp;演员 :</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$res->actor}}</li>
+			<ul style="font-size:20px;list-style: none;margin-left: 150px ">
+				<li style="font-size:20px;color:#333333"><b style="font-size: 25px;color:#999999">演&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;员 :</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$res->actor}}</li>
 					<br><br>
 					<li style="font-size:20px;color:#333333"><b style="font-size: 25px;color:#999999">内容简介 :</b> &nbsp;&nbsp;&nbsp;{{$res->content}}</li>
 
 			</ul>
 					
 				
-			<div style="margin-left: 350px">
+			<div style="margin-left: 150px;margin-bottom: 50px;margin-top: 50px;height:50px;width:70%">
+				<div style="float:right; ">
 				<a href="{{ url('/admin/userup/'.$res->id) }}"><button class="btn btn-danger">通过</button></a>
                 <form action="{{ url('/admin/userup/'.$res->id) }}" method='post' style='display:inline'>
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <input type="submit" value="不通过" class="btn btn-warning">
                </form>
+               </div>
 			</div>
 @endsection
