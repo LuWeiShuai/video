@@ -34,6 +34,7 @@
 
 							//手机号
 							//获取焦点
+							$('#btn').attr("disabled",true);
 							$('input[name=tel]').focus(function(){
 
 								$(this).addClass('cur');
@@ -48,10 +49,11 @@
 								if(!reg.test(tel)){
 									$(this).css('border','solid 2px #db192a');
 									$(this).next().text(' *手机号码不正确').css('color','#db192a');
-
+									$('#btn').attr("disabled",true);
 								} else {
 									$(this).css('border','solid 2px green');
 									$(this).next().text(' √').css('color','green');
+									$('#btn').attr("disabled",false);
 								}
 							})
 

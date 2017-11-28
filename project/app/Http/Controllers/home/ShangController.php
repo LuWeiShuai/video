@@ -46,6 +46,7 @@ class ShangController extends Controller
             return redirect('/home/up');
         }*/
 
+
       
         
     }

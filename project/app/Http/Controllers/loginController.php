@@ -113,7 +113,7 @@ class loginController extends Controller
     {
         $request->session('uid')->flush();
 
-        return redirect('/home/index');
+        return redirect('/home/index')->with('msg','注销成功');
     }
 
     public function forgot()

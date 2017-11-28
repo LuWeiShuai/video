@@ -112,7 +112,7 @@ class centerController extends Controller
 
         //判断
         if ($array) {
-            return redirect('/home/index')->with('msg','修改成功');
+            return redirect('/home/center')->with('msg','修改成功');
         }else{
             return back()->with('msg','修改失败');
         }
@@ -163,9 +163,9 @@ class centerController extends Controller
        
         //获取uid的uid
         $id = session('uid');
-       
+        
         //判断验证码是否正确
-        if($session == $yzm){
+        if($session == $yzm && $session!== null && $yzm !== ''){
             //将新手机号插入数据库
             login::where('id',$id)->update($data);
 
@@ -194,7 +194,7 @@ class centerController extends Controller
         $id = session('uid');
 
         //判断验证码是否正确
-        if($session == $yzm){
+        if($session == $yzm && $session!== null && $yzm !== ''){
             
             //将新密码插入数据库
             login::where('id',$id)->update($data);
@@ -224,10 +224,8 @@ class centerController extends Controller
     }
 
     //执行删除历史记录
-    public function delete()
+    public function delete($id)
     {
-        //获取传过来的id
-        $id = $_GET['id'];
         //删除数据库中的数据
         $res = history::where('id',$id)->delete();
         //判断

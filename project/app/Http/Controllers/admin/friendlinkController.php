@@ -49,7 +49,7 @@ class friendlinkController extends Controller
         $this->validate($request, [
             'linkName' => 'required',
             'keywords' => 'required',
-            'url' => 'required|regex:/^http:\/\/www\.\w{1,10}\.com$/'
+            'url' => 'required|regex:/[a-zA-z]+://[^\s]*/'
         ],[
             'linkName.required'=>'链接名称不能为空',
             'keywords.required'=>'关键字不能为空',
@@ -65,7 +65,7 @@ class friendlinkController extends Controller
         if ($data) {
             return redirect('/admin/friendlink')->with('msg','添加成功');
         }else{
-            return back();
+            return back()->with('msg','添加失败');
         }
     }
 
@@ -109,7 +109,7 @@ class friendlinkController extends Controller
         if ($data) {
             return redirect('/admin/friendlink')->with('msg','修改成功');
         }else{
-            return back();
+            return back()->with('msg','修改失败');
         }
     }
 
@@ -127,7 +127,7 @@ class friendlinkController extends Controller
         if ($res) {
             return redirect('/admin/friendlink')->with('msg','删除成功');
         }else{
-            return back();
+            return back()->with('msg','删除失败');
         }
         
     }

@@ -3,25 +3,22 @@
 namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 use App\Http\model\uvideo;
-use App\Http\model\info;
-use App\Http\model\type;
 
-class UpController extends Controller
+class userUpController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $res = uvideo::where('title','like','%'.$request->input('search').'%')
-        ->orderBy('status','asc')
-         ->paginate(5);
-        return view('/home/center/up',['res'=>$res,'request'=>$request]);
+        return view('/home/userup/userup');
     }
 
     /**
@@ -29,12 +26,9 @@ class UpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
-    {   
-        $uid = session('uid');
-        $res = info::where('uid',$uid)->first();
-        $re = type::where('fid','16')->get();
-        return view('/home/center/userup',['res'=>$res,'re'=>$re]);
+    public function create()
+    {
+        //
     }
 
     /**
@@ -45,7 +39,26 @@ class UpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $res = $request->except('_token','title');
+        
+        if($request->hasFile('title')){
+            //修改文件名字
+            $name = rand(1111,9999).time();
+            //获取后缀
+            $suffix = $request->file('title')->getClientOriginalExtension();
+            //移动图片
+            $request->file('title')->move('./Upload',$name.'.'.$suffix);
+            $res['title'] = '/Upload/'.$name.'.'.$suffix;
+            $data = uvideo::insert($res);
+          
+            if($data){
+                return redirect('/home/userup')->with('msg','添加成功');
+            } else {
+                return back();
+            }
+
+        }
+
     }
 
     /**
@@ -90,8 +103,6 @@ class UpController extends Controller
      */
     public function destroy($id)
     {
-        $res = uvideo::first();
-        $res->delete();
-        return redirect('/home/up')->with('msg','删除成功');
+        //
     }
 }
