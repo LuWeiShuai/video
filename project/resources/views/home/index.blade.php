@@ -5,15 +5,18 @@
 	.main-grids{
 		padding-top:-50px;
 		margin-top:-50px;
+
 	}
 </style>
 	<div class="recommended">
 		@foreach($type as $k=>$v)
 		<div class="recommended-grids">
 			<div class="recommended-info">
-				<h3>{{$v->name}}</h3>
+				<h3 style="float: left; padding: 0px; margin: 0px;">{{$v->name}}</h3>
+				<a class="gengduo" style="float: right;margin-right: 20px;" href="{{ url('/home/video/'.$v->id)}}">更多>></a>
+				
 			</div>
-			<a href="{{ url('/home/video/'.$v->id)}}">更多>></a>
+			<div class="cler" style="clear:both; width: 100%;border:solid 1px #999999;opacity: 0.3;margin-bottom: 10px; "></div> 
 			@foreach ($video as $key => $val)
 				@if(in_array($val->tid,$fid[$k]))
 					@if($key<=3)
