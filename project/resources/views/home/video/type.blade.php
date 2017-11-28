@@ -4,7 +4,7 @@
 				<div class="recommended">
 					<div class="recommended-grids">
 						<div class="recommended-info">
-							<h3>{{ $fname.':'.$name }}</h3>
+							<h3>{{ $fname }}: <span style="font-size: 18px;opacity: 0.5">{{$name}}<span></h3>
 						</div>
 						@foreach($res as $k => $v)
 							 <?php $res2 =DB::table('vdetail')->where('vid',$v->id)->first(); ?>

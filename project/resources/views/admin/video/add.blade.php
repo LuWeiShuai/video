@@ -64,20 +64,21 @@
     			<div class="mws-form-row">
     				<label class="mws-form-label">视频名称</label>
     				<div class="mws-form-item">
-    					<input type="text" class="large" name="title">
+    					<input type="text" class="large" name="title" required>
     				</div>
     			</div>
+
     			<div class="mws-form-row">
     				<label class="mws-form-label">主演</label>
     				<div class="mws-form-item">
-    					<input type="text" class="large" name="actor">
+    					<input type="text" class="large" name="actor" required>
     				</div>
     			</div>
                 <div class="mws-form-row">
                     <label class="mws-form-label">观看权限</label>
                     <div class="mws-form-item">
                         <select class="large" name="auth">
-                            <option value="0">免费</option>
+                            <option value="0" selected>免费</option>
                             <option value="1">VIP</option>
                             <option value="2">付费</option>
                         </select>
@@ -98,33 +99,11 @@
                         </select>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    //  
-                    var city=document.getElementById('city');
-                    var area=document.getElementById('area');
-                    var fid;
-                    var arr;
-                    city.onchange=function(){
-                        fid=this.value;
 
-                        $.get('/admin/videoa',{fid:fid},function(data){
-                            // console.log(data);
-                            // alert(arr);
-                            area.innerHTML='';
-                            for (var i = 0; i <data.length; i++) {
-                                console.log(data[i].id);
-                                area.innerHTML += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
-                            };
-                        },'json');
-                        return false;
-                    }
-                    
-                   
-                </script>
                 <div class="mws-form-row">
                     <label class="mws-form-label">视频类型</label>
                     <div class="mws-form-item">
-                        <select name="address">
+                        <select name="address" id="dress">
                             <option value="0">---请选择类型---</option>
                             <option value="1">内陆</option>
                             <option value="2">欧美</option>
@@ -135,23 +114,14 @@
                 <div class="mws-form-row">
                     <label class="mws-form-label">上传文件</label>
                     <div class="mws-form-item">
-                        <input type="text" id="sp" name="sp">
+                        <input type="text" id="sp" name="sp" readonly>
                         <input type="button" value="上传文件" class="btn btn-info" id="moves">
                     </div>
                 </div>
                 <script type="text/javascript">
                     // alert($);
                     document.getElementById('moves').onclick=function(){
-                    // $("#moves").click(function(){
-                        // layer.open({
-                        //   type: 1,
-                        //   title: false,
-                        //   closeBtn: 0,
-                        //   shadeClose: true,
-                        //   skin: 'yourclass',
-                        //   content: '<form id="move" ><input type="file" name="file_upload" id="video" value=""><p><img src="" alt="" id="img1" style="width:100px" ></p><input type="button" id="asd" name="btn" value="确认" onclick="shipin()"></form>'
-                        // });
-                        
+
                         layer.alert('<form id="move" ><i class="icon-upload-2" id="wngbng"></i><input type="file" name="file_upload" id="video" value=""></form>',{
                                 skin: 'layui-layer-molv',
                                 btn: ['确认', '取消'],
@@ -218,7 +188,7 @@
                 <div class="mws-form-row">
                     <label class="mws-form-label">上传封面图片</label>
                     <div class="mws-form-item">
-                        <input type="text" id="tp" name="tp">
+                        <input type="text" id="tp" name="tp" readonly>
                         <input type="button" value="上传封面图片" class="btn btn-info" id="imgs">
                         
                     </div>
@@ -227,15 +197,6 @@
                 <script type="text/javascript">
                     // alert($);
                     document.getElementById('imgs').onclick=function(){
-                    // $("#moves").click(function(){
-                        // layer.open({
-                        //   type: 1,
-                        //   title: false,
-                        //   closeBtn: 0,
-                        //   shadeClose: true,
-                        //   skin: 'yourclass',
-                        //   content: '<form id="move" ><input type="file" name="file_upload" id="video" value=""><p><img src="" alt="" id="img1" style="width:100px" ></p><input type="button" id="asd" name="btn" value="确认" onclick="shipin()"></form>'
-                        // });
                         
                         layer.alert('<form id="move" ><i class="icon-upload-2" id="wngbng"></i><input type="file" name="file_upload" id="video" value=""></form>',{
                                 skin: 'layui-layer-molv',
@@ -311,26 +272,139 @@
                     };
                 </script>
 
+
+
+
+
+
+
+
+
+
                 
-    			<div class="mws-form-row">
-    				<label class="mws-form-label">内容介绍</label>
-    				<div class="mws-form-item">
-    					<textarea rows="" name="content" cols="" class="large"></textarea>
-    				</div>
-    			</div>
+    			
+    				
+
+                <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>  
+              
+                <!--使用版-->  
+                <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"></script>  
+              
+                <!--开发版-->  
+                <!-- <script type="text/javascript" charset="utf-8" src="editor_api.js"></script>   -->
+                <script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script> 
+                <div class="mws-form-row">
+                    <label class="mws-form-label">内容介绍</label>
+                    <div class="mws-form-item">
+                        <textarea name="content" id="content">视频内容介绍</textarea>  
+                        <script type="text/javascript">  
+                            // var editor = new UE.ui.Editor();  
+                            // editor.render("myEditor");  
+
+                            //1.2.4以后可以使用一下代码实例化编辑器  
+                            var ue = UE.getEditor('content', {
+                                toolbars: [
+                                    [ 'fullscreen', 'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'directionalityltr', 'directionalityrtl', 'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', 'anchor', '|', 
+            'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
+            'horizontal', 'date', 'time', 'spechars', 'snapscreen', '|',
+             'preview', 'searchreplace', ]
+                                ],
+                                autoHeightEnabled: true,
+                                autoFloatEnabled: true
+                            });
+                           
+                        </script>  
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
                 
                 <input type="hidden" name="status" value="1">
                 <input type="hidden" name="time" value="{{time()}}">
     		</div>
     		<div class="mws-button-row">
                 {{ csrf_field() }}
-    			<input type="submit" value="保存" class="btn btn-danger">
+    			<input type="submit" value="保存" id="baocun" class="btn btn-danger">
     		</div>
     	</form>
     </div>
 </div>
 
   
+
+
+
+                 <script type="text/javascript">
+                    //  
+                    var city=document.getElementById('city');
+                    var area=document.getElementById('area');
+                    var dress=document.getElementById('dress');
+                    var sp=document.getElementById('sp');
+                    var tp=document.getElementById('tp');
+                    var fid;
+                    var arr;
+                    //点击提交时判断输入的内容是否为空，为空时弹框提示
+                    $('#baocun').click(function(){
+                        var fqid=city.value;
+                        var zqid=area.value;
+                        var dre=dress.value;
+                        var shi=sp.value;
+                        var tu=tp.value;
+                        if (fqid==-1) {
+                            layer.alert("请选择父分区");
+                            return false;
+                        }
+                        if (zqid==-1) {
+                            layer.alert("请选择子分区");
+                            return false;
+                        }
+                        // console.log(dre);
+                        if(dre==0){
+                            layer.alert("请选择视频类型");
+                            return false;
+                        }
+                        if(shi==''){
+                            layer.alert("请上传视频文件");
+                            return false;
+                        }
+                        if(tu==''){
+                            layer.alert("请上传封面图片");
+                            return false;
+                        }
+                        // return false;
+                    })
+                    //二级联动，父分区和子分区的遍历，根据父分区发送ajax
+                    city.onchange=function(){
+                        fid=this.value;
+
+                        $.get('/admin/videoa',{fid:fid},function(data){
+                            // console.log(data);
+                            // alert(arr);
+                            area.innerHTML='';
+                            for (var i = 0; i <data.length; i++) {
+                                // console.log(data[i].id);
+                                area.innerHTML += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                            };
+                        },'json');
+                        return false;
+                    }
+                    
+                   
+                </script>
 
 @endsection
 
