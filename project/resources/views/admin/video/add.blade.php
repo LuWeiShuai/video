@@ -89,6 +89,7 @@
                         <select name="tid" id="city">
                             <option value="-1">---请选择父分区---</option>
                             @foreach($res as $k=>$v)
+                            <?php var_dump($v)?>
                             <option value="{{$v->id}}">{{$v->name}}</option>
                             @endforeach
                         </select>
@@ -108,11 +109,11 @@
                         fid=this.value;
 
                         $.get('/admin/videoa',{fid:fid},function(data){
-                            // console.log(data);
+                            console.log(data);
                             // alert(arr);
                             area.innerHTML='';
                             for (var i = 0; i <data.length; i++) {
-                                console.log(data[i].id);
+                                // console.log(data[i].id);
                                 area.innerHTML += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
                             };
                         },'json');

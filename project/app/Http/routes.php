@@ -154,7 +154,6 @@ Route::get('/center/buy','centerController@buy');
 Route::resource('/up','UpController');
 Route::resource('/picchuan','VideoaController');
 Route::resource('/videos','ShangController');
-
 });
 
 

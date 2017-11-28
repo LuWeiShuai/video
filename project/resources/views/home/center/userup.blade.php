@@ -81,6 +81,46 @@
                     </div>
                 <br>
                 <br>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">视频分区</label>
+                    <div class="mws-form-item">
+                        <select name="tid" id="city">
+                            <option value="-1">---请选择父分区---</option>
+                            @foreach($re as $k=>$v)
+                            <option value="{{$v->id}}">{{$v->name}}</option>
+                            @endforeach
+                        </select>
+                        <select name="zitid" id="area">
+                            <option value="-1">---请选择子分区---</option>
+
+                        </select>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    //  
+                    var city=document.getElementById('city');
+                    var area=document.getElementById('area');
+                    var fid;
+                    var arr;
+                    city.onchange=function(){
+                        fid=this.value;
+
+                        $.get('/admin/videoa',{fid:fid},function(data){
+                            // console.log(data);
+                            // alert(arr);
+                            area.innerHTML='';
+                            for (var i = 0; i <data.length; i++) {
+                                // console.log(data[i].id);
+                                area.innerHTML += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                            };
+                        },'json');
+                        return false;
+                    }
+                    
+                   
+                </script>
+                <br>
+                <br>
                 <label  class="am-form-label">图片:</label>
                 <div class="am-form-content">
                     <input type="text" name="pic" id="tu" style="width:150px;float:left" />
