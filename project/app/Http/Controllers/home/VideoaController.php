@@ -12,6 +12,7 @@ use zgldh\QiniuStorage\QiniuStorage;
 
 class VideoaController extends Controller
 {
+  
     
     public function store(Request $request){
        // $file=$request->file('file_upload');
@@ -63,7 +64,6 @@ class VideoaController extends Controller
                 return $vfileName;
             }
         }
-        
         
 
         // return $move;

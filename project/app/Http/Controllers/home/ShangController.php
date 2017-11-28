@@ -39,11 +39,13 @@ class ShangController extends Controller
      */
     public function store(Request $request)
     {
-        $res = $request->except('_token');
-        $re = uvideo::insert($res);
+        $res = $request->except('_token','tid'); 
+        var_dump($res);  
+        /*$re = uvideo::insert($res);
         if($res){
             return redirect('/home/up');
-        }
+        }*/
+
 
       
         
@@ -94,6 +96,6 @@ class ShangController extends Controller
      */
     public function destroy($id)
     {
-        var_dump($id);
+       
     }
 }

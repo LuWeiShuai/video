@@ -109,7 +109,7 @@ class registerController extends Controller
     		
     		return redirect('/home/index');
     	} else {
-    		return back();
+    		return back()->with('msg','注册成功');
     	}
 
     }

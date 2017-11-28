@@ -52,7 +52,7 @@ class userUpController extends Controller
             $data = uvideo::insert($res);
           
             if($data){
-                return redirect('/home/userup');
+                return redirect('/home/userup')->with('msg','添加成功');
             } else {
                 return back();
             }

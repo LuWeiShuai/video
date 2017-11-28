@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\model\uvideo;
 use App\Http\model\info;
+use App\Http\model\type;
 
 class UpController extends Controller
 {
@@ -28,11 +29,12 @@ class UpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {   
         $uid = session('uid');
         $res = info::where('uid',$uid)->first();
-        return view('/home/center/userup',['res'=>$res]);
+        $re = type::where('fid','16')->get();
+        return view('/home/center/userup',['res'=>$res,'re'=>$re]);
     }
 
     /**
@@ -90,6 +92,6 @@ class UpController extends Controller
     {
         $res = uvideo::first();
         $res->delete();
-        return redirect('/home/up');
+        return redirect('/home/up')->with('msg','删除成功');
     }
 }

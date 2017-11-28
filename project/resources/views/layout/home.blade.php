@@ -412,7 +412,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div id="aaa" style="height: 20px; width: 195px;"></div>
 						<div class="side-bottom" style="background-color:#272C2E; position: fixed; width: 193px;bottom: 0px;">
 							<div class="copyright" >
-								<p>Copyright &copy; 2015.Company name </p>
+								<p>Copyright &copy; 2017.Company name </p>
 								<p>All rights reserved.</p>
 							</div>
 						</div>

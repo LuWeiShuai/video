@@ -4,7 +4,7 @@
 				<div class="recommended">
 					<div class="recommended-grids">
 						<div class="recommended-info">
-							<h3>{{ $fname.':'.$name }}</h3>
+							<h3>{{ $fname }}: <span style="font-size: 18px;opacity: 0.5">{{$name}}<span></h3>
 						</div>
 						<div class="cler" style="clear:both; width: 100%;border:solid 1px #999999;opacity: 0.3;margin-bottom: 10px; "></div> 
 						@foreach($res as $k => $v)
