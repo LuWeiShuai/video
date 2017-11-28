@@ -101,23 +101,7 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
-=======
-                        $.get('/admin/videoa',{fid:fid},function(data){
-                            console.log(data);
-                            // alert(arr);
-                            area.innerHTML='';
-                            for (var i = 0; i <data.length; i++) {
-                                // console.log(data[i].id);
-                                area.innerHTML += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
-                            };
-                        },'json');
-                        return false;
-                    }
-                    
-                   
-                </script>
->>>>>>> 6df54edc344bd742c73ffe9ff875a3ae388ec384
+                
                 <div class="mws-form-row">
                     <label class="mws-form-label">视频类型</label>
                     <div class="mws-form-item">

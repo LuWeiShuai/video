@@ -12,7 +12,6 @@ use App\Http\model\video;
 use App\Http\model\uvideo;
 use App\Http\model\vdetail;
 use App\Http\model\config;
-use App\Http\model\uvideo;
 
 
 class homeController extends Controller
