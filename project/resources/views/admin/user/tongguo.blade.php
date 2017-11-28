@@ -98,7 +98,7 @@
                                {{  $val->actor  }}
                             </td>
                             <td class="">
-                                <a href="{{ url('/home/user_play/'.$val->id)}}"><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
+                                <a href="{{ url('/home/user_play/'.$val->id)}}"><img style="float:left;width:100px;height:100px" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
                             </td>
                            <td class=" ">
                                 <form action="{{ url('/admin/userguo/'.$val->id) }}" method='post' style='text-align: center'>
@@ -123,10 +123,14 @@
                                 {{  $val->actor  }} 
                             </td>
                             <td class="">
-                                <a href="{{ url('/admin/play/'.$val->id)}}"><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
+                                <a href="{{ url('/admin/play/'.$val->id)}}"><img style="float:left;width:100px;height:100px" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
                             </td>
-                            <td class="">
-                                <a href="{{ url('/admin/play/'.$val->id)}}"><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
+                            <td class=" ">
+                                <form action="{{ url('/admin/userguo/'.$val->id) }}" method='post' style='text-align: center'>
+                                    {{csrf_field()}}
+                                    {{method_field('DELETE')}}
+                                    <input type="submit" value="下架" class="btn btn-warning">
+                               </form>
                             </td>
                         </tr>
                         @endif
