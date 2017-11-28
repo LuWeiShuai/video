@@ -29,11 +29,11 @@ class UpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {   
         $uid = session('uid');
         $res = info::where('uid',$uid)->first();
-        $re = type::where('fid','0')->get();
+        $re = type::where('fid','16')->get();
         return view('/home/center/userup',['res'=>$res,'re'=>$re]);
     }
 

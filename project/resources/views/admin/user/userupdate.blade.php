@@ -49,28 +49,34 @@
                     <tr role="row">
                         <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                        style="width: 160px;">
+                        style="width: 120px;">
                            用户名
                         </th>
                         <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                        style="width: 160px;">
+                        style="width: 120px;">
                             上传时间
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
                         style="width: 200px;">
-                            上传视频
+                            视频标题
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
+                        style="width: 120px;">
+                           演员
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
                         style="width: 130px;">
-                           演员
+                           视频图片
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"
-                        style="width: 120px;">
+                        style="width: 200px;">
                             操作
+                        
                         </th>
                     </tr>
                 </thead>
@@ -84,13 +90,16 @@
                                 {{ $val->username }}
                             </td>
                             <td class=" ">
-                                {{ $val->time }}
+                                {{ date('Y-m-d,H:i:s',$val->time) }}
                             </td>
                             <td class=" ">
-                                {{ $val->content }}
+                                {{ $val->title }}
                             </td>
                             <td class=" ">
                                {{  $val->actor  }}
+                            </td>
+                            <td class="">
+                                <a href="{{ url('/admin/play/'.$val->id)}}"><img style="float:left;width:100px;height:100px" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
                             </td>
                            <td class=" ">
                                 <a href="{{ url('/admin/userup/'.$val->id) }}"><button class="btn btn-danger">通过</button></a>
@@ -107,13 +116,16 @@
                                 {{ $val->username }}
                             </td>
                             <td class=" ">
-                                {{ $val->time }}
+                                {{ date('Y-m-d,H:i:s',$val->time) }}
                             </td>
                             <td class=" ">
-                                {{ $val->content }}
+                                {{ $val->title }}
                             </td>
                             <td class=" ">
                                 {{  $val->actor  }} 
+                            </td>
+                            <td class="">
+                                <a href="{{ url('/admin/play/'.$val->id)}}"><img style="float:left;width:100px;height:100px" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
                             </td>
                             <td class=" ">
                                 <a href="{{ url('/admin/userup/'.$val->id) }}"><button class="btn btn-danger">通过</button></a>

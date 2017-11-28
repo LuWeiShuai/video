@@ -260,10 +260,18 @@
                             <li><a href="{{url('/admin/video/huishou')}}">回收站</a></li>
                         </ul>
                     </li>
+                <?php $ures = DB::table('uvideo')->where("status","0")->count();?>
+                @if($ures==0)
                     <li>
                         <a href="#"><i class="icon-list"></i>用户上传</a>
                         <ul class="closed">
                             <li><a href="/admin/userup">待审核</a></li>
+                 @else
+                    <li>
+                        <a href="#"><i class="icon-list"></i>用户上传<span class="mws-nav-tooltip" style="margin-top:-10px; color: red!important; ">{{$ures}}</span></a>
+                        <ul class="closed">
+                            <li><a href="/admin/userup">待审核</a> <span class="mws-nav-tooltip" style="margin-top:-4px; color: red!important; ">{{$ures}}</span></li>
+                 @endif
                             <li><a href="/admin/userguo">已通过</a></li>
                         </ul>
                     </li>

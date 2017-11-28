@@ -53,6 +53,7 @@
 </style>
 
 @section('content')
+
     <div class="user-info">
         <!--标题 -->
         <div class="am-cf am-padding">
@@ -66,65 +67,44 @@
                 <div class="am-form-group">
                     <label for="video-name" class="am-form-label">视频名称</label>
                     <div class="am-form-content" id="aa">
-                        <input id="vname" placeholder="请输入视频名称" type="text" value="" name="title">   
+                        <input id="vname" placeholder="请输入视频名称" required type="text" value="" name="title">   
                     </div>                   
                 </div>
                 <div class="am-form-group">
                     <label for="video-name" class="am-form-label">视频介绍</label>
                     <div class="am-form-content" id="aa">
-                        <input id="vname" placeholder="请输入视频介绍" type="text" value="" name="content">   
+                        <input id="vname" required placeholder="请输入视频介绍" type="text" value="" name="content">   
                     </div>                   
                 </div>
                 <label  class="am-form-label">主演:</label>
                     <div class="am-form-content">                        
-                        <input id="user-phone" placeholder="主演名称" type="text" name="actor">
+                        <input id="user-phone" placeholder="主演名称" required type="text" name="actor">
                     </div>
                 <br>
                 <br>
                 <div class="mws-form-row">
-                    <label class="mws-form-label">视频分区</label>
-                    <div class="mws-form-item">
-                        <select name="tid" id="city">
-                            <option value="-1">---请选择父分区---</option>
+                    <label class="am-form-label" >视频分区</label>
+                    <div class="mws-form-item" style="">
+                        <select name="tid" id="city" style="width:200px;position: absolute;margin-left: 85px">
+                            <option value="16">---用户上传---</option>
+                        </select>
+                        
+                        <select name="zitid" id="area" style="margin-left: 290px">
+                            <option  value="-1">------</option> 
                             @foreach($re as $k=>$v)
-                            <option value="{{$v->id}}">{{$v->name}}</option>
+                            <option value="{{$v->id}}">---{{$v->name}}---</option>  
                             @endforeach
                         </select>
-                        <select name="zitid" id="area">
-                            <option value="-1">---请选择子分区---</option>
-
-                        </select>
+                        
                     </div>
                 </div>
-                <script type="text/javascript">
-                    //  
-                    var city=document.getElementById('city');
-                    var area=document.getElementById('area');
-                    var fid;
-                    var arr;
-                    city.onchange=function(){
-                        fid=this.value;
-
-                        $.get('/admin/videoa',{fid:fid},function(data){
-                            // console.log(data);
-                            // alert(arr);
-                            area.innerHTML='';
-                            for (var i = 0; i <data.length; i++) {
-                                // console.log(data[i].id);
-                                area.innerHTML += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
-                            };
-                        },'json');
-                        return false;
-                    }
-                    
-                   
-                </script>
                 <br>
                 <br>
                 <label  class="am-form-label">图片:</label>
                 <div class="am-form-content">
-                    <input type="text" name="pic" id="tu" style="width:150px;float:left" />
+                    <input type="text" readonly name="pic" id="tu" style="width:150px;float:left" />
                     <input type="button" value="上传封面图片" class="btn btn-info" id="upic">
+                    
                     <script src="/layer/layer.js"></script>
 
                         <script type="text/javascript">
@@ -144,7 +124,8 @@
                                     
                                     //判断上传文件的后缀名
                                     var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
-                                    if (strExtension != 'jpg' && strExtension != 'gif'
+                                    var suffix = strExtension.toLowerCase();
+                                    if (suffix != 'jpg' && strExtension != 'gif'
                                         && strExtension != 'png' && strExtension != 'bmp' && strExtension != 'jpeg') {
                                         alert("请选择图片文件");
                                         return;
@@ -205,8 +186,9 @@
                 <br>
                 <label  class="am-form-label">视频:</label>
                 <div class="am-form-content">
-                    <input type="text" name="url" id="shipin" style="width:150px;float:left" />
+                    <input type="text" readonly name="url" id="shipin" style="width:150px;float:left" />
                     <input type="button" value="上传视频" class="btn btn-danger" id="uvideo">
+                    
                 </div>
                 <script type="text/javascript">
                     document.getElementById('uvideo').onclick=function(){
@@ -226,7 +208,8 @@
                                     
                                     //判断上传文件的后缀名
                                     var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
-                                    if (strExtension != 'mp4' && strExtension != 'flv'
+                                    var suffix = strExtension.toLowerCase();
+                                    if (suffix != 'mp4' && strExtension != 'flv'
                                         && strExtension != 'wmv' && strExtension != 'rmvb' && strExtension != 'mkv' && strExtension != 'avi' && strExtension != 'rm' && strExtension != 'asf' && strExtension != 'mov' && strExtension != 'mp3' && strExtension != 'vod' && strExtension != 'dat' && strExtension != 'kux') {
                                         alert("请选择视频文件");
                                         return;
@@ -281,8 +264,31 @@
                 <br>
                 <div class="info-btn">
                     {{ csrf_field()}}
+                    
 
+                        
                     <input type="submit" value="上传" class="btn btn-danger">
+                    <script src="/homes/js/jquery.min.js"></script>
+                    <script type="text/javascript">
+                            
+                            $('input[type=submit]').click(function(){
+                                var zi = $('#area').val();
+                                if(zi == '-1'){
+                                    layer.alert('请选择类别');
+                                    return false;
+                                }
+                                var tu = $('#tu').val();
+                                if(tu == ''){
+                                    layer.alert('请上传图片');
+                                    return false
+                                }
+                                var shipin = $('#shipin').val();
+                                if(shipin == ''){
+                                    layer.alert('请上传视频');
+                                }
+                            })
+
+                        </script>
                 </div>
 
             </form>

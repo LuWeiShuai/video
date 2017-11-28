@@ -12,8 +12,8 @@
 		@foreach($type as $k=>$v)
 		<div class="recommended-grids">
 			<div class="recommended-info">
-				<h3 style="float: left; padding: 0px; margin: 0px;">{{$v->name}}</h3>
-				<a class="gengduo" style="float: right;margin-right: 20px;" href="{{ url('/home/video/'.$v->id)}}">更多>></a>
+				<h3 style="float: left; padding: 0px; margin: 0px;  line-height: 40px;" class="glyphicon glyphicon-film" >&nbsp;{{$v->name}}</h3>
+				<a class="gengduo" style="float: right;margin-right: 20px; margin-top:10px; " href="{{ url('/home/video/'.$v->id)}}">更多>></a>
 				
 			</div>
 			<div class="cler" style="clear:both; width: 100%;border:solid 1px #999999;opacity: 0.3;margin-bottom: 10px; "></div> 
