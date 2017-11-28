@@ -55,7 +55,8 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 	Route::resource('/userup','UserUpController');
 		//已通过
 	Route::resource('/userguo','UserGuoController');
-
+		//播放
+	Route::get('/play/{id}','PlayController@index');
 
 	//网站配置
 	Route::resource('/config','configController');
@@ -137,7 +138,7 @@ Route::get('/center/buy','centerController@buy');
 Route::resource('/up','UpController');
 Route::resource('/picchuan','VideoaController');
 Route::resource('/videos','ShangController');
-
+Route::get('/videosa','VideosaController@index');
 });
 
 
