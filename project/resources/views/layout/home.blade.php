@@ -16,17 +16,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="/homes/css/style.css" rel='stylesheet' type='text/css' media="all" />
 <script src="/homes/js/jquery-1.11.1.min.js"></script>
 <script src="/layer/layer.js"></script>
+
+<link href="/homes/css/admin.css" rel="stylesheet" type="text/css">
+<link href="/homes/css/amazeui.css" rel="stylesheet" type="text/css">
+<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
+<link href="/homes/css/infstyle.css" rel="stylesheet" type="text/css">
+<script src="/homes/js/jquery.min.js"></script>
+<script src="/homes/js/amazeui.js"></script>		
+	
 <style>
-			.cur{border:solid 2px lightblue;}
-			
-		</style>
+	.cur{border:solid 2px lightblue;}
+	.main-grids{
+		padding-top:-50px;
+		margin-top:-50px;
+	}
+</style>
 <!--start-smoth-scrolling-->
 
 </head>
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+      <div class="container-fluid" style="margin-top: -18px;">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle 162navigation</span>
@@ -40,19 +51,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-					<input type="submit" value=" ">
+				<form class="navbar-form navbar-right" action="/home/search" method="get"> 
+					<input type="text" class="form-control" placeholder="Search..." name="cha" value="">
+					<input type="submit" value="">
 				</form>
 			</div>
 	
 			@if(session('msg'))
-                <div class="mws-form-message info" style="font-size: 20px;">         
-                    {{session('msg')}}
 
-                </div>
+                <div class="mws-form-message info" style="font-size: 20px;">
+					<script>
+                    	layer.alert("{{session('msg')}}");						
+					</script>
+                </div>               
             @endif
-
+			
 			@if (count($errors) > 0)
 		    <div class="mws-form-message warning">
 		        <ul>
@@ -331,7 +344,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							</form>
 							<div class="forgot">
-								<a href="#">忘记密码?</a>
+								<a href="/home/forgot">忘记密码?</a>
 							</div>
 						</div>
 						<div class="clearfix"> </div>
@@ -362,9 +375,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 				<div class="drop-navigation drop-navigation">
 				  <ul class="nav nav-sidebar">
-					<li class="active"><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
-					<li><a href="shows.html" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>电视节目</a></li>
-					<li><a href="history.html" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
+					<li class=""><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
+					<li><a href="/home/center/history" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<?php $res1 = DB::table('type')->get();?>
 					@foreach($res1 as $k1 => $v1)
 						@if($v1->fid == 0)
@@ -449,7 +461,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/homes/js/bootstrap.min.js"></script>
-    <script src="/layer/layer.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
   </body>
 </html>

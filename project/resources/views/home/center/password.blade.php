@@ -26,47 +26,66 @@
 					<label for="user-phone" class="am-form-label">手机号:</label>
 					<div class="am-form-content" id="aa">
 						<input id="user-phone" placeholder="请输入手机号" type="text" value="" name="tel">
+						<span> *请输入6~16位密码</span>
 						<br>
-						<input type="button" value="获取验证码" class="btn btn-danger" id="btn">
+						<input type="button" value="获取验证码" class="btn btn-danger" id="btn" onclick="sendCode(this)">
 						<br>
 						<script>
-							var wait=60; 
-							function time(o) { 
 
-							   $.ajax({
-					               type:'get',
-					               url:"/home/register",
-					               data:'tel='+$('input[name=tel]').val(),
-					               success:function(data){
-					               	console.log(data);
-						               	if(data=='1'){
-						               		if (wait == 0) { 
-												o.removeAttribute("disabled"); 
-												o.value="获取验证码"; 
-												wait = 60; 
-												} else { 
-												o.setAttribute("disabled", true); 
-												o.value="重新发送(" + wait + ")"; 
-												wait--; 
-												setTimeout(function() { 
-												time(o) 
-												}, 
-												1000);
-												return false;
-											} 
-											return false;
-										}else{
-											$('input[name=tel]').css('border','solid 1px red');
-										}
-										return false;
-					               }
+							//手机号
+							//获取焦点
+							$('input[name=tel]').focus(function(){
 
-					            });
+								$(this).addClass('cur');
+							})
+							//失去焦点
+							$('input[name=tel]').blur(function(){
+								//获取手机号
+								var tel = $(this).val();
+								//正则
+								var reg = /^1[34578]\d{9}$/;
+								//检测
+								if(!reg.test(tel)){
+									$(this).css('border','solid 2px #db192a');
+									$(this).next().text(' *手机号码不正确').css('color','#db192a');
 
-								return false;
-							} 
-							   	
-							document.getElementById("btn").onclick=function(){time(this);}
+								} else {
+									$(this).css('border','solid 2px green');
+									$(this).next().text(' √').css('color','green');
+								}
+							})
+
+							var clock = '';
+							 var nums = 60;
+							 var btn;
+							 function sendCode(thisBtn)
+							 { 
+
+								//获取手机号
+								var tel = $('input[name=tel]').val();
+								//发送ajax
+								$.get('/home/center/yzm',{tel:tel},function(data){
+
+									console.log(data);
+								})
+
+								 btn = thisBtn;
+								 btn.disabled = true; //将按钮置为不可点击
+								 btn.value = nums+'秒后可重新获取';
+								 clock = setInterval(doLoop, 1000); //一秒执行一次
+								 }
+								 function doLoop()
+								 {
+								 nums--;
+								 if(nums > 0){
+								  btn.value = nums+'秒后可重新获取';
+								 }else{
+								  clearInterval(clock); //清除js定时器
+								  btn.disabled = false;
+								  btn.value = '点击发送验证码';
+								  nums = 10; //重置时间
+								 }
+							 }
 
 						</script>
 					</div>

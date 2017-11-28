@@ -11,7 +11,7 @@
 
 						<div class="col-md-3 resent-grid recommended-grid">
 							<div class="resent-grid-img recommended-grid-img">
-								<a href="{{ url('/home/play/'.$v->id)}}"><img src="/admins/video/upload/{{$v->logo}}" alt="" style="height:200px;"></a>
+								<a href="{{ url('/home/play/'.$v->id)}}"><img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}" alt="" style="height:200px;"></a>
 								<div class="time small-time">
 									<p><i style="font-size: 18px;color: red;">{{$v->level}}分</i></p>	
 								</div>
@@ -23,7 +23,7 @@
 								<h5><a href="{{ url('/home/play/'.$v->id)}}" class="title">{{$v->title}}</a></h5>
 								<ul>
 									<li><p class="author author-info"><a href="#" class="author">演员：{{ $res2->actor }}</a></p></li>
-									<li class="right-list"><p class="views views-info">2,114,200 次点击</p></li>
+									<li class="right-list"><p class="views views-info">{{$v->num}}次点击</p></li>
 								</ul>
 							</div>
 						</div>

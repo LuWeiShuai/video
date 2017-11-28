@@ -7,13 +7,7 @@
 		<div class="am-cf am-padding">
 			<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
 		</div>
-		@if(session('msg'))
-            <div class="mws-form-message info">                 
-
-                {{session('msg')}}
-
-            </div>
-        @endif
+		
         @if(count($errors) > 0)
         <div class="mws-form-message error">
             <ul>
@@ -25,6 +19,7 @@
         </div>
     	@endif 
 		<hr/>
+		
 		<form method="post" action="/home/center/update" class="am-form am-form-horizontal" enctype="multipart/form-data">
 			<!-- enctype="multipart/form-data" -->
 		<!--头像 -->
@@ -40,10 +35,13 @@
 			<div class="info-m">
 				<div><b>昵称：<i>{{$res->nikeName}}</i></b></div>
 				<div class="vip">
-					<!-- vip0 -->
-       				<div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="/homes/images/icon_progress_24.png" style="position:relative;top:0px;left:0px;"></div><a href="" >会员专享</a>
+					@if($res1->status == 0)
+						<!-- vip0 -->
+	       				<div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="/homes/images/icon_progress_24.png" style="position:relative;top:0px;left:0px;"></div><a href="" >会员专享</a>
+	       			@else
                     <!-- vip1 -->
-                    <!-- <div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="/homes/images/icon_progress_24.png" style="position:relative;top:px;left:-51px;"></div><a href="" >会员专享</a> -->
+                    <div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="/homes/images/icon_progress_24.png" style="position:relative;top:px;left:-51px;"></div><a href="" >会员专享</a>
+                    @endif
                     <!-- vip2 -->
                     <!-- <div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="/homes/images/icon_progress_24.png" style="position:relative;top:px;left:-102px;"></div><a href="" >会员专享</a> -->
                     <!-- vip3 -->
@@ -54,7 +52,6 @@
 
 		<!--个人信息 -->
 		<div class="info-main">
-			
 
 				<div class="am-form-group">
 					<label for="user-name2" class="am-form-label">昵称</label>
@@ -162,10 +159,11 @@
 				
 				<div class="info-btn">
     			{{ csrf_field()}}
-
+			
+					
 					<input type="submit" value="保存修改" class="btn btn-danger">
 				</div>
-
+				
 			</form>
 		</div>
 

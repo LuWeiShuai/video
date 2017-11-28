@@ -137,6 +137,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

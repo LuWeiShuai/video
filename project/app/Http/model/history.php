@@ -8,5 +8,5 @@ class history extends Model
 {
     //
    protected $table = 'history';
-
+   public $timestamps = false;
 }

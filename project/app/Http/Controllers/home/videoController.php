@@ -10,9 +10,13 @@ use DB;
 use session;
 use App\Http\model\type;
 use App\Http\model\video;
+use App\Http\model\uvideo;
 use App\Http\model\vdetail;
 use App\Http\model\discuss;
 use App\Http\model\info;
+use App\Http\model\login;
+use App\Http\model\history;
+use App\Http\model\money;
 
 
 class videoController extends Controller
@@ -33,7 +37,7 @@ class videoController extends Controller
 
 			$tid[]= $val->id;
         }
-        $res1 = video::whereIn('tid',$tid)->get();
+        $res1 = video::whereIn('tid',$tid)->where('status','1')->get();
         // var_dump($res1);
 	   return view('home.video.list',['res1'=>$res1,'name'=>$name]); 			
     }
@@ -46,24 +50,145 @@ class videoController extends Controller
         $res2 = type::where('id',$res->fid)->first();
 
         $fname =$res2->name;
-        $res1 = video::where('tid',$id)->get();
+        $res1 = video::where('tid',$id)->where('status','1')->get();
         return view('home.video.type',['name'=>$name,'fname'=>$fname,'res'=>$res1]); 
     }
 
     //视频播放页面
     public function play($id)
     {
-        //点击量 
-        $arr = [];       
+        if(session('uid')){
+            $uid = session('uid'); 
+            $user = login::where('id',$uid)->first();
+            //获取用视频观看权限
+            $userAuth = $user->status;
+        }
+
         $res = video::where('id',$id)->first();
-        $arr['num'] = $res->num;
-        $arr['num'] += 1;
-        video::where('id',$id)->update($arr);
-        
-        //评论
-        $res1 = discuss::where('vid',$id)->get();
-        
-        return view('home.video.play',['res'=>$res,'res1'=>$res1]);
+        //视频的权限
+        $auth = $res->auth;
+        //排行榜
+        $tid = $res->tid;
+        $type = type::where('id',$tid)->first();
+        $fid = $type->fid;
+        $res5 = type::where('fid',$fid)->get();
+        $tid = [];
+        foreach ($res5 as $key => $val) {
+
+            $tid[]= $val->id;
+        }
+        $res6 = video::whereIn('tid',$tid)->orderby('num','desc')->get();
+        //普通视频
+        if($auth == 0 ){
+           //点击量 
+            $arr = [];       
+            $arr['num'] = $res->num;
+            $arr['num'] += 1;
+            video::where('id',$id)->update($arr);
+
+            //存历史记录
+            $res4 = history::where('vid',$id)->first();
+            if($res4){
+                $data = [];
+                $data['time'] = date('Y-m-d H:i:s',time());
+                history::where('id',$res4->id)->update($data);
+            }else{
+                $his = [];
+                $his['uid'] = $uid;
+                $his['vid'] = $id;
+                $his['title'] = $res->title;
+                $his['time'] = date('Y-m-d H:i:s',time());
+                $his['url'] =$res->url;
+                $his['logo'] = $res->logo;
+
+                history::insert($his);               
+            }
+             //评论
+            $res1 = discuss::where('vid',$id)->get();
+            
+            return view('home.video.play',['res'=>$res,'res1'=>$res1,'res6'=>$res6]);
+        }
+
+        //vip视频
+        if($auth == 1 ){
+            if(!session('uid')){
+                return back()->with('msg','请先登录在观看vip视频');;
+            }else{
+                if($userAuth != 1){
+                    return back()->with('msg','请先开通vip在观看');
+                }else{
+                    //点击量 
+                    $arr = [];       
+                    $arr['num'] = $res->num;
+                    $arr['num'] += 1;
+                    video::where('id',$id)->update($arr);
+
+                    //存历史记录
+                    $res4 = history::where('vid',$id)->first();
+                    if($res4){
+                        $data = [];
+                        $data['time'] = date('Y-m-d H:i:s',time());
+                        history::where('id',$res4->id)->update($data);
+                    }else{
+                        $his = [];
+                        $his['uid'] = $uid;
+                        $his['vid'] = $id;
+                        $his['title'] = $res->title;
+                        $his['time'] = date('Y-m-d H:i:s',time());
+                        $his['url'] =$res->url;
+                        $his['logo'] = $res->logo;
+
+                        history::insert($his);               
+                    }
+
+                     //评论
+                    $res1 = discuss::where('vid',$id)->get();
+                    
+                    return view('home.video.play',['res'=>$res,'res1'=>$res1,'res6'=>$res6]);
+                }
+            }
+        }
+        //查看该用户是否购买过此视频
+        $money = money::where('vid',$id)->first();
+        //付费视频
+        if($auth == 2 ){
+            if(!session('uid')){
+                return back()->with('msg','请先登录在观看付费视频');;
+            }else{
+                if(!$money){
+                    return redirect("/home/center/money/{$id}")->with('msg','请先购买此视频在观看');
+                }else{
+                    //点击量 
+                    $arr = [];       
+                    $arr['num'] = $res->num;
+                    $arr['num'] += 1;
+                    video::where('id',$id)->update($arr);
+
+                    //存历史记录
+                    $res4 = history::where('vid',$id)->first();
+                    if($res4){
+                        $data = [];
+                        $data['time'] = date('Y-m-d H:i:s',time());
+                        history::where('id',$res4->id)->update($data);
+                    }else{
+                        $his = [];
+                        $his['uid'] = $uid;
+                        $his['vid'] = $id;
+                        $his['title'] = $res->title;
+                        $his['time'] = date('Y-m-d H:i:s',time());
+                        $his['url'] =$res->url;
+                        $his['logo'] = $res->logo;
+
+                        history::insert($his);               
+                    }
+
+                     //评论
+                    $res1 = discuss::where('vid',$id)->get();
+                    
+                    return view('home.video.play',['res'=>$res,'res1'=>$res1,'res6'=>$res6]);
+                }
+            }
+        }      
     }
 
     //视频评论
@@ -87,5 +212,20 @@ class videoController extends Controller
             return '评论失败';
         }
 
+    }
+
+    public function user_play($id)
+    {
+        $res = uvideo::where('id',$id)->first();
+        //点击量 
+        $arr = [];       
+        $arr['num'] = $res->num;
+        $arr['num'] += 1;
+        uvideo::where('id',$id)->update($arr);
+
+        //排行榜
+        $res1 = uvideo::orderby('num','desc')->get();
+       
+        return view('home.video.user_play',['res'=>$res,'res1'=>$res1]);
     }
 }

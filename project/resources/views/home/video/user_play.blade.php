@@ -33,10 +33,9 @@
 							</script>
 							<div class="load_more">	
 								<ul id="myList">
-									<?php $res3 = DB::table('vdetail')->where('vid',$res->id)->first(); ?>
 									<li style="display: list-item;">
-										<h4>上映时间:{{ date('Y-m-d',$res3->time) }}</h4>
-										<p>{{$res3->content}}</p>
+										<h4>上传时间:{{ date('Y-m-d',$res->time) }}</h4>
+										<p>{{$res->content}}</p>
 									</li>
 									<li>
 										<p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
@@ -66,59 +65,32 @@
 									<div class="clearfix"> </div>
 								</form>
 							</div>
-							<script>
-								$.ajaxSetup({
-							        headers: {
-							            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-							        }
-								});								
-								var title = $('#title').text();								
-								var time = $('input[type=hidden]').val();								
-								$('#dis').click(function(){		
-
-									var discuss = $('#discuss').val();
-									$.post("{{url('/home/discuss')}}",{'_token':'{{csrf_token()}}',dis:discuss,title:title,time:time},function(data){
-										if(data == '评论失败'){
-											
-											// alert('请先登录在评论');
-											layer.alert('请先登录,在评论');
-										}else{
-											layer.alert('评论成功!');
-										}
-									})
-									return false;
-								})
-							</script>
 						</div>
-						<div class="media-grids">
-							@foreach($res1 as $key=>$val)
-							<?php $res2 = DB::table('info')->where('uid',$val->uid)->first(); ?>
+						<div class="media-grids">							
 							<div class="media" style="border:solid 1px #D4D3D3;margin:0px;padding:0px;">
-								<h5 class="btn btn-info">{{ $res2->nikeName }}</h5>
+								<h5 class="btn btn-info"></h5>
 								<div class="media-left" >
-									<div style="width:50px;height:50px;margin:0px;padding:0px;border-radius:50%;overflow:hidden;"><img style="position:relative;top:-30px;left:-40px;" class="am-circle am-img-thumbnail" src="{{url('/homes/pic/'.$res2->profile)}}" alt=""></div>
+									<div style="width:50px;height:50px;margin:0px;padding:0px;border-radius:50%;overflow:hidden;"><img style="position:relative;top:-30px;left:-40px;" class="am-circle am-img-thumbnail" src="" alt=""></div>
 								</div>
 								<div class="media-body">
-									<p>{{ $val->content}}</p>
+									<p></p>
 								</div>
-							</div>
-							@endforeach							
+							</div>						
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4 single-right" style="margin-top:20px;">
 					<h3>排行榜</h3>
 					<div class="single-grid-right">
-						@foreach($res6 as $k=>$v)
+						@foreach($res1 as $k=>$v)
 							@if($k < 10)
-							<?php $res2 =DB::table('vdetail')->where('vid',$v->id)->first(); ?>
 							<div class="single-right-grids">
 								<div class="col-md-4 single-right-grid-left">
-									<a href="{{ url('/home/play/'.$v->id)}}"><img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}" alt=""></a>
+									<a href="{{ url('/home/user_play/'.$v->id)}}"><img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}" alt=""></a>
 								</div>
 								<div class="col-md-8 single-right-grid-right">
-									<a href="{{ url('/home/play/'.$v->id)}}" class="title">{{ $v->title }}</a>
-									<p class="author"><a href="#" class="author">{{ $res2->actor }}</a></p>
+									<a href="{{ url('/home/user_play/'.$v->id)}}" class="title">{{ $v->title }}</a>
+									<p class="author"><a href="#" class="author">{{ $v->actor }}</a></p>
 									<p class="views">{{ $v->num }}</p>
 								</div>
 								<div class="clearfix"> </div>

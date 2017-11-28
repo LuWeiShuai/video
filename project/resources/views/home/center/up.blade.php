@@ -181,13 +181,13 @@
                         </div>
                         
                         <div class="tpl-i-title">
-                           {{$v->title}}
+                           <a href="{{ url('/home/user_play/'.$v->id)}}">{{$v->title}}</a>
                         </div>
                         
                         <div class="tpl-table-images-content-i" id="fengmian">
                             
                             <span class="tpl-table-images-content-i-shadow"></span>
-                            <a href=""><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}" alt=""></a>
+                            <a href="{{ url('/home/user_play/'.$v->id)}}"><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}" alt=""></a>
                                 
                         </div>
                         <div class="tpl-table-images-content-i-info">

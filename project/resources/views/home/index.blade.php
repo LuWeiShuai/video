@@ -3,22 +3,26 @@
 @section('content')
 <style type="text/css">
 	.main-grids{
-		padding-top:-70px;
-		margin-top:-70px;
+		padding-top:-50px;
+		margin-top:-50px;
+
 	}
 </style>
 	<div class="recommended">
 		@foreach($type as $k=>$v)
 		<div class="recommended-grids">
 			<div class="recommended-info">
-				<h3>{{$v->name}}</h3>
+				<h3 style="float: left; padding: 0px; margin: 0px;">{{$v->name}}</h3>
+				<a class="gengduo" style="float: right;margin-right: 20px;" href="{{ url('/home/video/'.$v->id)}}">更多>></a>
+				
 			</div>
+			<div class="cler" style="clear:both; width: 100%;border:solid 1px #999999;opacity: 0.3;margin-bottom: 10px; "></div> 
 			@foreach ($video as $key => $val)
 				@if(in_array($val->tid,$fid[$k]))
 					@if($key<=3)
 					<div class="col-md-3 resent-grid recommended-grid">
 						<div class="resent-grid-img recommended-grid-img">
-							<a href="{{ url('/home/play/'.$val->id)}}"><img style="height: 200px;" src="/admins/video/upload/{{$val->logo}}" alt=""></a>
+							<a href="{{ url('/home/play/'.$val->id)}}"><img style="height: 200px;" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->logo}}" alt=""></a>
 							<div class="time small-time">
 								<p><i style="font-size: 18px;color: red;">{{$val->level}}分</i></p>
 							</div>
