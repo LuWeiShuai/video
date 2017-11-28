@@ -6,6 +6,7 @@
 						<div class="recommended-info">
 							<h3>{{ $fname.':'.$name }}</h3>
 						</div>
+						<div class="cler" style="clear:both; width: 100%;border:solid 1px #999999;opacity: 0.3;margin-bottom: 10px; "></div> 
 						@foreach($res as $k => $v)
 							 <?php $res2 =DB::table('vdetail')->where('vid',$v->id)->first(); ?>
 						<div class="col-md-3 resent-grid recommended-grid">

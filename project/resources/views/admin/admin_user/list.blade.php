@@ -63,6 +63,11 @@
                             手机号
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                        style="width: 200px;">
+                            头像
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
                         style="width: 130px;">
                            管理员权限
@@ -90,6 +95,9 @@
                                 {{ $val->phone }}
                             </td>
                             <td class=" ">
+                               <img style="height:30px;" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->profile}}" alt="">
+                            </td>
+                            <td class=" ">
                                @if($val->auth == 0) 普通管理员 @elseif($val->auth == 1) 视频管理员 @else 超级管理员 @endif
                             </td>
                             <td class=" ">
@@ -111,6 +119,9 @@
                             </td>
                             <td class=" ">
                                 {{ $val->phone }}
+                            </td>
+                            <td class=" ">
+                               <img style="height:30px;" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->profile}}" alt="">
                             </td>
                             <td class=" ">
                                 @if($val->auth == 0) 普通管理员 @elseif($val->auth == 1) 视频管理员 @else 超级管理员 @endif 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\model\admin; 
+use zgldh\QiniuStorage\QiniuStorage;
 
 
 class admin_userController extends Controller
@@ -33,7 +34,7 @@ class admin_userController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -42,9 +43,26 @@ class admin_userController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //执行头像的上传
     public function store(Request $request)
     {
-        //
+        $disk = QiniuStorage::disk('qiniu');
+       
+        //获取上传文件的后缀名
+        $vsuffix = $request->file('file_upload')->getClientOriginalExtension();
+        //拼装上传文件的新名字
+        $vfileName =date('YmdHis',time()).rand(100000, 999999).'.'.$vsuffix;
+
+        //获取缓存文件的路径
+        $vonly=$request->file('file_upload')->getRealPath();
+        //上传到七牛
+        $vbool = $disk->put('images/'.$vfileName,file_get_contents($vonly));  
+        
+        if ($vbool) {
+            //把文件名存入数组中
+            return $vfileName;
+        }
+
     }
 
     /**
@@ -86,7 +104,9 @@ class admin_userController extends Controller
         $result = admin::where('id',$id)->update($res);
 
         if($result){
-            return redirect('/admin/admin_user');
+            return redirect('/admin/admin_user')->with('msg','修改成功');
+        }else{
+            return redirect('/admin/admin_user')->with('msg','修改失败');
         }
     }
 

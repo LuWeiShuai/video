@@ -32,7 +32,6 @@
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
-<script src="/layer/layer.js"></script>
 
 <style type="text/css">
     .clearfix{
@@ -64,70 +63,10 @@
                 <!-- 日历 -->
                 <SCRIPT type=text/javascript src="/admins/js/clock.js"></SCRIPT>
                 <SCRIPT type=text/javascript>showcal();</SCRIPT>
-            </span>
-            <!-- Notifications -->
-            <div id="mws-user-notif" class="mws-dropdown-menu">
-                <a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-exclamation-sign"></i></a>
-                
-                <!-- Unread notification count -->
-                <span class="mws-dropdown-notif">35</span>
-                
-                <!-- Notifications dropdown -->
-                <div class="mws-dropdown-box">
-                    <div class="mws-dropdown-content">
-                        <ul class="mws-notifications">
-                            <li class="read">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="read">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="unread">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="unread">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="mws-dropdown-viewall">
-                            <a href="#">View All Notifications</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+            </span> 
             <!-- Messages -->
             <div id="mws-user-message" class="mws-dropdown-menu">
                 <a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-envelope"></i></a>
-                
                 <!-- Unred messages count -->
                 <span class="mws-dropdown-notif">35</span>
                 
@@ -146,39 +85,6 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="read">
-                                <a href="#">
-                                    <span class="sender">John Doe</span>
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="unread">
-                                <a href="#">
-                                    <span class="sender">John Doe</span>
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="unread">
-                                <a href="#">
-                                    <span class="sender">John Doe</span>
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
                         </ul>
                         <div class="mws-dropdown-viewall">
                             <a href="#">View All Messages</a>
@@ -189,20 +95,20 @@
             
             <!-- User Information and functions section -->
             <div id="mws-user-info" class="mws-inset">
-            
+            <?php $res = DB::table('admin')->where('id',session('id'))->first()?>
                 <!-- User Photo -->
                 <div id="mws-user-photo">
-                    <img src="/admins/example/profile.jpg" alt="User Photo">
+                    <img src="http://ozssihjsk.bkt.clouddn.com/images/{{$res->profile}}" alt="User Photo">
                 </div>
                 
                 <!-- Username and Functions -->
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                        Hello, John Doe
+                        Hello, {{ $res->userName }}
                     </div>
                     <ul>
-                        <li><a href="#">修改头像</a></li>
-                        <li><a href="#">修改密码</a></li>
+                        <li><a href="{{ url('/admin/center/profile')}}">修改头像</a></li>
+                        <li><a href="{{ url('/admin/center/password')}}">修改密码</a></li>
                         <li><a href="{{ url('admin/exit') }}">注销</a></li>
                     </ul>
                 </div>
@@ -352,7 +258,9 @@
     <!-- layer -->
     <script src="/layer/layer.js"></script>
     @section('script')
-
+        <script>    
+            $('.mws-form-message').delay(1000).slideUp(1000);
+        </script>
     @show
 </body>
 </html>
