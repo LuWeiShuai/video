@@ -161,53 +161,60 @@ body{
             float: left;
         }
 </style>
-	<div class="recommended">
+@if($cha==1)
+	<div class="recommended" style="margin-top:50px ">
 		<div class="tou">搜索结果</div>
 		<hr>
 		<ul>
-			@foreach($res as $k=>$v)
-			<li>
-				<div class="search_move">
-					<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}">
-				</div>
-				<div class="search_right">
-					<div class="search_title">{{$v->title}}</div>
-					<div class="search_zhong">
-						<div class="search_time">发布时间:<span>{{date('Y-m-d',$cres[$k]->time)}}</span></div>
-						<div class="search_type">视频类型:
-							<span>
-								@if($cres[$k]->address==1)内陆
-                                @elseif($cres[$k]->address==2)欧美
-                                @elseif($cres[$k]->address==3)日韩
-                                @endif
-							</span>
+			@if($ures[0]!='' || $res[0]!='')
+				@foreach($res as $k=>$v)
+				<li>
+					<div class="search_move">
+						<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}">
+					</div>
+					<div class="search_right">
+						<div class="search_title">{{$v->title}}</div>
+						<div class="search_zhong">
+							<div class="search_time">发布时间:<span>{{date('Y-m-d',$cres[$k]->time)}}</span></div>
+							<div class="search_type">视频类型:
+								<span>
+									@if($cres[$k]->address==1)内陆
+	                                @elseif($cres[$k]->address==2)欧美
+	                                @elseif($cres[$k]->address==3)日韩
+	                                @endif
+								</span>
+							</div>
 						</div>
+						<div class="search_content">简介:<span>{{$cres[$k]->content}}</span></div>
+						<a href="/home/play/{{$v->id}}"><button class="btn btn-warning" id="bofang">立即播放</button></a>
 					</div>
-					<div class="search_content">简介:<span>{{$cres[$k]->content}}</span></div>
-					<a href="/home/play/{{$v->id}}"><button class="btn btn-warning" id="bofang">立即播放</button></a>
-				</div>
-				<div class="clear" style="height: 20px;"></div>
+					<div class="clear" style="height: 20px;"></div>
 
-			</li>
-			@endforeach
-			@foreach($ures as $k=>$v)
-			<li>
-				<div class="search_move1">
-					<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}">
-				</div>
-				<div class="search_right">
-					<div class="search_title">{{$v->title}}</div>
-					<div class="search_zhong">
-						<div class="search_time">发布时间:<span>{{date('Y-m-d',$v->time)}}</span></div>
-						<div class="search_type">发布人:<span>{{$info[$k]->nikeName}}</span></div>
+				</li>
+				@endforeach
+				@foreach($ures as $k=>$v)
+				<li>
+					<div class="search_move1">
+						<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}">
 					</div>
-					<div class="search_content">简介:<span>{{$v->content}}</span></div>
-					<a href=""><button class="btn btn-warning" id="bofang1">立即播放</button></a>
-				</div>
-				<div class="clear" style="height: 20px;"></div>
+					<div class="search_right">
+						<div class="search_title">{{$v->title}}</div>
+						<div class="search_zhong">
+							<div class="search_time">发布时间:<span>{{date('Y-m-d',$v->time)}}</span></div>
+							<div class="search_type">发布人:<span>{{$info[$k]->nikeName}}</span></div>
+						</div>
+						<div class="search_content">简介:<span>{{$v->content}}</span></div>
+						<a href="/home/user_play/{{$v->id}}"><button class="btn btn-warning" id="bofang1">立即播放</button></a>
+					</div>
+					<div class="clear" style="height: 20px;"></div>
 
-			</li>
-			@endforeach
+				</li>
+				@endforeach
+			@elseif($res[0]=='' && $ures[0]=='')
+				<div class="recommended" style="height: 282px ">
+					<p style="margin-left: 50px;">没有找到您搜索的影片</p>
+				</div>
+			@endif
 			<div class="clear"></div>
 		</ul>
 		<div class="clear"></div>
@@ -215,7 +222,11 @@ body{
 	<!-- 分页的开始 -->
 	 {!! $ures->appends($_GET)->render() !!}
 	<!-- 分页的结束 -->
-                           
+@elseif($cha==0)
+	<div class="recommended" style="margin-top:50px;height: 331px ">
+		请输入查询内容
+	</div>
+@endif                         
          
 
 @endsection
