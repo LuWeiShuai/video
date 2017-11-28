@@ -24,11 +24,11 @@
 
 	<body>
 		@if(session('msg'))
-                <div class="mws-form-message info" style="font-size: 20px;">
-					<script>
-                    	layer.alert("{{session('msg')}}");						
-					</script>
-                </div>               
+	        <div class="mws-form-message info" style="font-size: 20px;">
+				<script>
+	            	layer.alert("{{session('msg')}}");						
+				</script>
+	        </div>               
         @endif
 		<!--头 -->
 		<header>

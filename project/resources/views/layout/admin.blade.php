@@ -54,7 +54,7 @@
             <div id="mws-logo-wrap">
                 <?php $res = DB::table('config')->get();  ?>
           <?php foreach($res as $k=>$v) ?>
-                <img src="/admins/logos/{{$v->logo}}" alt="mws admin">
+                <a href="/admin/index"><img src="/admins/logos/{{$v->logo}}" alt="mws admin"></a>
             </div>
         </div>
         
@@ -306,7 +306,7 @@
                        
             <!-- Footer -->
             <div id="mws-footer">
-                Copyright Your Website 2012. All Rights Reserved.
+                Copyright Your Website 2017. All Rights Reserved.
             </div>
             
         </div>

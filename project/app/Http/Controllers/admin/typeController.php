@@ -57,7 +57,7 @@ class typeController extends Controller
         if ($data) {
             return redirect('/admin/type')->with('msg','添加成功');
         }else{
-            return back();
+            return back()->with('msg','添加失败');
         }
     }
 
@@ -105,7 +105,7 @@ class typeController extends Controller
         if ($data) {
             return redirect('/admin/type')->with('msg','修改成功');
         }else{
-            return back();
+            return back()->with('msg','修改失败');
         }
     }
 
@@ -123,7 +123,7 @@ class typeController extends Controller
         if ($res) {
             return redirect('/admin/type')->with('msg','删除成功');
         }else{
-            return back();
+            return back()->with('msg','删除失败');
         }
     }
 }
