@@ -99,7 +99,7 @@
                                {{  $val->actor  }}
                             </td>
                             <td class="">
-                                <a href="{{ url('/admin/play/'.$val->id)}}"><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
+                                <a href="{{ url('/admin/play/'.$val->id)}}"><img style="float:left;width:100px;height:100px" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
                             </td>
                            <td class=" ">
                                 <a href="{{ url('/admin/userup/'.$val->id) }}"><button class="btn btn-danger">通过</button></a>
@@ -125,7 +125,7 @@
                                 {{  $val->actor  }} 
                             </td>
                             <td class="">
-                                <a href="{{ url('/admin/play/'.$val->id)}}"><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
+                                <a href="{{ url('/admin/play/'.$val->id)}}"><img style="float:left;width:100px;height:100px" src="http://ozssihjsk.bkt.clouddn.com/images/{{$val->pic}}" alt=""></a>
                             </td>
                             <td class=" ">
                                 <a href="{{ url('/admin/userup/'.$val->id) }}"><button class="btn btn-danger">通过</button></a>
