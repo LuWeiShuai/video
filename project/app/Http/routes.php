@@ -22,8 +22,11 @@ Route::post('/admin_login/dologin','loginController@doalogin');
 
 //前台登录
 Route::get('/home_login','loginController@home');
+//执行登录
 Route::post('/home_login/dologin','loginController@dohlogin');
+//注销
 Route::get('/home_login/delete','loginController@delete');
+//忘记密码
 Route::get('/home/forgot','loginController@forgot');
 
 
@@ -43,9 +46,9 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 	//管理员
 	Route::resource('/admin_user','admin_userController');
 
-	//分区管理
+	//子分区管理
 	Route::resource('/typeSon','typeSonController');
-
+	//分区管理
 	Route::resource('/type','typeController');
 
 
@@ -117,21 +120,35 @@ Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'home_login'],f
 
 //前台个人中心
 Route::get('/center','centerController@index');
+//修改手机号
 Route::get('/center/tel','centerController@tel');
+//联系我们
 Route::get('/center/service','centerController@service');
+//关于我们
 Route::get('/center/about','centerController@about');
+//验证码
 Route::get('/center/yzm','centerController@yzm');
+//修改密码
 Route::get('/center/password','centerController@password');
+//历史记录
 Route::get('/center/history','centerController@history');
-Route::get('/center/delete','centerController@delete');
-
+//删除历史记录
+Route::get('/center/delete/{id}','centerController@delete');
+//修改个人中心
 Route::post('/center/update','centerController@update');
+//执行更换手机号
 Route::post('/center/yzmUpdate','centerController@yzmUpdate');
+//执行更改密码
 Route::post('/center/repass','centerController@repass');
+//用户上传
 Route::get('/center/up','centerController@up');
+//vip开通
 Route::get('/center/vip','centerController@vip');
+//执行vip开通
 Route::get('/center/doVip','centerController@doVip');
+//购买视频页面
 Route::get('/center/money/{id}','centerController@money');
+//执行购买
 Route::get('/center/buy','centerController@buy');
 //用户上传视频
 Route::resource('/up','UpController');

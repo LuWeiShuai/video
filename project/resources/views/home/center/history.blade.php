@@ -42,10 +42,10 @@
 								<p class="author author-info">最后播放时间：{{$v->time}}</p>
 							</li>
 							<li>
-    							{{ csrf_field()}}
+								<form action="/home/center/delete/{{$v->id}}" method="get">
+									<button type="submit" class="btn btn-danger">删除记录</button>
 
-								<span id="{{$v->id}}" class="btn btn-danger" onclick="del({{$v->id}})">删除记录</span>
-								
+								</form>
 								
 							</li>
 						</ul>
@@ -53,7 +53,7 @@
 				</div>
 				@endforeach
 				<script type="text/javascript">
-					
+					/*
 			    	var del = function(id)
 			    	{
 
@@ -61,7 +61,7 @@
 			    			 layer.alert(data);
 
 			    		});
-			    	}
+			    	}*/
 				</script>
 
 			</div>
