@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\model\uvideo;
 use App\Http\model\info;
+use App\Http\model\type;
 
 class UpController extends Controller
 {
@@ -32,7 +33,8 @@ class UpController extends Controller
     {   
         $uid = session('uid');
         $res = info::where('uid',$uid)->first();
-        return view('/home/center/userup',['res'=>$res]);
+        $re = type::where('fid','0')->get();
+        return view('/home/center/userup',['res'=>$res,'re'=>$re]);
     }
 
     /**

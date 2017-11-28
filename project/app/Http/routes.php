@@ -125,7 +125,6 @@ Route::post('/center/repass','centerController@repass');
 Route::resource('/up','UpController');
 Route::resource('/picchuan','VideoaController');
 Route::resource('/videos','ShangController');
-
 });
 
 
