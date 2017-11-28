@@ -43,6 +43,15 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 	//用户管理
 	Route::resource('/user','userController');
 
+	//修改管理员密码
+	Route::get('/center/password','centerController@password');
+	Route::post('/center/dopassword','centerController@dopassword');
+	//修改头像
+	Route::get('/center/profile','centerController@profile');
+	Route::post('/center/up','centerController@up');
+	Route::post('/center/doprofile','centerController@doprofile');
+
+
 	//管理员
 	Route::resource('/admin_user','admin_userController');
 
@@ -77,10 +86,6 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 	Route::resource('/video','VideoController');
 
 });
-
-
-//后台登录
-Route::get('/home_login','loginController@home');
 
 //前台路由
 Route::group(['prefix'=>'home','namespace'=>'home'],function(){
