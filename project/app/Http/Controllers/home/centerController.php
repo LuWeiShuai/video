@@ -18,6 +18,7 @@ use zgldh\QiniuStorage\QiniuStorage;
 use App\Http\model\config;
 use App\Http\model\money;
 use App\Http\model\video;
+use App\Http\model\user_vip;
 
 class centerController extends Controller
 {
@@ -82,7 +83,7 @@ class centerController extends Controller
 
         //获取uid
         $uid = session('uid');
-
+        //判断是否更改了头像
         if ($request->hasFile('profile')) {
 
             $info = info::where('uid',$uid)->first();
@@ -90,7 +91,6 @@ class centerController extends Controller
                 
                 unlink('./homes/pic/'.$info->profile);
             }
-            
             
             //修改名字
             $name = rand(1111,9999).time();
@@ -237,19 +237,73 @@ class centerController extends Controller
     }
 
     //vip开通
-    public function vip(){
-
+    public function vip()
+    {
         return view('/home/center/vip');
     }
 
     //执行vip开通
-     public function doVip(){
+    public function doVip()
+    {
+        //获取开通了几个月
+        $month = $_GET['month'];
+        //获取开通的时间
+        $time = $_GET['time'];
+
+        //获取到期时间
+        switch($month){
+            case 1:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+1 month'));
+            break;
+            case 2:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+2 month'));
+            break;
+            case 3:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+3 month'));
+            break;
+            case 4:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+4 month'));
+            break;
+            case 5:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+5 month'));
+            break;
+            case 6:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+6 month'));
+            break;
+            case 7:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+7 month'));
+            break;
+            case 8:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+8 month'));
+            break;
+            case 9:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+9 month'));
+            break;
+            case 10:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+10 month'));
+            break;
+            case 11:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+11 month'));
+            break;
+            case 12:
+                $lasttime = date('Y-m-d H:i:s',strtotime('+12 month'));
+            break;
+        };
+        
+        //获取session的uid
         $id = session('uid');
+        //根据uid来查询login表
         $res = login::where('id',$id)->first();
         $data = [];
+        $vip = [];
         if($res->status == 0){
 
             $data['status'] = 1;
+            $vip['uid'] = $id;
+            $vip['month'] = $month;
+            $vip['time'] = $time;
+            $vip['lasttime'] = $lasttime;
+            user_vip::insert($vip);
         }else{
 
             return back()->with('msg','您已经开通了vip,祝您观看愉快');
@@ -268,15 +322,16 @@ class centerController extends Controller
     }
 
     //购买视频页面
-    public function money($id){
+    public function money($id)
+    {
 
         $res = video::get();
         return view('home/center/money',['res'=>$res,'vid'=>$id]);
     }
 
     //购买
-    public function buy(Request $request){
-
+    public function buy(Request $request)
+    {
         $data =[];
         $data['vid'] = $request->input('money');
         $data['uid'] = session('uid');
@@ -286,6 +341,8 @@ class centerController extends Controller
         $res1 = money::insert($data);
         if($res1){
             return back()->with('msg','购买成功');
+        }else{
+            return back()->with('msg','购买失败');
         }
     }
 }
