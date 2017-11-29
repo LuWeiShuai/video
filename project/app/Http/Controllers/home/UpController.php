@@ -98,6 +98,6 @@ class UpController extends Controller
         $disk->delete('http://ozssihjsk.bkt.clouddn.com/images/'.$res->pic);
         $disk->delete('http://ozssihjsk.bkt.clouddn.com/images/'.$res->url);
         $res->delete();
-        return redirect('/home/up');
+        return redirect('/home/up')->with('msg','删除成功');
     }
 }

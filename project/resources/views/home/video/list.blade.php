@@ -6,6 +6,7 @@
 						<div class="recommended-info">
 							<h3>{{$name}}</h3>
 						</div>
+						<div class="cler" style="clear:both; width: 100%;border:solid 1px #999999;opacity: 0.3;margin-bottom: 10px; "></div> 
 						@foreach($res1 as $k => $v)
 							 <?php $res2 =DB::table('vdetail')->where('vid',$v->id)->first(); ?>
 

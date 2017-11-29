@@ -9,9 +9,9 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Http\model\type;
 use App\Http\model\video;
+use App\Http\model\uvideo;
 use App\Http\model\vdetail;
 use App\Http\model\config;
-use App\Http\model\uvideo;
 
 
 class homeController extends Controller
@@ -31,6 +31,7 @@ class homeController extends Controller
          {
     	 	$num='';
     		$zitype=type::where('fid',$value->id)->get();
+            // $uvideo=uvideo::where('fid',)
     		foreach ($zitype as $k => $v) {
     			// dd($key);
     			$num.=$v->id.',';

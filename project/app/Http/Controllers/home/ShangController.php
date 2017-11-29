@@ -48,6 +48,7 @@ class ShangController extends Controller
             return redirect('/home/up')->with('msg','上传失败');
         }
 
+
       
         
     }
