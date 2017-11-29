@@ -139,7 +139,10 @@
                                     
                                     //判断上传文件的后缀名
                                     var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
-                                    if (strExtension != 'mp4' && strExtension != 'flv' && strExtension != 'kux' && strExtension != 'wmv' && strExtension != 'rmvb' && strExtension != 'mkv' && strExtension != 'avi' && strExtension != 'rm' && strExtension != 'asf' && strExtension != 'mov' && strExtension != 'mp3' && strExtension != 'vod' && strExtension != 'dat') {
+                                    //将后缀名转为小写
+                                    var strhouzui=strExtension.toLowerCase();
+
+                                    if (strhouzui != 'mp4' && strhouzui != 'flv' && strhouzui != 'kux' && strhouzui != 'wmv' && strhouzui != 'rmvb' && strhouzui != 'mkv' && strhouzui != 'avi' && strhouzui != 'rm' && strhouzui != 'asf' && strhouzui != 'mov' && strhouzui != 'mp3' && strhouzui != 'vod' && strhouzui != 'dat') {
                                         layer.alert("请选择视频文件");
                                         return;
                                     }
@@ -215,8 +218,13 @@
                                     
                                     //判断上传文件的后缀名
                                     var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
-                                    if (strExtension != 'jpg' && strExtension != 'gif'
-                                        && strExtension != 'png' && strExtension != 'bmp' && strExtension != 'jpeg') {
+
+                                    //将后缀名转为小写
+                                    var houzui=strExtension.toLowerCase();
+                                    // console.log(houzui);
+
+                                    if (houzui != 'jpg' && houzui != 'gif'
+                                        && houzui != 'png' && houzui != 'bmp' && houzui != 'jpeg') {
                                         alert("请选择图片文件");
                                         return;
                                     }

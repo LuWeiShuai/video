@@ -29,28 +29,34 @@ class homeController extends Controller
     	 $fid=[];
     	 foreach ($type as $key => $value) 
          {
-    	 	$num='';
-    		$zitype=type::where('fid',$value->id)->get();
-            // $uvideo=uvideo::where('fid',)
-    		foreach ($zitype as $k => $v) {
-    			// dd($key);
-    			$num.=$v->id.',';
-    		}
-    		// dd($num);
-    		$num=rtrim($num,',');
-    	 	$num=explode(',',$num);
-    	 	$fid[$key]=$num;
+    	 	
+            if ($value->id!=16) {
+                $num='';
+                $zitype=type::where('fid',$value->id)->get();
+                foreach ($zitype as $k => $v) {
+                    // dd($key);
+                    // echo $v->id;
+                    $num.=$v->id.',';
+                }
+                $num=rtrim($num,',');
+                $num=explode(',',$num);
+                // dd($num);
+            }
+            $fid[$key]=$num;
     	}
-    	$video=video::where('status','1')->get();
+        // dd($fid);
+        $video=video::where('status','1')->get();
+    	$uvideo=uvideo::where('status','1')->get();
     	 $vdetail=[];
     	 foreach ($video as $key => $value) {
     		$vid=$value->id;
     		$vd=vdetail::where('vid',$vid)->first();
     		$vdetail[$key]=$vd;
     	}
+        // dd($vdetail);
     	// dd($vdetail);
     	// dd($fid);
-    	return view('home.index',['type'=>$type,'video'=>$video,'fid'=>$fid,'vdetail'=>$vdetail]);
+    	return view('home.index',['type'=>$type,'video'=>$video,'fid'=>$fid,'vdetail'=>$vdetail,'uvideo'=>$uvideo]);
     }
 
 }
