@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\model\uvideo;
 use App\Http\model\info;
 use App\Http\model\type;
+use zgldh\QiniuStorage\QiniuStorage;
 
 class UpController extends Controller
 {
@@ -18,6 +19,7 @@ class UpController extends Controller
      */
     public function index(Request $request)
     {
+        //搜索框的设置和分页
         $res = uvideo::where('title','like','%'.$request->input('search').'%')
         ->orderBy('status','asc')
          ->paginate(5);
@@ -31,6 +33,7 @@ class UpController extends Controller
      */
     public function create(Request $request)
     {   
+        // 将uid,tid,username存入hidden,然后一并存入uvideo表
         $uid = session('uid');
         $res = info::where('uid',$uid)->first();
         $re = type::where('fid','16')->get();
@@ -89,8 +92,11 @@ class UpController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $res = uvideo::first();
+    {   
+        //下架删除
+        $res = uvideo::where('id',$id)->first();
+        $disk->delete('http://ozssihjsk.bkt.clouddn.com/images/'.$res->pic);
+        $disk->delete('http://ozssihjsk.bkt.clouddn.com/images/'.$res->url);
         $res->delete();
         return redirect('/home/up');
     }

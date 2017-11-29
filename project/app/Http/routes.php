@@ -102,14 +102,18 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 
 
 	//用户注册
+		//发送验证码
 	Route::get('/register','registerController@register');
+		//用户注册,存入数据库
 	Route::post('/regis','registerController@store');
+		//验证手机号是否已经注册
+	Route::get('/regs','registerController@tell');
+		//验证输入的验证码和发送的是否一致
 	Route::get('/reg','registerController@code');
-	Route::post('/passs','registerController@passs');
 
 	//搜索
 	Route::get('/search','searchController@index');
-	Route::get('/regs','registerController@tell');
+	
  });
 
 //前台路由
@@ -134,11 +138,13 @@ Route::get('/center/vip','centerController@vip');
 Route::get('/center/doVip','centerController@doVip');
 Route::get('/center/money/{id}','centerController@money');
 Route::get('/center/buy','centerController@buy');
+
 //用户上传视频
 Route::resource('/up','UpController');
+//上传到七牛云
 Route::resource('/picchuan','VideoaController');
+//用户提交上传到数据库
 Route::resource('/videos','ShangController');
-Route::get('/videosa','VideosaController@index');
 });
 
 

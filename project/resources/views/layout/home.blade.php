@@ -105,7 +105,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<div class="continue-button" id="yan">
 												{{ csrf_field() }}
 												
-												<input type="button" onclick="sendCode(this)" id="btn" value="获取验证码" class="btn btn-danger" style="margin:12px;height:40px;font-size: 10px">
+												<input type="button" required onclick="sendCode(this)" id="btn" value="获取验证码" class="btn btn-danger" style="margin:12px;height:40px;font-size: 10px">
 												<span id='aaa' style="color:red;font-size:20px"></span>
 								
 											</div>

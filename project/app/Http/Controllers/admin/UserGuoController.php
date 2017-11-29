@@ -18,7 +18,7 @@ class UserGuoController extends Controller
      */
     public function index(Request $request)
     {
-        
+        //将状态为1的视频查询出来,并设置搜索框和分页
         $res = uvideo::where('status',1)
          ->where('username','like','%'.$request->input('search').'%')
         ->orderBy('id','asc')
@@ -90,6 +90,7 @@ class UserGuoController extends Controller
      */
     public function destroy($id)
     {
+        //下架直接删除
         $res = uvideo::first();
         $res->delete();
         return redirect('/admin/userguo');

@@ -37,7 +37,8 @@
             float: left!important;
 
         }
-         #ann{
+         
+        #ann{
             width: 100px!important;
             margin-left: 25px;
             height: 30px;
@@ -175,13 +176,9 @@
                     <div class="tpl-table-images-content">
                         <div class="tpl-table-images-content-i-time">
                         
-                            <div class="fenqu">
-                              
-                            </div>
-                        </div>
-                        
-                        <div class="tpl-i-title">
-                           <a href="{{ url('/home/user_play/'.$v->id)}}">{{$v->title}}</a>
+                             <a href="{{ url('/home/user_play/'.$v->id)}}">{{$v->title}}</a>
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <a href="{{ url('/home/user_play/'.$v->id)}}">{{date('Y-m-d H:i:s',$v->time)}}</a>
                         </div>
                         
                         <div class="tpl-table-images-content-i" id="fengmian">
@@ -190,19 +187,16 @@
                             <a href="{{ url('/home/user_play/'.$v->id)}}"><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}" alt=""></a>
                                 
                         </div>
-                        <div class="tpl-table-images-content-i-info">
-                                <span class="ico">
-                                    <i>{{$v->content}}</i>
-                                 </span>
-                            </div>
                         <div class="tpl-table-images-content-block">  
 
                             <div class="am-btn-toolbar">
-                                <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
+                                <div style="margin-top: 5px" class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
                                 @if(  $v->status == 0)
-                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-info" id="anniu"><span class="am-icon-edit">待审核</span></button></a>
-                                @else 
-                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="ann"><span class="am-icon-edit">已通过</span></button></a>
+                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-info" id="ann"><span class="am-icon-edit" style="font-size: 18px">审核中</span></button></a>
+                                @elseif($v->status == 1)
+                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="ann"><span class="am-icon-edit" style="font-size: 18px">已通过</span></button></a>
+                                @else
+                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="ann"><span class="am-icon-edit" style="font-size: 18px">未通过</span></button></a>
                                 @endif
                                     <form method="post" action="/home/up/{{$v->id}}">
                                         {{ method_field('DELETE') }}
