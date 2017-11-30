@@ -20,14 +20,14 @@
     	@endif 
 		<hr/>
 		
-		<form method="post" action="/home/center/update" class="am-form am-form-horizontal" enctype="multipart/form-data">
+		<form method="post" action="{{ url('/home/center/update')}}" class="am-form am-form-horizontal" enctype="multipart/form-data">
 			<!-- enctype="multipart/form-data" -->
 		<!--头像 -->
 		<div class="user-infoPic">
 
 			<div class="filePic">
 				<input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*" value="/homes/pic/{{$res->profile}}" name="profile">
-				<img class="am-circle am-img-thumbnail" src="/homes/pic/{{$res->profile}}" alt="" />
+				<img class="am-circle am-img-thumbnail" src="{{ url('/homes/pic/'.$res->profile)}}" alt="" />
 			</div>
 
 			<p class="am-form-help">头像</p>
@@ -37,15 +37,15 @@
 				<div class="vip">
 					@if($res1->status == 0)
 						<!-- vip0 -->
-	       				<div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="/homes/images/icon_progress_24.png" style="position:relative;top:0px;left:0px;"></div><a href="" >会员专享</a>
+	       				<div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="{{ url('/homes/images/icon_progress_24.png')}}" style="position:relative;top:0px;left:0px;"></div><a href="" >会员专享</a>
 	       			@else
                     <!-- vip1 -->
-                    <div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="/homes/images/icon_progress_24.png" style="position:relative;top:px;left:-51px;"></div><a href="" >会员专享</a>
+                    <div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="{{ url('/homes/images/icon_progress_24.png')}}" style="position:relative;top:px;left:-51px;"></div><a href="" >会员专享</a>
                     @endif
                     <!-- vip2 -->
-                    <!-- <div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="/homes/images/icon_progress_24.png" style="position:relative;top:px;left:-102px;"></div><a href="" >会员专享</a> -->
+                    <!-- <div style="height:22px;width:51px;overflow:hidden;float:left;"><img src="{{ url('/homes/images/icon_progress_24.png')}}" style="position:relative;top:px;left:-102px;"></div><a href="" >会员专享</a> -->
                     <!-- vip3 -->
-                    <!-- <div style="height:22px;width:51px;overflow:hidden; float:left;"><img src="/homes/images/icon_progress_24.png" style="position:relative;top:-22px;left:0px;"></div><a href="" >会员专享</a> -->
+                    <!-- <div style="height:22px;width:51px;overflow:hidden; float:left;"><img src="{{ url('/homes/images/icon_progress_24.png')}}" style="position:relative;top:-22px;left:0px;"></div><a href="" >会员专享</a> -->
 				</div>
 			</div>
 		</div>
