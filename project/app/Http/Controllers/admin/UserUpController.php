@@ -17,6 +17,7 @@ class UserUpController extends Controller
      */
     public function index(Request $request)
     {   
+        //将状态为0的视频查询出来,并设置搜索框和分页
         $res = uvideo::where("status",0)
         ->where('username','like','%'.$request->input('search').'%')
         ->orderBy('id','asc')
@@ -55,6 +56,7 @@ class UserUpController extends Controller
      */
     public function show($id)
     {
+            //审核通过
         $res = uvideo::find($id);
         if($res->status == 0){
             $res->status = 1;
@@ -101,9 +103,16 @@ class UserUpController extends Controller
      */
     public function destroy($id)
     {
+        //不通过让其status为2  不在后台显示.
+        $res = uvideo::find($id);
+
+        if($res->status !== 2){
+            $res->status = 2;
+            $res->save();
+            return redirect('/admin/userup')->with('msg','操作成功');
+        }else{
+            return redirect('/admin/userup')->with('msg','操作失败');
+        }
         
-        $res = uvideo::first();
-        $res->delete();
-        return redirect('/admin/userup');
     }
 }
