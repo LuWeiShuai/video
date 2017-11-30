@@ -13,7 +13,7 @@
     </div>
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid"> 
-            <form action='/admin/userup' method='get'>
+            <form action="{{ url('/admin/userup') }}" method='get'>
                 <div id="DataTables_Table_1_length" class="dataTables_length">
                     <label>
                         显示

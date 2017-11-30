@@ -9,7 +9,7 @@
 							<h3 id="title" align="center"></h3>
 					</div>
 						<div class="video-grid" >
-							<iframe style="width:70%;height:450px;margin-left: 150px;border:solid 1px black" src="http://ozssihjsk.bkt.clouddn.com/videos/{{$res->url}}" allowfullscreen=""></iframe>
+							<iframe style="width:70%;height:450px;margin-left: 150px;border:solid 1px black" src="{{url('http://ozssihjsk.bkt.clouddn.com/videos/'.$res->url)}}" allowfullscreen=""></iframe>
 						
 						</div>
 						

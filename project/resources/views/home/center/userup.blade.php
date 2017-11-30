@@ -85,11 +85,11 @@
                 <div class="mws-form-row">
                     <label class="am-form-label" >视频分区</label>
                     <div class="mws-form-item" style="">
-                        <select name="tid" id="city" style="width:200px;position: absolute;margin-left: 85px">
+                        <select name="fid" id="city" style="width:200px;position: absolute;margin-left: 85px">
                             <option value="16">---用户上传---</option>
                         </select>
                         
-                        <select name="zitid" id="area" style="margin-left: 290px">
+                        <select name="tid" id="area" style="margin-left: 290px">
                             <option  value="-1">------</option> 
                             @foreach($re as $k=>$v)
                             <option value="{{$v->id}}">---{{$v->name}}---</option>  
@@ -268,6 +268,7 @@
 
                         
                     <input type="submit" value="上传" class="btn btn-danger">
+
                     <script src="{{ url('/homes/js/jquery.min.js')}}"></script>
                     <script type="text/javascript">
                             
