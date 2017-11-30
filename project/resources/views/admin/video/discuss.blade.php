@@ -29,6 +29,9 @@
 		    background-color:#333338!important;
 		    background-image: url(/admins/images/core/mws-dark-bg.png)!important;
 		}
+        #mws-user-info{
+            height: 40px!important;
+        }
         .fenqu{
             float: right;
             width: 40px;
