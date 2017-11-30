@@ -112,7 +112,7 @@ class VideoController extends Controller
         //获取除去token之外的所有值
         $res=$request->except(['_token']);
        
-        dd($res);
+        // dd($res);
         //定义一个新数组，把获取到的内容存入新定义的数组中
         $vres=[];
         $vres['tid']=$res['zitid'];
