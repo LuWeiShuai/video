@@ -1,14 +1,18 @@
 @extends('layout.home')
 @section('title','播放页面')
 @section('content')
+<style>
+
+</style>
 <div class="show-top-grids">
 				<div class="col-sm-8 single-left">
 					<div class="song">
 						<div class="song-info">
 							<h3 id="title" align="center">{{ $res->title}}</h3>
 					</div>
-						<div class="video-grid">
-							<iframe src="http://ozssihjsk.bkt.clouddn.com/videos/{{$res->url}}" allowfullscreen=""></iframe>
+						<div class="video-grid" style="margin:20px;width:100%" >
+							<!-- <iframe style="margin-top:20px; width:125%!important;" src="http://ozssihjsk.bkt.clouddn.com/videos/{{$res->url}}" allowfullscreen=""></iframe> -->
+							<video controls width="120%" src="http://ozssihjsk.bkt.clouddn.com/videos/{{$res->url}}"></video>
 						</div>
 					</div>						
 					<script>

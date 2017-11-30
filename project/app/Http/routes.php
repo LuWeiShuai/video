@@ -105,6 +105,7 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 
 	//用户评论
 	Route::post('/discuss','videoController@discuss');
+	Route::post('/user_discuss','videoController@user_discuss');
 
 	//用户视频播放
 	Route::get('/user_play/{id}','videoController@user_play');
