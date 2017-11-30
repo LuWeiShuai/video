@@ -152,7 +152,7 @@
                                             <td>{{$v->id}}</td>
                                             <td><a href="#">{{$ures[$k]->nikeName}}</a></td>
                                             <td class="am-hide-sm-only">{{$v->content}}</td>
-                                            <td class="am-hide-sm-only">{{date('Y年m月d日',$v->time)}}</td>
+                                            <td class="am-hide-sm-only">{{date($v->time)}}</td>
                                             <td>
                                                 <div class="am-btn-toolbar">
                                                     <div class="am-btn-group am-btn-group-xs">

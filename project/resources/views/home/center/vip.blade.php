@@ -13,30 +13,32 @@
 		<div class="info-main">
 			<form action="/home/center/doVip" method="get" class="am-form am-form-horizontal">
 				<div class="am-form-group">
-					<label class="am-form-label">vip</label>
+					<label class="am-form-label">vip：</label>
 					<div class="am-form-content sex">
 						<label class="am-radio-inline">
 							<input type="radio" name="vip" value="m" data-am-ucheck checked>开通
 						</label>
+					</div>
+					<br>
+					<label class="am-form-label">月份：</label>
+					<div class="birth-select2">
+						<select name="month">
+							@for($a=1; $a<=12; $a++)
+								<option value="{{$a}}">{{$a}}</option>
+							@endfor
+						</select>
+						<em>月</em>
+						<input type="hidden" value="{{ date('Y-m-d H:i:s',time())}}" name="time">
 					</div>
 				</div>
 
 				<br><br>
 				<div class="info-btn">
     				{{ csrf_field()}}
-					<input type="submit" value="保存修改" class="btn btn-danger">
+					<input type="submit" value="开通vip" class="btn btn-danger">
 				</div>
 			</form>
 		</div>
-		<!-- 	<script>
-				function func()
-				{
-					$.get('/home/center/doVip',{},function(data){
-						alert(data);
-					})
-
-					return false;
-				}
-			</script>-->	
+		
 		</div>
 @endsection

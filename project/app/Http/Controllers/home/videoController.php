@@ -196,22 +196,25 @@ class videoController extends Controller
     {
 
        if(session('uid')){
-            $data = [];
-            $title = $_POST['title'];
             $dis = $_POST['dis'];
-            $res = video::where('title',$title)->first();
-            $data['vid'] = $res->id;
-            $data['uid'] =session('uid');
-            $data['time'] = $_POST['time'];
-            $data['content'] = $dis;           
-            $res = discuss::insert($data);
-            if($res){
-                return '评论成功';
+            if($dis){
+                $data = [];
+                $title = $_POST['title'];
+                $res = video::where('title',$title)->first();
+                $data['vid'] = $res->id;
+                $data['uid'] =session('uid');
+                $data['time'] = $_POST['time'];
+                $data['content'] = $dis;           
+                $res = discuss::insert($data);
+                if($res){
+                    return '评论成功';
+                }else{
+                    return '评论失败';
+                }
+            }else{
+                return '评论不能为空';
             }
-        }else{
-            return '评论失败';
-        }
-
+        }          
     }
 
     public function user_play($id)

@@ -149,13 +149,17 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //评论管理页面
     public function show($id)
     {
         //
         $vres=video::find($id);
+
         $cres=vdetail::where('vid',$id)->first();
 
         $res=discuss::where('vid',$vres['id'])->paginate(10);
+        // dd($res);
         $ures=[];
         foreach ($res as $key => $value) {
             $uid=$value->uid;

@@ -364,7 +364,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"> </div>
       </div>
     </nav>
-	<div class="copyrights">Collect from <a href="http://www.17sucai.com/" >企业网站模板</a></div>
         <div class="col-sm-3 col-md-2 sidebar">
 			<div class="top-navigation">
 				<div class="t-menu">MENU</div>
@@ -409,8 +408,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							});
 							});
 						</script>
-						<div id="aaa" style="height: 20px; width: 195px;"></div>
-						<div class="side-bottom" style="background-color:#272C2E; position: fixed; width: 193px;bottom: 0px;">
+						<div id="aaa" style="height: 30px; width:100%;"></div>
+						<div class="side-bottom" style="background-color:#272C2E; position: fixed; width:15%;;bottom: 0px; height: 40px;">
 							<div class="copyright" >
 								<p>Copyright &copy; 2017.Company name </p>
 								<p>All rights reserved.</p>

@@ -34,10 +34,15 @@ class searchController extends Controller
 
     	}else {
  			// dd(2);
-    	
+    		$textname=$request->only('cha')['cha'];
 	    	//=========管理员上传的视频===================
 	    	//根据查询条件进行分页查询
 	        $res=video::where('status','1')->where('title','like','%'.$request->input('cha').'%')->orderBy('id','asc')->paginate(20);
+	        $count = count($res);//这是计算搜索出来的一个数量，因为搜索的关键字不可能是一个，也许是多个
+	        for ($i=0; $i <$count ; $i++) {
+		        //这里直接用PHP一个函数搞定了str_replace函数第一个参数是要搜索的字符串，第二个要替换的，第三个被搜索的字符串
+		        $res[$i]->title = str_replace($textname,"<span style='color:red; font-size: 16px;'>".$textname ."</span>",$res[$i]->title);
+		    }
 	        //定义一个空数组
 	        $cres=[];
 	        //遍历查询到的数据
@@ -53,6 +58,11 @@ class searchController extends Controller
 	    	//=========用户上传的视频===================
 
 	        $ures=uvideo::where('status','1')->where('title','like','%'.$request->input('cha').'%')->orderBy('id','asc')->paginate(15);
+	        $ucount = count($ures);//这是计算搜索出来的一个数量，因为搜索的关键字不可能是一个，也许是多个
+	        for ($i=0; $i <$ucount ; $i++) {
+		        //这里直接用PHP一个函数搞定了str_replace函数第一个参数是要搜索的字符串，第二个要替换的，第三个被搜索的字符串
+		        $ures[$i]->title = str_replace($textname,"<span style='color:red; font-size: 16px;'>".$textname ."</span>",$ures[$i]->title);
+		    }
 	        //定义一个空数组
 	        // dd($ures);
 	        $info=[];
