@@ -123,19 +123,19 @@ class loginController extends Controller
                 $data['status']=0;
                 login::where('id',$id)->update($data);
 
-                return redirect('/home/index')->with('msg','登录成功，vip已过期，请及时续费');
+                return redirect('/')->with('msg','登录成功，vip已过期，请及时续费');
             }
-            return redirect('/home/index')->with('msg','尊敬的vip用户，欢迎您登录成功');
+            return redirect('/')->with('msg','尊敬的vip用户，欢迎您登录成功');
 
         }
-        return redirect('/home/index')->with('msg','登录成功');
+        return redirect('/')->with('msg','登录成功');
     }
 
      public  function delete(Request $request)
     {
         $request->session('uid')->flush();
 
-        return redirect('/home/index')->with('msg','注销成功');
+        return redirect('/')->with('msg','注销成功');
     }
 
     public function forgot()

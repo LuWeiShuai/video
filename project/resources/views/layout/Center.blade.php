@@ -43,7 +43,7 @@
 						</ul>
 						<ul class="message-r">
 							<div class="topMessage home">
-								<div class="menu-hd"><a href="{{url('/home/index')}}" target="_top" class="h">网站首页</a></div>
+								<div class="menu-hd"><a href="{{url('/')}}" target="_top" class="h">网站首页</a></div>
 							</div>
 							<div class="topMessage my-shangcheng">
 								<div class="menu-hd MyShangcheng"><a href="{{url('/home/center')}}" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
@@ -60,7 +60,7 @@
 							<div class="logoBig">
 								<?php $res = DB::table('config')->get();  ?>
           							<?php foreach($res as $k=>$v) ?>
-								<li><a href="/home/index"><img src="{{url('/admins/logos/'.$v->logo)}}" style="margin-left: -40px;height: 80px;width: 150px;" /></a></li>
+								<li><a href="/"><img src="{{url('/admins/logos/'.$v->logo)}}" style="margin-left: -40px;height: 80px;width: 150px;" /></a></li>
 							</div>
 
 							<div class="search-bar pr">

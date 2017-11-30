@@ -339,7 +339,7 @@ class centerController extends Controller
 
         $res1 = money::insert($data);
         if($res1){
-            return redirect('/home/index')->with('msg','购买成功');
+            return redirect('/')->with('msg','购买成功');
         }else{
             return back()->with('msg','购买失败');
         }
