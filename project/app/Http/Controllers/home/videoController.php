@@ -13,6 +13,7 @@ use App\Http\model\video;
 use App\Http\model\uvideo;
 use App\Http\model\vdetail;
 use App\Http\model\discuss;
+use App\Http\model\udiscuss;
 use App\Http\model\info;
 use App\Http\model\login;
 use App\Http\model\history;
@@ -149,7 +150,7 @@ class videoController extends Controller
             }
         }
         //查看该用户是否购买过此视频
-        $money = money::where('vid',$id)->first();
+        $money = money::where('uid',session('uid'))->where('vid',$id)->first();
         //付费视频
         if($auth == 2 ){
             if(!session('uid')){
@@ -216,7 +217,7 @@ class videoController extends Controller
             }
         }          
     }
-
+    //用户视频播放
     public function user_play($id)
     {
         $res = uvideo::where('id',$id)->first();
@@ -227,8 +228,39 @@ class videoController extends Controller
         uvideo::where('id',$id)->update($arr);
 
         //排行榜
-        $res1 = uvideo::orderby('num','desc')->get();
+        $res1 = uvideo::where('status',1)->orderby('num','desc')->get();
+
+        // //评论
+        $res3= udiscuss::where('vid',$id)->get();
        
-        return view('home.video.user_play',['res'=>$res,'res1'=>$res1]);
+        return view('home.video.user_play',['res'=>$res,'res1'=>$res1,'res3'=>$res3]);
+    }
+
+     //用户视频评论
+    public function user_discuss(Request $request)
+    {
+        // var_dump($_POST);
+       if(session('uid')){
+            $dis = $_POST['dis'];
+            if($dis){
+                $data = [];
+                $title = $_POST['title'];
+                $res = uvideo::where('title',$title)->first();
+                $data['vid'] = $res->id;
+                $data['uid'] =session('uid');
+                $data['time'] = $_POST['time'];
+                $data['content'] = $dis;           
+                $res = udiscuss::insert($data);
+                if($res){
+                    return '评论成功';
+                }else{
+                    return '评论失败';
+                }
+            }else{
+                return '评论不能为空';
+            }
+        }else{
+            return '请先登录再评论';
+        }         
     }
 }

@@ -55,7 +55,7 @@
 								</div> -->
 							</div>
 							<div class="resent-grid-info recommended-grid-info video-info-grid">
-								<h5 style="height: 20px;"><a href="single.html" class="title">{{$val->title}}</a></h5>
+								<h5 style="height: 20px;"><a href="{{ url('/home/user_play/'.$val->id)}}" class="title">{{$val->title}}</a></h5>
 								<ul>
 									<li style="height: 30px;"><p class="author author-info" style="width: 200px;"><a href="javascript:void(0);" class="author">发布人：{{$val->username}}</a></p></li>
 									<li class="right-list"><p class="views views-info">{{$val->num}} 次浏览</p></li>
