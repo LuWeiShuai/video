@@ -112,7 +112,7 @@ class VideoController extends Controller
         //获取除去token之外的所有值
         $res=$request->except(['_token']);
        
-        dd($res);
+        // dd($res);
         //定义一个新数组，把获取到的内容存入新定义的数组中
         $vres=[];
         $vres['tid']=$res['zitid'];
@@ -149,13 +149,17 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //评论管理页面
     public function show($id)
     {
         //
         $vres=video::find($id);
+
         $cres=vdetail::where('vid',$id)->first();
 
         $res=discuss::where('vid',$vres['id'])->paginate(10);
+        // dd($res);
         $ures=[];
         foreach ($res as $key => $value) {
             $uid=$value->uid;

@@ -93,7 +93,7 @@
                                {{$v->keywords}}
                             </td>
                            <td class=" ">
-                             <a href=" {{$v->url}} "> {{$v->url}}</a>
+                             <a href=" {{$v->url}} " style="color: #f39800;"> {{$v->url}}</a>
                             </td>
                             <td class=" ">
                                 <a href="/admin/friendlink/{{$v->id}}/edit" class="btn btn-danger">修改</a>

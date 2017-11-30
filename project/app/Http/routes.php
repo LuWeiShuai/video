@@ -55,6 +55,7 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 	//管理员
 	Route::resource('/admin_user','admin_userController');
 
+
 	//子分区管理
 	Route::resource('/typeSon','typeSonController');
 	//分区管理

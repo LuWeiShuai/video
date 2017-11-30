@@ -29,6 +29,9 @@
 		    background-color:#333338!important;
 		    background-image: url(/admins/images/core/mws-dark-bg.png)!important;
 		}
+        #mws-user-info{
+            height: 40px!important;
+        }
         .fenqu{
             float: right;
             width: 40px;
@@ -152,7 +155,7 @@
                                             <td>{{$v->id}}</td>
                                             <td><a href="#">{{$ures[$k]->nikeName}}</a></td>
                                             <td class="am-hide-sm-only">{{$v->content}}</td>
-                                            <td class="am-hide-sm-only">{{date('Y年m月d日',$v->time)}}</td>
+                                            <td class="am-hide-sm-only">{{date($v->time)}}</td>
                                             <td>
                                                 <div class="am-btn-toolbar">
                                                     <div class="am-btn-group am-btn-group-xs">

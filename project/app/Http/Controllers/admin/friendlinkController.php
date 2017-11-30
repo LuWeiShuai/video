@@ -49,7 +49,7 @@ class friendlinkController extends Controller
         $this->validate($request, [
             'linkName' => 'required',
             'keywords' => 'required',
-            'url' => 'required|regex:/[a-zA-z]+://[^\s]*/'
+            'url' => 'required|regex:/[a-zA-z]+:\/\/[^\s]*/'
         ],[
             'linkName.required'=>'链接名称不能为空',
             'keywords.required'=>'关键字不能为空',

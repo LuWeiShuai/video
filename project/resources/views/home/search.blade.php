@@ -173,7 +173,7 @@ body{
 						<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}">
 					</div>
 					<div class="search_right">
-						<div class="search_title">{{$v->title}}</div>
+						<div class="search_title" title="">{!!$v->title!!}</div>
 						<div class="search_zhong">
 							<div class="search_time">发布时间:<span>{{date('Y-m-d',$cres[$k]->time)}}</span></div>
 							<div class="search_type">视频类型:
@@ -198,7 +198,7 @@ body{
 						<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}">
 					</div>
 					<div class="search_right">
-						<div class="search_title">{{$v->title}}</div>
+						<div class="search_title" title="">{!!$v->title!!}</div>
 						<div class="search_zhong">
 							<div class="search_time">发布时间:<span>{{date('Y-m-d',$v->time)}}</span></div>
 							<div class="search_type">发布人:<span>{{$info[$k]->nikeName}}</span></div>
@@ -226,7 +226,5 @@ body{
 	<div class="recommended" style="margin-top:50px;height: 331px ">
 		请输入查询内容
 	</div>
-@endif                         
-         
-
+@endif        
 @endsection

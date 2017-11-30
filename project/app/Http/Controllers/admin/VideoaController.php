@@ -95,9 +95,11 @@ class VideoaController extends Controller
         //拼装上传文件的新名字
         $vfileName =date('YmdHis',time()).rand(100000, 999999).'.'.$vsuffix;
 
+        //将获取的后缀名变成小写
+        // $vsuffix=strtolower($vsuffix);
         //拼装文件后缀的格式
         $img=array('png','gif','jpg','jpeg','bmp');
-        // dd($vsuffix);
+        // return $vsuffix;
 
         //判断是否是图片文件
         if (in_array($vsuffix,$img)) {
