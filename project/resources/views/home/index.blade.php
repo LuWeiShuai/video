@@ -17,7 +17,7 @@
 				
 			</div>
 			<div class="cler" style="clear:both; width: 100%;border:solid 1px #999999;opacity: 0.3;margin-bottom: 10px; "></div> 
-			@if($v->id!=16)
+			@if($v->name!='用户上传')
 				@foreach ($video as $key => $val)
 					@if(in_array($val->tid,$fid[$k]))
 						@if($key<=3)
@@ -33,8 +33,9 @@
 							<div class="resent-grid-info recommended-grid-info video-info-grid">
 								<h5 style="height: 20px;"><a href="single.html" class="title" >{{$val->title}}</a></h5>
 								<ul>
-									<li style="height: 30px;"><p class="author author-info" style="width: 200px;"><a href="#" class="author" >演员：{{$vdetail[$key]->actor}}</a></p></li>
-									<li class="right-list"><p class="views views-info">{{$val->num}} 次点击</p></li>
+
+									<li style="height: 30px;"><p class="author author-info" style="width: 200px;"><a href="javascript:void(0);" class="author" >演员：{{$vdetail[$key]->actor}}</a></p></li>
+									<li class="right-list"><p class="views views-info">{{$val->num}} 次浏览</p></li>
 								</ul>
 							</div>
 						</div>
@@ -56,8 +57,8 @@
 							<div class="resent-grid-info recommended-grid-info video-info-grid">
 								<h5 style="height: 20px;"><a href="{{ url('/home/user_play/'.$val->id)}}" class="title">{{$val->title}}</a></h5>
 								<ul>
-									<li style="height: 30px;"><p class="author author-info" style="width: 200px;"><a href="" class="author">发布人：{{$val->username}}</a></p></li>
-									<li class="right-list"><p class="views views-info">{{$val->num}} 次点击</p></li>
+									<li style="height: 30px;"><p class="author author-info" style="width: 200px;"><a href="javascript:void(0);" class="author">发布人：{{$val->username}}</a></p></li>
+									<li class="right-list"><p class="views views-info">{{$val->num}} 次浏览</p></li>
 								</ul>
 							</div>
 						</div>

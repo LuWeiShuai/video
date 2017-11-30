@@ -20,7 +20,7 @@
 
 		<!--个人信息 -->
 		<div class="info-main">
-			<form action="/home/center/repass" method="post" class="am-form am-form-horizontal">
+			<form action="{{ url('/home/center/repass')}}" method="post" class="am-form am-form-horizontal">
 
 				<div class="am-form-group">
 					<label for="user-phone" class="am-form-label">手机号:</label>
@@ -66,7 +66,7 @@
 								//获取手机号
 								var tel = $('input[name=tel]').val();
 								//发送ajax
-								$.get('/home/center/yzm',{tel:tel},function(data){
+								$.get("{{ url('/home/center/yzm')}}",{tel:tel},function(data){
 
 									console.log(data);
 								})

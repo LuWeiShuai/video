@@ -11,7 +11,7 @@
 		<hr/> 
 		<!--个人信息 -->
 		<div class="info-main">
-			<form action="/home/center/doVip" method="get" class="am-form am-form-horizontal">
+			<form action="{{ url('/home/center/doVip')}}" method="get" class="am-form am-form-horizontal">
 				<div class="am-form-group">
 					<label class="am-form-label">vip：</label>
 					<div class="am-form-content sex">

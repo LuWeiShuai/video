@@ -13,7 +13,7 @@
     </div>
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-            <form action="/admin/friendlink" method="get">
+            <form action="{{ url('/admin/friendlink')}}" method="get">
             <div id="DataTables_Table_1_length" class="dataTables_length">
                 <label>
                     显示
@@ -93,11 +93,11 @@
                                {{$v->keywords}}
                             </td>
                            <td class=" ">
-                             <a href=" {{$v->url}} "> {{$v->url}}</a>
+                             <a href=" {{url( $v->url )}} " style="color: #f39800;"> {{$v->url}}</a>
                             </td>
                             <td class=" ">
-                                <a href="/admin/friendlink/{{$v->id}}/edit" class="btn btn-danger">修改</a>
-                                <form action="/admin/friendlink/{{$v->id}}" method='post' style='display:inline'>
+                                <a href="{{ url('/admin/friendlink/'.$v->id.'/edit')}}" class="btn btn-danger">修改</a>
+                                <form action="{{ url('/admin/friendlink/'.$v->id)}}" method='post' style='display:inline'>
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
                                     <button class='btn btn-warning'>删除</button>

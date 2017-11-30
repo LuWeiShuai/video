@@ -30,7 +30,9 @@
 		    background-image: url(/admins/images/core/mws-dark-bg.png)!important;
 		}
 
-
+        #mws-user-info{
+            height: 40px!important;
+        }
         #anniu{
             width: 70px!important;
             margin-left: 25px;

@@ -33,7 +33,7 @@
 
         #anniu{
             width: 70px!important;
-            margin-left: 25px;
+            margin-left: 10%;
             height: 30px;
             font-size: 18px!important;
             line-height: 10px!important;
@@ -122,6 +122,9 @@
             padding: 6px 12px;
             float: left;
         }
+        #mws-user-info{
+            height: 40px!important;
+        }
     </style>
 @section('content')
 
@@ -195,7 +198,7 @@
                         </div>
                         <div class="tpl-table-images-content-block">
                             <div class="tpl-i-font" style="height: 80px;">
-                                {{$cres[$key]->content}}
+                                {!! $cres[$key]->content !!}
                             </div>
                             <div class="tpl-i-more">
                                 <ul>

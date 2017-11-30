@@ -30,7 +30,7 @@ class homeController extends Controller
     	 foreach ($type as $key => $value) 
          {
     	 	
-            if ($value->id!=16) {
+            if ($value->name!='用户上传') {
                 $num='';
                 $zitype=type::where('fid',$value->id)->get();
                 foreach ($zitype as $k => $v) {

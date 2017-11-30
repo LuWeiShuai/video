@@ -89,11 +89,16 @@
 				<div class="footer">
 					<div class="footer-hd" >
 						<p style="text-align: center!important;">
-							@foreach($res as $k => $v)
+							@if($res == Null)
+									
+									<a href="javascript:void(0);" style="font-size: 15px;">暂无友情链接</a>
+							@else
+								@foreach($res as $k => $v)
 
-							<a href="{{$v->url}}">{{$v->linkName}}</a>
-							<b>|</b>
-							@endforeach
+								<a href="{{$v->url}}">{{$v->linkName}}</a>
+								<b>|</b>
+								@endforeach
+							@endif
 						</p>
 					</div>
 					<div class="footer-bd">
