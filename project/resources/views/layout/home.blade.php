@@ -435,9 +435,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							
 							<ul>
 								<li style="font-size: 20px;color: white;">友情链接:</li>
-								@foreach($res as $k => $v)
-									<li><a href="{{$v->url}}">{{$v->linkName}}</a></li>
-								@endforeach
+								@if($res == Null)
+									
+									<li><a href="javascript:void(0);" style="font-size: 15px;">暂无友情链接</a></li>
+								@else
+									@foreach($res as $k => $v)
+										<li><a href="{{$v->url}}">{{$v->linkName}}</a></li>
+									@endforeach
+								
+								@endif
 							</ul>
 						</div>
 					</div>
