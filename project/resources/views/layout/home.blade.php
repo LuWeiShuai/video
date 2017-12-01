@@ -47,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           </button>
           <?php $res = DB::table('config')->get();  ?>
           <?php foreach($res as $k=>$v) ?>
-          <a class="navbar-brand" href="{{url('/home/index')}}"><h1><img src="{{url('/admins/logos/'.$v->logo)}}" alt="" style="height: 60px;" /></h1></a>
+          <a class="navbar-brand" href="{{url('/')}}"><h1><img src="{{url('/admins/logos/'.$v->logo)}}" alt="" style="height: 60px;" /></h1></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
@@ -374,7 +374,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 				<div class="drop-navigation drop-navigation">
 				  <ul class="nav nav-sidebar">
-					<li class=""><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
+					<li class=""><a href="{{ url('/') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="/home/center/history" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<?php $res1 = DB::table('type')->get();?>
 					@foreach($res1 as $k1 => $v1)
