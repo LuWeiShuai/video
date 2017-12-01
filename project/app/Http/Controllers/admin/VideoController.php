@@ -103,7 +103,7 @@ class VideoController extends Controller
                 }
                 //取数据
                 $list = Redis::lrange($listKey,0,-1);
-                $array = null;
+                $array = [];
                 foreach($list as $k=>$v){
                     // 取出哈希里的数据写入大数组中
                     // echo $v;

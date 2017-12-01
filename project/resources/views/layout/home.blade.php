@@ -449,7 +449,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             @show
             </div>
 			<!-- footer -->
-			<div class="footer">
+			<div class="footer" style="position:fixed;bottom: 0px; width:84%;">
 				<div class="footer-grids">
 					<div class="footer-top">
 						<div class="footer-top-nav">
