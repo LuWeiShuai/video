@@ -18,7 +18,7 @@ use App\Http\model\info;
 use App\Http\model\login;
 use App\Http\model\history;
 use App\Http\model\money;
-
+use App\Http\model\uhistory;
 
 class videoController extends Controller
 {
@@ -175,6 +175,8 @@ class videoController extends Controller
                         history::insert($his);               
                     }
 
+                     
+
                      //评论
                     $res1 = discuss::where('vid',$id)->get();
                     
@@ -266,6 +268,22 @@ class videoController extends Controller
         $arr['num'] = $res->num;
         $arr['num'] += 1;
         uvideo::where('id',$id)->update($arr);
+        //存历史记录
+                    $res5 = uhistory::where('vid',$id)->first();
+                    if($res5){
+                        $data = [];
+                        $data['time'] = date('Y-m-d H:i:s',time());
+                        uhistory::where('id',$res4->id)->update($data);
+                    }else{
+                        $hiss = [];
+                        $hiss['uid'] = $res->uid;
+                        $hiss['vid'] = $res->id;
+                        $hiss['time'] = date('Y-m-d H:i:s',time());
+                        $hiss['url'] =$res->url;
+                        $hiss['logo'] = $res->pic;
+
+                        uhistory::insert($hiss);               
+                    }
 
         //排行榜
         $res1 = uvideo::where('status',1)->orderby('num','desc')->get();
