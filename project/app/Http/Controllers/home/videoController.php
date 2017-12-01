@@ -259,6 +259,7 @@ class videoController extends Controller
                         $hiss['time'] = date('Y-m-d H:i:s',time());
                         $hiss['url'] =$res->url;
                         $hiss['logo'] = $res->pic;
+                        $hiss['title'] = $res->title;
 
                         uhistory::insert($hiss);               
                     }
