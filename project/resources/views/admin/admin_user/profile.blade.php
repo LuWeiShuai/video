@@ -3,16 +3,7 @@
 
 
 @section('content')
-
-     @if (count($errors) > 0)
-          <div class="mws-form-message error">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li style='font-size:17px;list-style:none'>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif
+  
 <meta name="csrf-token" content="{{ csrf_token() }}">
 	<div class="mws-panel grid_8">
       	<div class="mws-panel-header">

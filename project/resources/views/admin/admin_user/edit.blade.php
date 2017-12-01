@@ -7,6 +7,13 @@
                 	<div class="mws-panel-header">
                     	<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理员修改</font></font></span>
                     </div>
+                    @if(session('msg'))
+                    <div class="mws-form-message info">                 
+
+                        {{session('msg')}}
+
+                    </div>
+                    @endif
                     <div class="mws-panel-body no-padding">
                     	<form class="mws-form" action="{{ url('/admin/admin_user/'.$res->id) }}" method="post">
                               {{ csrf_field() }}
@@ -43,4 +50,12 @@
                     	</form>
                     </div>    	
                 </div>
+@endsection
+@section('script')
+<script>
+
+    $('.mws-form-message').delay(3000).slideUp(1000);
+
+</script>
+
 @endsection

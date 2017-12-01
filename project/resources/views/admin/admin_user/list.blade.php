@@ -190,14 +190,8 @@
 </div>
 @endsection 
 @section('script')
-<!-- <script>
-    // alert($);
-    $('.btn-warning').click(function(){
-        layer.msg('hello');
-        // alert('asdsad');
-
-        return false;
-    })   
-</script>   -->  
+    <script>
+        $('.mws-form-message').delay(1000).slideUp(1000);
+    </script>
 @endsection 
 

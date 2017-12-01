@@ -64,12 +64,6 @@ class centerController extends Controller
         //上传到七牛
         $vbool = $disk->put('images/'.$vfileName,file_get_contents($vonly));
 
-        //删除原头像
-        $res = admin::where('id',session('id'))->first();
-        //获取原头像名
-        $oldname = $res->profile;
-        $disk->delete('images/'.$oldname);
-
         if ($vbool) {
             //把文件名存入数组中
             return $vfileName;

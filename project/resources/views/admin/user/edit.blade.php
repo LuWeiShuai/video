@@ -3,6 +3,7 @@
 
 
 @section('content')
+
 	<div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
                     	<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户修改</font></font></span>
@@ -41,4 +42,9 @@
                     	</form>
                     </div>    	
                 </div>
+@endsection
+@section('script')
+<script> 
+    $('.mws-form-message').delay(1000).slideUp(1000);
+</script>
 @endsection
