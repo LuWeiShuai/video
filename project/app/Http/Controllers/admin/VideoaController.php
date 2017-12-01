@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\model\type;
@@ -14,6 +15,8 @@ use App\Http\model\replay;
 use App\Http\model\money;
 use App\Http\model\history;
 use zgldh\QiniuStorage\QiniuStorage;
+use Illuminate\Support\Facades\Redis;
+
 
 
 
@@ -43,17 +46,44 @@ class VideoaController extends Controller
     }
     public function delete($id){
         // $id=$_GET('id');
+        $listKey = 'LIST:VIDEO:ADMIN';
+        $hashKey = 'HASH:VIDEO:ADMIN:';
         $disk = QiniuStorage::disk('qiniu');
 
-        $res=video::find($id);
-        $disk->delete('http://ozssihjsk.bkt.clouddn.com/images/'.$res['logo']);                      //删除文件
-        $disk->delete('http://ozssihjsk.bkt.clouddn.com/videos/'.$res['url']);                      //删除文件
+
+
+        $listKey = 'LIST:VIDEO:ADMIN';
+        $hashKey = 'HASH:VIDEO:ADMIN:';
+        Redis::hdel($hashKey.$id,'id');
+        Redis::hdel($hashKey.$id,'tid');
+        Redis::hdel($hashKey.$id,'url');
+        Redis::hdel($hashKey.$id,'logo');
+        Redis::hdel($hashKey.$id,'title');
+        Redis::hdel($hashKey.$id,'level');
+        Redis::hdel($hashKey.$id,'num');
+        Redis::hdel($hashKey.$id,'auth');
+        Redis::hdel($hashKey.$id,'status');
+        Redis::hdel($hashKey.$id,'vid');
+        Redis::hdel($hashKey.$id,'actor');
+        Redis::hdel($hashKey.$id,'content');
+        Redis::hdel($hashKey.$id,'address');
+        Redis::hdel($hashKey.$id,'time');
+
+        Redis::lrem($listKey,1,$id);
+        // dd($id);
+        // $list=Redis::hdelall($listKey,$id);
+        $res=video::where('id',$id)->first();
+        // dd($res);
+        $disk->delete('images/'.$res['logo']);                      //删除文件
+        $disk->delete('videos/'.$res['url']);                      //删除文件
         // $disk->delete(['file1.jpg', 'file2.jpg']);   //删除多个文件
         // unlink('./admins/video/upvideo/'.$res['url']);
         // unlink('./admins/video/upload/'.$res['logo']);
         
         // unlink();
         // dd($res);
+        
+
         video::where('id',$id)->delete();
         vdetail::where('vid',$id)->delete();
         discuss::where('vid',$id)->delete();
@@ -63,27 +93,124 @@ class VideoaController extends Controller
         return redirect('/admin/video/huishou');
     }
     public function upload($id){
+        $hashKey = 'HASH:VIDEO:ADMIN:';
+// dd($id);
+        Redis::hmset($hashKey.$id,'status','1');
+
         $res=[];
         $res['status']='1';
         $up=video::where('id', $id)->update($res);
         return redirect('/admin/video/huishou');
     }
     public function huishou(Request $request){
-       //根据查询条件进行分页查询
-        $res=video::where('status','0')->where('title','like','%'.$request->input('cha').'%')->orderBy('id','asc')->paginate(3);
-        //定义一个空数组
-        $cres=[];
-        //遍历查询到的数据
-        foreach ($res as $key => $value) {
-            $vid=$value->id;
-            // var_dump($vid);
-            //根据查询的vid进行查询并逐个存入创建的新数组中
-            $detail=vdetail::where('vid',$vid)->first();
-            // dd($detail);
-            $cres[$key]=$detail;
-        }
-        return view('/admin/video/huishou',['res'=>$res,'cres'=>$cres]);
+        
+        if (!empty($request->input('cha'))) {
+            $cha=$request->input('cha');
+            //根据查询条件进行分页查询
+            $res=video::where('status','0')->where('title','like','%'.$cha.'%')->orderBy('id','asc')->paginate(3);
+            //定义一个空数组
+            // dd($res);
+            $cres=[];
+            //遍历查询到的数据
+            foreach ($res as $key => $value) {
+                $vid=$value->id;
+                // var_dump($vid);
+                //根据查询的vid进行查询并逐个存入创建的新数组中
+                $detail=vdetail::where('vid',$vid)->first();
+                $cres[$key]=$detail;
+            }
+            // dd($cres);
+             return view('/admin/video/huishou',['res'=>$res,'cres'=>$cres,'aaa'=>0]);
+        }else{
+        
 
+                $listKey = 'LIST:VIDEO:ADMIN';
+                $hashKey = 'HASH:VIDEO:ADMIN:';
+                // 查看key是否存在？ 
+                if(empty(Redis::exists($listKey))){
+                    // 如果Redis不存在 读数据库然后写入redis
+                    // $where = ['status'=>'1'];
+                    $obj = video::where('title','like','%'.$request->input('cha').'%')->orderBy('id','asc')->get();
+                    // $array = $this->objectToArray($obj);
+                    // dd($obj);
+                    
+                    // $list=[];
+                    foreach($obj as $key=>$v){
+                        $vid=$v->id;
+                        // echo $vid;
+                        // Redis::hset('?');
+                        // var_dump($vid);
+                        //根据查询的vid进行查询并逐个存入创建的新数组中
+                        $detail=vdetail::where('vid',$vid)->first();
+                        // $cres[$key]=$detail;
+                        // \Redis::rpush($listKey,$v->id);
+
+                        
+                        Redis::hMset($hashKey.$v->id,'id',$v->id);
+                        Redis::hMset($hashKey.$v->id,'tid',$v->tid);
+                        Redis::hMset($hashKey.$v->id,'auth',$v->auth);
+                        Redis::hMset($hashKey.$v->id,'status',$v->status);
+                        Redis::hMset($hashKey.$v->id,'url',$v->url);
+                        Redis::hMset($hashKey.$v->id,'logo',$v->logo);
+                        Redis::hMset($hashKey.$v->id,'title',$v->title);
+                        Redis::hMset($hashKey.$v->id,'level',$v->level);
+                        Redis::hMset($hashKey.$v->id,'num',$v->num);
+                        Redis::hMset($hashKey.$v->id,'vid',$detail['vid']);
+                        Redis::hMset($hashKey.$v->id,'actor',$detail['actor']);
+                        Redis::hMset($hashKey.$v->id,'content',$detail['content']);
+                        Redis::hMset($hashKey.$v->id,'address',$detail['address']);
+                        Redis::hMset($hashKey.$v->id,'time',$detail['time']);
+
+                        $list = Redis::lrange($listKey,0,-1);
+
+                        if (!in_array($v->id, $list)) {
+                            Redis::rpush($listKey,$v->id);
+                        }
+
+                        // \Redis::rpush($listKey.$key,$cres);
+
+                        // $redis->hset('key'.$key,$cres);
+                    }
+                   
+                }
+                //取数据
+                $list = Redis::lrange($listKey,0,-1);
+                $array=[];
+                foreach($list as $k=>$v){
+                    // 取出哈希里的数据写入大数组中
+                    // echo $v;
+                    $tiqu=Redis::hGetall($hashKey.$v);
+                    if ($tiqu['status']==0) {
+                        $array[$k] = Redis::hGetall($hashKey.$v);
+                    }
+                    
+                }
+                // dd($array);
+
+
+                //根据从redis中查到的数据进行分页
+                
+                $perPage = 3;
+                if ($request->has('page')) {
+                        $current_page = $request->input('page');
+                        $current_page = $current_page <= 0 ? 1 :$current_page;
+                } else {
+                        $current_page = 1;
+                }
+
+                $item = array_slice($array, ($current_page-1)*$perPage, $perPage); //注释1
+                $total = count($array);
+
+                $paginator =new LengthAwarePaginator($item, $total, $perPage, $current_page, [
+                        'path' => Paginator::resolveCurrentPath(),  //注释2
+                        'pageName' => 'page',
+                ]);
+
+                $userlist = $paginator->toArray()['data'];
+                return view('/admin/video/huishou',['res'=>$userlist,'paginator'=>$paginator,'aaa'=>1]);
+
+        // dd($paginator);
+        }
     }
     public function store(Request $request){
        // $file=$request->file('file_upload');
