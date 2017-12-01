@@ -378,25 +378,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="/home/center/history" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<?php $res1 = DB::table('type')->get();?>
 					@foreach($res1 as $k1 => $v1)
+						@if($v1->name != '用户上传')
+							@if($v1->fid == 0)
+							<li><a href="{{ url('/home/video/'.$v1->id)}}" class="menu{{ $v1->id }}"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>{{ $v1->name }}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+							<ul class="cl-effect-{{ $v1->id }}" style="display:none;">
+								@foreach($res1 as $k2 => $v2)
+									@if($v2->fid == $v1->id )
+									<li><a href="{{ url('/home/type/'.$v2->id)}}" class="typeSon{{$v2->id}}">{{ $v2->name }}</a></li>
+									@endif
+								@endforeach       
+							</ul>
+								
+								<!-- script-for-menu -->
+								<script>
+									$( "li a.menu"+"{{ $v1->id }}" ).mouseover(function(){			
+										 var type = $(this).text();
+										$( "ul.cl-effect-"+"{{ $v1->id }}" ).slideToggle(300, function(){
+										// Animation complete.
+										});
+									});							
+								</script>
+							@endif
+						@else
 						@if($v1->fid == 0)
-						<li><a href="{{ url('/home/video/'.$v1->id)}}" class="menu{{ $v1->id }}"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>{{ $v1->name }}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-{{ $v1->id }}" style="display:none;">
-							@foreach($res1 as $k2 => $v2)
-								@if($v2->fid == $v1->id )
-								<li><a href="{{ url('/home/type/'.$v2->id)}}" class="typeSon{{$v2->id}}">{{ $v2->name }}</a></li>
-								@endif
-							@endforeach       
-						</ul>
-							
-							<!-- script-for-menu -->
-							<script>
-								$( "li a.menu"+"{{ $v1->id }}" ).mouseover(function(){			
-									 var type = $(this).text();
-									$( "ul.cl-effect-"+"{{ $v1->id }}" ).slideToggle(300, function(){
-									// Animation complete.
-									});
-								});							
-							</script>
+							<li><a href="{{ url('/home/video/'.$v1->id)}}" class="menu{{ $v1->id }}"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>{{ $v1->name }}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+							<ul class="cl-effect-{{ $v1->id }}" style="display:none;">
+								@foreach($res1 as $k2 => $v2)
+									@if($v2->fid == $v1->id )
+									<li><a href="{{ url('/home/type/'.$v2->id)}}" class="typeSon{{$v2->id}}">{{ $v2->name }}</a></li>
+									@endif
+								@endforeach       
+							</ul>
+								
+								<!-- script-for-menu -->
+								<script>
+									$( "li a.menu"+"{{ $v1->id }}" ).mouseover(function(){			
+										 var type = $(this).text();
+										$( "ul.cl-effect-"+"{{ $v1->id }}" ).slideToggle(300, function(){
+										// Animation complete.
+										});
+									});							
+								</script>
+							@endif
 						@endif
 					@endforeach
 				  </ul>

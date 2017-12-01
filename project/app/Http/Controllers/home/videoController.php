@@ -33,14 +33,25 @@ class videoController extends Controller
 		$res = type::where('fid',$id)->get();
         $res3 = type::where('id',$id)->first();
         $name = $res3->name;
-		$tid=[];
-		foreach ($res as $key => $val) {
+        if($name != '用户上传'){
+    		$tid=[];
+    		foreach ($res as $key => $val) {
 
-			$tid[]= $val->id;
-        }
-        $res1 = video::whereIn('tid',$tid)->where('status','1')->get();
-        // var_dump($res1);
-	   return view('home.video.list',['res1'=>$res1,'name'=>$name]); 			
+    			$tid[]= $val->id;
+            }
+            $res1 = video::whereIn('tid',$tid)->where('status','1')->get();
+            // var_dump($res1);
+    	    return view('home.video.list',['res1'=>$res1,'name'=>$name]);
+        }else{
+            $tid=[];
+            foreach ($res as $key => $val) {
+
+                $tid[]= $val->id;
+            }
+            $res1 = uvideo::whereIn('tid',$tid)->where('status','1')->get();
+            // var_dump($res1);
+            return view('home.video.list',['res1'=>$res1,'name'=>$name]);
+        } 			
     }
     //子分区 列表
     public function type($id)
@@ -51,8 +62,13 @@ class videoController extends Controller
         $res2 = type::where('id',$res->fid)->first();
 
         $fname =$res2->name;
-        $res1 = video::where('tid',$id)->where('status','1')->get();
-        return view('home.video.type',['name'=>$name,'fname'=>$fname,'res'=>$res1]); 
+        if($fname != '用户上传'){
+            $res1 = video::where('tid',$id)->where('status','1')->get();
+            return view('home.video.type',['name'=>$name,'fname'=>$fname,'res'=>$res1]);
+        }else{
+            $res1 = uvideo::where('tid',$id)->where('status','1')->get();
+            return view('home.video.type',['name'=>$name,'fname'=>$fname,'res'=>$res1]);
+        }
     }
 
     //视频播放页面
@@ -88,21 +104,23 @@ class videoController extends Controller
             video::where('id',$id)->update($arr);
 
             //存历史记录
-            $res4 = history::where('vid',$id)->first();
-            if($res4){
-                $data = [];
-                $data['time'] = date('Y-m-d H:i:s',time());
-                history::where('id',$res4->id)->update($data);
-            }else{
-                $his = [];
-                $his['uid'] = $uid;
-                $his['vid'] = $id;
-                $his['title'] = $res->title;
-                $his['time'] = date('Y-m-d H:i:s',time());
-                $his['url'] =$res->url;
-                $his['logo'] = $res->logo;
+            if(session('uid')){
+                $res4 = history::where('vid',$id)->first();
+                if($res4){
+                    $data = [];
+                    $data['time'] = date('Y-m-d H:i:s',time());
+                    history::where('id',$res4->id)->update($data);
+                }else{
+                    $his = [];
+                    $his['uid'] = $uid;
+                    $his['vid'] = $id;
+                    $his['title'] = $res->title;
+                    $his['time'] = date('Y-m-d H:i:s',time());
+                    $his['url'] =$res->url;
+                    $his['logo'] = $res->logo;
 
-                history::insert($his);               
+                    history::insert($his);               
+                }
             }
              //评论
             $res1 = discuss::where('vid',$id)->get();
