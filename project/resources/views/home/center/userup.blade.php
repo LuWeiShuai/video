@@ -268,7 +268,7 @@
 
                         
                     <input type="submit" value="上传" class="btn btn-danger">
-<<<<<<< HEAD
+
                     <script src="{{ url('/homes/js/jquery.min.js')}}"></script>
                     <script type="text/javascript">
                             

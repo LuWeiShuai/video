@@ -88,13 +88,12 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 
 });
 
+//前台主页
+Route::get('/','homeController@index');
+	
 //前台路由
 Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 
-
-	//前台主页
-	Route::get('/index','homeController@index');
-	
 	//视频遍历
 	Route::get('/video/{id}','videoController@video');
 	Route::get('/type/{id}','videoController@type');

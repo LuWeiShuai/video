@@ -8,13 +8,13 @@
     <!-- <link rel="icon" type="image/png" href="/admins/video/i/favicon.png"> -->
     <!-- <link rel="apple-touch-icon-precomposed" href="/admins/video/i/app-icon72x72@2x.png"> -->
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="/admins/video/css/amazeui.min.css" />
+    <link rel="stylesheet" href="{{ url('/admins/video/css/amazeui.min.css')}}" />
     <!-- <link rel="stylesheet" href="/admins/video/css/admin.css"> -->
-    <link rel="stylesheet" href="/admins/video/css/app.css">
-    <link rel="stylesheet" href="/admins/video/css/popuo-box.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/payment.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/style.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/reset.css">
+    <link rel="stylesheet" href="{{ url('/admins/video/css/app.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/css/popuo-box.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/payment.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/style.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/reset.css')}}">
     <style type="text/css">
     	#mws-wrapper {
 		    height: auto;
@@ -141,7 +141,7 @@
 
     <div class="tpl-block">
         <div class="am-g">
-            <form action="/admin/video/huishou" method="get">
+            <form action="{{ url('/admin/video/huishou')}}" method="get">
                 <div class="am-u-sm-12 am-u-md-6" id="seach">
                     <div class="am-input-group am-input-group-sm">
                         <input type="text" class="am-form-field" name="cha">
@@ -199,14 +199,14 @@
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
                                     
-                                    <a href="/admin/video/upload/{{$val->id}}" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="anniu"><span class="icon-publish">上架</span> </button>
+                                    <a href="{{ url('/admin/video/upload/'.$val->id)}}" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="anniu"><span class="icon-publish">上架</span> </button>
                                     </a>
 
 
                                     
 
 
-                                    <a href="/admin/video/del/{{$val->id}}">
+                                    <a href="{{ url('/admin/video/del/'.$val->id)}}">
                                         <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu"><span class="am-icon-trash-o"></span>删除</button>
                                     </a>
                                 </div>
@@ -238,8 +238,8 @@
 </div>
 
 @endsection
-    <script src="/admins/video/js/jquery.min.js"></script>
-	<script src="/admins/video/js/payment.js"></script>
+    <script src="{{ url('/admins/video/js/jquery.min.js')}}"></script>
+	<script src="{{ url('/admins/video/js/payment.js')}}"></script>
     <!-- <script src="/admins/video/js/amazeui.min.js"></script> -->
     <!-- <script src="/admins/video/js/app.js"></script> -->
     
