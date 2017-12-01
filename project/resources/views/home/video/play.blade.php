@@ -1,14 +1,18 @@
 @extends('layout.home')
 @section('title','播放页面')
 @section('content')
+<style>
+
+</style>
 <div class="show-top-grids">
 				<div class="col-sm-8 single-left">
 					<div class="song">
 						<div class="song-info">
 							<h3 id="title" align="center">{{ $res->title}}</h3>
 					</div>
-						<div class="video-grid">
-							<iframe src="http://ozssihjsk.bkt.clouddn.com/videos/{{$res->url}}" allowfullscreen=""></iframe>
+						<div class="video-grid" style="margin:20px;width:100%" >
+							<!-- <iframe style="margin-top:20px; width:125%!important;" src="http://ozssihjsk.bkt.clouddn.com/videos/{{$res->url}}" allowfullscreen=""></iframe> -->
+							<video controls width="120%" src="http://ozssihjsk.bkt.clouddn.com/videos/{{$res->url}}"></video>
 						</div>
 					</div>						
 					<script>
@@ -75,15 +79,15 @@
 								var title = $('#title').text();								
 								var time = $('input[type=hidden]').val();								
 								$('#dis').click(function(){		
-
 									var discuss = $('#discuss').val();
 									$.post("{{url('/home/discuss')}}",{'_token':'{{csrf_token()}}',dis:discuss,title:title,time:time},function(data){
-										if(data == '评论失败'){
-											
+										if(data == '评论失败'){		
 											// alert('请先登录在评论');
 											layer.alert('请先登录,在评论');
-										}else{
+										}else if(data == '评论成功'){
 											layer.alert('评论成功!');
+										}else{
+											layer.alert('评论内容不能为空');
 										}
 									})
 									return false;
@@ -96,7 +100,7 @@
 							<div class="media" style="border:solid 1px #D4D3D3;margin:0px;padding:0px;">
 								<h5 class="btn btn-info">{{ $res2->nikeName }}</h5>
 								<div class="media-left" >
-									<div style="width:50px;height:50px;margin:0px;padding:0px;border-radius:50%;overflow:hidden;"><img style="position:relative;top:-30px;left:-40px;" class="am-circle am-img-thumbnail" src="{{url('/homes/pic/'.$res2->profile)}}" alt=""></div>
+									<div style="width:60px;margin:0px;padding:0px;border-radius:50%;"><img class="am-circle am-img-thumbnail" src="/homes/pic/{{$res2->profile}}" alt=""></div>
 								</div>
 								<div class="media-body">
 									<p>{{ $val->content}}</p>

@@ -50,7 +50,7 @@
 
 </style>
 <meta name="csrf-token" content="{{ csrf_token() }}">
-   <script type="text/javascript" src="/admins/js/libs/jquery-1.8.3.min.js"></script>
+   <script type="text/javascript" src="{{ url('/admins/js/libs/jquery-1.8.3.min.js')}}"></script>
 
 @section('content')
     <!-- <link rel="stylesheet" href="/admins/video/css/amazeui.min.css" /> -->
@@ -59,7 +59,7 @@
     	<span>添加视频</span>
     </div>
     <div class="mws-panel-body no-padding">
-    	<form class="mws-form" action="/admin/video" method="post" enctype="multipart/form-data">
+    	<form class="mws-form" action="{{ url('/admin/video')}}" method="post" enctype="multipart/form-data">
     		<div class="mws-form-block">
     			<div class="mws-form-row">
     				<label class="mws-form-label">视频名称</label>
@@ -157,7 +157,7 @@
                                     // alert("1234");
                                     $.ajax({
                                         type: "post",
-                                        url: "/admin/videochuan",
+                                        url: "{{ url('/admin/videochuan')}}",
                                         data: formData ,
                                         cache: false,
                                         async: true,
@@ -248,7 +248,7 @@
                                     // alert("1234");
                                     $.ajax({
                                         type: "post",
-                                        url: "/admin/videochuan",
+                                        url: "{{ url('/admin/videochuan')}}",
                                         data: formData ,
                                         cache: false,
                                         async: true,
@@ -282,27 +282,14 @@
                     };
                 </script>
 
-
-
-
-
-
-
-
-
-
-                
-    			
-    				
-
-                <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>  
+                <script type="text/javascript" charset="utf-8" src="{{ url('/ueditor/ueditor.config.js')}}"></script>  
               
                 <!--使用版-->  
-                <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"></script>  
+                <script type="text/javascript" charset="utf-8" src="{{ url('/ueditor/ueditor.all.js')}}"></script>  
               
                 <!--开发版-->  
                 <!-- <script type="text/javascript" charset="utf-8" src="editor_api.js"></script>   -->
-                <script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script> 
+                <script type="text/javascript" src="{{ url('/ueditor/lang/zh-cn/zh-cn.js')}}"></script> 
                 <div class="mws-form-row">
                     <label class="mws-form-label">内容介绍</label>
                     <div class="mws-form-item">
@@ -332,16 +319,6 @@
                         </script>  
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
                 
                 <input type="hidden" name="status" value="1">
                 <input type="hidden" name="time" value="{{time()}}">
@@ -353,10 +330,6 @@
     	</form>
     </div>
 </div>
-
-  
-
-
 
                  <script type="text/javascript">
                     //  
@@ -401,7 +374,7 @@
                     city.onchange=function(){
                         fid=this.value;
 
-                        $.get('/admin/videoa',{fid:fid},function(data){
+                        $.get("{{ url('/admin/videoa')}}",{fid:fid},function(data){
                             // console.log(data);
                             // alert(arr);
                             area.innerHTML='';

@@ -107,7 +107,7 @@ class registerController extends Controller
     		//清除所有缓存
     		session()->flush();
     		
-    		return redirect('/home/index');
+    		return redirect('/');
     	} else {
     		return back()->with('msg','注册成功');
     	}

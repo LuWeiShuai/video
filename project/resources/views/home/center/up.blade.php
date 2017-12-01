@@ -8,10 +8,10 @@
     <!-- <link rel="icon" type="image/png" href="/admins/video/i/favicon.png"> -->
     <!-- <link rel="apple-touch-icon-precomposed" href="/admins/video/i/app-icon72x72@2x.png"> -->
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="/homes/video/css/amazeui.min.css" />
+    <link rel="stylesheet" href="{{ url('/homes/video/css/amazeui.min.css')}}" />
     <!-- <link rel="stylesheet" href="/admins/video/css/admin.css"> -->
-    <link rel="stylesheet" href="/homes/video/css/app.css">
-    <link rel="stylesheet" href="/homes/css/popuo-box.css">
+    <link rel="stylesheet" href="{{ url('/homes/video/css/app.css')}}">
+    <link rel="stylesheet" href="{{ url('/homes/css/popuo-box.css')}}">
     <style type="text/css">
         #mws-wrapper {
             height: auto;
@@ -29,7 +29,7 @@
 
 
         #anniu{
-            width: 100px!important;
+            width: 70px!important;
             margin-left: 25px;
             height: 30px;
             font-size: 18px!important;
@@ -37,9 +37,10 @@
             float: left!important;
 
         }
-         #ann{
-            width: 100px!important;
-            margin-left: 25px;
+         
+        #ann{
+            width: 80px!important;
+            margin-left: 45px;
             height: 30px;
             font-size: 18px!important;
             line-height: 10px!important;
@@ -154,7 +155,7 @@
                     </div>
                 </div>
             </div>
-                    <form action="/home/up" method="get">
+                    <form action="{{ url('/home/up')}}" method="get">
             
             <div class="am-u-sm-12 am-u-md-6" id="seach">
                 <div class="am-input-group am-input-group-sm">
@@ -175,13 +176,9 @@
                     <div class="tpl-table-images-content">
                         <div class="tpl-table-images-content-i-time">
                         
-                            <div class="fenqu">
-                              
-                            </div>
-                        </div>
-                        
-                        <div class="tpl-i-title">
-                           <a href="{{ url('/home/user_play/'.$v->id)}}">{{$v->title}}</a>
+                             <a href="{{ url('/home/user_play/'.$v->id)}}">{{$v->title}}</a>
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <a href="{{ url('/home/user_play/'.$v->id)}}">{{date('Y-m-d H:i:s',$v->time)}}</a>
                         </div>
                         
                         <div class="tpl-table-images-content-i" id="fengmian">
@@ -190,26 +187,22 @@
                             <a href="{{ url('/home/user_play/'.$v->id)}}"><img style="float:left" src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->pic}}" alt=""></a>
                                 
                         </div>
-                        <div class="tpl-table-images-content-i-info">
-                                <span class="ico">
-                                    <i>{{$v->content}}</i>
-                                 </span>
-                            </div>
                         <div class="tpl-table-images-content-block">  
 
                             <div class="am-btn-toolbar">
-                                <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
+                                <div style="margin-top: 5px" class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
                                 @if(  $v->status == 0)
-                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-info" id="anniu"><span class="am-icon-edit">待审核</span></button></a>
-                                @else 
-                                    <a href="" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="ann"><span class="am-icon-edit">已通过</span></button></a>
+                                    <a  style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-info" id="ann"><span class="am-icon-edit" style="font-size: 18px">审核中</span></button></a>
+                                @elseif($v->status == 1)
+                                    <a  style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="ann"><span class="am-icon-edit" style="font-size: 18px">已通过</span></button></a>
+                                @else
+                                    <a  style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="ann"><span class="am-icon-edit" style="font-size: 18px">未通过</span></button></a>
                                 @endif
-                                    <form method="post" action="/home/up/{{$v->id}}">
+                                    <form method="post" action="{{ url('/home/up/'.$v->id)}}">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu" style="width:190px;"><span class="am-icon-trash-o"></span>下架</button>
                                     </form>
-
                                 </div>
 
                             </div>

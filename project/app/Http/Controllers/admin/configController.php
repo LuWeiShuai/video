@@ -76,24 +76,25 @@ class configController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*var_dump($request);
-        die;*/
+            //获取收到的值
         $re = $request->except('_token','_method','logo','MAX_FILE_SIZE');
         if($request->hasFile('logo')){
-            //重命名
+            //给图片重命名
             $name = rand(1111,9999).time();
-            //获取后缀
+            //获取图片后缀
             $suffix = $request->file('logo')->getClientOriginalExtension();
             $type = array('jpeg','gif','png','jpg','bmp');
+            //如果后缀在这个数组里边则存入
             if(in_array($suffix,$type)){
                 $request->file('logo')->move('./admins/logos',$name.'.'.$suffix);
                 $re['logo'] = $name.'.'.$suffix;
             }
         }
-
+            //提取上一个图片
         $old = config::where('id',$id)->first();
-      
+            //将图片更新
         $res = config::where('id',$id)->update($re);
+            //如果图片不是默认则删除,是默认则不删除
         if($res && $old->logo != "74731511505640.png"){
             unlink('./admins/logos/'.$old->logo);
                

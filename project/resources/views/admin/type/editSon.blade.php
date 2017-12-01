@@ -20,7 +20,7 @@
         
             </div>
         @endif 
-    	<form class="mws-form" action="/admin/typeSon/{{$res->id}}" method="post">
+    	<form class="mws-form" action="{{ url('/admin/typeSon/'.$res->id) }}" method="post">
     		<div class="mws-form-inline">
     			<div class="mws-form-row">
     				<label class="mws-form-label">子分区名称:</label>

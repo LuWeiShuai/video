@@ -62,7 +62,7 @@
         <hr/>
         <!--上传视频 -->
         <div class="info-main">
-            <form action="/home/videos" method="post" class="am-form am-form-horizontal">
+            <form action="{{ url('/home/videos')}}" method="post" class="am-form am-form-horizontal">
 
                 <div class="am-form-group">
                     <label for="video-name" class="am-form-label">视频名称</label>
@@ -85,11 +85,11 @@
                 <div class="mws-form-row">
                     <label class="am-form-label" >视频分区</label>
                     <div class="mws-form-item" style="">
-                        <select name="tid" id="city" style="width:200px;position: absolute;margin-left: 85px">
+                        <select name="fid" id="city" style="width:200px;position: absolute;margin-left: 85px">
                             <option value="16">---用户上传---</option>
                         </select>
                         
-                        <select name="zitid" id="area" style="margin-left: 290px">
+                        <select name="tid" id="area" style="margin-left: 290px">
                             <option  value="-1">------</option> 
                             @foreach($re as $k=>$v)
                             <option value="{{$v->id}}">---{{$v->name}}---</option>  
@@ -105,7 +105,7 @@
                     <input type="text" readonly name="pic" id="tu" style="width:150px;float:left" />
                     <input type="button" value="上传封面图片" class="btn btn-info" id="upic">
                     
-                    <script src="/layer/layer.js"></script>
+                    <script src="{{ url('/layer/layer.js')}}"></script>
 
                         <script type="text/javascript">
                         document.getElementById('upic').onclick=function(){
@@ -150,7 +150,7 @@
                                     // alert("1234");
                                     $.ajax({
                                         type: "post",
-                                        url: "/home/picchuan",
+                                        url: "{{ url('/home/picchuan')}}",
                                         data: formData ,
                                         cache: false,
                                         async: true,
@@ -225,7 +225,7 @@
                                     // alert("1234");
                                     $.ajax({
                                         type: "post",
-                                        url: "/home/picchuan",
+                                        url: "{{ url('/home/picchuan')}}",
                                         data: formData ,
                                         cache: false,
                                         async: true,
@@ -268,7 +268,8 @@
 
                         
                     <input type="submit" value="上传" class="btn btn-danger">
-                    <script src="/homes/js/jquery.min.js"></script>
+
+                    <script src="{{ url('/homes/js/jquery.min.js')}}"></script>
                     <script type="text/javascript">
                             
                             $('input[type=submit]').click(function(){

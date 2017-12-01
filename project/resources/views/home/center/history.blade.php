@@ -25,7 +25,7 @@
 				@foreach($res as $k => $v)
 				<div class="col-md-3 resent-grid recommended-grid">
 					<div class="resent-grid-img recommended-grid-img" style="margin-top: 15px;">
-						<a href="/home/play/{{$v->vid}}">
+						<a href="{{ url('/home/play/'.$v->vid)}}">
 							<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}" style="height:150px;width: 100%;">
 						</a>
 					</div>
@@ -33,7 +33,7 @@
 					<div class="resent-grid-info recommended-grid-info video-info-grid">
 						<ul>
 							<li>
-								<a href="/home/play/{{$v->vid}}" class="title">{{$v->title}}</a>
+								<a href="{{ url('/home/play/'.$v->vid)}}" class="title">{{$v->title}}</a>
 
 							</li>
 						</ul>
@@ -42,7 +42,7 @@
 								<p class="author author-info">最后播放时间：{{$v->time}}</p>
 							</li>
 							<li>
-								<form action="/home/center/delete/{{$v->id}}" method="get">
+								<form action="{{ url('/home/center/delete/'.$v->id)}}" method="get">
 									<button type="submit" class="btn btn-danger">删除记录</button>
 
 								</form>
@@ -52,20 +52,39 @@
 					</div>
 				</div>
 				@endforeach
-				<script type="text/javascript">
-					/*
-			    	var del = function(id)
-			    	{
-
-			    		$.get('/home/center/delete',{id:id},function(data){
-			    			 layer.alert(data);
-
-			    		});
-			    	}*/
-				</script>
 
 			</div>
 		</div>
+	@foreach($res1 as $k => $v)
+				<div class="col-md-3 resent-grid recommended-grid">
+					<div class="resent-grid-img recommended-grid-img" style="margin-top: 15px;">
+						<a href="{{ url('/home/play/'.$v->vid)}}">
+							<img src="http://ozssihjsk.bkt.clouddn.com/images/{{$v->logo}}" style="height:150px;width: 100%;">
+						</a>
+					</div>
+					
+					<div class="resent-grid-info recommended-grid-info video-info-grid">
+						<ul>
+							<li>
+								<a href="{{ url('/home/play/'.$v->vid)}}" class="title">{{$v->title}}</a>
+
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<p class="author author-info">最后播放时间：{{$v->time}}</p>
+							</li>
+							<li>
+								<form action="{{ url('/home/center/delete/'.$v->id)}}" method="get">
+									<button type="submit" class="btn btn-danger">删除记录</button>
+
+								</form>
+								
+							</li>
+						</ul>
+					</div>
+				</div>
+				@endforeach
 
 	</div>
 @endsection

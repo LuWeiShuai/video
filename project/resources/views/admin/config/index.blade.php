@@ -10,7 +10,7 @@
                     </div>
                     <div class="mws-panel-body no-padding">
                     	@foreach($res as $k=>$v)
-                         <form class="mws-form" action="/admin/config/{{$v->id}}" method="post" enctype="multipart/form-data">    
+                         <form class="mws-form" action="{{url('/admin/config/'.$v->id)}}" method="post" enctype="multipart/form-data">    
                     		<div class="mws-form-inline">
                     			<div class="mws-form-row">
                     				<label class="mws-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站名称</font></font></label>

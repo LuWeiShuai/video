@@ -19,7 +19,7 @@
 
         </div>
     @endif  
-    	<form class="mws-form" action="/admin/typeSon" method="post">
+    	<form class="mws-form" action="{{ url('/admin/typeSon') }}" method="post">
     		<div class="mws-form-inline">
     			<div class="mws-form-row">
                         <label class="mws-form-label">父分区名:</label>

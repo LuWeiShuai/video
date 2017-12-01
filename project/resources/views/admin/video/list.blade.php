@@ -8,13 +8,13 @@
     <!-- <link rel="icon" type="image/png" href="/admins/video/i/favicon.png"> -->
     <!-- <link rel="apple-touch-icon-precomposed" href="/admins/video/i/app-icon72x72@2x.png"> -->
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="/admins/video/css/amazeui.min.css" />
+    <link rel="stylesheet" href="{{ url('/admins/video/css/amazeui.min.css')}}" />
     <!-- <link rel="stylesheet" href="/admins/video/css/admin.css"> -->
-    <link rel="stylesheet" href="/admins/video/css/app.css">
-    <link rel="stylesheet" href="/admins/video/css/popuo-box.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/payment.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/style.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/reset.css">
+    <link rel="stylesheet" href="{{ url('/admins/video/css/app.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/css/popuo-box.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/payment.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/style.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/reset.css')}}">
     <style type="text/css">
     	#mws-wrapper {
 		    height: auto;
@@ -218,7 +218,6 @@
                                             
                                             <a href="{{url('/admin/video/'.$val['id'])}}/edit" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="anniu"><span class="am-icon-edit"></span> 编辑</button></a>
 
-
                                             
 
 
@@ -233,7 +232,6 @@
                             </div>
                         </div>
                         @endforeach
-                        
                         
                         <!-- 分页的开始 -->
                         <div class="am-u-lg-12">
@@ -260,7 +258,7 @@
                     <span class="icon-monitor"></span> 视频列表
                 </div>
                 <div class="tpl-portlet-input tpl-fz-ml">
-                    
+
                 </div>
             </div>
 
@@ -361,7 +359,6 @@
 
                                 <div class="am-fr">
                                     {!! $res->appends($_GET)->render() !!}
-                                    
                                 </div>
                             </div>
                             <hr>
@@ -376,8 +373,8 @@
         </div>
     @endif        
 @endsection
-    <script src="/admins/video/js/jquery.min.js"></script>
-	<script src="/admins/video/js/payment.js"></script>
+    <script src="{{ url('/admins/video/js/jquery.min.js')}}"></script>
+	<script src="{{ url('/admins/video/js/payment.js')}}"></script>
     <!-- <script src="/admins/video/js/amazeui.min.js"></script> -->
     <!-- <script src="/admins/video/js/app.js"></script> -->
     

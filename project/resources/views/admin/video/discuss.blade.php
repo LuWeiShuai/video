@@ -8,13 +8,13 @@
     <!-- <link rel="icon" type="image/png" href="/admins/video/i/favicon.png"> -->
     <!-- <link rel="apple-touch-icon-precomposed" href="/admins/video/i/app-icon72x72@2x.png"> -->
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="/admins/video/css/amazeui.min.css" />
+    <link rel="stylesheet" href="{{ url('/admins/video/css/amazeui.min.css')}}" />
     <!-- <link rel="stylesheet" href="/admins/video/css/admin.css"> -->
-    <link rel="stylesheet" href="/admins/video/css/app.css">
-    <link rel="stylesheet" href="/admins/video/css/popuo-box.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/payment.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/style.css">
-    <link rel="stylesheet" href="/admins/video/tankuang/reset.css">
+    <link rel="stylesheet" href="{{ url('/admins/video/css/app.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/css/popuo-box.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/payment.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/style.css')}}">
+    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/reset.css')}}">
     <style type="text/css">
     	#mws-wrapper {
 		    height: auto;
@@ -198,8 +198,8 @@
 </div>
 
 @endsection
-    <script src="/admins/video/js/jquery.min.js"></script>
-	<script src="/admins/video/js/payment.js"></script>
+    <script src="{{ url('/admins/video/js/jquery.min.js')}}"></script>
+	<script src="{{ url('/admins/video/js/payment.js')}}"></script>
     <!-- <script src="/admins/video/js/amazeui.min.js"></script> -->
     <!-- <script src="/admins/video/js/app.js"></script> -->
     <script type="text/javascript">

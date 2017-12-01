@@ -19,7 +19,7 @@ class hloginMiddleware
 
         if(!$uid){
 
-            return redirect('/home/index')->with('msg','请先登录,再进行下一步操作!!');
+            return redirect('/')->with('msg','请先登录,再进行下一步操作!!');
             
         } else {
 
