@@ -19,6 +19,8 @@ use App\Http\model\config;
 use App\Http\model\money;
 use App\Http\model\video;
 use App\Http\model\user_vip;
+use App\Http\model\uhistory;
+
 
 class centerController extends Controller
 {
@@ -219,8 +221,10 @@ class centerController extends Controller
 
         //从history数据库查询
         $res = history::where('uid',$uid)->orderBy('time','desc')->get();
+        $res1 = uhistory::where('uid',$uid)->orderBy('time','desc')->get();
 
-        return view('/home/center/history',['res'=>$res]);
+
+        return view('/home/center/history',['res'=>$res,'res1'=>$res1]);
     }
 
     //执行删除历史记录
@@ -228,8 +232,10 @@ class centerController extends Controller
     {
         //删除数据库中的数据
         $res = history::where('id',$id)->delete();
+        $res1 = uhistory::where('id',$id)->delete();
+
         //判断
-        if ($res) {
+        if ($res || $res1) {
             return redirect('/home/center/history')->with('msg','删除成功');
         }else{
             return back()->with('msg','删除失败');
