@@ -312,11 +312,9 @@ class videoController extends Controller
                 $res = udiscuss::insert($data);
                 if($res){
                     return '评论成功';
-                }else{
-                    return '评论失败';
                 }
             }else{
-                return '评论不能为空';
+                return '评论失败';
             }
         }else{
             return '请先登录再评论';

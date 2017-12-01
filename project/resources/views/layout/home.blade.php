@@ -141,10 +141,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														$(this).next().text(' *手机号码不正确').css('color','#db192a');
 														$('#btn').attr("disabled",true);
 														
-													}else if(empty(tel)){
-														$('#anc').attr('href','javascript:void(0);')
-
-													} else {
+													}else {
 														$(this).css('border','solid 2px green');
 														$(this).next().text(' √').css('color','green');
 														 $('#btn').attr("disabled",false);
@@ -223,8 +220,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 											<form action="{{url('/home/regis')}}" method="post">
 
-												<input type="password" name="password"  placeholder="密码" required="required" id="pass"  />
-												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" id="repa" />
+												<input type="password" name="password"  placeholder="请设置密码" required="required" id="pass"  />
+												<span  id="q" style="color: red;"></span>
+												<br>
+												<span>请输入8到16位密码</span>
+												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" id="repa"/>
 												
 												{{csrf_field()}}
 
@@ -235,21 +235,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												
 												$('#pass').blur(function(){
 												var pas = $('#pass').val();
-												var reg = /^[a-zA-Z]\w{7,15}$/;
-													console.log(pas);
+												var reg = /^\S{8,16}$/;
 													if(!reg.test(pas)){
 													layer.alert('密码格式不正确');
 													$('#regis').attr('disabled',true);
+													}else{
+													$(this).next().text(' √').css('color','green');
 													}
 												})
 												$('#repa').blur(function(){
 												var pas = $('#pass').val();
 												var repa = $('#repa').val();
-												console.log(repa);
+												
 													if(repa !== pas){
 														layer.alert('两次密码不匹配');
 													$('#regis').attr('disabled',true);
 													}else{
+													$(this).next().text(' √').css('color','green');
 													$('#regis').attr('disabled',false);
 
 													}
