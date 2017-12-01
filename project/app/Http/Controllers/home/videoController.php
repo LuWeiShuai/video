@@ -105,11 +105,18 @@ class videoController extends Controller
 
             //存历史记录
             if(session('uid')){
-                $res4 = history::where('vid',$id)->first();
-                if($res4){
+                $res4 = history::where('uid',$uid)->get();
+                $video_id = [];
+                foreach ($res4 as $k => $v){
+                    $video_id[] = $v->vid;
+                    if($id == $v->vid){
+                        $id1 = $v->id;
+                    }
+                }
+                if(in_array($id,$video_id)){
                     $data = [];
                     $data['time'] = date('Y-m-d H:i:s',time());
-                    history::where('id',$res4->id)->update($data);
+                    history::where('id',$id1)->update($data);
                 }else{
                     $his = [];
                     $his['uid'] = $uid;
@@ -143,11 +150,19 @@ class videoController extends Controller
                     video::where('id',$id)->update($arr);
 
                     //存历史记录
-                    $res4 = history::where('vid',$id)->first();
-                    if($res4){
+                    $res4 = history::where('uid',$uid)->get();                    
+                    $video_id = [];
+                    foreach ($res4 as $k => $v){
+                        $video_id[] = $v->vid;
+                          if($id == $v->vid){
+                            $id1 = $v->id;
+                        }
+                    }
+
+                    if(in_array($id,$video_id)){
                         $data = [];
                         $data['time'] = date('Y-m-d H:i:s',time());
-                        history::where('id',$res4->id)->update($data);
+                        history::where('id',$id1)->update($data);
                     }else{
                         $his = [];
                         $his['uid'] = $uid;
@@ -184,11 +199,18 @@ class videoController extends Controller
                     video::where('id',$id)->update($arr);
 
                     //存历史记录
-                    $res4 = history::where('vid',$id)->first();
-                    if($res4){
+                    $res4 = history::where('uid',$uid)->get();
+                    $video_id = [];
+                    foreach ($res4 as $k => $v){
+                        $video_id[] = $v->vid;
+                        if($id == $v->vid){
+                            $id1 = $v->id;
+                        }
+                    }
+                    if(in_array($id,$video_id)){
                         $data = [];
                         $data['time'] = date('Y-m-d H:i:s',time());
-                        history::where('id',$res4->id)->update($data);
+                        history::where('id',$id1)->update($data);
                     }else{
                         $his = [];
                         $his['uid'] = $uid;
