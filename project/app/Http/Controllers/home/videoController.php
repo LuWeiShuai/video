@@ -254,7 +254,7 @@ class videoController extends Controller
                         uhistory::where('id',$res5->id)->update($data);
                     }else{
                         $hiss = [];
-                        $hiss['uid'] = $res->uid;
+                        $hiss['uid'] = session('uid');
                         $hiss['vid'] = $res->id;
                         $hiss['time'] = date('Y-m-d H:i:s',time());
                         $hiss['url'] =$res->url;
