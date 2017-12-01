@@ -140,14 +140,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														$(this).css('border','solid 2px #db192a');
 														$(this).next().text(' *手机号码不正确').css('color','#db192a');
 														$('#btn').attr("disabled",true);
-
+														
+													}else if(empty(tel)){
+														$('#anc').attr('href','javascript:void(0);')
 
 													} else {
 														$(this).css('border','solid 2px green');
 														$(this).next().text(' √').css('color','green');
 														 $('#btn').attr("disabled",false);
-													}
+														 $('#anc').attr("disabled",false);
 
+													}
 												});
 
 												var clock = '';
@@ -157,8 +160,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													 function sendCode(thisBtn)
 													 { 
 														
-
-
 														//获取手机号
 														var tel = $('input[name=tel]').val();
 														//发送ajax
@@ -222,14 +223,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 											<form action="{{url('/home/regis')}}" method="post">
 
-												<input type="password" name="password" class="email" placeholder="密码" required="required"  />
-												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" />
+												<input type="password" name="password"  placeholder="密码" required="required" id="pass"  />
+												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" id="repa" />
 												
 												{{csrf_field()}}
 
-												<input type="submit"  value="注册"/>
-
+												<input type="submit" id="regis"  value="注册"/>
+		
 											</form>	
+											<script type="text/javascript">
+												
+												$('#pass').blur(function(){
+												var pas = $('#pass').val();
+												var reg = /^[a-zA-Z]\w{7,15}$/;
+													console.log(pas);
+													if(!reg.test(pas)){
+													layer.alert('密码格式不正确');
+													$('#regis').attr('disabled',true);
+													}
+												})
+												$('#repa').blur(function(){
+												var pas = $('#pass').val();
+												var repa = $('#repa').val();
+												console.log(repa);
+													if(repa !== pas){
+														layer.alert('两次密码不匹配');
+													$('#regis').attr('disabled',true);
+													}else{
+													$('#regis').attr('disabled',false);
+
+													}
+												})
+												
+											</script>
 										</div>
 									
 										<div class="clearfix"> </div>

@@ -95,8 +95,8 @@ class configController extends Controller
             //将图片更新
         $res = config::where('id',$id)->update($re);
             //如果图片不是默认则删除,是默认则不删除
-        if($res && $old->logo != "74731511505640.png"){
-            unlink('./admins/logos/'.$old->logo);
+        if($res && $old->logo != "15591512136124.png"){
+            // unlink('./admins/logos/'.$old->logo);
                
         }
 
