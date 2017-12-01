@@ -83,11 +83,11 @@
 									$.post("{{url('/home/discuss')}}",{'_token':'{{csrf_token()}}',dis:discuss,title:title,time:time},function(data){
 										if(data == '评论失败'){		
 											// alert('请先登录在评论');
-											layer.alert('请先登录,在评论');
+											layer.alert('评论内容不能为空');
 										}else if(data == '评论成功'){
 											layer.alert('评论成功!');
 										}else{
-											layer.alert('评论内容不能为空');
+											layer.alert('请先登录在评论');
 										}
 									})
 									return false;
