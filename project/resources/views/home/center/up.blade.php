@@ -149,7 +149,7 @@
                 <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
                         <a href="/home/up/create" style='color:white;'> 
-                            <button type="button" class="am-btn am-btn-default am-btn-success"  id="tianjia"><span class="am-icon-plus"></span>新增
+                            <button type="button" class="am-btn am-btn-default am-btn-success"  id="tianjia"><span class="am-icon-plus"></span>上传
                             </button>
                         </a>
                     </div>
@@ -201,7 +201,7 @@
                                     <form method="post" action="{{ url('/home/up/'.$v->id)}}">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
-                                        <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu" style="width:190px;"><span class="am-icon-trash-o"></span>下架</button>
+                                        <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu" style="width:190px;"><span class="am-icon-trash-o"></span>删除</button>
                                     </form>
                                 </div>
 
