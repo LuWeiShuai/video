@@ -29,7 +29,7 @@
 
 
         #anniu{
-            width: 100px!important;
+            width: 70px!important;
             margin-left: 25px;
             height: 30px;
             font-size: 18px!important;
@@ -39,8 +39,8 @@
         }
          
         #ann{
-            width: 100px!important;
-            margin-left: 25px;
+            width: 80px!important;
+            margin-left: 45px;
             height: 30px;
             font-size: 18px!important;
             line-height: 10px!important;
@@ -203,7 +203,6 @@
                                         {{ csrf_field() }}
                                         <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu" style="width:190px;"><span class="am-icon-trash-o"></span>下架</button>
                                     </form>
-
                                 </div>
 
                             </div>
