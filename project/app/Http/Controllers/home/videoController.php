@@ -251,7 +251,7 @@ class videoController extends Controller
                     if($res5){
                         $data = [];
                         $data['time'] = date('Y-m-d H:i:s',time());
-                        uhistory::where('id',$res4->id)->update($data);
+                        uhistory::where('id',$res5->id)->update($data);
                     }else{
                         $hiss = [];
                         $hiss['uid'] = $res->uid;
