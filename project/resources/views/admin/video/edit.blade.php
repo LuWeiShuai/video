@@ -15,7 +15,7 @@
     	<span>修改视频</span>
     </div>
     <div class="mws-panel-body no-padding">
-    	<form class="mws-form" action="/admin/video/{{$res['id']}}" method="post" enctype="multipart/form-data">
+    	<form class="mws-form" action="{{ url('/admin/video/'.$res['id'])}}" method="post" enctype="multipart/form-data">
     		<div class="mws-form-block">
     			<div class="mws-form-row">
     				<label class="mws-form-label">视频名称</label>
@@ -97,7 +97,7 @@
     city.onchange=function(){
         fid=this.value;
 
-        $.get('/admin/videoa',{fid:fid},function(data){
+        $.get("{{ url('/admin/videoa')}}",{fid:fid},function(data){
             // console.log(data);
             // alert(arr);
             area.innerHTML='';

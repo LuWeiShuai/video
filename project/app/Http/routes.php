@@ -88,13 +88,12 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'
 
 });
 
+//前台主页
+Route::get('/','homeController@index');
+	
 //前台路由
 Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 
-
-	//前台主页
-	Route::get('/index','homeController@index');
-	
 	//视频遍历
 	Route::get('/video/{id}','videoController@video');
 	Route::get('/type/{id}','videoController@type');
@@ -105,6 +104,7 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 
 	//用户评论
 	Route::post('/discuss','videoController@discuss');
+	Route::post('/user_discuss','videoController@user_discuss');
 
 	//用户视频播放
 	Route::get('/user_play/{id}','videoController@user_play');

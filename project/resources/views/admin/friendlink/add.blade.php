@@ -20,7 +20,7 @@
 
         </div>
     @endif 
-    	<form class="mws-form" action="/admin/friendlink" method="post" enctype="multipart/form-data">
+    	<form class="mws-form" action="{{ url('/admin/friendlink')}}" method="post" enctype="multipart/form-data">
     		<div class="mws-form-inline">
     			<div class="mws-form-row">
     				<label class="mws-form-label">链接名称:</label>

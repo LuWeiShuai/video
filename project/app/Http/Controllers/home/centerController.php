@@ -324,7 +324,6 @@ class centerController extends Controller
     //购买视频页面
     public function money($id)
     {
-
         $res = video::get();
         return view('home/center/money',['res'=>$res,'vid'=>$id]);
     }
@@ -340,7 +339,7 @@ class centerController extends Controller
 
         $res1 = money::insert($data);
         if($res1){
-            return back()->with('msg','购买成功');
+            return redirect('/')->with('msg','购买成功');
         }else{
             return back()->with('msg','购买失败');
         }

@@ -52,7 +52,7 @@
                                         @endif">
                            @if($v->fid ==0)
                                 <td align="left" valign="middle">
-                                    <img src="/admins/images/dirfirst.gif" width="15" height="13">
+                                    <img src="{{ url('/admins/images/dirfirst.gif')}}" width="15" height="13">
                                 </td>
                                  <td class=" ">
                                     {{$v->id}}
@@ -61,14 +61,14 @@
                                    {{$v->name}}
                                 </td>
                                 <td class=" ">
-                                <a href="/admin/type/{{$v->id}}/edit" class="btn btn-danger">修 改</a>
+                                <a href="{{ url('/admin/type/'.$v->id.'/edit')}}" class="btn btn-danger">修 改</a>
                                 <a href="/admin/typeSon/create" class="btn btn-danger">添加子分区</a>
                                 
                                 <!-- 根据fid查询是否有子分区 -->
                                 <?php $res1 = DB::table('type')->where('fid',$v->id)->get();?>
     
                                 @if($res1 == null)
-                                <form action="/admin/type/{{$v->id}}" method='post' style='display:inline'>
+                                <form action="{{ url('/admin/type/'.$v->id)}}" method='post' style='display:inline'>
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
                                     <button class='btn btn-warning'>删 除</button>
@@ -86,7 +86,7 @@
                                             even 
                                         @endif">
                                         <td align="left" valign="middle">
-                                            <img src="/admins/images/dirsecond.gif" width="29" height="29">
+                                            <img src="{{ url('/admins/images/dirsecond.gif')}}" width="29" height="29">
                                         </td>
                                          <td class=" ">
                                             {{$val->id}}
@@ -95,13 +95,13 @@
                                            {{$val->name}}
                                         </td>
                                          <td class=" ">
-                                        <a href="/admin/typeSon/{{$val->id}}/edit" class="btn btn-danger">修 改</a> 
+                                        <a href="{{ url('/admin/typeSon/'.$val->id.'/edit')}}" class="btn btn-danger">修 改</a> 
                                         
                                         <!-- 根据子分区的id查询是否有视频 -->
                                          <?php $res2 = DB::table('video')->where('tid',$val->id)->get(); ?>
                                          
                                         @if($res2 == null)
-                                        <form action="/admin/typeSon/{{$val->id}}" method='post' style='display:inline'>
+                                        <form action="{{ url('/admin/typeSon/'.$val->id)}}" method='post' style='display:inline'>
                                             {{csrf_field()}}
                                             {{method_field('DELETE')}}
                                             <button class='btn btn-warning'>删 除</button>

@@ -62,7 +62,7 @@
         <hr/>
         <!--上传视频 -->
         <div class="info-main">
-            <form action="/home/videos" method="post" class="am-form am-form-horizontal">
+            <form action="{{ url('/home/videos')}}" method="post" class="am-form am-form-horizontal">
 
                 <div class="am-form-group">
                     <label for="video-name" class="am-form-label">视频名称</label>
@@ -105,7 +105,7 @@
                     <input type="text" readonly name="pic" id="tu" style="width:150px;float:left" />
                     <input type="button" value="上传封面图片" class="btn btn-info" id="upic">
                     
-                    <script src="/layer/layer.js"></script>
+                    <script src="{{ url('/layer/layer.js')}}"></script>
 
                         <script type="text/javascript">
                         document.getElementById('upic').onclick=function(){
@@ -150,7 +150,7 @@
                                     // alert("1234");
                                     $.ajax({
                                         type: "post",
-                                        url: "/home/picchuan",
+                                        url: "{{ url('/home/picchuan')}}",
                                         data: formData ,
                                         cache: false,
                                         async: true,
@@ -225,7 +225,7 @@
                                     // alert("1234");
                                     $.ajax({
                                         type: "post",
-                                        url: "/home/picchuan",
+                                        url: "{{ url('/home/picchuan')}}",
                                         data: formData ,
                                         cache: false,
                                         async: true,
@@ -268,27 +268,28 @@
 
                         
                     <input type="submit" value="上传" class="btn btn-danger">
-                    <script src="/homes/js/jquery.min.js"></script>
-                   <script type="text/javascript">
-                           
-                           $('input[type=submit]').click(function(){
-                               var zi = $('#area').val();
-                               if(zi == '-1'){
-                                   layer.alert('请选择类别');
-                                   return false;
-                               }
-                               var tu = $('#tu').val();
-                               if(tu == ''){
-                                   layer.alert('请上传图片');
-                                   return false
-                               }
-                               var shipin = $('#shipin').val();
-                               if(shipin == ''){
-                                   layer.alert('请上传视频');
-                               }
-                           })
-                   
-                       </script>
+
+                    <script src="{{ url('/homes/js/jquery.min.js')}}"></script>
+                    <script type="text/javascript">
+                            
+                            $('input[type=submit]').click(function(){
+                                var zi = $('#area').val();
+                                if(zi == '-1'){
+                                    layer.alert('请选择类别');
+                                    return false;
+                                }
+                                var tu = $('#tu').val();
+                                if(tu == ''){
+                                    layer.alert('请上传图片');
+                                    return false
+                                }
+                                var shipin = $('#shipin').val();
+                                if(shipin == ''){
+                                    layer.alert('请上传视频');
+                                }
+                            })
+
+                        </script>
                 </div>
 
             </form>

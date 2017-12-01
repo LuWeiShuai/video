@@ -8,10 +8,10 @@
     <!-- <link rel="icon" type="image/png" href="/admins/video/i/favicon.png"> -->
     <!-- <link rel="apple-touch-icon-precomposed" href="/admins/video/i/app-icon72x72@2x.png"> -->
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="/homes/video/css/amazeui.min.css" />
+    <link rel="stylesheet" href="{{ url('/homes/video/css/amazeui.min.css')}}" />
     <!-- <link rel="stylesheet" href="/admins/video/css/admin.css"> -->
-    <link rel="stylesheet" href="/homes/video/css/app.css">
-    <link rel="stylesheet" href="/homes/css/popuo-box.css">
+    <link rel="stylesheet" href="{{ url('/homes/video/css/app.css')}}">
+    <link rel="stylesheet" href="{{ url('/homes/css/popuo-box.css')}}">
     <style type="text/css">
         #mws-wrapper {
             height: auto;
@@ -155,7 +155,7 @@
                     </div>
                 </div>
             </div>
-                    <form action="/home/up" method="get">
+                    <form action="{{ url('/home/up')}}" method="get">
             
             <div class="am-u-sm-12 am-u-md-6" id="seach">
                 <div class="am-input-group am-input-group-sm">
@@ -198,7 +198,7 @@
                                 @else
                                     <a  style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="ann"><span class="am-icon-edit" style="font-size: 18px">未通过</span></button></a>
                                 @endif
-                                    <form method="post" action="/home/up/{{$v->id}}">
+                                    <form method="post" action="{{ url('/home/up/'.$v->id)}}">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu" style="width:190px;"><span class="am-icon-trash-o"></span>下架</button>

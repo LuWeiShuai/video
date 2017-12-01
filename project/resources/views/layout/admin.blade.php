@@ -10,28 +10,28 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <!-- Plugin Stylesheets first to ease overrides -->
-<link rel="stylesheet" type="text/css" href="/admins/plugins/colorpicker/colorpicker.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/custom-plugins/wizard/wizard.css" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/plugins/colorpicker/colorpicker.css')}}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/custom-plugins/wizard/wizard.css')}}" media="screen">
 
 <!-- Required Stylesheets -->
-<link rel="stylesheet" type="text/css" href="/admins/bootstrap/css/bootstrap.min.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/fonts/ptsans/stylesheet.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/fonts/icomoon/style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/bootstrap/css/bootstrap.min.css')}}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/css/fonts/ptsans/stylesheet.css')}}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/css/fonts/icomoon/style.css')}}" media="screen">
 
-<link rel="stylesheet" type="text/css" href="/admins/css/mws-style.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/icons/icol16.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/icons/icol32.css" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/css/mws-style.css')}}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/css/icons/icol16.css')}}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/css/icons/icol32.css')}}" media="screen">
 
 <!-- Demo Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/admins/css/demo.css" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/css/demo.css')}}" media="screen">
 
 <!-- jQuery-UI Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/admins/jui/css/jquery.ui.all.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/jui/jquery-ui.custom.css" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/jui/css/jquery.ui.all.css')}}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/jui/jquery-ui.custom.css')}}" media="screen">
 
 <!-- Theme Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/css/mws-theme.css')}}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('/admins/css/themer.css')}}" media="screen">
 
 <style type="text/css">
     .clearfix{
@@ -53,7 +53,7 @@
             <div id="mws-logo-wrap">
                 <?php $res = DB::table('config')->get();  ?>
           <?php foreach($res as $k=>$v) ?>
-                <a href="/admin/index"><img src="/admins/logos/{{$v->logo}}" alt="mws admin"></a>
+                <a href="/admin/index"><img src="{{asset('/admins/logos/'.$v->logo)}}" alt="mws admin"></a>
             </div>
         </div>
         
@@ -61,7 +61,7 @@
         <div id="mws-user-tools" class="clearfix">
             <span>
                 <!-- 日历 -->
-                <SCRIPT type=text/javascript src="/admins/js/clock.js"></SCRIPT>
+                <SCRIPT type=text/javascript src="{{asset('/admins/js/clock.js')}}"></SCRIPT>
                 <SCRIPT type=text/javascript>showcal();</SCRIPT>
             </span> 
             <!-- Messages -->
@@ -155,8 +155,8 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>视频分区</a>
                         <ul class="closed">
-                            <li><a href="/admin/type">分区列表</a></li>
-                            <li><a href="/admin/type/create">添加分区</a></li>                           
+                            <li><a href="{{ url('/admin/type') }}">分区列表</a></li>
+                            <li><a href="{{ url('/admin/type/create') }}">添加分区</a></li>                           
                         </ul>
                     </li>
                     <li>
@@ -171,15 +171,14 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>用户上传</a>
                         <ul class="closed">
-                            <li><a href="/admin/userup">待审核</a></li>
+                            <li><a href="{{url('/admin/userup') }}">待审核</a></li>
                  @else
                     <li>
                         <a href="#"><i class="icon-list"></i>用户上传<span class="mws-nav-tooltip" style="margin-top:-10px; color: red!important; ">{{$ures}}</span></a>
                         <ul class="closed">
-                            <li><a href="/admin/userup">待审核</a> <span class="mws-nav-tooltip" style="margin-top:-4px; color: red!important; ">{{$ures}}</span></li>
+                            <li><a href="{{url('/admin/userup') }}">待审核</a> <span class="mws-nav-tooltip" style="margin-top:-4px; color: red!important; ">{{$ures}}</span></li>
                  @endif
-                            <li><a href="/admin/userguo">已通过</a></li>
-                            <li><a href="/admin/userguo">未通过</a></li> 
+                            <li><a href="{{url('/admin/userguo') }}">已通过</a></li>
                         </ul>
                     </li>
                     <li>
@@ -191,8 +190,8 @@
                     <li>
                         <a href="#"><i class="icon-list"></i>友情链接</a>
                         <ul class="closed">
-                            <li><a href="/admin/friendlink">浏览链接</a></li>
-                            <li><a href="/admin/friendlink/create">添加链接</a></li>
+                            <li><a href="{{url('/admin/friendlink') }}">浏览链接</a></li>
+                            <li><a href="{{url('/admin/friendlink/create') }}">添加链接</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -230,42 +229,42 @@
     </div>
 
     <!-- JavaScript Plugins -->
-    <script src="/admins/js/libs/jquery-1.8.3.min.js"></script>
-    <script src="/admins/js/libs/jquery.mousewheel.min.js"></script>
-    <script src="/admins/js/libs/jquery.placeholder.min.js"></script>
+    <script src="{{asset('/admins/js/libs/jquery-1.8.3.min.js')}}"></script>
+    <script src="{{asset('/admins/js/libs/jquery.mousewheel.min.js')}}"></script>
+    <script src="{{asset('/admins/js/libs/jquery.placeholder.min.js')}}"></script>
     <!-- <script src="/admins/custom-plugins/fileinput.js"></script> -->
     
     <!-- jQuery-UI Dependent Scripts -->
-    <script src="/admins/jui/js/jquery-ui-1.9.2.min.js"></script>
-    <script src="/admins/jui/jquery-ui.custom.min.js"></script>
-    <script src="/admins/jui/js/jquery.ui.touch-punch.js"></script>
+    <script src="{{asset('/admins/jui/js/jquery-ui-1.9.2.min.js')}}"></script>
+    <script src="{{asset('/admins/jui/jquery-ui.custom.min.js')}}"></script>
+    <script src="{{asset('/admins/jui/js/jquery.ui.touch-punch.js')}}"></script>
 
     <!-- Plugin Scripts -->
-    <script src="/admins/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('/admins/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <!--[if lt IE 9]>
     <script src="js/libs/excanvas.min.js"></script>
     <![endif]-->
-    <script src="/admins/plugins/flot/jquery.flot.min.js"></script>
-    <script src="/admins/plugins/flot/plugins/jquery.flot.tooltip.min.js"></script>
-    <script src="/admins/plugins/flot/plugins/jquery.flot.pie.min.js"></script>
-    <script src="/admins/plugins/flot/plugins/jquery.flot.stack.min.js"></script>
-    <script src="/admins/plugins/flot/plugins/jquery.flot.resize.min.js"></script>
-    <script src="/admins/plugins/colorpicker/colorpicker-min.js"></script>
-    <script src="/admins/plugins/validate/jquery.validate-min.js"></script>
-    <script src="/admins/custom-plugins/wizard/wizard.min.js"></script>
+    <script src="{{asset('/admins/plugins/flot/jquery.flot.min.js')}}"></script>
+    <script src="{{asset('/admins/plugins/flot/plugins/jquery.flot.tooltip.min.js')}}"></script>
+    <script src="{{asset('/admins/plugins/flot/plugins/jquery.flot.pie.min.js')}}"></script>
+    <script src="{{asset('/admins/plugins/flot/plugins/jquery.flot.stack.min.js')}}"></script>
+    <script src="{{asset('/admins/plugins/flot/plugins/jquery.flot.resize.min.js')}}"></script>
+    <script src="{{asset('/admins/plugins/colorpicker/colorpicker-min.js')}}"></script>
+    <script src="{{asset('/admins/plugins/validate/jquery.validate-min.js')}}"></script>
+    <script src="{{asset('/admins/custom-plugins/wizard/wizard.min.js')}}"></script>
 
     <!-- Core Script -->
-    <script src="/admins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/admins/js/core/mws.js"></script>
+    <script src="{{asset('/admins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('/admins/js/core/mws.js')}}"></script>
 
     <!-- Themer Script (Remove if not needed) -->
-    <script src="/admins/js/core/themer.js"></script>
+    <script src="{{asset('/admins/js/core/themer.js')}}"></script>
 
     <!-- Demo Scripts (remove if not needed) -->
-    <script src="/admins/js/demo/demo.dashboard.js"></script>
+    <script src="{{asset('/admins/js/demo/demo.dashboard.js')}}"></script>
     
     <!-- layer -->
-    <script src="/layer/layer.js"></script>
+    <script src="{{asset('/layer/layer.js')}}"></script>
     @section('script')
         <script>    
             $('.mws-form-message').delay(1000).slideUp(1000);

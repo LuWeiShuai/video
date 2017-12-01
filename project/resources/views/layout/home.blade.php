@@ -9,20 +9,20 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- bootstrap -->
-<link href="/homes/css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
+<link href="{{asset('/homes/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css' media="all" />
 <!-- //bootstrap -->
-<link href="/homes/css/dashboard.css" rel="stylesheet">
+<link href="{{asset('/homes/css/dashboard.css')}}" rel="stylesheet">
 <!-- Custom Theme files -->
-<link href="/homes/css/style.css" rel='stylesheet' type='text/css' media="all" />
-<script src="/homes/js/jquery-1.11.1.min.js"></script>
-<script src="/layer/layer.js"></script>
+<link href="{{asset('/homes/css/style.css')}}" rel='stylesheet' type='text/css' media="all" />
+<script src="{{asset('/homes/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{asset('/layer/layer.js')}}"></script>
 
-<link href="/homes/css/admin.css" rel="stylesheet" type="text/css">
-<link href="/homes/css/amazeui.css" rel="stylesheet" type="text/css">
-<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
-<link href="/homes/css/infstyle.css" rel="stylesheet" type="text/css">
-<script src="/homes/js/jquery.min.js"></script>
-<script src="/homes/js/amazeui.js"></script>		
+<link href="{{asset('/homes/css/admin.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('/homes/css/amazeui.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('/homes/css/personal.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('/homes/css/infstyle.css')}}" rel="stylesheet" type="text/css">
+<script src="{{asset('/homes/js/jquery.min.js')}}"></script>
+<script src="{{asset('/homes/js/amazeui.js')}}"></script>		
 	
 <style>
 	.cur{border:solid 2px lightblue;}
@@ -47,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           </button>
           <?php $res = DB::table('config')->get();  ?>
           <?php foreach($res as $k=>$v) ?>
-          <a class="navbar-brand" href="/home/index"><h1><img src="/admins/logos/{{$v->logo}}" alt="" style="height: 60px;" /></h1></a>
+          <a class="navbar-brand" href="{{url('/')}}"><h1><img src="{{url('/admins/logos/'.$v->logo)}}" alt="" style="height: 60px;" /></h1></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
@@ -84,14 +84,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<a href="#small-dialog2" class="play-icon popup-with-zoom-anim">注册</a>
 					<!-- pop-up-box -->
 									<script type="text/javascript" src="/homes/js/modernizr.custom.min.js"></script>    
-									<link href="/homes/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-									<script src="/homes/js/jquery.magnific-popup.js" type="text/javascript"></script>
+									<link href="{{url('/homes/css/popuo-box.css')}}" rel="stylesheet" type="text/css" media="all" />
+									<script src="{{url('/homes/js/jquery.magnific-popup.js')}}" type="text/javascript"></script>
 									<!--//pop-up-box -->
 									
 									<div id="small-dialog2" class="mfp-hide">
 										<h3>注册</h3> 
 										<div class="social-sits">
-											<img src="/homes/images/zhuce.png">
+											<img src="{{url('/homes/images/zhuce.png')}}">
 										</div>
 										 <div class="signup">
 											<form action="#small-dialog3" method="get">
@@ -129,7 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													//正则
 													var reg = /^1[34578]\d{9}$/;
 													//检测
-													$.get('/home/regs',{tel:tel},function(data){
+													$.get("{{url('/home/regs')}}",{tel:tel},function(data){
 														if(data == "0"){
 															$('input[name=tel]').css('border','solid 2px #db192a').next().text('该手机号已存在').css('color','#db192a');
 															$('#btn').attr("disabled",true);
@@ -162,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														//获取手机号
 														var tel = $('input[name=tel]').val();
 														//发送ajax
-														$.get('/home/register',{tel:tel},function(data){
+														$.get("{{url('/home/register')}}",{tel:tel},function(data){
 
 															console.log(data);
 														})
@@ -193,7 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 												// alert('213');
 												var code = $('input[name=code]').val();
-												$.get('/home/reg',{code:code},function(data){
+												$.get("{{url('/home/reg')}}",{code:code},function(data){
 														// alert(data);
 														if(data == "0"){
 															$('input[name=code]').css('border','solid 1px red');
@@ -215,12 +215,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<h3>注册帐号</h3> 
 										<div class="social-sits">
 											
-											<img src="/homes/images/zhuce.png">
+											<img src="{{url('/homes/images/zhuce.png')}}">
 										</div>
 
 										<div class="signup">
 
-											<form action="/home/regis" method="post">
+											<form action="{{url('/home/regis')}}" method="post">
 
 												<input type="password" name="password" class="email" placeholder="密码" required="required"  />
 												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" />
@@ -331,11 +331,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div id="small-dialog" class="mfp-hide">
 						<h3>Login</h3>
 						<div class="social-sits">
-							<img src="/homes/images/login.png">
+							<img src="{{url('/homes/images/login.png')}}">
 						</div>
 						<div class="signup">
 							
-							<form action="/home_login/dologin" method="post">
+							<form action="{{url('/home_login/dologin')}}" method="post">
 								<input type="text" name="tel" class="email" placeholder="手机号" required="required" pattern="1[34578]\d{9}"/>
 								<input type="password" name="password" placeholder="密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
 								<input type="hidden" name="lastlogin" value="{{date('Y-m-d H:i:s',time())}}">
@@ -344,7 +344,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							</form>
 							<div class="forgot">
-								<a href="/home/forgot">忘记密码?</a>
+								<a href="{{url('/home/forgot')}}">忘记密码?</a>
 							</div>
 						</div>
 						<div class="clearfix"> </div>
@@ -352,8 +352,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				@else
 					<div class="signin">
-					<a href="/home/center" class="play-icon popup-with-zoom-anim">个人中心</a>
-					<a href="/home_login/delete" class="play-icon popup-with-zoom-anim">注销</a>
+					<a href="{{url('/home/center')}}" class="play-icon popup-with-zoom-anim">个人中心</a>
+					<a href="{{url('/home_login/delete')}}" class="play-icon popup-with-zoom-anim">注销</a>
 						
 					</div>
 				@endif
@@ -368,35 +368,58 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="top-navigation">
 				<div class="t-menu">MENU</div>
 				<div class="t-img">
-					<img src="/homes/images/lines.png" alt="" />
+					<img src="{{url('/homes/images/lines.png')}}" alt="" />
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 				<div class="drop-navigation drop-navigation">
 				  <ul class="nav nav-sidebar">
-					<li class=""><a href="{{ url('/home/index') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
+					<li class=""><a href="{{ url('/') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>前台主页</a></li>
 					<li><a href="/home/center/history" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>浏览历史</a></li>
 					<?php $res1 = DB::table('type')->get();?>
 					@foreach($res1 as $k1 => $v1)
+						@if($v1->name != '用户上传')
+							@if($v1->fid == 0)
+							<li><a href="{{ url('/home/video/'.$v1->id)}}" class="menu{{ $v1->id }}"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>{{ $v1->name }}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+							<ul class="cl-effect-{{ $v1->id }}" style="display:none;">
+								@foreach($res1 as $k2 => $v2)
+									@if($v2->fid == $v1->id )
+									<li><a href="{{ url('/home/type/'.$v2->id)}}" class="typeSon{{$v2->id}}">{{ $v2->name }}</a></li>
+									@endif
+								@endforeach       
+							</ul>
+								
+								<!-- script-for-menu -->
+								<script>
+									$( "li a.menu"+"{{ $v1->id }}" ).mouseover(function(){			
+										 var type = $(this).text();
+										$( "ul.cl-effect-"+"{{ $v1->id }}" ).slideToggle(300, function(){
+										// Animation complete.
+										});
+									});							
+								</script>
+							@endif
+						@else
 						@if($v1->fid == 0)
-						<li><a href="{{ url('/home/video/'.$v1->id)}}" class="menu{{ $v1->id }}"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>{{ $v1->name }}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-						<ul class="cl-effect-{{ $v1->id }}" style="display:none;">
-							@foreach($res1 as $k2 => $v2)
-								@if($v2->fid == $v1->id )
-								<li><a href="{{ url('/home/type/'.$v2->id)}}" class="typeSon{{$v2->id}}">{{ $v2->name }}</a></li>
-								@endif
-							@endforeach       
-						</ul>
-							
-							<!-- script-for-menu -->
-							<script>
-								$( "li a.menu"+"{{ $v1->id }}" ).mouseover(function(){			
-									 var type = $(this).text();
-									$( "ul.cl-effect-"+"{{ $v1->id }}" ).slideToggle(300, function(){
-									// Animation complete.
-									});
-								});							
-							</script>
+							<li><a href="{{ url('/home/video/'.$v1->id)}}" class="menu{{ $v1->id }}"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>{{ $v1->name }}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+							<ul class="cl-effect-{{ $v1->id }}" style="display:none;">
+								@foreach($res1 as $k2 => $v2)
+									@if($v2->fid == $v1->id )
+									<li><a href="{{ url('/home/type/'.$v2->id)}}" class="typeSon{{$v2->id}}">{{ $v2->name }}</a></li>
+									@endif
+								@endforeach       
+							</ul>
+								
+								<!-- script-for-menu -->
+								<script>
+									$( "li a.menu"+"{{ $v1->id }}" ).mouseover(function(){			
+										 var type = $(this).text();
+										$( "ul.cl-effect-"+"{{ $v1->id }}" ).slideToggle(300, function(){
+										// Animation complete.
+										});
+									});							
+								</script>
+							@endif
 						@endif
 					@endforeach
 				  </ul>

@@ -11,7 +11,7 @@
 		<hr/> 
 		<!--个人信息 -->
 		<div class="info-main">
-			<form action="/home/center/buy" method="get" class="am-form am-form-horizontal">
+			<form action="{{ url('/home/center/buy')}}" method="get" class="am-form am-form-horizontal">
 				<div class="am-form-group">
 					<label for="user-birth" class="am-form-label">购买视频列表</label>
 					<div class="am-form-content birth">

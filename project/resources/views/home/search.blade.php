@@ -186,7 +186,7 @@ body{
 							</div>
 						</div>
 						<div class="search_content">简介:<span>{{$cres[$k]->content}}</span></div>
-						<a href="/home/play/{{$v->id}}"><button class="btn btn-warning" id="bofang">立即播放</button></a>
+						<a href="{{url('/home/play/'.$v->id)}}"><button class="btn btn-warning" id="bofang">立即播放</button></a>
 					</div>
 					<div class="clear" style="height: 20px;"></div>
 
@@ -204,7 +204,7 @@ body{
 							<div class="search_type">发布人:<span>{{$info[$k]->nikeName}}</span></div>
 						</div>
 						<div class="search_content">简介:<span>{{$v->content}}</span></div>
-						<a href="/home/user_play/{{$v->id}}"><button class="btn btn-warning" id="bofang1">立即播放</button></a>
+						<a href="{{url('/home/user_play/'.$v->id)}}"><button class="btn btn-warning" id="bofang1">立即播放</button></a>
 					</div>
 					<div class="clear" style="height: 20px;"></div>
 
