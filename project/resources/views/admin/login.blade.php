@@ -29,8 +29,6 @@
             <h1>登录</h1>
             <div class="mws-login-lock"><i class="icon-lock"></i></div>
             <div id="mws-login-form">
-                
-
                     @if(session('msg'))
                         <div class="mws-form-message info">                 
 

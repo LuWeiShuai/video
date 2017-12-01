@@ -176,13 +176,13 @@
             <!-- Inner Container Start -->
             <div class="container">
             
-                 @if(session('msg'))
+            @if(session('msg'))
                 <div class="mws-form-message info">                 
 
                     {{session('msg')}}
 
                 </div>
-                @endif
+            @endif
             @section('content')
 
             
@@ -238,9 +238,7 @@
     <!-- layer -->
     <script src="{{asset('/layer/layer.js')}}"></script>
     @section('script')
-        <script>    
-            $('.mws-form-message').delay(1000).slideUp(1000);
-        </script>
+    
     @show
 </body>
 </html>

@@ -121,7 +121,7 @@ class admin_userController extends Controller
         $res = admin::where('id',$id)->delete();
 
         if($res){
-            return redirect('/admin/admin_user');
+            return redirect('/admin/admin_user')->with('msg','删除成功');;
         }
     }
 }
