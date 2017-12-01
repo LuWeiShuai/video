@@ -17,9 +17,7 @@
 					<div class="am-form-content birth">
 						<div class="birth-select">
 							<select name="money">
-								@foreach($res as $k=>$v)
-									<option value="{{$v->id}}" @if($v->id == $vid) selected @endif >{{ $v->title }}</option>
-								@endforeach
+								<option value="{{$res->id}}">{{ $res->title }}</option>
 							</select>
 						</div>
 					</div>
