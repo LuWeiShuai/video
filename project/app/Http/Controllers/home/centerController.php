@@ -221,8 +221,9 @@ class centerController extends Controller
 
         //从history数据库查询
         $res = history::where('uid',$uid)->orderBy('time','desc')->get();
-        $res1 = uhistory::where('uid',$uid)->orderBy('time','desc')->get();
 
+        //从uhistory数据库查询
+        $res1 = uhistory::where('uid',$uid)->orderBy('time','desc')->get();
 
         return view('/home/center/history',['res'=>$res,'res1'=>$res1]);
     }

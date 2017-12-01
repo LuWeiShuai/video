@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ url('/admins/video/tankuang/style.css')}}">
     <link rel="stylesheet" href="{{ url('/admins/video/tankuang/reset.css')}}">
     <style type="text/css">
+        #mws-footer{
+            color: #F39800;
+        }
     	#mws-wrapper {
 		    height: auto;
 		    min-height: 100%;
