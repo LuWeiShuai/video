@@ -324,8 +324,8 @@ class centerController extends Controller
     //购买视频页面
     public function money($id)
     {
-        $res = video::get();
-        return view('home/center/money',['res'=>$res,'vid'=>$id]);
+        $res = video::where('id',$id)->first();
+        return view('home/center/money',['res'=>$res]);
     }
 
     //购买
