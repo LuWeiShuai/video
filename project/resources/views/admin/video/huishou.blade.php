@@ -8,13 +8,13 @@
     <!-- <link rel="icon" type="image/png" href="/admins/video/i/favicon.png"> -->
     <!-- <link rel="apple-touch-icon-precomposed" href="/admins/video/i/app-icon72x72@2x.png"> -->
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="{{ url('/admins/video/css/amazeui.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('/admins/video/css/amazeui.min.css')}}" />
     <!-- <link rel="stylesheet" href="/admins/video/css/admin.css"> -->
-    <link rel="stylesheet" href="{{ url('/admins/video/css/app.css')}}">
-    <link rel="stylesheet" href="{{ url('/admins/video/css/popuo-box.css')}}">
-    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/payment.css')}}">
-    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/style.css')}}">
-    <link rel="stylesheet" href="{{ url('/admins/video/tankuang/reset.css')}}">
+    <link rel="stylesheet" href="{{ asset('/admins/video/css/app.css')}}">
+   <!--  <link rel="stylesheet" href="{{ asset('/admins/video/css/popuo-box.css')}}">
+    <link rel="stylesheet" href="{{ asset('/admins/video/tankuang/payment.css')}}">
+    <link rel="stylesheet" href="{{ asset('/admins/video/tankuang/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('/admins/video/tankuang/reset.css')}}"> -->
     <style type="text/css">
         #mws-footer{
             color: #F39800;
@@ -210,7 +210,7 @@
                                             
 
 
-                                            <form method="post" action="{{ url('/admin/video/del/'.$val['id'])}}">
+                                            <form method="get" action="{{ url('/admin/video/del/'.$val['id'])}}">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu"><span class="am-icon-trash-o"></span>删除</button>
@@ -315,7 +315,7 @@
                                         <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
                                             
                                             <a href="{{ url('/admin/video/upload/'.$val->id)}}" style="text-decoration: none;"><button type="button" class="am-btn am-btn-default am-btn-secondary" id="anniu"><span class="am-icon-edit"></span> 上架</button></a>
-                                            <form method="post" action="{{ url('/admin/video/del/'.$val->id)}}">
+                                            <form method="get" action="{{ url('/admin/video/del/'.$val->id)}}">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="am-btn am-btn-default am-btn-danger" id="anniu"><span class="am-icon-trash-o"></span>删除</button>
@@ -375,8 +375,8 @@
 
 
 @endsection
-    <script src="{{ url('/admins/video/js/jquery.min.js')}}"></script>
-	<script src="{{ url('/admins/video/js/payment.js')}}"></script>
+   <!--  <script src="{{ url('/admins/video/js/jquery.min.js')}}"></script>
+	<script src="{{ url('/admins/video/js/payment.js')}}"></script> -->
     <!-- <script src="/admins/video/js/amazeui.min.js"></script> -->
     <!-- <script src="/admins/video/js/app.js"></script> -->
     

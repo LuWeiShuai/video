@@ -50,7 +50,7 @@ class VideoaController extends Controller
         $hashKey = 'HASH:VIDEO:ADMIN:';
         $disk = QiniuStorage::disk('qiniu');
 
-
+        // dd($id);
 
         $listKey = 'LIST:VIDEO:ADMIN';
         $hashKey = 'HASH:VIDEO:ADMIN:';
