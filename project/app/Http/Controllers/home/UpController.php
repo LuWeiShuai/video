@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\model\uvideo;
 use App\Http\model\info;
 use App\Http\model\type;
+use App\Http\model\udiscuss;
+use App\Http\model\uhistory;
 use zgldh\QiniuStorage\QiniuStorage;
 
 class UpController extends Controller
@@ -95,9 +97,11 @@ class UpController extends Controller
     {   
         //下架删除
         $res = uvideo::where('id',$id)->first();
-        $disk->delete('http://ozssihjsk.bkt.clouddn.com/images/'.$res->pic);
-        $disk->delete('http://ozssihjsk.bkt.clouddn.com/images/'.$res->url);
+        $disk->delete('images/'.$res->pic);
+        $disk->delete('images/'.$res->url);
         $res->delete();
+        udiscuss::where('vid',$res->id)->delete();
+        uhistory::where('vid',$res->id)->delete();
         return redirect('/home/up')->with('msg','删除成功');
     }
 }

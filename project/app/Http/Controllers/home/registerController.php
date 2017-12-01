@@ -75,19 +75,6 @@ class registerController extends Controller
 	
     //存入数据库
     public function store(Request $request){
-    	//验证密码
-    	 $this->validate($request, [
-       
-        'password' => 'required|regex:/\S{8,16}/',
-        'repass' => 'same:password'
-        
-         ],[
-        
-        'password.required'=>'密码不能为空',
-        "password.regex"=>'密码格式不正确'
-       
-         ]);
-
         //把缓存的电话存入一个$v的数组中
     	$tel = session('tel');
     	$code = session('code');
@@ -107,7 +94,7 @@ class registerController extends Controller
     		//清除所有缓存
     		session()->flush();
     		
-    		return redirect('/');
+    		return redirect('/')->with('msg','注册失败');
     	} else {
     		return back()->with('msg','注册成功');
     	}
