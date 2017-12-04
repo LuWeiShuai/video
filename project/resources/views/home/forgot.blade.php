@@ -70,6 +70,7 @@
 								$.get("{{ url('/home/center/yzm')}}",{tel:tel},function(data){
 
 									// alert(data);
+									// console.log(data);
 								})
 
 								 btn = thisBtn;

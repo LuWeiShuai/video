@@ -145,8 +145,9 @@ class centerController extends Controller
         $sendSms->setTemplateParam(['code' => $code]);
         $sendSms->setOutId('demo');
         $res=$client->execute($sendSms);
+
         session(['code'=>$code]);
-        
+        return $code;
     }
     //执行更换手机号
     public function yzmUpdate(Request $request)
@@ -203,7 +204,7 @@ class centerController extends Controller
             if($session == $yzm && $session!== null && $yzm !== ''){
                 
                 //将新密码插入数据库
-                login::where('id',$id)->update($data);
+                login::where('tel',$tel)->update($data);
                 
                 return back()->with('msg','修改成功');
             }else{
@@ -215,7 +216,7 @@ class centerController extends Controller
         }
        
     }
-    
+
     //执行更改密码
     public function repass(Request $request)
     {
