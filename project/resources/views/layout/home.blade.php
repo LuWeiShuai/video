@@ -224,7 +224,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<span  id="q" style="color: red;"></span>
 												<br>
 												<span>请输入8到16位密码</span>
-												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" id="repa"/>
+												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" id="repa"/><span  id="q" style="color: red;"></span>
 												
 												{{csrf_field()}}
 
@@ -235,7 +235,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												
 												$('#pass').blur(function(){
 												var pas = $('#pass').val();
-												var reg = /^\S{8,16}$/;
+												var reg = /^\S{6,16}$/;
 													if(!reg.test(pas)){
 													layer.alert('密码格式不正确');
 													$('#regis').attr('disabled',true);
