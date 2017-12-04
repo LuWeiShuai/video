@@ -38,8 +38,10 @@ class UpController extends Controller
         // 将uid,tid,username存入hidden,然后一并存入uvideo表
         $uid = session('uid');
         $res = info::where('uid',$uid)->first();
-        $re = type::where('fid','16')->get();
-        return view('/home/center/userup',['res'=>$res,'re'=>$re]);
+        $r=type::where('fid','0')->Where('name','用户上传')->first();
+        $ziid=$res['id'];
+        $re = type::where('fid',$ziid)->get();
+        return view('/home/center/userup',['res'=>$res,'re'=>$re,'r'=>$r]);
     }
 
     /**

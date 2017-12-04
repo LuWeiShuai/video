@@ -18,6 +18,7 @@ class userUpController extends Controller
      */
     public function index()
     {
+        
         return view('/home/userup/userup');
     }
 

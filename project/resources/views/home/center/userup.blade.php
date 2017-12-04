@@ -86,7 +86,7 @@
                     <label class="am-form-label" >视频分区</label>
                     <div class="mws-form-item" style="">
                         <select name="fid" id="city" style="width:200px;position: absolute;margin-left: 85px">
-                            <option value="16">---用户上传---</option>
+                            <option value="{{$r['id']}}">---用户上传---</option>
                         </select>
                         
                         <select name="tid" id="area" style="margin-left: 290px">
@@ -187,7 +187,7 @@
                 <label  class="am-form-label">视频:</label>
                 <div class="am-form-content">
                     <input type="text" readonly name="url" id="shipin" style="width:150px;float:left" />
-                    <input type="button" value="上传视频" class="btn btn-danger" id="uvideo">
+                    <input type="button" value="上传视频" class="btn btn-info" id="uvideo">
                     
                 </div>
                 <script type="text/javascript">
