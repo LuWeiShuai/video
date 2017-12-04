@@ -82,20 +82,26 @@ class registerController extends Controller
     	$v['password'] = $_POST['password'];
     	//哈希加密密码
     	$v['password'] = Hash::make($v['password']);
-    	
+
+        $res2 = login::where('tel',$tel)->first();
+    	if($tel == '' || $res2 ){
+                return redirect('/')->with('msg','注册失败');
+            }
+
     	$res = login::insert($v);
+        
     	
     	if($res){
+
     		//存储成功,把id当做uid存入info表
     		$re = login::where('tel','=',$tel)->first();
     			$data['uid']=$re['id'];
     		$ss = info::insert($data);
-    		
     		//清除所有缓存
     		session()->flush();		
     		return redirect('/')->with('msg','注册成功');
     	} else {
-    		return back()->with('msg','注册失败');
+    		return redirect('/')->with('msg','注册失败');
     	}
 
     }
