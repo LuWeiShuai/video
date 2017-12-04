@@ -85,7 +85,7 @@
 								  clearInterval(clock); //清除js定时器
 								  btn.disabled = false;
 								  btn.value = '点击发送验证码';
-								  nums = 10; //重置时间
+								  nums = 60; //重置时间
 								 }
 							 }
 
