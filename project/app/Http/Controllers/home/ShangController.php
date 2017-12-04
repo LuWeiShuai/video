@@ -40,7 +40,8 @@ class ShangController extends Controller
     public function store(Request $request)
     {
         //上传用户视频
-        $res = $request->except('_token','fid');  
+
+        $res = $request->except('_token','fid');
         $re = uvideo::insert($res);
         if($res){
             return redirect('/home/up')->with('msg','上传成功');
