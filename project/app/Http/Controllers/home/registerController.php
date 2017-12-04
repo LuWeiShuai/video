@@ -92,11 +92,10 @@ class registerController extends Controller
     		$ss = info::insert($data);
     		
     		//清除所有缓存
-    		session()->flush();
-    		
-    		return redirect('/')->with('msg','注册失败');
+    		session()->flush();		
+    		return redirect('/')->with('msg','注册成功');
     	} else {
-    		return back()->with('msg','注册成功');
+    		return back()->with('msg','注册失败');
     	}
 
     }
