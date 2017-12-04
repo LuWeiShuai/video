@@ -123,7 +123,8 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::get('/search','searchController@index');
 	//验证码
 	Route::get('/center/yzm','centerController@yzm');
-	
+	//执行忘记密码
+	Route::post('/forgot','centerController@forgot');
 	//执行更改密码
 	Route::post('/center/repass','centerController@repass');
  });

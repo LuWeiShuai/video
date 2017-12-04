@@ -26,7 +26,7 @@
 					<label for="user-phone" class="am-form-label">手机号:</label>
 					<div class="am-form-content" id="aa">
 						<input id="user-phone" placeholder="请输入手机号" type="text" value="" name="tel">
-						<span> *请输入6~16位密码</span>
+						<span> *请输入手机号</span>
 						<br>
 						<input type="button" value="获取验证码" class="btn btn-danger" id="btn" onclick="sendCode(this)">
 						<br>
