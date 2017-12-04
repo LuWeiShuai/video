@@ -65,11 +65,11 @@
 
 								//获取手机号
 								var tel =$('#user-phone').val();
-								alert(tel);
+								// alert(tel);
 								//发送ajax
 								$.get("{{ url('/home/center/yzm')}}",{tel:tel},function(data){
 
-									alert(data);
+									// alert(data);
 								})
 
 								 btn = thisBtn;
