@@ -178,8 +178,7 @@ class centerController extends Controller
         }
 
     }
-
-     //执行更改密码
+     //执行忘记密码
     public function forgot(Request $request)
     {
         $tel = $request['tel'];
@@ -216,7 +215,7 @@ class centerController extends Controller
         }
        
     }
-
+    
     //执行更改密码
     public function repass(Request $request)
     {

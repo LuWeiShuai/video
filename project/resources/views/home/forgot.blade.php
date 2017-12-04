@@ -64,13 +64,11 @@
 							 { 
 
 								//获取手机号
-								var tel =$('#user-phone').val();
-								// alert(tel);
+								var tel = $('input[name=tel]').val();
 								//发送ajax
 								$.get("{{ url('/home/center/yzm')}}",{tel:tel},function(data){
+									console.log(data);
 
-									// alert(data);
-									// console.log(data);
 								})
 
 								 btn = thisBtn;
@@ -148,7 +146,7 @@
 						//获取确认密码的值
 						var rpv = $(this).val();
 						//获取密码的值
-						var pv = $('#password').val();
+						var pv = $('input[name=password]').val();
 
 						if(rpv != pv){
 
