@@ -223,7 +223,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<input type="password" name="password"  placeholder="请设置密码" required="required" id="pass"  />
 												<span  id="q" style="color: red;"></span>
 												<br>
-												<span>请输入8到16位密码</span>
+												<span>请输入6到16位密码</span>
 												<input type="password" name="repass" placeholder="确认密码" required="required"  autocomplete="off" id="repa"/><span  id="q" style="color: red;"></span>
 												
 												{{csrf_field()}}
