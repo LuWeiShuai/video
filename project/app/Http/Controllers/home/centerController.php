@@ -145,8 +145,9 @@ class centerController extends Controller
         $sendSms->setTemplateParam(['code' => $code]);
         $sendSms->setOutId('demo');
         $res=$client->execute($sendSms);
+
         session(['code'=>$code]);
-        
+        return $code;
     }
     //执行更换手机号
     public function yzmUpdate(Request $request)
@@ -177,7 +178,44 @@ class centerController extends Controller
         }
 
     }
+     //执行忘记密码
+    public function forgot(Request $request)
+    {
+        $tel = $request['tel'];
 
+        $login = login::where('tel',$tel)->first();
+
+        if($login != null){
+
+            //获取密码
+            $pass = $request['password'];
+
+            //进行hash加密
+            $data['password'] = Hash::make($pass);
+
+            //获取验证码
+            $yzm = $request['yzm'];
+
+            //获取session的验证码
+            $session = session('code');
+
+            //判断验证码是否正确
+            if($session == $yzm && $session!== null && $yzm !== ''){
+                
+                //将新密码插入数据库
+                login::where('tel',$tel)->update($data);
+                
+                return back()->with('msg','修改成功');
+            }else{
+                return back()->with('msg','修改失败');
+            }
+
+        }else{
+            return back()->with('msg','此账号不存在');
+        }
+       
+    }
+    
     //执行更改密码
     public function repass(Request $request)
     {
@@ -197,12 +235,12 @@ class centerController extends Controller
         $id = session('uid');
 
         //判断验证码是否正确
-        if($session == $yzm && $session!== null && $yzm !== ''){
+        if($session == $yzm && $session!= null && $yzm != ''){
             
             //将新密码插入数据库
             login::where('id',$id)->update($data);
             
-            return redirect('/home/center')->with('msg','修改成功');
+            return back()->with('msg','修改成功');
         }else{
             return back()->with('msg','修改失败');
         }

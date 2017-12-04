@@ -20,13 +20,13 @@
 
 		<!--个人信息 -->
 		<div class="info-main">
-			<form action="{{ url('/home/center/repass')}}" method="post" class="am-form am-form-horizontal">
+			<form action="{{ url('/home/forgot')}}" method="post" class="am-form am-form-horizontal">
 
 				<div class="am-form-group">
 					<label for="user-phone" class="am-form-label">手机号:</label>
 					<div class="am-form-content" id="aa">
 						<input id="user-phone" placeholder="请输入手机号" type="text" value="" name="tel">
-						<span> *请输入6~16位密码</span>
+						<span> *请输入手机号</span>
 						<br>
 						<input type="button" value="获取验证码" class="btn btn-danger" id="btn" onclick="sendCode(this)">
 						<br>
@@ -64,12 +64,11 @@
 							 { 
 
 								//获取手机号
-								var tel =$('#user-phone').val();
-								// alert(tel);
+								var tel = $('input[name=tel]').val();
 								//发送ajax
 								$.get("{{ url('/home/center/yzm')}}",{tel:tel},function(data){
+									console.log(data);
 
-									// alert(data);
 								})
 
 								 btn = thisBtn;
@@ -103,12 +102,12 @@
 				<br><br>
 				<label  class="am-form-label">新密码:</label>
 				<div class="am-form-content">
-					<input type="password" name="password" class="email" placeholder="密码" required="required" pattern=".{6,16}" title="Enter a vali"/><span> *请输入6~16位密码</span>
+					<input type="password" name="password" class="email" placeholder="密码" required="required" pattern=".{6,16}" title="Enter a vali" id="password"/><span> *请输入6~16位密码</span>
 				</div>
 				<br><br>
 				<label  class="am-form-label">确定密码:</label>
 				<div class="am-form-content">
-					<input type="password" name="repass" placeholder="确认密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" id="password" /><span> *再次输入密码</span>
+					<input type="password" name="repass" placeholder="确认密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" /><span> *再次输入密码</span>
 				</div>
 				<script type="text/javascript">
 					//密码操作
@@ -147,7 +146,7 @@
 						//获取确认密码的值
 						var rpv = $(this).val();
 						//获取密码的值
-						var pv = $('#password').val();
+						var pv = $('input[name=password]').val();
 
 						if(rpv != pv){
 
