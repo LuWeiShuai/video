@@ -39,7 +39,7 @@ class UpController extends Controller
         $uid = session('uid');
         $res = info::where('uid',$uid)->first();
         $r=type::where('fid','0')->Where('name','用户上传')->first();
-        $ziid=$res['id'];
+        $ziid=$r['id'];
         $re = type::where('fid',$ziid)->get();
         return view('/home/center/userup',['res'=>$res,'re'=>$re,'r'=>$r]);
     }
