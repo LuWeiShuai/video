@@ -177,6 +177,7 @@ class centerController extends Controller
         }
 
     }
+
     //执行更改密码
     public function repass(Request $request)
     {
