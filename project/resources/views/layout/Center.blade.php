@@ -18,7 +18,10 @@
 		<script src="{{asset('/layer/layer.js')}}"></script>		
 		<style>
 			.cur{border:solid 2px lightblue;}
-			
+			.main-grids{
+				padding-top:-50px;
+				margin-top:-50px;
+			}
 		</style>	
 	</head>
 

@@ -1,7 +1,7 @@
 @extends('layout.home')
 @section('title','忘记密码')
 @section('content')
-<div class="user-info">
+	<div class="user-info">
 		<!--标题 -->
 		<div class="am-cf am-padding">
 			<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">修改密码</strong></div>
@@ -20,7 +20,7 @@
 
 		<!--个人信息 -->
 		<div class="info-main">
-			<form action="/home/center/repass" method="post" class="am-form am-form-horizontal">
+			<form action="{{ url('/home/center/repass')}}" method="post" class="am-form am-form-horizontal">
 
 				<div class="am-form-group">
 					<label for="user-phone" class="am-form-label">手机号:</label>
@@ -34,6 +34,7 @@
 
 							//手机号
 							//获取焦点
+							$('.btn').attr("disabled",true);
 							$('input[name=tel]').focus(function(){
 
 								$(this).addClass('cur');
@@ -48,10 +49,11 @@
 								if(!reg.test(tel)){
 									$(this).css('border','solid 2px #db192a');
 									$(this).next().text(' *手机号码不正确').css('color','#db192a');
-
+									$('.btn').attr("disabled",true);
 								} else {
 									$(this).css('border','solid 2px green');
 									$(this).next().text(' √').css('color','green');
+									$('.btn').attr("disabled",false);
 								}
 							})
 
@@ -64,7 +66,7 @@
 								//获取手机号
 								var tel = $('input[name=tel]').val();
 								//发送ajax
-								$.get('/home/center/yzm',{tel:tel},function(data){
+								$.get("{{ url('/home/center/yzm')}}",{tel:tel},function(data){
 
 									console.log(data);
 								})
@@ -83,7 +85,7 @@
 								  clearInterval(clock); //清除js定时器
 								  btn.disabled = false;
 								  btn.value = '点击发送验证码';
-								  nums = 10; //重置时间
+								  nums = 60; //重置时间
 								 }
 							 }
 
