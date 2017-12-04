@@ -91,7 +91,10 @@ class UserGuoController extends Controller
     public function destroy($id)
     {
         //下架直接删除
-        $res = uvideo::first();
+        $disk = QiniuStorage::disk('qiniu');
+        $res = uvideo::where('id',$id)->get();
+        $disk->delete('images/'.$res->pic);
+        $disk->delete('videos/'.$res->url);
         $res->delete();
         return redirect('/admin/userguo');
     }

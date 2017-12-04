@@ -98,9 +98,10 @@ class UpController extends Controller
     public function destroy($id)
     {   
         //下架删除
+        $disk = QiniuStorage::disk('qiniu');
         $res = uvideo::where('id',$id)->first();
         $disk->delete('images/'.$res->pic);
-        $disk->delete('images/'.$res->url);
+        $disk->delete('videos/'.$res->url);
         $res->delete();
         udiscuss::where('vid',$res->id)->delete();
         uhistory::where('vid',$res->id)->delete();
