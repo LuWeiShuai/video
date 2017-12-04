@@ -29,6 +29,7 @@ Route::get('/home_login/delete','loginController@delete');
 //忘记密码
 Route::get('/home/forgot','loginController@forgot');
 
+
 //后台路由
 
 Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'admin_login'],function(){
@@ -118,14 +119,11 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 	Route::get('/regs','registerController@tell');
 		//验证输入的验证码和发送的是否一致
 	Route::get('/reg','registerController@code');
-
-	//搜索
-	Route::get('/search','searchController@index');
 	//验证码
 	Route::get('/center/yzm','centerController@yzm');
+	//搜索
+	Route::get('/search','searchController@index');
 	
-	//执行更改密码
-	Route::post('/center/repass','centerController@repass');
  });
 
 //前台路由
@@ -150,6 +148,8 @@ Route::get('/center/delete/{id}','centerController@delete');
 Route::post('/center/update','centerController@update');
 //执行更换手机号
 Route::post('/center/yzmUpdate','centerController@yzmUpdate');
+//执行更改密码
+Route::post('/center/repass','centerController@repass');
 //用户上传
 Route::get('/center/up','centerController@up');
 //vip开通
