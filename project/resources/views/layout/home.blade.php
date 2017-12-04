@@ -460,7 +460,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							});
 						</script>
 						<div id="aaa" style="height: 30px; width:100%;"></div>
-						<div class="side-bottom" style="background-color:#272C2E; position: fixed; width:15%;;bottom: 0px; height: 40px;">
+						<div class="side-bottom" style="background-color:#272C2E; position: fixed; width:15%;bottom: 0px; height: 50px;">
 							<div class="copyright" >
 								<p>Copyright &copy; 2017.Company name </p>
 								<p>All rights reserved.</p>
@@ -477,7 +477,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             @show
             </div>
 			<!-- footer -->
-			<div class="footer" style="position:fixed;bottom: 0px; width:84%;">
+			<div class="footer" style="position:absolute; width:100%;">
 				<div class="footer-grids">
 					<div class="footer-top">
 						<div class="footer-top-nav">
