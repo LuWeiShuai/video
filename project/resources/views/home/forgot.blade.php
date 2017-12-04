@@ -108,7 +108,7 @@
 				<br><br>
 				<label  class="am-form-label">确定密码:</label>
 				<div class="am-form-content">
-					<input type="password" name="repass" placeholder="确认密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" /><span> *再次输入密码</span>
+					<input type="password" name="repass" placeholder="确认密码" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" id="password" /><span> *再次输入密码</span>
 				</div>
 				<script type="text/javascript">
 					//密码操作
@@ -147,7 +147,7 @@
 						//获取确认密码的值
 						var rpv = $(this).val();
 						//获取密码的值
-						var pv = $('input[name=password]').val();
+						var pv = $('#password').val();
 
 						if(rpv != pv){
 
