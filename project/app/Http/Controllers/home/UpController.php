@@ -11,6 +11,7 @@ use App\Http\model\type;
 use App\Http\model\udiscuss;
 use App\Http\model\uhistory;
 use zgldh\QiniuStorage\QiniuStorage;
+use Session;
 
 class UpController extends Controller
 {
@@ -20,9 +21,11 @@ class UpController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
+    {   
+        
         //搜索框的设置和分页
         $res = uvideo::where('title','like','%'.$request->input('search').'%')
+        ->where('uid',session('uid'))
         ->orderBy('status','asc')
          ->paginate(5);
         return view('/home/center/up',['res'=>$res,'request'=>$request]);

@@ -281,11 +281,13 @@
                                 var tu = $('#tu').val();
                                 if(tu == ''){
                                     layer.alert('请上传图片');
-                                    return false
+                                    return false;
                                 }
                                 var shipin = $('#shipin').val();
                                 if(shipin == ''){
                                     layer.alert('请上传视频');
+                                    return false;
+                                    
                                 }
                             })
 
