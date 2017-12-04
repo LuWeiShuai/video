@@ -268,6 +268,7 @@ class videoController extends Controller
         $arr['num'] = $res->num;
         $arr['num'] += 1;
         uvideo::where('id',$id)->update($arr);
+        if(session('uid')){
         //存历史记录
                     $res5 = uhistory::where('vid',$id)->first();
                     if($res5){
@@ -285,6 +286,7 @@ class videoController extends Controller
 
                         uhistory::insert($hiss);               
                     }
+        }
 
         //排行榜
         $res1 = uvideo::where('status',1)->orderby('num','desc')->get();
