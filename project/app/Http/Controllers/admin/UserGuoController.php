@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\model\uvideo;
 use DB;
+use zgldh\QiniuStorage\QiniuStorage;
 
 class UserGuoController extends Controller
 {
@@ -92,7 +93,7 @@ class UserGuoController extends Controller
     {
         //下架直接删除
         $disk = QiniuStorage::disk('qiniu');
-        $res = uvideo::where('id',$id)->get();
+        $res = uvideo::where('id',$id)->first();
         $disk->delete('images/'.$res->pic);
         $disk->delete('videos/'.$res->url);
         $res->delete();
