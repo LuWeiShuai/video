@@ -100,7 +100,7 @@ class configController extends Controller
                
         }
 
-        return redirect('/admin/config');
+        return redirect('/admin/config')->with('msg','操作成功');
         
     }
 

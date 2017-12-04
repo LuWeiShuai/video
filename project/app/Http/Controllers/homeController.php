@@ -23,7 +23,8 @@ class homeController extends Controller
      */
     public function index()
     {
-
+        $con = config::first();
+        if($con->status == 1){
     	$type=type::where('fid',0)->get();
     	 // dd($video);
     	 $fid=[];
@@ -57,6 +58,9 @@ class homeController extends Controller
     	// dd($vdetail);
     	// dd($fid);
     	return view('home.index',['type'=>$type,'video'=>$video,'fid'=>$fid,'vdetail'=>$vdetail,'uvideo'=>$uvideo]);
+    }else{
+        return view('errors.weihu');
+    }   
     }
 
 }
