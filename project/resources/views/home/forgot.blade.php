@@ -64,11 +64,12 @@
 							 { 
 
 								//获取手机号
-								var tel = $('input[name=tel]').val();
+								var tel =$('#user-phone').val();
+								alert(tel);
 								//发送ajax
 								$.get("{{ url('/home/center/yzm')}}",{tel:tel},function(data){
 
-									console.log(data);
+									alert(data);
 								})
 
 								 btn = thisBtn;

@@ -122,6 +122,8 @@ Route::group(['prefix'=>'home','namespace'=>'home'],function(){
 
 	//搜索
 	Route::get('/search','searchController@index');
+	//验证码
+	Route::get('/center/yzm','centerController@yzm');
 	
  });
 
@@ -137,8 +139,6 @@ Route::get('/center/tel','centerController@tel');
 Route::get('/center/service','centerController@service');
 //关于我们
 Route::get('/center/about','centerController@about');
-//验证码
-Route::get('/center/yzm','centerController@yzm');
 //修改密码
 Route::get('/center/password','centerController@password');
 //历史记录
