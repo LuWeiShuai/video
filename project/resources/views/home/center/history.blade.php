@@ -64,7 +64,7 @@
 				        //从uvideo表中查询
 				        $uvideo = DB::table('uvideo')->where('id',$val->vid)->first();
 					?>
-					@if($uvideo->status == 1)
+					@if($uvideo['status'] == 1)
 					<div class="col-md-3 resent-grid recommended-grid">
 						<div class="resent-grid-img recommended-grid-img" style="margin-top: 15px;">
 							<a href="{{ url('/home/play/'.$val->vid)}}">
