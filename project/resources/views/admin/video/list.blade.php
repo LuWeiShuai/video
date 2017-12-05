@@ -183,8 +183,8 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="tpl-i-title">
-                                    {{$val['title']}}
+                                <div class="tpl-i-title" style="font-size: 20px;">
+                                    <i>{{$val['title']}}</i>
                                 </div>
                                 <div class="tpl-table-images-content-i" id="fengmian">
                                     <div class="tpl-table-images-content-i-info">

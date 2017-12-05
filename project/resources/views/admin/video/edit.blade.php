@@ -73,12 +73,50 @@
                         </select>
                     </div>
                 </div>
-    			<div class="mws-form-row">
+    			<!-- <div class="mws-form-row">
     				<label class="mws-form-label">内容介绍</label>
     				<div class="mws-form-item">
-    					<textarea rows="" name="content" cols="" class="large">{{$cres['content']}}</textarea>
+    					<textarea rows="" name="content" cols="" class="large">{!!$cres['content']!!}</textarea>
     				</div>
-    			</div>
+    			</div> -->
+
+                <script type="text/javascript" charset="utf-8" src="{{ url('/ueditor/ueditor.config.js')}}"></script>  
+              
+                <!--使用版-->  
+                <script type="text/javascript" charset="utf-8" src="{{ url('/ueditor/ueditor.all.js')}}"></script>  
+              
+                <!--开发版-->  
+                <!-- <script type="text/javascript" charset="utf-8" src="editor_api.js"></script>   -->
+                <script type="text/javascript" src="{{ url('/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">内容介绍</label>
+                    <div class="mws-form-item">
+                        <textarea name="content" id="content">{!!$cres['content']!!}</textarea>  
+                        <script type="text/javascript">  
+                            // var editor = new UE.ui.Editor();  
+                            // editor.render("myEditor");  
+
+                            //1.2.4以后可以使用一下代码实例化编辑器  
+                            var ue = UE.getEditor('content', {
+                                toolbars: [
+                                    [ 'fullscreen', 'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'directionalityltr', 'directionalityrtl', 'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', 'anchor', '|', 
+            'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
+            'horizontal', 'date', 'time', 'spechars', 'snapscreen', '|',
+             'preview', 'searchreplace', ]
+                                ],
+                                autoHeightEnabled: true,
+                                autoFloatEnabled: true
+                            });
+                           
+                        </script>  
+                    </div>
+                </div>
                 <input type="hidden" name="status" value="1">
     		</div>
     		<div class="mws-button-row">
