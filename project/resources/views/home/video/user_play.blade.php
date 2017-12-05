@@ -78,7 +78,14 @@
 							$('#dis').click(function(){		
 								var discuss = $('#discuss').val();
 								$.post("{{url('/home/user_discuss')}}",{'_token':'{{csrf_token()}}',dis:discuss,title:title,time:time},function(data){
-									layer.alert(data);
+									if(data == '评论失败'){		
+										// alert('请先登录在评论');
+										layer.alert('评论内容不能为空');
+									}else if(data == '评论成功'){
+										layer.alert('评论成功!');
+									}else if(data == '请先登录再评论'){
+										layer.alert('请先登录在评论');
+									}
 								})
 								return false;
 							})

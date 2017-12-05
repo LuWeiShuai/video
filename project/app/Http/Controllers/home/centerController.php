@@ -239,8 +239,8 @@ class centerController extends Controller
             
             //将新密码插入数据库
             login::where('id',$id)->update($data);
-            
-            return back()->with('msg','修改成功');
+            $request->session('uid')->flush();
+            return redirect('/')->with('msg','修改成功,请重新登录');
         }else{
             return back()->with('msg','修改失败');
         }
@@ -265,6 +265,7 @@ class centerController extends Controller
 
         //从uhistory数据库查询
         $res1 = uhistory::where('uid',$uid)->orderBy('time','desc')->get();
+        // dd($res1);
 
         return view('/home/center/history',['res'=>$res,'res1'=>$res1]);
     }

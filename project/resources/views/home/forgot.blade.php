@@ -65,7 +65,10 @@
 
 								//获取手机号
 								var tel = $('.tel').val();
+<<<<<<< HEAD
 								console.log(tel);
+=======
+>>>>>>> 1cfd19ca6daa836da3cf39e48241f4e68278e76e
 								//发送ajax
 								$.get("{{ url('/home/center/yzm')}}",{tel:tel},function(data){
 									/*if (data=='0') {

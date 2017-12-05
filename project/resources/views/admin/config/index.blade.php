@@ -33,7 +33,7 @@
                                     <div class="mws-form-row">
                                         <label class="mws-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站logo</font></font></label>
                                         <div class="mws-form-item">
-                                             <input type="file" class="small" name="logo" value="{{$v->logo}}">
+                                             <input type="file" name="logo" value="{{$v->logo}}">
                                              <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
                                         </div>
                                    </div>
