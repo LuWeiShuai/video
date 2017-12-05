@@ -251,12 +251,12 @@ class videoController extends Controller
                 $res = discuss::insert($data);
                 if($res){
                     return '评论成功';
-                }else{
-                    return '评论失败';
                 }
             }else{
-                return '评论不能为空';
+                return '评论失败';
             }
+        }else{
+            return '请先登录再评论';
         }          
     }
     //用户视频播放
@@ -269,23 +269,31 @@ class videoController extends Controller
         $arr['num'] += 1;
         uvideo::where('id',$id)->update($arr);
         if(session('uid')){
-        //存历史记录
-                    $res5 = uhistory::where('vid',$id)->first();
-                    if($res5){
-                        $data = [];
-                        $data['time'] = date('Y-m-d H:i:s',time());
-                        uhistory::where('id',$res5->id)->update($data);
-                    }else{
-                        $hiss = [];
-                        $hiss['uid'] = session('uid');
-                        $hiss['vid'] = $res->id;
-                        $hiss['time'] = date('Y-m-d H:i:s',time());
-                        $hiss['url'] =$res->url;
-                        $hiss['logo'] = $res->pic;
-                        $hiss['title'] = $res->title;
+            $uid = session('uid');
+          //存历史记录
+            $res4 = uhistory::where('uid',$uid)->get();
+            $video_id = [];
+            foreach ($res4 as $k => $v){
+                $video_id[] = $v->vid;
+                if($id == $v->vid){
+                    $id1 = $v->id;
+                }
+            }
+            if(in_array($id,$video_id)){
+                $data = [];
+                $data['time'] = date('Y-m-d H:i:s',time());
+                uhistory::where('id',$id1)->update($data);
+            }else{
+                $his = [];
+                $his['uid'] = session('uid');
+                $his['vid'] = $id;
+                $his['title'] = $res->title;
+                $his['time'] = date('Y-m-d H:i:s',time());
+                $his['url'] =$res->url;
+                $his['logo'] = $res->pic;
 
-                        uhistory::insert($hiss);               
-                    }
+                uhistory::insert($his); 
+            } 
         }
 
         //排行榜
