@@ -70,7 +70,7 @@ class centerController extends Controller
         ],[
             'nikeName.required'=>'昵称不能为空!!!!!',
             'nikeName.regex'=>'昵称格式不正确',
-            'email.required'=>'邮箱密码不能为空!!!!!',
+            'email.required'=>'邮箱不能为空!!!!!',
             'email.email'=>'邮箱格式不正确'
         ]);
 
@@ -145,7 +145,7 @@ class centerController extends Controller
         $sendSms->setTemplateParam(['code' => $code]);
         $sendSms->setOutId('demo');
         $res=$client->execute($sendSms);
-
+        
         session(['code'=>$code]);
         return $code;
     }

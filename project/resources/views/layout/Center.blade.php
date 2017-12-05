@@ -33,6 +33,16 @@
 				</script>
 	        </div>               
         @endif
+
+        @if (count($errors) > 0)
+		    <div class="mws-form-message warning">
+		        <ul>
+		            @foreach ($errors->all() as $error)
+		                <li style="font-size: 20px;list-style: none">{{ $error }}</li>
+		            @endforeach
+		        </ul>
+		    </div>
+			@endif
 		<!--头 -->
 		<header>
 			<article>

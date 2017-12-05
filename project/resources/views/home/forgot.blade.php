@@ -25,7 +25,7 @@
 				<div class="am-form-group">
 					<label for="user-phone" class="am-form-label">手机号:</label>
 					<div class="am-form-content" id="aa">
-						<input id="user-phone" placeholder="请输入手机号" type="text" value="" name="tel">
+						<input id="user-phone" placeholder="请输入手机号" type="text" value="" name="tel" class="tel">
 						<span> *请输入手机号</span>
 						<br>
 						<input type="button" value="获取验证码" class="btn btn-danger" id="btn" onclick="sendCode(this)">
@@ -64,9 +64,15 @@
 							 { 
 
 								//获取手机号
-								var tel = $('input[name=tel]').val();
+								var tel = $('.tel').val();
+								console.log(tel);
 								//发送ajax
 								$.get("{{ url('/home/center/yzm')}}",{tel:tel},function(data){
+									/*if (data=='0') {
+										layer.alert('发送失败,请稍候再试');
+									}else{
+										layer.alert('发送成功');
+									}*/
 									console.log(data);
 
 								})
@@ -146,7 +152,7 @@
 						//获取确认密码的值
 						var rpv = $(this).val();
 						//获取密码的值
-						var pv = $('input[name=password]').val();
+						var pv = $('#password').val();
 
 						if(rpv != pv){
 
