@@ -11,6 +11,7 @@ use App\Http\model\vdetail;
 use App\Http\model\type;
 use App\Http\model\discuss;
 use App\Http\model\info;
+use App\Http\model\history;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
@@ -300,8 +301,12 @@ class VideoController extends Controller
         $cres['content']=$res['content'];
         $cres['actor']=$res['actor'];
         $cres['address']=$res['address'];
+
+        $history=[];
+        $history['title']=$res['title'];
         vdetail::where('vid', $id)->update($cres);
         video::where('id', $id)->update($vres);
+        history::where('vid', $id)->update($history);
         // vdetail::where('vid', $id)->update($cres);
         $redis=Redis::lrange($listKey,0,-1);
         
