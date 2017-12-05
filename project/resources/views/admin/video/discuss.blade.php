@@ -94,6 +94,14 @@
             padding: 6px 12px;
             float: left;
         }
+        #qwe{
+            text-indent:24px;
+            color: black;
+            font-weight: none;
+            font-size: 14px!important;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
     </style>
 @section('content')
 
@@ -130,9 +138,8 @@
                             <hr/>
                             <div class="tpl-i-more" style="color: black;font-size: 16px;" >
 
-                                内容介绍：
-								<p></p>
-                                <p style="color: black;font-size: 14px;overflow:hidden;text-overflow:ellipsis;white-space:norwap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cres['content']}}</p>
+                                <p style="font-weight: bold;">内容介绍：</p>
+                                <div id="qwe">{!!$cres['content']!!}</div>
                             </div>
                         </div>
                     </div>
